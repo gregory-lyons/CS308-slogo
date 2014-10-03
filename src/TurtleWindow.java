@@ -1,4 +1,4 @@
-package resources.languages;
+
 
 import java.awt.Dimension;
 import java.util.ResourceBundle;
