@@ -15,7 +15,7 @@ public class Main extends Application {
      */
     @Override
     public void start (Stage s) {
-        TurtleWindow myTurtleWindow = new TurtleWindow("English");
+        View myTurtleWindow = new View("English");
         s.setTitle("My Turtle Program!");
         s.setScene(myTurtleWindow.getScene());
         s.show();
