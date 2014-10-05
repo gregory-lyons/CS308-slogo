@@ -12,9 +12,9 @@ import javafx.scene.image.ImageView;
  * @author Rica
  *
  */
-public class Turtle extends ImageView {
+public class TurtleImage extends ImageView {
     
-    public Turtle() {
+    public TurtleImage() {
         
     }
 

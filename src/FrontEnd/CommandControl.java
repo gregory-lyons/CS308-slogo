@@ -1,7 +1,6 @@
 package FrontEnd;
 
 import java.util.List;
-import javafx.scene.control.Button;
 
 /**
  * Creates and stores all the buttons for the view to display.
