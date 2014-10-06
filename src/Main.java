@@ -1,6 +1,3 @@
-
-
-import FrontEnd.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,11 +12,12 @@ public class Main extends Application {
      * Initializes a new window in a particular language, sets the title, sets the scene, and shows.
      */
     @Override
-    public void start (Stage s) {
-        View myTurtleWindow = new View("English");
-        s.setTitle("My Turtle Program!");
-        s.setScene(myTurtleWindow.getScene());
-        s.show();
+    public void start (Stage s) {   
+        Stage dialog = new Stage();
+        LanguageSelector myLanguageSelector = new LanguageSelector(s, dialog);
+        dialog.setTitle("Select Language for Turtles Program");
+        dialog.setScene(myLanguageSelector.getScene());
+        dialog.show();
     }
     
     /**

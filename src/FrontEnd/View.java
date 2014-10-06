@@ -30,7 +30,6 @@ import resources.languages.*;
  *
  */
 public class View {
-    private static final String LANGUAGE = "Russian";
     private Scene myScene;
     private ResourceBundle myResources;
     private static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
@@ -52,7 +51,8 @@ public class View {
      * @param language
      */
     public View(String language) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + LANGUAGE);
+        
+        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
         BorderPane root = new BorderPane();
         
         makeDropdownCommandMenu();
