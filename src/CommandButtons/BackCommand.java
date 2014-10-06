@@ -11,7 +11,7 @@ public class BackCommand extends SuperCommand{
 		super(myLine, myHistory);
 		myInstruction = "BK " + DEFAULT_BACK;
 		myLabel = "BACK";
-		myButton.setText(myInstruction);
+		myButton.setText(myLabel);
 	}
 
 }
