@@ -4,8 +4,6 @@ import java.util.Observable;
 
 import FrontEnd.CommandLine;
 import FrontEnd.HistoryBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 /**
@@ -15,7 +13,8 @@ import javafx.scene.control.Button;
  *
  */
 public class SuperCommand extends Observable {
-    
+        private static final int MIN_HEIGHT = 30;
+        private static final int MIN_WIDTH = 200;
 	protected String myInstruction;
 	protected String myLabel;
 	protected Button myButton;
@@ -29,8 +28,7 @@ public class SuperCommand extends Observable {
     	myButton = new Button();
     	this.addObserver(myLine);
     	this.addObserver(myHistory);
-        myButton.setMinHeight(50);
-        myButton.setMinWidth(80);
+    	myButton.setPrefSize(MIN_WIDTH, MIN_HEIGHT);
     	myButton.setOnAction(event -> handle());
     }
     

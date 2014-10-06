@@ -1,6 +1,7 @@
 package FrontEnd;
 import ImmediateExecutionButtons.BackCommand;
 import ImmediateExecutionButtons.ClearCommand;
+import ImmediateExecutionButtons.EnterCommand;
 import ImmediateExecutionButtons.ForwardCommand;
 import ImmediateExecutionButtons.GoToCommand;
 import ImmediateExecutionButtons.HomeCommand;
@@ -57,6 +58,9 @@ public class CommandFactory {
         }
         if (s.equals("Right")) {
             return new RightCommand(myCommandLine, myHistoryBox);
+        }
+        if (s.equals("Enter")) {
+            return new EnterCommand(myCommandLine, myHistoryBox);
         }
         return null;
     }
