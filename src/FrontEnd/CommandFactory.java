@@ -1,15 +1,13 @@
 package FrontEnd;
-import CommandButtons.BackCommand;
-import CommandButtons.ClearCommand;
-import CommandButtons.EnterCommand;
-import CommandButtons.ForwardCommand;
-import CommandButtons.GoToCommand;
-import CommandButtons.HomeCommand;
-import CommandButtons.LeftCommand;
-import CommandButtons.RightCommand;
-import CommandButtons.SetXYCommand;
-import CommandButtons.TowardsCommand;
-import CommandButtons.SuperCommand;
+import ImmediateExecutionButtons.BackCommand;
+import ImmediateExecutionButtons.ClearCommand;
+import ImmediateExecutionButtons.ForwardCommand;
+import ImmediateExecutionButtons.GoToCommand;
+import ImmediateExecutionButtons.HomeCommand;
+import ImmediateExecutionButtons.LeftCommand;
+import ImmediateExecutionButtons.RightCommand;
+import ImmediateExecutionButtons.SuperCommand;
+import ImmediateExecutionButtons.TowardsCommand;
 
 /**
  * 
@@ -54,12 +52,13 @@ public class CommandFactory {
         if (s.equals("Left")) {
             return new LeftCommand(myCommandLine, myHistoryBox); 
         }
-        if (s.equals("SetXY")) {
-            return new SetXYCommand(myCommandLine, myHistoryBox); 
-        }
         if (s.equals("Towards")) {
-            return new TorwardsCommand(myCommandLine, myHistoryBox); 
+            return new TowardsCommand(myCommandLine, myHistoryBox); 
         }
+        if (s.equals("Right")) {
+            return new RightCommand(myCommandLine, myHistoryBox);
+        }
+        return null;
     }
 
 }

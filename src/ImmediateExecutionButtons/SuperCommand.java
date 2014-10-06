@@ -1,4 +1,4 @@
-package CommandButtons;
+package ImmediateExecutionButtons;
 
 import java.util.Observable;
 
@@ -38,8 +38,9 @@ public class SuperCommand extends Observable {
     	return myButton;
     }
     
-    protected void handle(){
-    	notifyObservers(myInstruction);
+    protected void handle() {
+        this.setChanged();
+    	this.notifyObservers(myInstruction);
     }
 
 }

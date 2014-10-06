@@ -2,8 +2,9 @@ package FrontEnd;
 
 import java.util.Observable;
 import java.util.Observer;
-
+import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
 
 /**
  * For now it is a simple TextArea. This is a separate class so that new features can easily be added.
@@ -15,14 +16,25 @@ import javafx.scene.control.TextArea;
 public class CommandLine extends TextArea implements Observer {
     
     public CommandLine() {
-        
+        this.setMinSize(600, 100);
+        this.setMaxSize(600, 150);
+        this.setWrapText(true);
+        this.setText("Write out some commands for the turtle here...");
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle (KeyEvent event) {
+                if (getText().equals("Write out some commands for the turtle here...")) {
+                    setText("");
+                }
+            }
+        });        
     }
 
     /**
      * When a button is pushed, new text representing the command is added to the command line
      */
 	public void update(Observable button, Object commandText) {	
-		this.appendText((String)commandText);	
+		//this.appendText((String)commandText);
 	}
 
 }

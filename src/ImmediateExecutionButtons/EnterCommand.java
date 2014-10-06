@@ -1,5 +1,8 @@
-package CommandButtons;
+package ImmediateExecutionButtons;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import FrontEnd.CommandLine;
 import FrontEnd.HistoryBox;
 
@@ -12,7 +15,7 @@ public class EnterCommand extends SuperCommand {
 		myCommandLine = myLine;
 		myInstruction = myLine.getText();
 		myLabel = "ENTER";
-		myButton.setText(myLabel);
+		myButton.setText(myLabel); 
 	}
 	
 	@Override

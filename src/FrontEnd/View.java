@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import ImmediateExecutionButtons.EnterCommand;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -29,17 +30,15 @@ public class View {
     private Scene myScene;
     //private Object myResources;
     //private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
-    private TextArea myCommandLine;
-    private TextArea myHistoryBox;
-    private CommandControl myCommandControl; 
+    private CommandLine myCommandLine;
+    private HistoryBox myHistoryBox;
     private CommandFactory myCommandFactory;
     private static final Dimension DEFAULT_SIZE = new Dimension(1100, 600);
     private HBox myHBox = new HBox();
     private VBox myInnerVBox = new VBox();
     private VBox myVBox = new VBox();
-    private Button myEnterButton;
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Show Turtle", "Hide Turtle",
-                                                                                "XCor", "YCor"));
+    private EnterCommand myEnterButton;
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Home"));
     
     public View(String language) {
         //myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language + ".properties");
@@ -47,22 +46,24 @@ public class View {
         //root.setTop(makeInputPanel());
         //root.setLeft(makeTurtleScreen());
         myHBox.getChildren().add(makeTextArea());
+        myHBox.getChildren().add(makeHistoryBox());
         myInnerVBox.getChildren().add(makeEnterButton());
         myInnerVBox.getChildren().add(makeClearButton());
-        myHBox.getChildren().add(myInnerVBox);
-        myHBox.getChildren().add(makeHistoryBox());
+        myHBox.getChildren().add(1, myInnerVBox);
+        
         root.setBottom(myHBox);
         
+        myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         for (String button : myCommandButtons) {
-            myVBox.getChildren().add(makeCommandButton(button));
+            myVBox.getChildren().add(myCommandFactory.makeCommand(button).getButton());
         }
         root.setRight(myVBox);
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
 
     }
 
-    private TextArea makeHistoryBox () {
-        myHistoryBox = new TextArea();
+    private HistoryBox makeHistoryBox () {
+        myHistoryBox = new HistoryBox();
         myHistoryBox.setEditable(false);
         return myHistoryBox;
     }
@@ -81,59 +82,15 @@ public class View {
         return myClearButton;   
     }
 
-    private TextArea makeTextArea () {
-        myCommandLine = new TextArea();
-        myCommandLine.setMinSize(600, 100);
-        myCommandLine.setMaxSize(600, 150);
-        myCommandLine.setWrapText(true);
-        myCommandLine.setText("Write out some commands for the turtle here...");
-        myCommandLine.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle (KeyEvent event) {
-                if (myCommandLine.getText().equals("Write out some commands for the turtle here...")) {
-                    myCommandLine.setText("");
-                }
-            }
-        });
+    private CommandLine makeTextArea () {
+        myCommandLine = new CommandLine();
         return myCommandLine;
     }
     
     private Button makeEnterButton() {
-        myEnterButton = new Button();
-        myEnterButton.setText("Enter");
-        myEnterButton.setMinHeight(50);
-        myEnterButton.setMinWidth(80);
-        myEnterButton.setOnAction(new EventHandler<ActionEvent>() {                  
-            public void handle (ActionEvent event) {
-                // TODO call the model interpreter and send it the string of commands
-                myCommandLine.setText("Moving the turtle...");
-            }
-        });
-        return myEnterButton;        
-    }
-
-    /**
-     * Method to make command buttons with a string name specified
-     * @param string name of the command button
-     * @return the button
-     */
-    private Button makeCommandButton (String str) {
-        final Button myButton = new Button();
-        myButton.setText(str);
-        myButton.setMinHeight(50);
-        myButton.setMinWidth(150);
-        myButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle (MouseEvent arg0) {
-               if (myCommandLine.getText().equals("Write out some commands for the turtle here...")) {
-                   myCommandLine.setText(myButton.getText() + " ");
-               }
-               else {
-                   myCommandLine.appendText(myButton.getText() + " ");
-               }
-            }
-        });
-        return myButton;
+        myEnterButton = new EnterCommand(myCommandLine, myHistoryBox);
+        return myEnterButton.getButton();
+        
     }
 
     public Scene getScene () {

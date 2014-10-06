@@ -1,4 +1,4 @@
-package CommandButtons;
+package ImmediateExecutionButtons;
 
 import FrontEnd.CommandLine;
 import FrontEnd.HistoryBox;
