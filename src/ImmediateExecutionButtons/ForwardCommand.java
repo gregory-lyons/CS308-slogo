@@ -7,11 +7,11 @@ public class ForwardCommand extends SuperCommand{
 
 	public static final int DEFAULT_FORWARD = 5;
 	
-	public ForwardCommand(CommandLine myLine, HistoryBox myHistory) {
+	public ForwardCommand(CommandLine myLine, HistoryBox myHistory, String label) {
 		super(myLine, myHistory);
 		myInstruction = "FD " + DEFAULT_FORWARD;
-		myLabel = "FORWARD";
-		myButton.setText(myLabel);
+		myLabel = label;
+		myButton.setText(label);
 	}
 
 }

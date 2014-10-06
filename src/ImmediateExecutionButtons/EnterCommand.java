@@ -11,10 +11,10 @@ import FrontEnd.HistoryBox;
 public class EnterCommand extends SuperCommand {
     private CommandLine myCommandLine;
 	
-    public EnterCommand(CommandLine myLine, HistoryBox myHistory) {
+    public EnterCommand(CommandLine myLine, HistoryBox myHistory, String label) {
         super(myLine, myHistory);
         myCommandLine = myLine;
-	myLabel = "ENTER";
+	myLabel = label;
 	myButton.setText(myLabel); 
     }
 	

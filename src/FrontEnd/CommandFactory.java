@@ -1,4 +1,5 @@
 package FrontEnd;
+import java.util.List;
 import ImmediateExecutionButtons.BackCommand;
 import ImmediateExecutionButtons.ClearCommand;
 import ImmediateExecutionButtons.EnterCommand;
@@ -26,6 +27,7 @@ public class CommandFactory {
         myCommandLine = c;
         myHistoryBox = h;
     }
+    
     /**
      * 
      * Takes a String describing the desired type of command and returns a new instance of that command
@@ -34,33 +36,33 @@ public class CommandFactory {
      * @param s
      * @return SuperCommand
      */
-    public SuperCommand makeCommand(String s){
-        if (s.equals("Forward")) {
-            return new ForwardCommand(myCommandLine, myHistoryBox); 
-        }
+    public SuperCommand makeCommand(String s, String label){
         if (s.equals("Back")) {
-            return new BackCommand(myCommandLine, myHistoryBox); 
+            return new BackCommand(myCommandLine, myHistoryBox, label); 
         } 
-        if (s.equals("Clear")) {
-            return new ClearCommand(myCommandLine, myHistoryBox); 
-        }
-        if (s.equals("Go To")) {
-            return new GoToCommand(myCommandLine, myHistoryBox); 
-        }
-        if (s.equals("Home")) {
-            return new HomeCommand(myCommandLine, myHistoryBox); 
-        }
-        if (s.equals("Left")) {
-            return new LeftCommand(myCommandLine, myHistoryBox); 
-        }
-        if (s.equals("Towards")) {
-            return new TowardsCommand(myCommandLine, myHistoryBox); 
-        }
-        if (s.equals("Right")) {
-            return new RightCommand(myCommandLine, myHistoryBox);
+        if (s.equals("ClearScreen")) {
+            return new ClearCommand(myCommandLine, myHistoryBox, label); 
         }
         if (s.equals("Enter")) {
-            return new EnterCommand(myCommandLine, myHistoryBox);
+            return new EnterCommand(myCommandLine, myHistoryBox, label);
+        }
+        if (s.equals("Forward")) {
+            return new ForwardCommand(myCommandLine, myHistoryBox, label); 
+        }
+        if (s.equals("SetPosition")) {
+            return new GoToCommand(myCommandLine, myHistoryBox, label); 
+        }
+        if (s.equals("Home")) {
+            return new HomeCommand(myCommandLine, myHistoryBox, label); 
+        }
+        if (s.equals("Left")) {
+            return new LeftCommand(myCommandLine, myHistoryBox, label); 
+        }
+        if (s.equals("Right")) {
+            return new RightCommand(myCommandLine, myHistoryBox, label);
+        }
+        if (s.equals("SetTowards")) {
+            return new TowardsCommand(myCommandLine, myHistoryBox, label); 
         }
         return null;
     }

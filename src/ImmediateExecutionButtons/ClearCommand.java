@@ -5,10 +5,10 @@ import FrontEnd.HistoryBox;
 
 public class ClearCommand extends SuperCommand {
 
-	public ClearCommand(CommandLine myLine, HistoryBox myHistory) {
+	public ClearCommand(CommandLine myLine, HistoryBox myHistory, String label) {
 		super(myLine, myHistory);
 		myInstruction = "CS";
-		myLabel = "CLEARSCREEN";
+		myLabel = label;
 		myButton.setText(myLabel);
 	}
 

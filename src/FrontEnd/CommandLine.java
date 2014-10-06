@@ -11,21 +11,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
- * For now it is a simple TextArea. This is a separate class so that new features can easily be added.
- * For this particular implementation, it doesn't need any additional methods because TextArea covers all
- * the methods currently needed.
- * @author Rica, Greg
+ * CommandLine is the user interface for typing in commands. When the Enter button is pushed, it is updated.
+ * @author Rica
  *
  */
 public class CommandLine extends TextArea implements Observer {
     private static final Dimension SIZE = new Dimension(400, 150);
-    private static final String PROMPT_TEXT = "Write out some commands for the turtle here...";
-    //EnterCommand myEnterButton;
     
-    public CommandLine() {
+    public CommandLine(String promptText) {
         this.setPrefSize(SIZE.width, SIZE.height);
         this.setWrapText(true);
-        this.setPromptText(PROMPT_TEXT);
+        this.setPromptText(promptText);
     }
 
     /**

@@ -15,14 +15,13 @@ import javafx.scene.control.TextArea;
  */
 public class HistoryBox extends TextArea implements Observer {
     private static final Dimension SIZE = new Dimension(400, 150);
-    private static final String DEFAULT_TEXT = "History of Commands";
     private List<String> myContent;
     private ComboBox myComboBox;
         
-    public HistoryBox(ComboBox myCombo) {
+    public HistoryBox(ComboBox myCombo, String promptText) {
         this.setPrefSize(SIZE.width, SIZE.height);
         this.setWrapText(true);
-        this.setPromptText(DEFAULT_TEXT);
+        this.setPromptText(promptText);
         myContent = new ArrayList<String>();
         myComboBox = myCombo;
     }

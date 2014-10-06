@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import resources.languages.*;
 
 /**
  * The View initializes the CommandLine, HistoryBox, CommandFactory, Dropdown Menu, and the display. It accesses
@@ -29,12 +30,12 @@ import javafx.scene.layout.VBox;
  *
  */
 public class View {
+    private static final String LANGUAGE = "Russian";
     private Scene myScene;
-    //private Object myResources;
-    //private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+    private ResourceBundle myResources;
+    private static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
     private static final int BUTTON_WIDTH = 200;
-    private static final int BUTTON_HEIGHT = 30;
-    private static final String DROPDOWN_COMMAND_MENU_DEFAULT_TEXT = "User Generated Commands";
+    private static final int BUTTON_HEIGHT = 40;
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
     private CommandFactory myCommandFactory;
@@ -42,13 +43,16 @@ public class View {
     private HBox myHBox = new HBox();
     private VBox myInnerVBox = new VBox();
     private VBox myVBox = new VBox();
-    private EnterCommand myEnterButton;
-    private ComboBox comboBox;
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "Clear", "Go To", "Towards"));
+    private EnterCommand myEnterCommand;
+    private ComboBox dropdownCommandMenu;
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
     
-
+    /**
+     * Constructs the view
+     * @param language
+     */
     public View(String language) {
-        //myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language + ".properties");
+        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + LANGUAGE);
         BorderPane root = new BorderPane();
         
         makeDropdownCommandMenu();
@@ -57,15 +61,15 @@ public class View {
         makeEnterButton();
         
         myHBox.getChildren().add(myCommandLine);
-        myVBox.getChildren().add(comboBox);
+        myVBox.getChildren().add(dropdownCommandMenu);
         myHBox.getChildren().add(myHistoryBox);
-        myInnerVBox.getChildren().add(myEnterButton.getButton());
+        myInnerVBox.getChildren().add(myEnterCommand.getButton());
         myInnerVBox.getChildren().add(makeClearButton());
         myHBox.getChildren().add(1, myInnerVBox);       
         root.setBottom(myHBox);
         
         for (String button : myCommandButtons) {
-            myVBox.getChildren().add(myCommandFactory.makeCommand(button).getButton());
+            myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
         }
         root.setRight(myVBox);
         
@@ -77,9 +81,9 @@ public class View {
      */
     private void makeDropdownCommandMenu () {
         ObservableList<String> options = FXCollections.observableArrayList();
-        comboBox = new ComboBox(options);
-        comboBox.setMaxWidth(BUTTON_WIDTH );
-        comboBox.setPromptText(DROPDOWN_COMMAND_MENU_DEFAULT_TEXT);
+        dropdownCommandMenu = new ComboBox(options);
+        dropdownCommandMenu.setMaxWidth(BUTTON_WIDTH );
+        dropdownCommandMenu.setPromptText(myResources.getString("DropdownMenuDefault"));
     }
 
     /**
@@ -90,11 +94,10 @@ public class View {
      */
     private Button makeClearButton () {
         Button myClearButton = new Button();
-        myClearButton.setText("Clear");
+        myClearButton.setText(myResources.getString("Clear"));
         myClearButton.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         myClearButton.setOnAction(new EventHandler<ActionEvent>() {                  
             public void handle (ActionEvent event) {
-                // TODO call the model interpreter and send it the string of commands
                 myCommandLine.clear();
             }
         });
@@ -105,9 +108,9 @@ public class View {
      * Initializes the command line and the history box.
      */
     private void makeTextArea () {
-        myCommandLine = new CommandLine();
+        myCommandLine = new CommandLine(myResources.getString("CommandLineDefault"));
         
-        myHistoryBox = new HistoryBox(comboBox);
+        myHistoryBox = new HistoryBox(dropdownCommandMenu, myResources.getString("HistoryBoxDefault"));
         myHistoryBox.setEditable(false);
     }
     
@@ -116,7 +119,7 @@ public class View {
      * different location than the other regular command buttons.
      */
     private void makeEnterButton() {
-        myEnterButton = (EnterCommand) myCommandFactory.makeCommand("Enter");
+        myEnterCommand = (EnterCommand) myCommandFactory.makeCommand("Enter", myResources.getString("Enter"));
     }
 
     /**

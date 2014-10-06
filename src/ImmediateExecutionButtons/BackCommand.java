@@ -7,10 +7,10 @@ public class BackCommand extends SuperCommand{
 	
 	public static final int DEFAULT_BACK = 5;
 
-	public BackCommand(CommandLine myLine, HistoryBox myHistory) {
+	public BackCommand(CommandLine myLine, HistoryBox myHistory, String label) {
 		super(myLine, myHistory);
 		myInstruction = "BK " + DEFAULT_BACK;
-		myLabel = "BACK";
+		myLabel = label;
 		myButton.setText(myLabel);
 	}
 

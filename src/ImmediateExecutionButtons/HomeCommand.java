@@ -5,10 +5,10 @@ import FrontEnd.HistoryBox;
 
 public class HomeCommand extends SuperCommand {
 
-	public HomeCommand(CommandLine myLine, HistoryBox myHistory) {
+	public HomeCommand(CommandLine myLine, HistoryBox myHistory, String label) {
 		super(myLine, myHistory);
 		myInstruction = "HOME";
-		myLabel = "HOME";
+		myLabel = label;
 		myButton.setText(myLabel);
 	}
 
