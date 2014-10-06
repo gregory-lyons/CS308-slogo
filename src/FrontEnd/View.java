@@ -7,12 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import ImmediateExecutionButtons.EnterCommand;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -40,30 +43,37 @@ public class View {
     private EnterCommand myEnterButton;
     private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Home"));
     
+    ObservableList<String> options = FXCollections.observableArrayList("User Generated Commands!");
+    final ComboBox comboBox = new ComboBox(options);
+    
     public View(String language) {
         //myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language + ".properties");
         BorderPane root = new BorderPane();
         //root.setTop(makeInputPanel());
         //root.setLeft(makeTurtleScreen());
         myHBox.getChildren().add(makeTextArea());
-        myHBox.getChildren().add(makeHistoryBox());
+        myVBox.getChildren().add(comboBox);
+        myHBox.getChildren().add(makeHistoryBox(comboBox));
         myInnerVBox.getChildren().add(makeEnterButton());
         myInnerVBox.getChildren().add(makeClearButton());
         myHBox.getChildren().add(1, myInnerVBox);
         
         root.setBottom(myHBox);
         
+
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         for (String button : myCommandButtons) {
             myVBox.getChildren().add(myCommandFactory.makeCommand(button).getButton());
         }
         root.setRight(myVBox);
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
+        
+
 
     }
 
-    private HistoryBox makeHistoryBox () {
-        myHistoryBox = new HistoryBox();
+    private HistoryBox makeHistoryBox (ComboBox cb) {
+        myHistoryBox = new HistoryBox(cb);
         myHistoryBox.setEditable(false);
         return myHistoryBox;
     }

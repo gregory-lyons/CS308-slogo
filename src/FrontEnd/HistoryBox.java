@@ -1,29 +1,29 @@
 package FrontEnd;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.event.EventHandler;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class HistoryBox extends TextArea implements Observer {
         private List<String> myContent;
+        private ComboBox myComboBox;
         
-        public HistoryBox() {
+        public HistoryBox(ComboBox myCombo) {
             myContent = new ArrayList<String>();
+            myComboBox = myCombo;
+            
         }
 
 	@Override
-	public void update(Observable button, Object instruction) {
+	public void update(Observable button, Object instruction) {  
 	    this.appendText(instruction + "\n");
-	        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
-	            @Override
-	            public void handle (MouseEvent event) {
-	                System.out.println("Blah");
-	            }
-	        });    
+	    myComboBox.getItems().add((String) instruction);
 	}
 	
 	
