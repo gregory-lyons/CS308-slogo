@@ -2,6 +2,7 @@ package FrontEnd;
 
 import java.util.Observable;
 import java.util.Observer;
+import ImmediateExecutionButtons.EnterCommand;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
@@ -14,6 +15,7 @@ import javafx.scene.input.KeyEvent;
  *
  */
 public class CommandLine extends TextArea implements Observer {
+    //EnterCommand myEnterButton;
     
     public CommandLine() {
         this.setMinSize(600, 100);
@@ -23,11 +25,8 @@ public class CommandLine extends TextArea implements Observer {
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent event) {
-                if (getText().equals("Write out some commands for the turtle here...")) {
-                    setText("");
-                }
             }
-        });        
+        }); 
     }
 
     /**

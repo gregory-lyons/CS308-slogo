@@ -7,7 +7,6 @@ import FrontEnd.CommandLine;
 import FrontEnd.HistoryBox;
 
 public class EnterCommand extends SuperCommand {
-
 	private CommandLine myCommandLine;
 	
 	public EnterCommand(CommandLine myLine, HistoryBox myHistory) {
@@ -18,9 +17,14 @@ public class EnterCommand extends SuperCommand {
 		myButton.setText(myLabel); 
 	}
 	
+	public void setMyCommandLine(String s) {
+	    myCommandLine.setText(s);
+	}
+	
 	@Override
 	protected void handle() {
-		super.handle();
+	        myInstruction = myCommandLine.getText();
+		notifyObservers(myInstruction);
 		myCommandLine.clear();
 	}
 	
