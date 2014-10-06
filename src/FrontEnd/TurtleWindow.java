@@ -26,8 +26,7 @@ public class TurtleWindow extends Pane {
     }
     
     private void drawLines(List<Point2D> myList) {
-		
-		
+		PolyLine newPath = new
 	}
 
 	private void moveTurtle(Point2D point) {

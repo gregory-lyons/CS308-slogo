@@ -3,6 +3,7 @@ package CommandButtons;
 import java.util.Observable;
 
 import FrontEnd.CommandLine;
+import FrontEnd.HistoryBox;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -26,18 +27,19 @@ public class SuperCommand extends Observable {
      */
     public SuperCommand(CommandLine myLine, HistoryBox myHistory) {
     	myButton = new Button();
-    	
-    	this.addObserver(myLine, myHistory);
-    	myButton.setOnAction(new EventHandler<ActionEvent>() {
-    		@Override
-    		public void handle(ActionEvent event){
-    			notifyObservers(myInstruction);
-    		}
-    	});
+    	this.addObserver(myLine);
+    	this.addObserver(myHistory);
+        myButton.setMinHeight(50);
+        myButton.setMinWidth(80);
+    	myButton.setOnAction(event -> handle());
     }
     
     public Button getButton(){
     	return myButton;
+    }
+    
+    protected void handle(){
+    	notifyObservers(myInstruction);
     }
 
 }
