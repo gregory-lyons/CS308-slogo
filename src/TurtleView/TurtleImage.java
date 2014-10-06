@@ -1,11 +1,7 @@
 package TurtleView;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.image.ImageProducer;
-import java.awt.image.MemoryImageSource;
+
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 /**
  * This is the turtle and all of its methods.
@@ -14,8 +10,12 @@ import javafx.scene.image.ImageView;
  */
 public class TurtleImage extends ImageView {
     
-    public TurtleImage() {
-        
+    public TurtleImage(double x, double y) {
+        super();
+        this.setX(20);
+        this.setY(20);
+        this.setFitHeight(50.0);
+        this.setFitWidth(50.0);
     }
 
 }

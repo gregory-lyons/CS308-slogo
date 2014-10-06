@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import ImmediateExecutionButtons.EnterCommand;
+import TurtleView.TurtleWindow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,6 +74,7 @@ public class View {
             myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
         }
         root.setRight(myVBox);
+        root.setLeft(new TurtleWindow());
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
     }
