@@ -1,7 +1,7 @@
 package FrontEnd;
 
 import java.util.List;
-
+import javafx.scene.control.Button;
 import CommandButtons.SuperCommand;
 
 /**
@@ -10,6 +10,7 @@ import CommandButtons.SuperCommand;
  *
  */
 public class CommandControl {
+    private List<SuperCommand> myCommandList;
 
     /**
      * Constructor uses CommandFactory to create new commands with their buttons.
@@ -17,7 +18,12 @@ public class CommandControl {
      * to initialize a list of Commands.  This list can be accessed by getCommands()
      */
     public CommandControl() {
+        //create the list of commands
         
+    }
+    
+    public Button createButton(SuperCommand buttonType) {
+        return null;
     }
     
     /**
@@ -25,7 +31,7 @@ public class CommandControl {
      * @return List<Button>
      */
     public List<SuperCommand> getCommands() {
-        return null;
+        return myCommandList;
     }
 
 }
