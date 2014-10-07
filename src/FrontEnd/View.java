@@ -122,17 +122,17 @@ public class View implements Observer{
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
     }
     
-	@Override
-	public void update(Observable o, Object arg) {
-		SceneUpdater updater = myModel.parse((String)arg);
-		if(!updater.isNoError()) {
-    		makeErrorDialog(updater.getErrorMessage()).show();
-    		return;
+    @Override
+    public void update(Observable o, Object arg) {
+        SceneUpdater updater = myModel.parse((String)arg);
+	if(!updater.isNoError()) {
+    	    makeErrorDialog(updater.getErrorMessage()).show();
+    	    return;
     	}
-    	updater.getVariables();
+        updater.getVariables();
     	myTurtleWindow.update(updater.getPoints(), updater.getAngle(), updater.penIsDown());
     	myTurtleInformation.update(updater.getPoints(), updater.getAngle());
-	}
+    }
 
     /**
      * Creates a clear button that clears the command line when pressed. This is not included in the command

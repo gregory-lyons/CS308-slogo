@@ -3,6 +3,12 @@ package FrontEnd;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+/**
+ * Is a class that would have objects that represent the variables the user created. These are editable
+ * and when edited, back-end will be notified.
+ * @author Rica
+ *
+ */
 public class UserVariables {
     private ComboBox myComboBox;
     private Button myButton;

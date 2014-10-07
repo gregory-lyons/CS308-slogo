@@ -18,6 +18,10 @@ import javafx.scene.input.MouseEvent;
 public class CommandLine extends TextArea implements Observer {
     private static final Dimension SIZE = new Dimension(400, 150);
     
+    /**
+     * Constructs command line of prefered size with wrap text and prompt Text.
+     * @param promptText
+     */
     public CommandLine(String promptText) {
         this.setPrefSize(SIZE.width, SIZE.height);
         this.setWrapText(true);

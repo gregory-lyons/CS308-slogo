@@ -33,6 +33,11 @@ public class LanguageSelector {
     private List<Node> leaves = new ArrayList<Node>();
     private int languageNum;
 
+    /**
+     * Constructs language selector which includes combo box and has access to the borderpane root
+     * @param buttonWidth
+     * @param myRoot
+     */
     public LanguageSelector(int buttonWidth, BorderPane myRoot) {
         //createLanguagesFile();
         this.myRoot = myRoot;
@@ -70,6 +75,10 @@ public class LanguageSelector {
     }
     */
     
+    /**
+     * Gets all the leaf nodes of the children and stores it in the list leaves. Translates the leaf
+     * into the selected language by calling the translate method.
+     */
     private void handle () {
         String chosenLanguage = myComboBox.getValue().toString();
         if (chosenLanguage.equals("English")) { languageNum = 0; }
@@ -102,6 +111,11 @@ public class LanguageSelector {
         }
     }
     
+    /**
+     * Translates the text in the leaf node to the appropriate language and passes it back to the handle method.
+     * @param currentText
+     * @return
+     */
     private String translate(String currentText) {
         String myKey;
         for (String key : myLanguages.keySet()) {
@@ -113,6 +127,11 @@ public class LanguageSelector {
         return currentText;
     }
     
+    /**
+     * Recursive method to construct the list of all leaf nodes
+     * @param n
+     * @return ObservableList<Node> of all leaves
+     */
     private ObservableList<Node> rootChildren(Node n) {
         if (!(n instanceof Parent)) {
             leaves.add(n);
@@ -126,10 +145,18 @@ public class LanguageSelector {
         return pnChildren;
     }
 
+    /**
+     * 
+     * @return Returns language selector combo box
+     */
     public ComboBox getComboBox () {
         return myComboBox;
     }
 
+    /**
+     * 
+     * @return Returns GO button of combo box
+     */
     public Button getButton () {
         return myButton;
     }
