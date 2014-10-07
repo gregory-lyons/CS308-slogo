@@ -43,7 +43,7 @@ import resources.languages.*;
  */
 public class View implements Observer{
 	
-	private Model myModel;
+    private Model myModel;
     private String language = "English";
     private Scene myScene;
     private ResourceBundle myResources;
