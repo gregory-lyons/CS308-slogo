@@ -43,25 +43,24 @@ public class View {
     private VBox myInnerVBox = new VBox();
     private VBox myVBox = new VBox();
     private EnterCommand myEnterCommand;
-    private ComboBox dropdownCommandMenu;
+    private UserCommands dropdownCommandMenu;
     private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
     
     /**
      * Constructs the view
      * @param language
      */
-    public View(String language) {
-        
+    public View(String language) {       
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
         BorderPane root = new BorderPane();
         
-        makeDropdownCommandMenu();
-        makeTextArea();
+        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
+        makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         makeEnterButton();
         
         myHBox.getChildren().add(myCommandLine);
-        myVBox.getChildren().add(dropdownCommandMenu);
+        myVBox.getChildren().add(dropdownCommandMenu.getComboBox());
         myHBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
         myInnerVBox.getChildren().add(makeClearButton());
@@ -74,16 +73,6 @@ public class View {
         root.setRight(myVBox);
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
-    }
-
-    /**
-     * Creates the menu that stores all the user generated commands.
-     */
-    private void makeDropdownCommandMenu () {
-        ObservableList<String> options = FXCollections.observableArrayList();
-        dropdownCommandMenu = new ComboBox(options);
-        dropdownCommandMenu.setMaxWidth(BUTTON_WIDTH );
-        dropdownCommandMenu.setPromptText(myResources.getString("DropdownMenuDefault"));
     }
 
     /**
@@ -107,7 +96,7 @@ public class View {
     /**
      * Initializes the command line and the history box.
      */
-    private void makeTextArea () {
+    private void makeTextAreas () {
         myCommandLine = new CommandLine(myResources.getString("CommandLineDefault"));
         
         myHistoryBox = new HistoryBox(dropdownCommandMenu, myResources.getString("HistoryBoxDefault"));

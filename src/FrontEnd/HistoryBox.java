@@ -16,9 +16,9 @@ import javafx.scene.control.TextArea;
 public class HistoryBox extends TextArea implements Observer {
     private static final Dimension SIZE = new Dimension(400, 150);
     private List<String> myContent;
-    private ComboBox myComboBox;
+    private UserCommands myComboBox;
         
-    public HistoryBox(ComboBox myCombo, String promptText) {
+    public HistoryBox(UserCommands myCombo, String promptText) {
         this.setPrefSize(SIZE.width, SIZE.height);
         this.setWrapText(true);
         this.setPromptText(promptText);
@@ -28,7 +28,7 @@ public class HistoryBox extends TextArea implements Observer {
 
     @Override
     public void update(Observable button, Object instruction) {
-        this.appendText(instruction + "\n");
-        myComboBox.getItems().add((String) instruction);
+        this.appendText(instruction + "\n\n");
+        myComboBox.addCommand(instruction);
     }
 }
