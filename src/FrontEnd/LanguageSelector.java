@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 /**
  * Stores a list of commands that the user created. These commands can be clicked to be re-run.
@@ -22,7 +23,6 @@ public class LanguageSelector {
     private ComboBox myComboBox;
     private Button myButton;
     private static final int myButtonWidth = 20;
-    private List<Class<? extends Languager>> hasLanguage;
     private List<Node> leaves = new ArrayList<Node>();
     //private ObservableList<String> options = FXCollections.observableArrayList();
     
@@ -40,6 +40,15 @@ public class LanguageSelector {
     private void handle () {
         for (Node each : myRootChildren) {
             rootChildren(each);
+        }
+        for (Node leaf : leaves) {
+            if (leaf.getClass().equals(Text.class)) {
+                Text textLeaf = (Text) leaf;
+                textLeaf.textProperty().unbind();
+                String myText = textLeaf.getText();
+                textLeaf.setText("yay!");
+                //textLeaf.textProperty().bind();
+            }
         }
         System.out.println(myComboBox.getValue());
     }
