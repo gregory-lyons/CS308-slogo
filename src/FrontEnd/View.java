@@ -46,6 +46,7 @@ public class View {
     private HBox uservrbHBox = new HBox();
     private HBox bottomHBox = new HBox();
     private VBox myInnerVBox = new VBox();
+    private VBox centerVBox = new VBox();
     
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
@@ -57,7 +58,7 @@ public class View {
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
-    //private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
 
     /**
      * Constructs the view
@@ -86,17 +87,16 @@ public class View {
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
         myVBox.getChildren().add(usercmdHBox);
         myVBox.getChildren().add(uservrbHBox);
-        bottomHBox.getChildren().add(myHistoryBox);
+        root.setCenter(centerVBox);
+        centerVBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
         myInnerVBox.getChildren().add(makeClearButton());
         bottomHBox.getChildren().add(1, myInnerVBox);       
         root.setBottom(bottomHBox);
         
-        /*
         for (String button : myCommandButtons) {
             myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
         }
-        */
         root.setRight(myVBox);
         root.setLeft(new TurtleWindow());
         

@@ -14,7 +14,7 @@ import javafx.scene.control.TextArea;
  *
  */
 public class HistoryBox extends TextArea implements Observer {
-    private static final Dimension SIZE = new Dimension(400, 150);
+    private static final Dimension SIZE = new Dimension(400, 600);
     private List<String> myContent;
     private UserCommands myComboBox;
         

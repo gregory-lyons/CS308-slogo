@@ -1,5 +1,6 @@
 package FrontEnd;
 
+
 import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -31,6 +32,10 @@ public class LanguageSelector {
     }
     
     private void handle () {
+        for (Object o : hasLanguage) {
+            Class objectClass = o.getClass();
+            o = (objectClass) o;
+        }
         System.out.println(myComboBox.getValue());
     }
     public void addCommand(Object instruction) {
