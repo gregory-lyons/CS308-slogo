@@ -14,7 +14,7 @@ public class UserCommands extends Observable{
 
     private ComboBox myComboBox;
     private Button myButton;
-    private static final int myButtonWidth = 20;
+
     //private ObservableList<String> options = FXCollections.observableArrayList();
     
     public UserCommands (String defaultText, int buttonWidth, View v) {       
@@ -23,6 +23,7 @@ public class UserCommands extends Observable{
         myComboBox.setMaxWidth(buttonWidth);
         myComboBox.setPromptText(defaultText);
         myButton = new Button("Go");
+        myButton.setMinWidth(buttonWidth/2);
         myButton.setOnMouseClicked(event -> handle());
     }
     

@@ -50,7 +50,7 @@ public class View implements Observer{
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
-    public static final Dimension DEFAULT_SIZE = new Dimension(1100, 600);
+    public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
     public static final double DIALOG_WIDTH = 25;
     public static final double DIALOG_HEIGHT = 25;
 

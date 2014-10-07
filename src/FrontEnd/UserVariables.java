@@ -6,8 +6,6 @@ import javafx.scene.control.ComboBox;
 public class UserVariables {
     private ComboBox myComboBox;
     private Button myButton;
-    private static final int myButtonWidth = 20;
-    //private ObservableList<String> options = FXCollections.observableArrayList();
     
     public UserVariables(String defaultText, int buttonWidth) {       
         myComboBox = new ComboBox();
@@ -16,6 +14,7 @@ public class UserVariables {
         myComboBox.setPromptText(defaultText);
         myComboBox.setEditable(true);
         myButton = new Button("Go");
+        myButton.setMinWidth(buttonWidth/2);
         myButton.setOnMouseClicked(event -> handle());
     }
     
