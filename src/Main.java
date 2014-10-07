@@ -1,3 +1,4 @@
+import FrontEnd.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -13,11 +14,10 @@ public class Main extends Application {
      */
     @Override
     public void start (Stage s) {   
-        Stage dialog = new Stage();
-        LanguageSelector myLanguageSelector = new LanguageSelector(s, dialog);
-        dialog.setTitle("Select Language for Turtles Program");
-        dialog.setScene(myLanguageSelector.getScene());
-        dialog.show();
+        View myTurtleWindow = new View();
+        s.setTitle("My Turtle Program!");
+        s.setScene(myTurtleWindow.getScene());
+        s.show();
     }
     
     /**
