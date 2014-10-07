@@ -1,3 +1,5 @@
+import Backend.Model;
+import FrontEnd.Controller;
 import FrontEnd.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,9 +16,10 @@ public class Main extends Application {
      */
     @Override
     public void start (Stage s) {   
-        View myTurtleWindow = new View();
+        Model myModel = new Model();
+        View myView = new View(myModel);
         s.setTitle("My Turtle Program!");
-        s.setScene(myTurtleWindow.getScene());
+        s.setScene(myView.getScene());
         s.show();
     }
     

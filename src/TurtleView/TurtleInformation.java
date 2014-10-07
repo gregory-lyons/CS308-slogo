@@ -1,8 +1,11 @@
 package TurtleView;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import com.sun.javafx.geom.Point2D;
+
+import javafx.geometry.Point2D;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -11,7 +14,7 @@ import javafx.scene.layout.VBox;
  * @author Rica
  *
  */
-public class TurtleInformation implements Observer {
+public class TurtleInformation {
     private VBox myVBox = new VBox();
     private Point2D turtlePosition = new Point2D(0,0);
     private String turtleHeading = "Bob";
@@ -22,7 +25,7 @@ public class TurtleInformation implements Observer {
     private Label turtleDirectionLabel;
     
     public TurtleInformation() {
-        turtlePositionLabel = new Label("Turtle Position: (" + turtlePosition.x + "," + turtlePosition.y + ")");
+        turtlePositionLabel = new Label("Turtle Position: (" + turtlePosition.getX() + "," + turtlePosition.getY() + ")");
         turtleHeadingLabel = new Label("Turtle Heading: " + turtleHeading);
         turtleDirectionLabel = new Label("Turtle is Facing: " + turtleDirection + " degrees");
         myVBox.getChildren().addAll(turtleHeadingLabel, turtlePositionLabel, turtleDirectionLabel);
@@ -32,10 +35,13 @@ public class TurtleInformation implements Observer {
         return myVBox;
     }
 
-    @Override
-    public void update (Observable arg0, Object arg1) {
-        // TODO update whenever the turtle is moved
-        
+
+    public void update(List<Point2D> list, double angle) {
+    	double newX = list.get(list.size()-1).getX();
+    	double newY = list.get(list.size()-1).getY();
+        turtlePositionLabel.setText("Turtle Position: (" + newX + "," + newY + ")");
+        turtleDirection += angle;
+        turtleDirectionLabel.setText("Turtle is Facing: " + turtleDirection + " degrees");
     }
 
 }

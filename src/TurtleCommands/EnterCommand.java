@@ -1,6 +1,7 @@
 package TurtleCommands;
 
 import FrontEnd.CommandLine;
+import FrontEnd.Controller;
 import FrontEnd.HistoryBox;
 
 /**
@@ -14,8 +15,8 @@ public class EnterCommand extends SuperCommand {
     public EnterCommand(CommandLine myLine, HistoryBox myHistory, String label) {
         super(myLine, myHistory);
         myCommandLine = myLine;
-	myLabel = label;
-	myButton.setText(myLabel); 
+        myLabel = label;
+        myButton.setText(myLabel); 
     }
 	
     public void setMyCommandLine(String s) {

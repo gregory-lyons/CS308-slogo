@@ -1,5 +1,7 @@
 package FrontEnd;
 
+import java.util.Observable;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
@@ -8,13 +10,15 @@ import javafx.scene.control.ComboBox;
  * @author Rica
  *
  */
-public class UserCommands {
+public class UserCommands extends Observable{
+
     private ComboBox myComboBox;
     private Button myButton;
     private static final int myButtonWidth = 20;
     //private ObservableList<String> options = FXCollections.observableArrayList();
     
-    public UserCommands(String defaultText, int buttonWidth) {       
+    public UserCommands (String defaultText, int buttonWidth, View v) {       
+    	addObserver(v);
         myComboBox = new ComboBox();
         myComboBox.setMaxWidth(buttonWidth);
         myComboBox.setPromptText(defaultText);
@@ -23,7 +27,9 @@ public class UserCommands {
     }
     
     private void handle () {
+    	this.setChanged();
         System.out.println(myComboBox.getValue());
+        notifyObservers(myComboBox.getValue());
     }
     public void addCommand(Object instruction) {
         myComboBox.getItems().add((String) instruction);

@@ -4,7 +4,12 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
+
+import Backend.Model;
+import Backend.SceneUpdater;
 import TurtleCommands.EnterCommand;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -13,6 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,23 +30,30 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import resources.languages.*;
 
 /**
  * The View initializes the CommandLine, HistoryBox, CommandFactory, Dropdown Menu, and the display. It accesses
  * the constructor methods in those classes to initialize.
- * @author Rica
+ * @author Rica Zhang, Greg Lyons
  *
  */
-public class View {
+public class View implements Observer{
+	
+	private Model myModel;
     private String language = "English";
     private Scene myScene;
     private ResourceBundle myResources;
-    private static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
-    private static final int BUTTON_WIDTH = 200;
-    private static final int BUTTON_HEIGHT = 40;
-    private static final Dimension DEFAULT_SIZE = new Dimension(1100, 600);
-    
+    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
+    public static final int BUTTON_WIDTH = 200;
+    public static final int BUTTON_HEIGHT = 40;
+    public static final Dimension DEFAULT_SIZE = new Dimension(1100, 600);
+    public static final double DIALOG_WIDTH = 25;
+    public static final double DIALOG_HEIGHT = 25;
+
     private HBox languageSelectorHBox = new HBox();
     private VBox myVBox = new VBox();
     private HBox usercmdHBox = new HBox();
@@ -50,6 +64,7 @@ public class View {
     
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
+    private TurtleWindow myTurtleWindow;
     
     private CommandFactory myCommandFactory;    
     private EnterCommand myEnterCommand;
@@ -64,16 +79,20 @@ public class View {
      * Constructs the view
      * @param language
      */
-    public View() {       
+    public View(Model m) {       
+    	
+    	myModel = m;
+    	
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
         myLanguageSelector = new LanguageSelector(BUTTON_WIDTH);
-        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
+        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH, this);
         dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
+        myTurtleWindow = new TurtleWindow();
         makeEnterButton();
 
         myVBox.getChildren().add(myTurtleInformation.getVBox());
@@ -98,10 +117,22 @@ public class View {
             myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
         }
         root.setRight(myVBox);
-        root.setLeft(new TurtleWindow());
+        root.setLeft(myTurtleWindow);
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
     }
+    
+	@Override
+	public void update(Observable o, Object arg) {
+		SceneUpdater updater = myModel.parse((String)arg);
+		if(!updater.isNoError()) {
+    		makeErrorDialog(updater.getErrorMessage()).show();
+    		return;
+    	}
+    	updater.getVariables();
+    	myTurtleWindow.update(updater.getPoints(), updater.getAngle(), updater.penIsDown());
+    	myTurtleInformation.update(updater.getPoints(), updater.getAngle());
+	}
 
     /**
      * Creates a clear button that clears the command line when pressed. This is not included in the command
@@ -137,6 +168,14 @@ public class View {
      */
     private void makeEnterButton() {
         myEnterCommand = (EnterCommand) myCommandFactory.makeCommand("Enter", myResources.getString("Enter"));
+        myEnterCommand.addObserver(this);
+    }
+    
+    private Stage makeErrorDialog(String message){
+    	Stage dialog = new Stage();
+    	dialog.initStyle(StageStyle.UTILITY);
+    	dialog.setScene(new Scene(new Group(new Text(DIALOG_WIDTH, DIALOG_HEIGHT, message))));
+    	return dialog;
     }
 
     /**
@@ -146,5 +185,7 @@ public class View {
     public Scene getScene () {
         return myScene;
     }
+
+
 
 }
