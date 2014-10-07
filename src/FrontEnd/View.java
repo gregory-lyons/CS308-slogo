@@ -39,13 +39,16 @@ public class View {
     private HistoryBox myHistoryBox;
     private CommandFactory myCommandFactory;
     private static final Dimension DEFAULT_SIZE = new Dimension(1100, 600);
-    private HBox myHBox = new HBox();
+    private HBox bottomHBox = new HBox();
+    private HBox usercmdHBox = new HBox();
+    private HBox uservrbHBox = new HBox();
     private VBox myInnerVBox = new VBox();
     private VBox myVBox = new VBox();
     private EnterCommand myEnterCommand;
     private UserCommands dropdownCommandMenu;
+    private UserVariables dropdownVariablesMenu;
     private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
-    
+
     /**
      * Constructs the view
      * @param language
@@ -55,17 +58,23 @@ public class View {
         BorderPane root = new BorderPane();
         
         dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
+        dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         makeEnterButton();
         
-        myHBox.getChildren().add(myCommandLine);
-        myVBox.getChildren().add(dropdownCommandMenu.getComboBox());
-        myHBox.getChildren().add(myHistoryBox);
+        bottomHBox.getChildren().add(myCommandLine);
+        usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
+        usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
+        uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
+        uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
+        myVBox.getChildren().add(usercmdHBox);
+        myVBox.getChildren().add(uservrbHBox);
+        bottomHBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
         myInnerVBox.getChildren().add(makeClearButton());
-        myHBox.getChildren().add(1, myInnerVBox);       
-        root.setBottom(myHBox);
+        bottomHBox.getChildren().add(1, myInnerVBox);       
+        root.setBottom(bottomHBox);
         
         for (String button : myCommandButtons) {
             myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
