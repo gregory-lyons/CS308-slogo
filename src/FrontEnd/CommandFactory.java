@@ -1,15 +1,15 @@
 package FrontEnd;
 import java.util.List;
-import ImmediateExecutionButtons.BackCommand;
-import ImmediateExecutionButtons.ClearCommand;
-import ImmediateExecutionButtons.EnterCommand;
-import ImmediateExecutionButtons.ForwardCommand;
-import ImmediateExecutionButtons.GoToCommand;
-import ImmediateExecutionButtons.HomeCommand;
-import ImmediateExecutionButtons.LeftCommand;
-import ImmediateExecutionButtons.RightCommand;
-import ImmediateExecutionButtons.SuperCommand;
-import ImmediateExecutionButtons.TowardsCommand;
+import TurtleCommands.BackCommand;
+import TurtleCommands.ClearCommand;
+import TurtleCommands.EnterCommand;
+import TurtleCommands.ForwardCommand;
+import TurtleCommands.GoToCommand;
+import TurtleCommands.HomeCommand;
+import TurtleCommands.LeftCommand;
+import TurtleCommands.RightCommand;
+import TurtleCommands.SuperCommand;
+import TurtleCommands.TowardsCommand;
 
 /**
  * 

@@ -1,7 +1,8 @@
 package Backend;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import TurtleView.UserVariable;
 import com.sun.javafx.geom.Point2D;
 
 /**
@@ -9,26 +10,54 @@ import com.sun.javafx.geom.Point2D;
  * For each command that is parsed, the back-end creates a new SceneUpdater.
  * Each SceneUpdater instance tells the View how to update the display (is the pen up/down, was there an error message, where does the turtle move, etc.)
  * 
- * @author Greg
+ * @author Greg, Rica
  *
  */
-
 public class SceneUpdater {
-
-	public SceneUpdater() {
-		
-	}
+    private List<Point2D> myPoints;
+    private List<String> myVariables;
+    private boolean penDown;
+    private boolean noError;
+    private String errorMessage;
+    
+    public SceneUpdater(List<Point2D> myPoints, List<String> myVariables, boolean penDown, boolean noError, String errorMessage) {
+        this.myPoints = myPoints;
+        this.myVariables = myVariables;
+        this.penDown = penDown;
+        this.noError = noError;
+        this.errorMessage = errorMessage;        
+    }
+    
+    public List<Point2D> getPoints(){
+        return myPoints;
+    }
+    
+    public List<String> getVariables() {
+        return myVariables;
+    }
+    
+    /**
+     * Creates a UserVariable object for each variable that the user created in their command.
+     * @return List of UserVariables created
+     */
+    public List<UserVariable> constructAllVariables() {
+        List<UserVariable> myUserVariables = new ArrayList<>();
+        for (String var : myVariables) {
+            UserVariable userVariable = new UserVariable(var);
+            myUserVariables.add(userVariable);
+        }
+        return myUserVariables;
+    }
 	
-	public boolean penUp(){
-		return false;
-	}
+    public boolean penIsDown(){
+        return penDown;
+    }
+    
+    public boolean isNoError() {
+        return noError;
+    }
 	
-	public String getErrorMessage(){
-		return null;
-	}
-
-	public List<Point2D> getTurtleMoves(){
-		return null;
-	}
-
+    public String getErrorMessage(){
+	return errorMessage;
+    }
 }

@@ -1,4 +1,4 @@
-package ImmediateExecutionButtons;
+package TurtleCommands;
 
 import java.util.Observable;
 
@@ -26,7 +26,7 @@ public class SuperCommand extends Observable {
      */
     public SuperCommand(CommandLine myLine, HistoryBox myHistory) {
     	myButton = new Button();
-    	this.addObserver(myLine);
+    	//this.addObserver(myLine);
     	this.addObserver(myHistory);
     	myButton.setPrefSize(MIN_WIDTH, MIN_HEIGHT);
     	myButton.setOnAction(event -> handle());
