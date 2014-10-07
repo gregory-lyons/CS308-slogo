@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 /**
- * This is the turtle and all of its methods.
- * @author Rica
+ * 
+ * @author Greg Lyons
  *
  */
 public class TurtleImage extends ImageView {
