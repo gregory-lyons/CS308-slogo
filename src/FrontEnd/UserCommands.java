@@ -29,7 +29,6 @@ public class UserCommands extends Observable{
     
     private void handle () {
     	this.setChanged();
-        System.out.println(myComboBox.getValue());
         notifyObservers(myComboBox.getValue());
     }
     public void addCommand(Object instruction) {

@@ -79,10 +79,8 @@ public class View implements Observer{
      * Constructs the view
      * @param language
      */
-    public View(Model m) {       
-    	
-    	myModel = m;
-    	
+    public View(Model m) {           	
+    	myModel = m;    	
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
         BorderPane root = new BorderPane();
         
