@@ -69,7 +69,7 @@ public class View {
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
-        myLanguageSelector = new LanguageSelector(BUTTON_WIDTH);
+        myLanguageSelector = new LanguageSelector(BUTTON_WIDTH, root);
         dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         makeTextAreas();
