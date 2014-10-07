@@ -12,7 +12,7 @@ public class TurtleImage extends ImageView {
     
     public TurtleImage(double x, double y) {
         super();
-        this.move(200, 300);
+        this.move(200, 100);
         this.setFitHeight(25.0);
         this.setFitWidth(25.0);
     }

@@ -3,7 +3,7 @@ package Backend;
 import java.util.ArrayList;
 import java.util.List;
 import TurtleView.UserVariable;
-import com.sun.javafx.geom.Point2D;
+import javafx.geometry.Point2D;
 
 /**
  * This class is an interface between the front-end and the back-end.
@@ -15,13 +15,15 @@ import com.sun.javafx.geom.Point2D;
  */
 public class SceneUpdater {
     private List<Point2D> myPoints;
+    private double myAngle;
     private List<String> myVariables;
     private boolean penDown;
     private boolean noError;
     private String errorMessage;
     
-    public SceneUpdater(List<Point2D> myPoints, List<String> myVariables, boolean penDown, boolean noError, String errorMessage) {
+    public SceneUpdater(List<Point2D> myPoints, double angle, List<String> myVariables, boolean penDown, boolean noError, String errorMessage) {
         this.myPoints = myPoints;
+        this.myAngle = angle;
         this.myVariables = myVariables;
         this.penDown = penDown;
         this.noError = noError;
@@ -30,6 +32,10 @@ public class SceneUpdater {
     
     public List<Point2D> getPoints(){
         return myPoints;
+    }
+    
+    public double getAngle(){
+    	return myAngle;
     }
     
     public List<String> getVariables() {

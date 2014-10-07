@@ -36,7 +36,7 @@ public class TurtleWindow extends Pane {
         this.getChildren().add(myTurtle);
         changeBackgroundColor(DEFAULT_BACKGROUND);
         choosePenColor(DEFAULT_PEN);
-        test();
+        //test();
     }
     
     public void test(){ 
@@ -94,7 +94,7 @@ public class TurtleWindow extends Pane {
     }
 	
 	private void rotateTurtle(double angle) {
-		myTurtle.setRotate(myTurtle.getRotate());
+		myTurtle.setRotate(myTurtle.getRotate()+angle);
 	}
 
 }
