@@ -1,20 +1,37 @@
 package Backend;
 
-import java.util.ArrayList;
-
 public class Tree {
 	
-	public Tree myLeft;
-	public Tree myRight;
-	public ArrayList<Tree> myChildren;
+	Node myRoot;
+	Tree myLeft;
+	Tree myRight;
 	
+	public Tree (Node root) {
+		myRoot = root;
+	}
 	
-	public Tree (Tree left, Tree right, ArrayList<Tree> children) {
+	public Node find(String stuff) {
 		
-		myLeft = left;
-		myRight = right;
-		myChildren = children;
+		Node leftNode = this.myLeft.myRoot;
+		Node rightNode = this.myRight.myRoot;
+		Node current = myRoot;
+		
+		while (current.myStuff != stuff) {
+			
+			if (leftNode.myStuff != stuff) {
+				current = leftNode;
+			}
+			if (rightNode.myStuff != stuff) {
+				current = rightNode;
+			}
+			if (current == null) {
+				return null;
+			}	
+		}
+		return current;
 		
 	}
-
+	
+	
+	
 }
