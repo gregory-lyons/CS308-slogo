@@ -1,6 +1,7 @@
 package Commands.turtlecommands;
 
 import Backend.Turtle;
+import Commands.Command;
 
 public class ForwardCommand extends TurtleCommand {
 	

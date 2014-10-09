@@ -1,11 +1,18 @@
 package Commands.booleans;
 
-public class BooleanCommand {
+import Commands.Command;
+
+public class BooleanCommand extends Command {
 	
-	public final boolean myValue;
+	public boolean myValue;
 	
-	public BooleanCommand() {
-		
+	public BooleanCommand(Command parent) {
+		super(parent);
+		// TODO Auto-generated constructor stub
 	}
+
+	
+	
+
 
 }

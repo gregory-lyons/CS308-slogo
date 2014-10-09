@@ -1,5 +1,12 @@
 package Commands.conditionals;
 
-public class ConditionalCommand {
+import Commands.Command;
+
+public class ConditionalCommand extends Command {
+
+	public ConditionalCommand(Command parent) {
+		super(parent);
+		// TODO Auto-generated constructor stub
+	}
 
 }
