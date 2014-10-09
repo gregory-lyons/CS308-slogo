@@ -1,5 +1,5 @@
 package Commands.booleans;
 
-public class NotCommand {
+public class NotCommand extends BooleanCommand {
 
 }

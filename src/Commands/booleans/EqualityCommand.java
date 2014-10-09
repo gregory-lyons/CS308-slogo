@@ -1,5 +1,5 @@
 package Commands.booleans;
 
-public class EqualityCommand {
+public class EqualityCommand extends BooleanCommand {
 
 }

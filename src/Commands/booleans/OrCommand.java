@@ -1,5 +1,5 @@
 package Commands.booleans;
 
-public class OrCommand {
+public class OrCommand extends BooleanCommand {
 
 }

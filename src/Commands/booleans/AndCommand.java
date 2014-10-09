@@ -1,5 +1,5 @@
 package Commands.booleans;
 
-public class AndCommand {
+public class AndCommand extends BooleanCommand {
 
 }

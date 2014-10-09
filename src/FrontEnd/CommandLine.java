@@ -3,8 +3,9 @@ package FrontEnd;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
-import TurtleCommands.EnterCommand;
-import TurtleCommands.SuperCommand;
+
+import FrontEndCommands.EnterCommand;
+import FrontEndCommands.SuperCommand;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
