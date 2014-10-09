@@ -2,6 +2,11 @@ package Backend;
 
 import java.util.Stack;
 
+/*
+ * @author: Justin Carrao. This class is the one that parses the string instructions passed to the backend
+ * It is designed to help the interpreter class, basically.
+ */
+
 public class Parser {
 	
 	private String myInput;

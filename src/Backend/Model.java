@@ -18,6 +18,8 @@ public class Model {
 		myInput = input;
 	}
 	
+	
+	
 	public SceneUpdater parse(String instruction) {
 		List<Point2D> list = new ArrayList<Point2D>();
 		list.add(new Point2D(200.0, 100.0));
