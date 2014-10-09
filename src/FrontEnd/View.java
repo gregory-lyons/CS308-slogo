@@ -135,8 +135,8 @@ public class View implements Observer{
     	    return;
     	}
         updater.getVariables();
-    	myTurtleWindow.update(updater.getPoints(), updater.getAngle(), updater.penIsDown());
-    	myTurtleInformation.update(updater.getPoints(), updater.getAngle());
+    	myTurtleWindow.update(updater.getLocation(), updater.getAngle(), updater.penIsDown());
+    	myTurtleInformation.update(updater.getLocation(), updater.getAngle());
     }
 
     /**

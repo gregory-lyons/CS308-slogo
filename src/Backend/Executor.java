@@ -10,6 +10,7 @@ public class Executor {
 	
 	private Interpreter myInterpreter;
 	private String myInput;
+	LinkedList<Turtle> nextStates = new LinkedList<Turtle>();
 	
 	public Executor(String input) {
 		myInput = input;
@@ -26,7 +27,12 @@ public class Executor {
 	 * affect the state of the turtle.
 	 */
 	public List<Turtle> execute (List<SuperCommand> commands) {
-		LinkedList<Turtle> nextStates = new LinkedList<Turtle>();
+		
+		
+		for (SuperCommand command: commands) {
+			//code for how to construct each turtle to put into nextStates
+		}
+		
 		return nextStates;
 	}
 	
