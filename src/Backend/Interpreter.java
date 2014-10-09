@@ -14,9 +14,9 @@ public class Interpreter {
 	/* This is just the shell method needs serious implementation still.
 	 * Need to create another class that updates the statue of the turtle given 
 	 */
-	public List<SuperCommand> getCommands(String input) {
+	public List<String> getCommands(String input) {
 		Parser parser = new Parser(input);
-		List<SuperCommand> commands = new ArrayList<SuperCommand>();
+		List<String> commands = new ArrayList<String>();
 		
 		if (!parser.hasMore()) {return null;} 
 		
