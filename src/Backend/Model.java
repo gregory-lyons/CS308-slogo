@@ -8,6 +8,7 @@ import javafx.geometry.Point2D;
 public class Model {
 	
 	protected String myInput;
+	private Interpreter myInterpreter;
 	
 	public Model(){
 		
