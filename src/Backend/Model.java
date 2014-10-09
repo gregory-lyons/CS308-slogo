@@ -9,6 +9,7 @@ public class Model {
 	
 	protected String myInput;
 	private Interpreter myInterpreter;
+	private Parser myParser;
 	
 	public Model(){
 		
@@ -16,6 +17,14 @@ public class Model {
 	
 	public Model(String input) {
 		myInput = input;
+	}
+	
+	public Interpreter getInterpreter() {
+		return myInterpreter;
+	}
+	
+	public Parser getParser() {
+		return myParser;
 	}
 	
 	
@@ -26,8 +35,9 @@ public class Model {
 		list.add(new Point2D(100.0, 50.0));
 		list.add(new Point2D(500.0, 200.0));
 		double angle = 90.0;
-		SceneUpdater example = new SceneUpdater(list, angle, new ArrayList<String>(), true, true, "Error");
-		return example;
+		Turtle turtle = new Turtle(list, angle, new ArrayList<String>(), true, true, "Error");
+		SceneUpdater scene = new SceneUpdater(turtle);
+		return scene;
 
 	}
 

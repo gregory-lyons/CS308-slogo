@@ -14,24 +14,24 @@ import javafx.geometry.Point2D;
  *
  */
 public class SceneUpdater {
-    private List<Point2D> myPoints;
+    private List<Point2D> myLocation;
     private double myAngle;
     private List<String> myVariables;
     private boolean penDown;
     private boolean noError;
     private String errorMessage;
     
-    public SceneUpdater(List<Point2D> myPoints, double angle, List<String> myVariables, boolean penDown, boolean noError, String errorMessage) {
-        this.myPoints = myPoints;
-        this.myAngle = angle;
-        this.myVariables = myVariables;
-        this.penDown = penDown;
-        this.noError = noError;
-        this.errorMessage = errorMessage;        
+    public SceneUpdater(Turtle turtle) {
+    	myLocation = turtle.myLocation;
+    	myAngle = turtle.myAngle;
+    	myVariables = turtle.myVariables;
+    	penDown = turtle.penDown;
+    	noError = turtle.noError;
+    	errorMessage = turtle.errorMessage;
     }
     
-    public List<Point2D> getPoints(){
-        return myPoints;
+    public List<Point2D> getLocation(){
+        return myLocation;
     }
     
     public double getAngle(){
