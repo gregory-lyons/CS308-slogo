@@ -26,10 +26,10 @@ public class Executor {
 	 * I also want to discuss with the group what should be done about commands that don't actually 
 	 * affect the state of the turtle.
 	 */
-	public List<Turtle> execute (List<SuperCommand> commands) {
+	public List<Turtle> execute (List<String> commands) {
 		
 		
-		for (SuperCommand command: commands) {
+		for (String command: commands) {
 			//code for how to construct each turtle to put into nextStates
 		}
 		
