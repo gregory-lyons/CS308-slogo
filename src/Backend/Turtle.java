@@ -22,5 +22,25 @@ public class Turtle {
 		this.errorMessage = errorMessage;
 		
 	}
+	
+	public void setPenDown() {
+		this.penDown = true;
+	}
+	
+	public void setPenUp() {
+		this.penDown = false;
+	}
+	
+	public void setAngle(double angle) {
+		this.myAngle = angle;
+	}
+	
+	public double getAngle() {
+		return myAngle;
+	}
+	
+	public List<Point2D> getLocation() {
+		return myLocation;
+	}
 
 }
