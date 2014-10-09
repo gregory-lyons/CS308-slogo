@@ -25,10 +25,12 @@ public class Node {
     
     public void addLeftChild(Node node, Node newNode) {
 		node.myLeft = newNode;
+		node.myChildren.add(newNode);
 	}
     
     public void addRightChild(Node node, Node newNode) {
     	node.myLeft = newNode;
+    	node.myChildren.add(newNode);
     }
     
 }
