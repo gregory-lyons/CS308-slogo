@@ -32,10 +32,12 @@ public class TurtleWindow extends Pane {
 	private Color myColor;
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
+	private boolean myPenDown;
 
 	public TurtleWindow() {
 		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
 		myGridLines = new ArrayList<Line>();
+		myPenDown = true;
 		changeTurtleImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.getChildren().add(myTurtle);
@@ -45,8 +47,9 @@ public class TurtleWindow extends Pane {
 	}
 
 	public void update(List<Point2D> myList, double angle, boolean penDown) {
+		myPenDown = penDown;
 		moveTurtle(myList.get(myList.size()-1));
-		if (penDown) 
+		if (myPenDown) 
 			drawLines(myList);
 		rotateTurtle(angle);
 	}
@@ -115,6 +118,14 @@ public class TurtleWindow extends Pane {
 		else
 			for (Line l: myGridLines)
 				l.setStrokeWidth(0);
+	}
+
+	public void updatePen(boolean selected) {
+		myPenDown = selected;
+	}
+	
+	public boolean getPenState() {
+		return myPenDown;
 	}
 
 }

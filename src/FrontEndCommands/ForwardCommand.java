@@ -13,5 +13,4 @@ public class ForwardCommand extends SuperCommand{
 		myLabel = label;
 		myButton.setText(label);
 	}
-
 }

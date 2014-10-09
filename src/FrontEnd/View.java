@@ -11,9 +11,11 @@ import java.util.ResourceBundle;
 import Backend.Model;
 import Backend.SceneUpdater;
 import FrontEndCommands.EnterCommand;
+import FrontEndCommands.SuperCommand;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
 import TurtleView.PenColorBox;
+import TurtleView.PenDownCheckBox;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -115,7 +117,9 @@ public class View implements Observer{
         imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), new Text("   Turtle Image"));
         HBox gridBox = new HBox();
         gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), new Text("   Display Grid Lines"));
-        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox, gridBox);
+        HBox penDownBox = new HBox();
+        penDownBox.getChildren().addAll(new PenDownCheckBox(myTurtleWindow), new Text("   Pen down?"));
+        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox, gridBox, penDownBox);
         root.setCenter(centerVBox);
         centerVBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
@@ -124,7 +128,9 @@ public class View implements Observer{
         root.setBottom(bottomHBox);
         
         for (String button : myCommandButtons) {
-            myVBox.getChildren().add(myCommandFactory.makeCommand(button, myResources.getString(button)).getButton());
+        	SuperCommand sc = myCommandFactory.makeCommand(button, myResources.getString(button));
+        	sc.addObserver(this);
+            myVBox.getChildren().add(sc.getButton());
         }
         root.setRight(myVBox);
         root.setLeft(myTurtleWindow);
@@ -134,7 +140,7 @@ public class View implements Observer{
     
     @Override
     public void update(Observable o, Object arg) {
-        SceneUpdater updater = myModel.parse((String)arg);
+        SceneUpdater updater = myModel.parse((String)arg, myTurtleWindow.getPenState());
 	if(!updater.isNoError()) {
     	    makeErrorDialog(updater.getErrorMessage()).show();
     	    return;
