@@ -12,6 +12,7 @@ import Backend.Model;
 import Backend.SceneUpdater;
 import TurtleCommands.EnterCommand;
 import TurtleView.BackgroundColorBox;
+import TurtleView.GridCheckBox;
 import TurtleView.PenColorBox;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
@@ -56,6 +57,7 @@ public class View implements Observer{
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
     public static final double DIALOG_WIDTH = 200;
     public static final double DIALOG_HEIGHT = 100;
+    public static final boolean DEFAULT_GRIDLINES = true;
 
     private HBox languageSelectorHBox = new HBox();
     private VBox myVBox = new VBox();
@@ -111,7 +113,9 @@ public class View implements Observer{
         backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), new Text("   Background Color"));
         HBox imageBox = new HBox();
         imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), new Text("   Turtle Image"));
-        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox);
+        HBox gridBox = new HBox();
+        gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), new Text("   Display Grid Lines"));
+        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox, gridBox);
         root.setCenter(centerVBox);
         centerVBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
