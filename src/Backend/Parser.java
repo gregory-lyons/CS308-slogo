@@ -57,6 +57,10 @@ public class Parser {
 		
 	}
 	
+	public String parseExpression() {  //not implemented yet, obviously
+		return "";
+	}
+	
 	public boolean hasMore() {
 		return !myInput.isEmpty();
 	}
