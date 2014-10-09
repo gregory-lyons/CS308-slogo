@@ -20,6 +20,5 @@ public class TurtlePath extends Polyline {
 	public TurtlePath(double[] pointArray, Color c){
 		super(pointArray);
 		this.setStroke(c);
-		this.toBack();
 	}
 }

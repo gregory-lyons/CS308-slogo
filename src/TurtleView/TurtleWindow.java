@@ -52,7 +52,6 @@ public class TurtleWindow extends Pane {
     	if (penDown) 
     		drawLines(myList);
     	rotateTurtle(angle);
-
     }
     
     public void changeBackgroundColor(String color){
@@ -63,6 +62,7 @@ public class TurtleWindow extends Pane {
 		double[] pointArray = pointListToArray(pointList);
 		TurtlePath path = new TurtlePath(pointArray, myColor);
 		this.getChildren().add(path);
+		myTurtle.toFront();
     }
     
     private double[] pointListToArray(List<Point2D> myList) {
@@ -74,7 +74,7 @@ public class TurtleWindow extends Pane {
 		return array;
 	}
 
-	private void choosePenColor(Color c) {
+	public void choosePenColor(Color c) {
     	myColor = c;
     }
 		
