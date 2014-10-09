@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 import Backend.Model;
 import Backend.SceneUpdater;
-import TurtleCommands.EnterCommand;
+import FrontEndCommands.EnterCommand;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
 import TurtleView.PenColorBox;

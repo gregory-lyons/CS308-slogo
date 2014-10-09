@@ -62,8 +62,12 @@ public class Parser {
 		
 	}
 	
-	public String parseExpression() {  //not implemented yet, obviously
-		return "";
+	public String getNextExpression()  throws Exception { 
+		String expression = "";
+		String startWord = nextWord();
+		expression = expression + startWord;
+		
+		return expression;
 	}
 	
 	public boolean hasMore() {
