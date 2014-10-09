@@ -22,7 +22,7 @@ public class TurtleWindow extends Pane {
 	public static final double ORIGIN_Y = 0.0;
 	public static final Color DEFAULT_PEN = Color.BLACK;
 	public static final String DEFAULT_BACKGROUND = "white";
-	public static final String DEFAULT_IMAGE = "images/turtle1.png";
+	public static final String DEFAULT_IMAGE = "turtle1";
 	public static final double WINDOW_WIDTH = 600.0;
 	public static final double WINDOW_HEIGHT = 300.0;
 	
@@ -79,12 +79,12 @@ public class TurtleWindow extends Pane {
     }
 		
     public void changeTurtleImage(String s){
+    	String fileName = "images/" + s + ".png";
     	try{
-    	Image newImage = new Image(getClass().getResourceAsStream(s));
+    	Image newImage = new Image(getClass().getResourceAsStream(fileName));
 		myTurtle.setImage(newImage);
     	}
     	catch(NullPointerException npe){	
-    		
     	}
 
     }

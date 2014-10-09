@@ -13,6 +13,7 @@ import Backend.SceneUpdater;
 import TurtleCommands.EnterCommand;
 import TurtleView.BackgroundColorBox;
 import TurtleView.PenColorBox;
+import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
 import javafx.collections.FXCollections;
@@ -53,8 +54,8 @@ public class View implements Observer{
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
-    public static final double DIALOG_WIDTH = 25;
-    public static final double DIALOG_HEIGHT = 25;
+    public static final double DIALOG_WIDTH = 200;
+    public static final double DIALOG_HEIGHT = 100;
 
     private HBox languageSelectorHBox = new HBox();
     private VBox myVBox = new VBox();
@@ -108,9 +109,9 @@ public class View implements Observer{
         penBox.getChildren().addAll(new PenColorBox(myTurtleWindow), new Text("   Pen Color"));
         HBox backgroundBox = new HBox();
         backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), new Text("   Background Color"));
-        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox);
-        myVBox.getChildren().add(new PenColorBox(myTurtleWindow));
-        myVBox.getChildren().add(new BackgroundColorBox(myTurtleWindow));
+        HBox imageBox = new HBox();
+        imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), new Text("   Turtle Image"));
+        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox);
         root.setCenter(centerVBox);
         centerVBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
@@ -179,7 +180,8 @@ public class View implements Observer{
     private Stage makeErrorDialog(String message){
     	Stage dialog = new Stage();
     	dialog.initStyle(StageStyle.UTILITY);
-    	dialog.setScene(new Scene(new Group(new Text(DIALOG_WIDTH, DIALOG_HEIGHT, message))));
+    	Scene errorScene = new Scene(new Group(new Text(DIALOG_WIDTH/2, DIALOG_HEIGHT/2, message)), DIALOG_WIDTH, DIALOG_HEIGHT);
+    	dialog.setScene(errorScene);
     	return dialog;
     }
 
