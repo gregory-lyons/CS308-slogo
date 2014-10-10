@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-
 import Backend.Model;
 import Backend.SceneUpdater;
 import FrontEndCommands.EnterCommand;
@@ -30,6 +29,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebView;
+import javafx.scene.web.WebViewBuilder;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import resources.languages.*;
@@ -103,6 +107,14 @@ public class View implements Observer{
         myVBox.getChildren().add(myTurtleInformation.getVBox());
         languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
         languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
+        /*
+        Hyperlink myHyperlink = new Hyperlink("FrontEnd/help.html");
+        TextFlow flow = new TextFlow(myHyperlink);
+        final WebView webView = WebViewBuilder.create().prefHeight(450).prefWidth(1000).build();
+        myHyperlink.setOnAction(event -> {
+            webView.getEngine().load("FrontEnd/help.html");
+        });
+        */
         root.setTop(languageSelectorHBox);
         bottomHBox.getChildren().add(myCommandLine);
         usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
