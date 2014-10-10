@@ -2,6 +2,8 @@ package Backend;
 
 import java.util.Stack;
 
+import Commands.Command;
+
 /*
  * @author: Justin Carrao. This class is the one that parses the string instructions passed to the backend
  * It is designed to help the interpreter class, basically.
@@ -62,15 +64,20 @@ public class Parser {
 		
 	}
 	
-	public String getNextExpression()  throws Exception { 
+	public String getExpression()  throws Exception { 
 		String expression = "";
 		String startWord = nextWord();
 		expression = expression + startWord;
+		Command head = new Command(null);
+		Command current = head;
+		while (isNotEmpty()) {
+			
+		}
 		
 		return expression;
 	}
 	
-	public boolean hasMore() {
+	public boolean isNotEmpty() {
 		return !myInput.isEmpty();
 	}
 	

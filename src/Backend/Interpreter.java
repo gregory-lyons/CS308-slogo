@@ -18,7 +18,7 @@ public class Interpreter {
 		Parser parser = new Parser(input);
 		List<String> commands = new ArrayList<String>();
 		
-		if (!parser.hasMore()) {return null;} 
+		if (!parser.isNotEmpty()) {return null;} 
 		
 		return commands;
 	}

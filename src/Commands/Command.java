@@ -6,8 +6,8 @@ import java.util.List;
 public class Command {
 	
 	public String myReturnValue;
-	private List<Command> myChildren;
-    private Command myParent;
+	public List<Command> myChildren;
+    public Command myParent;
     
     
     public Command(Command parent) {
