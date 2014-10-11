@@ -14,7 +14,6 @@ public class CommandFactory {
 	
 	private List<String> supportedLanguages = Arrays.asList("Chinese", "English", "French", "Italian", "Portuguese", "Russian");
 	private HashMap<String, String> expressionGetter = new HashMap<String, String>();
-	private Scanner scanner;
 	
 	public CommandFactory() {
 		
@@ -29,7 +28,7 @@ public class CommandFactory {
 	public String setLanguage(String language) { 
 		expressionGetter.clear();
 		
-		try {
+		if (supportedLanguages.contains(language)) {
 			Scanner scn = new Scanner(getClass().getResourceAsStream("/resources.anguages/" + language));
 			
 			
@@ -45,7 +44,7 @@ public class CommandFactory {
 			String emptyString = "";
 			return emptyString;
 		}
-		catch (Exception exception) {
+		else {
 			return "Language not found";
 		}
 		
