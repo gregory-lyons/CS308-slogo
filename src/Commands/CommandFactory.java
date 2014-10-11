@@ -1,5 +1,6 @@
 package Commands;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,18 +22,18 @@ public class CommandFactory {
 		expressionGetter.clear();
 		
 		try {
-			Stream stream = getClass().getResourceAsStream("")
+			
+			
 		}
 		catch (Exception exception) {
 			return "Language not found";
 		}
 		
-		/*if (supportedLanguages.contains(language)) {
-			return language;
-		}
-		return "Invalid Language";*/
+		
 	}
 	
+	
+
 	public Command buildInstruction(Command parent, String expression) throws Exception {
 		String firstLetter = expression.substring(0, 1);
 		
