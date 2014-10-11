@@ -73,10 +73,10 @@ public class CommandFactory {
 				
 				String commandName = expressionGetter.get(expression);
 				Class commandType = Class.forName(commandName); 
-				/* This is the variable for the type of command but now i need some way to
-				 * construct it is a very general way.  I think hardcoding this would
-				 * get us a bad grade.
-				 * 
+				/*
+				 * I don't know what to do here, because I only know how to
+				 * implement this using the Superclass Command's constructor.
+				 * The subclasses often have other constructor parameters.
 				 */
 				Constructor commandInstance = commandType.getConstructors()[0];
 				return (Command) (commandInstance.newInstance(parent));
