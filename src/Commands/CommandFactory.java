@@ -2,6 +2,7 @@ package Commands;
 
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -10,13 +11,24 @@ import java.util.stream.Stream;
 
 import Backend.Parser;
 
+
+/**
+ * 
+ * @author justincarrao
+ * This is the class we use for
+ * building commands.  It gets
+ * the command inputs from the
+ * interpreter
+ *
+ */
 public class CommandFactory {
 	
 	private List<String> supportedLanguages = Arrays.asList("Chinese", "English", "French", "Italian", "Portuguese", "Russian");
 	private HashMap<String, String> expressionGetter = new HashMap<String, String>();
+	ArrayList<String> myInterpretedInputs = new ArrayList<String>();
 	
-	public CommandFactory() {
-		
+	public CommandFactory(ArrayList<String> commandInputs) {
+		myInterpretedInputs = commandInputs;
 		
 	}
 	
@@ -25,22 +37,24 @@ public class CommandFactory {
 	 * resources.languages file and map it 
 	 * into expressionGetter 
 	 */
-	public String setLanguage(String language) { 
+	public String getLanguage(String language) { 
 		expressionGetter.clear();
 		
 		if (supportedLanguages.contains(language)) {
-			Scanner scn = new Scanner(getClass().getResourceAsStream("/resources.anguages/" + language));
+			Scanner scan = new Scanner(getClass().getResourceAsStream("/resources.'anguages/" + language + ".properties"));
 			
 			
-			while (scn.hasNextLine()) {
-				String current = scn.nextLine(); 
-				Parser parser = new Parser(current);
+			while (scan.hasNextLine()) {
 				
-				if (!current.isEmpty() && !current.startsWith("#")) {
-					expressionGetter.put(parser.nextWord(), parser.nextWord());
+				String current = scan.nextLine(); 		
+				
+				if (!current.startsWith("#") && !current.isEmpty()) {
+					String commands = scan.nextLine();
+					String[] expressionArgs = commands.split("\\s+");
+					expressionGetter.put(expressionArgs[0], expressionArgs[2]);
 				}
 			}
-			scn.close();
+			scan.close();
 			String emptyString = "";
 			return emptyString;
 		}
@@ -50,6 +64,11 @@ public class CommandFactory {
 		
 		
 	}
+	
+	
+		
+
+
 	
 	
 

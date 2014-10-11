@@ -4,9 +4,11 @@ import java.util.Stack;
 
 import Commands.Command;
 
-/*
- * @author: Justin Carrao. This class is the one that parses the string instructions passed to the backend
+/** @author: 
+ * justincarrao. This class is the one that parses the 
+ * string instructions passed to the back end
  * It is designed to help the interpreter class, basically.
+ * 
  */
 
 public class Parser {
@@ -15,14 +17,15 @@ public class Parser {
 	String[] splitWords;
 
 	public Parser(String input) {
-
-		myInput = input.trim(); // removes any excess whitespace on the ends
-		splitWords = input.split("\\s+");
+		
+		input.replaceAll("\\s+", " " + "");
+        myInput = input.trim(); // removes any excess whitespace on the ends
+		
 	}
 
-	public String nextWord() {
+	public String getWord() {
 		String emptyString = "";
-		String nextWord;
+		String word;
 		char[] restOfInput = myInput.substring(1).toCharArray();
 		int stopSpot = 0;
 
@@ -42,41 +45,32 @@ public class Parser {
 					}
 				}
 			}
-			nextWord = myInput.substring(0, stopSpot + 1);
+			word = myInput.substring(0, stopSpot + 1);
 			myInput = myInput.substring(stopSpot + 1);
-			return nextWord;
+			return word;
 		}
 
 		for (char c : restOfInput) {
 			if (c == ' ') {
 				stopSpot = restOfInput.toString().indexOf(c);
-				nextWord = myInput.substring(0, stopSpot);
+				word = myInput.substring(0, stopSpot);
 				myInput = myInput.substring(stopSpot + 1);
-				return nextWord;
+				return word;
 			}
 		}
 
-		nextWord = myInput;
+		word = myInput;
 		myInput = emptyString;
-		return nextWord;
+		return word;
 
 	}
 
 	/*
-	 * assumes that the input is only one line and will either be a single word
+	 * for now this assumes that the input is only one line and will either be a single word
 	 * or a single word followed by a number
 	 */
 	public String getExpression() throws Exception {
-		String expression = "";
-		String startWord = nextWord();
-		expression = expression + startWord;
-		// Command head = new Command(null);
-		// Command current = head;
-		String holder = myInput;
-		while (isNotEmpty()) { // not sure how to do this Ashwin
-			
-		}
-		return expression;
+		//ideally anyway
 	}
 	
 	public String commandType(){
