@@ -23,6 +23,8 @@ public class Turtle {
 		
 	}
 	
+	
+	
 	public void setPenDown() {
 		this.penDown = true;
 	}
@@ -43,4 +45,7 @@ public class Turtle {
 		return myLocation;
 	}
 
+	public void setLocation(Point2D location){
+		myLocation.add(location);
+	}
 }
