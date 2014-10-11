@@ -70,7 +70,7 @@ public class Parser {
 		expression = expression + startWord;
 		Command head = new Command(null);
 		Command current = head;
-		while (isNotEmpty()) {
+		while (isNotEmpty()) { //not sure how to do this Ashwin
 			
 		}
 		
