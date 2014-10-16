@@ -6,10 +6,29 @@ import Nodes.Node;
 
 public class ForwardNode extends CommandNode{
 
-	public ForwardNode(Node first, Node second, Turtle myTurtle) {
-		super(first, second, myTurtle);
+	public ForwardNode(Turtle myTurtle) {
+		super(myTurtle);
+		right = null;
 		// TODO Auto-generated constructor stub
 		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addChildren(Node newNode) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean noMoreChildren() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

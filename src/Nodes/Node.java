@@ -1,15 +1,20 @@
 package Nodes;
 
-import Commands.Command;
 
 public abstract class Node {
 	
-	private Node left;
-	private Node right;
+	private Node parent;
 	
-	public Node(Node first, Node second){
-		left = first;
-		right = second;
+	public abstract void update();
+	public abstract void addChildren(Node newNode);
+	
+	public void setParent(Node newNode){
+		parent = newNode;
 	}
 	
+	public Node getParent(){
+		return parent;
+	}
+	
+	public abstract boolean noMoreChildren();
 }

@@ -8,11 +8,14 @@ public abstract class CommandNode extends Node{
 
 	protected Command command;
 	protected Turtle turtle;
+	protected Node left;
+	protected Node right;
 	
-	public CommandNode(Node first, Node second, Turtle myTurtle) {
-		super(first, second);
+	public CommandNode(Turtle myTurtle) {
 		turtle = myTurtle;
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 }
