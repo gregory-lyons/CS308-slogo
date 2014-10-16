@@ -16,6 +16,10 @@ public abstract class CommandNode extends Node{
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	@Override
+	public void clearChildren() {
+		left = null;
+		right = null;	
+	}
 	
 }

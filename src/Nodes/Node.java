@@ -7,6 +7,8 @@ public abstract class Node {
 	
 	public abstract void update();
 	public abstract void addChildren(Node newNode);
+	public abstract void clearChildren();
+	
 	
 	public void setParent(Node newNode){
 		parent = newNode;

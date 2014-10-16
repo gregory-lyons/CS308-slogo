@@ -24,7 +24,13 @@ public class ConstantNode extends Node{
 	@Override
 	public boolean noMoreChildren() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public void clearChildren() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

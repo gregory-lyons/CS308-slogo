@@ -21,14 +21,14 @@ public class ForwardNode extends CommandNode{
 
 	@Override
 	public void addChildren(Node newNode) {
-		// TODO Auto-generated method stub
+		left = newNode;
 		
 	}
 
 	@Override
 	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
-		return false;
+		return(left != null);
 	}
+
 
 }
