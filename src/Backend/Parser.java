@@ -89,10 +89,6 @@ public class Parser {
 		else return 0;
 	}
 
-	public int numInputArguments() {
-		return splitWords.length;
-	}
-
 	public boolean isNotEmpty() {
 		return !myInput.isEmpty();
 	}

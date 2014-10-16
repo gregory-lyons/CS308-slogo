@@ -1,5 +1,13 @@
 package Commands.turtlecommands;
 
-public class SetHeading {
+import Backend.Turtle;
+import Commands.Command;
+
+public class SetHeading extends TurtleCommand{
+
+	public SetHeading(Command parent, Turtle turtle) {
+		super(parent, turtle);
+		// TODO Auto-generated constructor stub
+	}
 
 }
