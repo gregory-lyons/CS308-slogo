@@ -21,10 +21,10 @@ public class Decider {
 		turtle = myTurtle;
 	}
 
-	public Command returnType() {
-		if (commandType == "FORWARD" || commandType == "FD") {
-			return ForwardCommand(command, turtle, data);
-		}
-	}
+//	public Command returnType() {
+//		if (commandType == "FORWARD" || commandType == "FD") {
+//			return ForwardCommand(command, turtle, data);
+//		}
+//	}
 
 }
