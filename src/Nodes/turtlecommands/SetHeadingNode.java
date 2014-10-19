@@ -4,20 +4,21 @@ import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class ForwardNode extends CommandNode {
+public class SetHeadingNode extends CommandNode{
 
-	public ForwardNode(Turtle myTurtle) {
+	public SetHeadingNode(Turtle myTurtle) {
 		super(myTurtle);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Node update() {
-		printValue = ((ConstantNode) left).returnData();
-		turtle.setLocation(turtle.nextLocation(printValue, 0));
+		double newAngle = ((ConstantNode)left).returnData();
+		printValue = Math.abs(newAngle-turtle.getAngle());
+		turtle.setAngle(newAngle);
 		return left;
 	}
-
+	
 	@Override
 	public void addChildren(Node newNode) {
 		super.addChildren(newNode);
@@ -26,7 +27,7 @@ public class ForwardNode extends CommandNode {
 
 	@Override
 	public boolean noMoreChildren() {
-		return (left instanceof ConstantNode);
+		return(left instanceof ConstantNode);
 	}
 
 }

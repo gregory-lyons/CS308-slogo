@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class RepeatCommand extends LoopCommand {
 
-	public RepeatCommand(Command parent) {
-		super(parent);
+	public RepeatCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

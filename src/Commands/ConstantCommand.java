@@ -4,8 +4,8 @@ public class ConstantCommand extends Command {
 	
 	public final Double myValue;
 
-	public ConstantCommand(Command parent, Double value) {
-		super(parent);
+	public ConstantCommand(Double value) {
+		super();
 		myValue = value;
 		// TODO Auto-generated constructor stub
 	}

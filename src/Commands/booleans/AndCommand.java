@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class AndCommand extends BooleanCommand {
 
-	public AndCommand(Command parent) {
-		super(parent);
+	public AndCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

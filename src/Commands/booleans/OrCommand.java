@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class OrCommand extends BooleanCommand {
 
-	public OrCommand(Command parent) {
-		super(parent);
+	public OrCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

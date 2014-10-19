@@ -6,8 +6,8 @@ public class BooleanCommand extends Command {
 	
 	public boolean myValue;
 	
-	public BooleanCommand(Command parent) {
-		super(parent);
+	public BooleanCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

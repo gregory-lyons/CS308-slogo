@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class DoTimesCommand extends LoopCommand {
 
-	public DoTimesCommand(Command parent) {
-		super(parent);
+	public DoTimesCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

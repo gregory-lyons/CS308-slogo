@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class ElseCommand extends ConditionalCommand {
 
-	public ElseCommand(Command parent) {
-		super(parent);
+	public ElseCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

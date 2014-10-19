@@ -4,19 +4,22 @@ package Nodes;
 public abstract class Node {
 	
 	private Node parent;
+	protected double printValue;
 	
-	public abstract void update();
-	public abstract void addChildren(Node newNode);
-	public abstract void clearChildren();
+	public abstract Node update();
+
+	public abstract boolean noMoreChildren();
 	
-	
-	public void setParent(Node newNode){
+	private void setParent(Node newNode){
 		parent = newNode;
+	}
+
+	public void addChildren(Node newNode){
+		newNode.setParent(this);
 	}
 	
 	public Node getParent(){
 		return parent;
 	}
 	
-	public abstract boolean noMoreChildren();
 }

@@ -8,8 +8,8 @@ public class PenDownCommand extends TurtleCommand {
 	
 	public static final int returnValue = 1;
 
-	public PenDownCommand(TurtleCommand parent, Turtle turtle) {
-		super(parent, turtle);
+	public PenDownCommand(Turtle turtle) {
+		super(turtle);
 		myTurtle.setPenDown();
 	}
 
