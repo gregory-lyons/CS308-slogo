@@ -27,10 +27,4 @@ public class ConstantNode extends Node{
 		return true;
 	}
 
-	@Override
-	public void clearChildren() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -15,7 +15,7 @@ public class AST {
 	}
 
 	public void populateTree() {
-		while (!nodes.isEmpty()) {
+		while (!nodes.isEmpty() || current != null) {
 			if (current == null) {
 				current = nodes.poll();
 			}

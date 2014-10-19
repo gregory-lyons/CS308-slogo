@@ -2,6 +2,7 @@ package Nodes.turtlecommands;
 
 import Backend.Turtle;
 import Commands.Command;
+import Nodes.ConstantNode;
 import Nodes.Node;
 
 public class ForwardNode extends CommandNode{
@@ -15,20 +16,19 @@ public class ForwardNode extends CommandNode{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void addChildren(Node newNode) {
 		left = newNode;
-		
 	}
 
 	@Override
 	public boolean noMoreChildren() {
-		return(left != null);
+		return(left instanceof ConstantNode);
 	}
 
+	
 
 }
