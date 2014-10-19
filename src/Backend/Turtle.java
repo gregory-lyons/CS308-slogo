@@ -23,8 +23,6 @@ public class Turtle {
 		
 	}
 	
-	
-	
 	public void setPenDown() {
 		this.penDown = true;
 	}
@@ -41,11 +39,20 @@ public class Turtle {
 		return myAngle;
 	}
 	
-	public List<Point2D> getLocation() {
-		return myLocation;
+	public Point2D getLocation() {
+		return myLocation.get(myLocation.size());
 	}
 
 	public void setLocation(Point2D location){
 		myLocation.add(location);
+	}
+	
+	public Point2D nextLocation(double distance, double angle){
+		double x = getLocation().getX();
+		double y = getLocation().getY();
+		double rotation = myAngle = angle;
+		x += distance*Math.sin(rotation);
+		y += distance*Math.cos(rotation);
+		return new Point2D(x,y);
 	}
 }

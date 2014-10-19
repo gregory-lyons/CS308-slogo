@@ -4,6 +4,7 @@ package Nodes;
 public abstract class Node {
 	
 	private Node parent;
+	protected double printValue;
 	
 	public abstract Node update();
 

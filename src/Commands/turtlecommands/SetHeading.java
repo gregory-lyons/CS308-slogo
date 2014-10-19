@@ -7,6 +7,7 @@ public class SetHeading extends TurtleCommand{
 
 	public SetHeading(Turtle turtle) {
 		super(turtle);
+		
 		// TODO Auto-generated constructor stub
 	}
 

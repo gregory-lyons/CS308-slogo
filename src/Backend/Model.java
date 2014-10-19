@@ -11,6 +11,7 @@ public class Model {
 	private Interpreter myInterpreter;
 	private Parser myParser;
 	private Turtle turtle;
+	private AST tree;
 
 	public Model() {
 
@@ -35,6 +36,7 @@ public class Model {
 		list.add(new Point2D(200.0, 100.0));
 		list.add(new Point2D(100.0, 50.0));
 		list.add(new Point2D(500.0, 200.0));
+		
 		double angle = 90.0;
 		Turtle turtle = new Turtle(list, angle, new ArrayList<String>(), true,
 				true, "Error");
