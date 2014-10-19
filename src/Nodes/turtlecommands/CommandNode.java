@@ -6,7 +6,6 @@ import Nodes.Node;
 
 public abstract class CommandNode extends Node{
 
-	protected Command command;
 	protected Turtle turtle;
 	protected Node left;
 	protected Node right;
