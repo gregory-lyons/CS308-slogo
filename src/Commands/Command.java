@@ -6,17 +6,10 @@ import java.util.List;
 public class Command {
 	
 	public String myReturnValue;
-	public List<Command> myChildren;
-    public Command myParent;
+	public List<Command> myChildren;    
     
-    
-    public Command(Command parent) {
-    	myParent = parent;
+    public Command() {
     	myChildren = new ArrayList<Command>();
-    }
-    
-    public Command getParent() {
-        return myParent;
     }
     
     public List<Command> getChildren() {

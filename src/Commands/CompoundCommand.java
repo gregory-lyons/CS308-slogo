@@ -2,8 +2,8 @@ package Commands;
 
 public class CompoundCommand extends Command {
 
-	public CompoundCommand(Command parent) {
-		super(parent);
+	public CompoundCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

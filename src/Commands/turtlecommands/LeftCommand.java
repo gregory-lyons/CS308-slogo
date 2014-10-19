@@ -9,8 +9,8 @@ public class LeftCommand extends TurtleCommand {
 	
 	public final double returnValue;
 	
-	public LeftCommand(Command parent, Turtle turtle, double degrees) {
-		super(parent, turtle);
+	public LeftCommand(Turtle turtle, double degrees) {
+		super(turtle);
 		myTurtle.setAngle(myTurtle.getAngle() - degrees);
 		returnValue = degrees;
 	}

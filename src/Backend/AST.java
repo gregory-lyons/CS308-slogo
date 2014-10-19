@@ -8,20 +8,16 @@ import Nodes.Node;
 public class AST {
 
 	private Node current;
-	private Queue<Node> nodes;
-
-	public AST(Queue<Node> listOfNodes) {
-		nodes = listOfNodes;
-	}
-
-	public void populateTree() {
+	
+	public void populateTree(Queue<Node> nodes) {
 		while (!nodes.isEmpty() || current != null) {
 			if (current == null) {
 				current = nodes.poll();
 			}
 			if (current.noMoreChildren()) {
-				current.update();
+				Node replace = current.update();
 				current = current.getParent();
+				current.addChildren(replace);
 			} else {
 				Node newNode = nodes.poll();
 				current.addChildren(newNode);

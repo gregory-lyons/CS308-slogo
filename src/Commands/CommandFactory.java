@@ -53,21 +53,21 @@ public class CommandFactory {
 	
 	
 
-	public Command buildInstruction(Command parent, String expression) throws Exception {
+	public Command buildInstruction(String expression) throws Exception {
 		String firstLetter = expression.substring(0, 1);
 		try {
 			double number = Double.parseDouble(expression);
-			return new ConstantCommand(parent, number);
+			return new ConstantCommand(number);
 		}
 		
 		catch (Exception exc) {
 			try {
 				
 				if (firstLetter == "(") {
-					return new Command(parent);
+					return new Command();
 				}
 				else if (firstLetter == ":") {
-					return new CompoundCommand(parent);
+					return new CompoundCommand();
 				}
 				
 				String commandName = expressionGetter.get(expression);
@@ -78,7 +78,7 @@ public class CommandFactory {
 				 * The subclasses often have other constructor parameters.
 				 */
 				Constructor commandInstance = commandType.getConstructors()[0];
-				return (Command) (commandInstance.newInstance(parent));
+				return (Command) (commandInstance.newInstance());
 			}
 			
 			catch (Exception x) {

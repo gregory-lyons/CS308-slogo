@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class ForCommand extends LoopCommand {
 
-	public ForCommand(Command parent) {
-		super(parent);
+	public ForCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

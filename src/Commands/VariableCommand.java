@@ -2,8 +2,8 @@ package Commands;
 
 public class VariableCommand extends Command {
 
-	public VariableCommand(Command parent) {
-		super(parent);
+	public VariableCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

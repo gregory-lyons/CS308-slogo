@@ -4,8 +4,8 @@ import Commands.Command;
 
 public class NotCommand extends BooleanCommand {
 
-	public NotCommand(Command parent) {
-		super(parent);
+	public NotCommand() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

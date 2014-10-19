@@ -5,8 +5,8 @@ import Commands.Command;
 
 public class SetHeading extends TurtleCommand{
 
-	public SetHeading(Command parent, Turtle turtle) {
-		super(parent, turtle);
+	public SetHeading(Turtle turtle) {
+		super(turtle);
 		// TODO Auto-generated constructor stub
 	}
 
