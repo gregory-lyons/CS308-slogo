@@ -71,6 +71,7 @@ public class Parser {
 	 */
 	public String getExpression() throws Exception {
 		//ideally anyway
+		return "";
 	}
 	
 	public String commandType(){
