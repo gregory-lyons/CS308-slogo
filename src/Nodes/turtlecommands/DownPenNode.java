@@ -13,7 +13,7 @@ public class DownPenNode extends CommandNode {
 
 	@Override
 	public Node update() {
-		myTurtle.setPenUp();
+		myTurtle.setPenDown();
 		return left;
 	}
 	
