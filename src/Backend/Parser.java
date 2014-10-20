@@ -2,6 +2,8 @@ package Backend;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Queue;
+import java.util.ResourceBundle;
 import java.util.Stack;
 import java.util.List;
 import java.util.Collections;
@@ -20,16 +22,39 @@ public class Parser {
 
 	private String myInput;
 	private String[] splitWords;
-	private List<Node> nodeList = new ArrayList<>();
-	private Map<String, String> propMap;
+	private Queue<Node> nodeList;
 
 	public Parser(String input) {
 		splitWords = input.split(" ");
-		splitWords = convert(splitWords); // converts will make each of the
-											// strings general to take into
-											// account the different types of
-											// input for the same node use a
-											// properties file
+		splitWords = convert(splitWords);
+
+	}
+
+	/**
+	 * converts will make each of the strings general to take into account the
+	 * different types of input for the same node use a properties file
+	 * 
+	 * @param array
+	 * @return
+	 */
+	private String[] convert(String[] array) {
+		String[] convertedList = new String[array.length];
+		ResourceBundle myBundle = ResourceBundle
+				.getBundle("resource.languages.Languages"); // make properties
+															// files for each
+															// different
+															// language, figure
+															// out how to
+															// differentiate
+															// between languages
+		for (int i = 0; i < array.length; i++) {
+			String converted = myBundle.getString(array[i]);
+			convertedList[i] = converted;
+		}
+		return convertedList;
+	}
+
+	public Queue getQueueOfNodes() {
 		for (String s : splitWords) {
 			Node command = null;
 			try {
@@ -37,19 +62,10 @@ public class Parser {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
 			nodeList.add(command);
 		}
-
-	}
-	
-	private String[] convert(String[] array) {
-		String[] convertedList = new String[array.length];
-		for (int i = 0; i< array.length; i++) {
-			String converted = propMap.get(array[i]);
-			convertedList[i] = converted;
-		}
-		return convertedList;
+		return nodeList;
 	}
 
 	public String getWord() {

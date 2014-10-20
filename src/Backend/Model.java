@@ -31,7 +31,7 @@ public class Model {
 
 	public SceneUpdater parse(String instruction, boolean penState) {
 		myParser = new Parser(instruction);
-	
+		tree.populateTree(myParser.getQueueOfNodes());
 		List<Point2D> list = new ArrayList<Point2D>();
 		list.add(new Point2D(200.0, 100.0));
 		list.add(new Point2D(100.0, 50.0));
