@@ -7,14 +7,16 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+
 import Backend.Model;
 import Backend.SceneUpdater;
 import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
+import Pen.Pen;
+import Pen.PenColorBox;
+import Pen.PenOptions;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
-import TurtleView.PenColorBox;
-import TurtleView.PenDownCheckBox;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -51,13 +53,12 @@ import resources.languages.*;
  * @author Rica Zhang, Greg Lyons
  *
  */
-public class View implements Observer{
-	
+public class View implements Observer{	
     private Model myModel;
-    private String language = "English";
     private Scene myScene;
+    private Controller myController;
     private ResourceBundle myResources;
-    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
+    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
@@ -81,6 +82,7 @@ public class View implements Observer{
     private EnterCommand myEnterCommand;
     
     private UserCommands dropdownCommandMenu;
+    private Pen myPen;
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
@@ -92,7 +94,8 @@ public class View implements Observer{
      */
     public View(Model m) {           	
     	myModel = m;    	
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
+        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE);
+    	myPen = new Pen();
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
@@ -101,7 +104,7 @@ public class View implements Observer{
         dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
-        myTurtleWindow = new TurtleWindow();
+        myTurtleWindow = new TurtleWindow(myPen);
         makeEnterButton();
 
         myVBox.getChildren().add(myTurtleInformation.getVBox());
@@ -116,22 +119,24 @@ public class View implements Observer{
         });
         */
         root.setTop(languageSelectorHBox);
-        bottomHBox.getChildren().add(myCommandLine);
+        bottomHBox.getChildren().add(myCommandLine); 
         usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
         usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
+
         HBox penBox = new HBox();
-        penBox.getChildren().addAll(new PenColorBox(myTurtleWindow), new Text("   Pen Color"));
+        penBox.getChildren().addAll(new PenColorBox(), new Text(myResources.getString("PenColor")));
         HBox backgroundBox = new HBox();
         backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), new Text("   Background Color"));
         HBox imageBox = new HBox();
         imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), new Text("   Turtle Image"));
         HBox gridBox = new HBox();
         gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), new Text("   Display Grid Lines"));
-        HBox penDownBox = new HBox();
-        penDownBox.getChildren().addAll(new PenDownCheckBox(myTurtleWindow), new Text("   Pen down?"));
-        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox, penBox, backgroundBox, imageBox, gridBox, penDownBox);
+
+        myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
+        myVBox.getChildren().add(new PenOptions(myPen));
+        myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
         root.setCenter(centerVBox);
         centerVBox.getChildren().add(myHistoryBox);
         myInnerVBox.getChildren().add(myEnterCommand.getButton());
@@ -148,11 +153,20 @@ public class View implements Observer{
         root.setLeft(myTurtleWindow);
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
+        myTurtleWindow.requestFocus();
+        myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle (KeyEvent thisKey) {
+                System.out.println(thisKey.getCode());
+                myTurtleWindow.startMovingTurtle(thisKey);
+                thisKey.consume();
+            }   
+        });
     }
     
     @Override
     public void update(Observable o, Object arg) {
-        SceneUpdater updater = myModel.parse((String)arg, myTurtleWindow.getPenState());
+        SceneUpdater updater = myModel.parse((String)arg, myPen.isDown());
 	if(!updater.isNoError()) {
     	    makeErrorDialog(updater.getErrorMessage()).show();
     	    return;
@@ -199,7 +213,7 @@ public class View implements Observer{
         myEnterCommand.addObserver(this);
     }
     
-    private Stage makeErrorDialog(String message){
+    public Stage makeErrorDialog(String message){
     	Stage dialog = new Stage();
     	dialog.initStyle(StageStyle.UTILITY);
     	Scene errorScene = new Scene(new Group(new Text(DIALOG_WIDTH/2, DIALOG_HEIGHT/2, message)), DIALOG_WIDTH, DIALOG_HEIGHT);
@@ -213,6 +227,18 @@ public class View implements Observer{
      */
     public Scene getScene () {
         return myScene;
+    }
+    
+    public TurtleWindow getTurtleWindow() {
+    	return myTurtleWindow;
+    }
+    
+    public TurtleInformation getTurtleInfo() {
+    	return myTurtleInformation;
+    }
+    
+    public void addController (Controller c) {
+    	myController = c;
     }
 
 

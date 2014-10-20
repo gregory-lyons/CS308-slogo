@@ -2,9 +2,13 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import Pen.Pen;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -14,7 +18,7 @@ import javafx.scene.shape.Polyline;
 
 /**
  * Stores the turtle and moves it around when commands are executed.
- * @author Greg Lyons
+ * @author Greg Lyons, Rica Zhang
  *
  */
 public class TurtleWindow extends Pane {
@@ -32,50 +36,30 @@ public class TurtleWindow extends Pane {
 	private Color myColor;
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
-	private boolean myPenDown;
+	
+	private Pen myPen;
 
-	public TurtleWindow() {
+	public TurtleWindow(Pen p) {
 		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
 		myGridLines = new ArrayList<Line>();
-		myPenDown = true;
+		myPen = p;
 		changeTurtleImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.getChildren().add(myTurtle);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
-		choosePenColor(DEFAULT_PEN);
 		makeGrid();
 	}
 
 	public void update(List<Point2D> myList, double angle, boolean penDown) {
-		myPenDown = penDown;
 		moveTurtle(myList.get(myList.size()-1));
-		if (myPenDown) 
-			drawLines(myList);
+		//myPen.setPenDown(penDown);
+		this.getChildren().add(myPen.drawLines(myList));
 		rotateTurtle(angle);
+		myTurtle.toFront();
 	}
 
 	public void changeBackgroundColor(String color){
 		this.setStyle("-fx-background-color: " + color + ";");
-	}
-
-	private void drawLines(List<Point2D> pointList) {
-		double[] pointArray = pointListToArray(pointList);
-		TurtlePath path = new TurtlePath(pointArray, myColor);
-		this.getChildren().add(path);
-		myTurtle.toFront();
-	}
-
-	private double[] pointListToArray(List<Point2D> myList) {
-		double[] array = new double[myList.size()*2];
-		for (int i=0; i<myList.size(); i++){
-			array[2*i] = myList.get(i).getX();
-			array[2*i+1] = myList.get(i).getY();
-		}
-		return array;
-	}
-
-	public void choosePenColor(Color c) {
-		myColor = c;
 	}
 
 	public void changeTurtleImage(String s){
@@ -96,6 +80,29 @@ public class TurtleWindow extends Pane {
 	private void rotateTurtle(double angle) {
 		myTurtle.setRotate(myTurtle.getRotate()+angle);
 	}
+	
+	    public void startMovingTurtle (KeyEvent myKey) {
+	        // TODO remove counter
+	        int counter = 0;
+	        while (counter < 5) {
+	            System.out.println("Moving turtle...");
+	            counter += 1;
+	            if (myKey.getCode() == KeyCode.UP) {
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()-5);
+	            }
+	            else if (myKey.getCode() == KeyCode.DOWN) {
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()+5);
+	            }
+	            else if (myKey.getCode() == KeyCode.LEFT) {
+	                myTurtle.move(myTurtle.getTurtleX()-5 , myTurtle.getTurtleY());
+	            }
+	            else if (myKey.getCode() == KeyCode.RIGHT) {
+	                myTurtle.move(myTurtle.getTurtleX()+5 , myTurtle.getTurtleY());
+	            }
+	        }
+	        System.out.println("Stopped moving turtle\n");
+
+	    }   	    
 	
 	private void makeGrid(){
 		for (int i=0;i<WINDOW_WIDTH;i+=GRID_INTERVAL){
@@ -119,13 +126,4 @@ public class TurtleWindow extends Pane {
 			for (Line l: myGridLines)
 				l.setStrokeWidth(0);
 	}
-
-	public void updatePen(boolean selected) {
-		myPenDown = selected;
-	}
-	
-	public boolean getPenState() {
-		return myPenDown;
-	}
-
 }

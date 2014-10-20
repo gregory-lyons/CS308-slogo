@@ -1,4 +1,5 @@
 import Backend.Model;
+import FrontEnd.Controller;
 import FrontEnd.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,12 +15,8 @@ public class Main extends Application {
      * Initializes a new window in a particular language, sets the title, sets the scene, and shows.
      */
     @Override
-    public void start (Stage s) {   
-        Model myModel = new Model();
-        View myView = new View(myModel);
-        s.setTitle("My Turtle Program!");
-        s.setScene(myView.getScene());
-        s.show();
+    public void start (Stage s) {     	
+    	Workspace myWS = new Workspace(s);
     }
     
     /**
