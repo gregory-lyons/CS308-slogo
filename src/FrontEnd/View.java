@@ -82,6 +82,7 @@ public class View implements Observer{
     private EnterCommand myEnterCommand;
     
     private UserCommands dropdownCommandMenu;
+    private Pen myPen;
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
@@ -93,6 +94,7 @@ public class View implements Observer{
      */
     public View(Model m) {           	
     	myModel = m;    	
+    	myPen = new Pen();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
         BorderPane root = new BorderPane();
         
@@ -153,7 +155,7 @@ public class View implements Observer{
     
     @Override
     public void update(Observable o, Object arg) {
-        SceneUpdater updater = myModel.parse((String)arg, myTurtleWindow.getPenState());
+        SceneUpdater updater = myModel.parse((String)arg, myPen.isDown());
 	if(!updater.isNoError()) {
     	    makeErrorDialog(updater.getErrorMessage()).show();
     	    return;

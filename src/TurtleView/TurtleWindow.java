@@ -3,6 +3,7 @@ package TurtleView;
 import java.util.ArrayList;
 import java.util.List;
 
+import FrontEnd.Pen;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -32,50 +33,29 @@ public class TurtleWindow extends Pane {
 	private Color myColor;
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
-	private boolean myPenDown;
+	private Pen myPen;
 
 	public TurtleWindow() {
 		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
 		myGridLines = new ArrayList<Line>();
-		myPenDown = true;
+		myPen = new Pen();
 		changeTurtleImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.getChildren().add(myTurtle);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
-		choosePenColor(DEFAULT_PEN);
 		makeGrid();
 	}
 
 	public void update(List<Point2D> myList, double angle, boolean penDown) {
-		myPenDown = penDown;
 		moveTurtle(myList.get(myList.size()-1));
-		if (myPenDown) 
-			drawLines(myList);
+		myPen.setPenDown(penDown);
+		this.getChildren().add(myPen.drawLines(myList));
 		rotateTurtle(angle);
+		myTurtle.toFront();
 	}
 
 	public void changeBackgroundColor(String color){
 		this.setStyle("-fx-background-color: " + color + ";");
-	}
-
-	private void drawLines(List<Point2D> pointList) {
-		double[] pointArray = pointListToArray(pointList);
-		TurtlePath path = new TurtlePath(pointArray, myColor);
-		this.getChildren().add(path);
-		myTurtle.toFront();
-	}
-
-	private double[] pointListToArray(List<Point2D> myList) {
-		double[] array = new double[myList.size()*2];
-		for (int i=0; i<myList.size(); i++){
-			array[2*i] = myList.get(i).getX();
-			array[2*i+1] = myList.get(i).getY();
-		}
-		return array;
-	}
-
-	public void choosePenColor(Color c) {
-		myColor = c;
 	}
 
 	public void changeTurtleImage(String s){
@@ -119,13 +99,4 @@ public class TurtleWindow extends Pane {
 			for (Line l: myGridLines)
 				l.setStrokeWidth(0);
 	}
-
-	public void updatePen(boolean selected) {
-		myPenDown = selected;
-	}
-	
-	public boolean getPenState() {
-		return myPenDown;
-	}
-
 }
