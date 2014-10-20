@@ -3,7 +3,7 @@ package TurtleView;
 import java.util.ArrayList;
 import java.util.List;
 
-import FrontEnd.Pen;
+import Pen.Pen;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -35,10 +35,10 @@ public class TurtleWindow extends Pane {
 	private List<Line> myGridLines;
 	private Pen myPen;
 
-	public TurtleWindow() {
+	public TurtleWindow(Pen p) {
 		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
 		myGridLines = new ArrayList<Line>();
-		myPen = new Pen();
+		myPen = p;
 		changeTurtleImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.getChildren().add(myTurtle);
@@ -48,7 +48,7 @@ public class TurtleWindow extends Pane {
 
 	public void update(List<Point2D> myList, double angle, boolean penDown) {
 		moveTurtle(myList.get(myList.size()-1));
-		myPen.setPenDown(penDown);
+		//myPen.setPenDown(penDown);
 		this.getChildren().add(myPen.drawLines(myList));
 		rotateTurtle(angle);
 		myTurtle.toFront();

@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import Pen.Pen;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
 import Backend.Model;
@@ -9,6 +10,7 @@ public class Controller {
 	
 	View myView;
 	Model myModel;
+	Pen myPen;
 	TurtleWindow myTurtleWindow;
 	TurtleInformation myTurtleInformation;
 
@@ -32,6 +34,7 @@ public class Controller {
         u.getVariables();
     	myTurtleWindow.update(u.getLocation(), u.getAngle(), u.penIsDown());
     	myTurtleInformation.update(u.getLocation(), u.getAngle());
+    	//myPen.update(u.penIsDown());
 	}
 
 }

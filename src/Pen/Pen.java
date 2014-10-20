@@ -1,4 +1,4 @@
-package FrontEnd;
+package Pen;
 
 import java.util.List;
 
@@ -26,12 +26,19 @@ public class Pen {
 	}
 	
 	public Polyline drawLines(List<Point2D> pointList){
+		if (!penDown) {
+			return new Polyline();   //empty
+		}
 		double[] pointArray = pointListToArray(pointList);
 		Polyline path = new Polyline(pointArray);
 		path.setStroke(myColor);
 		path.setStrokeWidth(myThickness);
 		return path;
 		
+	}
+	
+	public void update(boolean isDown){
+		setPenDown(isDown);
 	}
 
 	private double[] pointListToArray(List<Point2D> myList) {
@@ -48,7 +55,8 @@ public class Pen {
 	}
 	
 	public void changeColor(Color c){
-		myColor = c;
+		if (c != null)
+			myColor = c;
 	}
 	
 	public void changeThick(double thick){
