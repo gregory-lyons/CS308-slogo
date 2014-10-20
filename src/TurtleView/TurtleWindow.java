@@ -2,9 +2,12 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -14,7 +17,7 @@ import javafx.scene.shape.Polyline;
 
 /**
  * Stores the turtle and moves it around when commands are executed.
- * @author Greg Lyons
+ * @author Greg Lyons, Rica Zhang
  *
  */
 public class TurtleWindow extends Pane {
@@ -33,7 +36,8 @@ public class TurtleWindow extends Pane {
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
 	private boolean myPenDown;
-
+	private boolean shouldMove;
+	
 	public TurtleWindow() {
 		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
 		myGridLines = new ArrayList<Line>();
@@ -96,6 +100,39 @@ public class TurtleWindow extends Pane {
 	private void rotateTurtle(double angle) {
 		myTurtle.setRotate(myTurtle.getRotate()+angle);
 	}
+	
+	    public void startMovingTurtle (KeyEvent myKey) {
+	        // TODO remove counter
+	        int counter = 0;
+	        shouldMove = true;
+	        while (shouldMove == true) {
+	            System.out.println("Moving turtle...");
+	            if (counter > 100) { break; }
+	            counter += 10;
+	            Point2D myTurtleLocation = new Point2D(myTurtle.getX(), myTurtle.getY());
+	            if (myKey.getCode() == KeyCode.UP) {
+	                myTurtle.move(myTurtleLocation.getX(),myTurtleLocation.getY()+5);
+	            }
+	            else if (myKey.getCode() == KeyCode.DOWN) {
+	                myTurtle.move(myTurtleLocation.getX(),myTurtleLocation.getY()-5);
+	            }
+	            else if (myKey.getCode() == KeyCode.LEFT) {
+	                myTurtle.move(myTurtleLocation.getX()-5,myTurtleLocation.getY());
+	            }
+	            else if (myKey.getCode() == KeyCode.RIGHT) {
+	                myTurtle.move(myTurtleLocation.getX()+5,myTurtleLocation.getY());
+	            }
+	        }
+	        System.out.println("Stopped moving turtle\n");
+
+	    }
+
+	    public void stopMovingTurtle () {
+	        System.out.println("Stopped moving turtle\n");
+	        shouldMove = false;
+	    }
+	    
+	    
 	
 	private void makeGrid(){
 		for (int i=0;i<WINDOW_WIDTH;i+=GRID_INTERVAL){

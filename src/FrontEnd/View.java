@@ -51,14 +51,12 @@ import resources.languages.*;
  * @author Rica Zhang, Greg Lyons
  *
  */
-public class View implements Observer{
-	
+public class View implements Observer{	
     private Model myModel;
-    private String language = "English";
     private Scene myScene;
     private Controller myController;
     private ResourceBundle myResources;
-    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
+    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
@@ -93,7 +91,7 @@ public class View implements Observer{
      */
     public View(Model m) {           	
     	myModel = m;    	
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
+        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE);
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
@@ -117,13 +115,13 @@ public class View implements Observer{
         });
         */
         root.setTop(languageSelectorHBox);
-        bottomHBox.getChildren().add(myCommandLine);
+        bottomHBox.getChildren().add(myCommandLine); 
         usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
         usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
         HBox penBox = new HBox();
-        penBox.getChildren().addAll(new PenColorBox(myTurtleWindow), new Text("   Pen Color"));
+        penBox.getChildren().addAll(new PenColorBox(myTurtleWindow), new Text(myResources.getString("PenColor")));
         HBox backgroundBox = new HBox();
         backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), new Text("   Background Color"));
         HBox imageBox = new HBox();
@@ -149,6 +147,22 @@ public class View implements Observer{
         root.setLeft(myTurtleWindow);
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
+        
+        myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle (KeyEvent thisKey) {
+                System.out.println(thisKey.getCode());
+                myTurtleWindow.startMovingTurtle(thisKey);
+            }   
+        });
+        /*
+        myScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle (KeyEvent thisKey) {
+                myTurtleWindow.stopMovingTurtle();
+            }   
+        });
+        */
     }
     
     @Override
