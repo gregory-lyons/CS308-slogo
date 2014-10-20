@@ -1,8 +1,9 @@
 package Pen;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
-import TurtleView.TurtlePath;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polyline;
@@ -10,19 +11,25 @@ import javafx.scene.shape.Polyline;
 public class Pen {
 
 	private boolean penDown;
-	private int myLineType;
+	private List<Double> myLineType;
 	private Color myColor;
 	private double myThickness;
 	
-	public static final int SOLID = 0;
-	public static final int DASHED = 1;
-	public static final int DOTTED = 2;
+	public static final double DEFAULT_THICKNESS = 1.0;
+	public static final Color DEFAULT_COLOR = Color.BLACK;
+	public static final List<Double> SOLID = new ArrayList<Double>();
+	public static final List<Double> DASHED = new ArrayList(Arrays.asList(10.0,10.0));
+	public static final List<Double> DOTTED = new ArrayList(Arrays.asList(2.0, 35.0));
+	
+	public static final String SOLID_LABEL = "SOLID";
+	public static final String DASHED_LABEL = "DASHED";
+	public static final String DOTTED_LABEL = "DOTTED";
 	
 	public Pen() {
 		penDown = true;
-		myLineType = 0;
-		myColor = Color.BLACK;
-		myThickness = 1.0;
+		myLineType = SOLID;
+		myColor = DEFAULT_COLOR;
+		myThickness = DEFAULT_THICKNESS;
 	}
 	
 	public Polyline drawLines(List<Point2D> pointList){
@@ -33,6 +40,7 @@ public class Pen {
 		Polyline path = new Polyline(pointArray);
 		path.setStroke(myColor);
 		path.setStrokeWidth(myThickness);
+		path.getStrokeDashArray().addAll(myLineType);
 		return path;
 		
 	}
@@ -61,6 +69,10 @@ public class Pen {
 	
 	public void changeThick(double thick){
 		myThickness = thick;
+	}
+	
+	public void changeType(List<Double> type) {
+		myLineType = type;
 	}
 	
 	public boolean isDown(){
