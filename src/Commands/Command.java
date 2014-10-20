@@ -1,9 +1,11 @@
 package Commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Command {
 	
-<<<<<<< HEAD
 	/**
 	 * @author justincarrao
 	 * this class and all of its subclasses 
@@ -18,8 +20,8 @@ public class Command {
     public Command myParent;
     
     
-    public Command(Command parent) {
-    	myParent = parent;
+    public Command() {
+    	//myParent = parent;
     	myChildren = new ArrayList<Command>();
     }
     
@@ -37,9 +39,6 @@ public class Command {
     
     
 
-
-=======
 	public double returnValue;
 	
->>>>>>> ashwin
 }

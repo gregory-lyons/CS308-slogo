@@ -6,14 +6,14 @@ import Nodes.Node;
 
 public class TurnLeftNode extends CommandNode {
 	
-	public TurnLeftNode (Turtle myTurtle) {
-		super(myTurtle);
+	public TurnLeftNode (Turtle turtle) {
+		super(turtle);
 	}
 
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode) left).returnData();
-		turtle.setLocation(turtle.nextLocation(printValue, 0));
+		myTurtle.setLocation(myTurtle.nextLocation(printValue, 0));
 		return left;
 	}
 	

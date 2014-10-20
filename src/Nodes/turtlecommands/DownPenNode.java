@@ -4,19 +4,19 @@ import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class BackwardNode extends CommandNode {
+public class DownPenNode extends CommandNode {
 	
-	public BackwardNode(Turtle turtle) {
+	public DownPenNode(Turtle turtle) {
 		super(turtle);
-	}
-	
-	@Override
-	public Node update() {
-		printValue = ((ConstantNode) left).returnData();
-		myTurtle.setLocation(myTurtle.nextLocation(printValue, 0));
-		return left;
+		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public Node update() {
+		myTurtle.setPenUp();
+		return left;
+	}
+	
 	@Override
 	public void addChildren(Node newNode) {
 		super.addChildren(newNode);
