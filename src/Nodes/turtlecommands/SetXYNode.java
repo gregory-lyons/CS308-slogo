@@ -16,8 +16,8 @@ public class SetXYNode extends CommandNode {
 	public Node update() {
 		Point2D nextPoint = new Point2D(((ConstantNode) left).returnData(),
 				((ConstantNode) right).returnData());
-		printValue = nextPoint.distance(turtle.getLocation());
-		turtle.setLocation(nextPoint);
+		printValue = nextPoint.distance(myTurtle.getLocation());
+		myTurtle.setLocation(nextPoint);
 		return new ConstantNode(printValue);
 	}
 
