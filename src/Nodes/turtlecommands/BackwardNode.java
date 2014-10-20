@@ -4,13 +4,12 @@ import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class ForwardNode extends CommandNode {
-
-	public ForwardNode(Turtle turtle) {
+public class BackwardNode extends CommandNode {
+	
+	public BackwardNode(Turtle turtle) {
 		super(turtle);
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode) left).returnData();

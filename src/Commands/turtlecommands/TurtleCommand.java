@@ -10,6 +10,7 @@ public class TurtleCommand extends Command{
 	protected Turtle myTurtle;
 	
 	public TurtleCommand(Turtle turtle) {
+		super();
 		myTurtle = turtle;
 	}
 	
