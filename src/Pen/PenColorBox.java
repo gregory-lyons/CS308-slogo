@@ -1,31 +1,38 @@
 package Pen;
 
-import java.lang.reflect.Field;
-
-import TurtleView.TurtleWindow;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
-public class PenColorBox extends ComboBox {
+public class PenColorBox extends ComboBox<String> {
 	
+	private Map<String, Color> myMap;
+	
+	public static final String BLACK_LABEL = "BLACK";
+	public static final String BLUE_LABEL = "BLUE";
+	public static final String GREEN_LABEL = "GREEN";
+	public static final String RED_LABEL = "RED";
+	public static final String PROMPT = "Pen Color";
 	
 	public PenColorBox(){
 		super();
 		this.setMaxWidth(100);
-		this.setPromptText("Choose Pen Color");
-		this.getItems().addAll("BLACK", "BLUE", "GREEN", "RED");
+		this.setPromptText(PROMPT);
+		initMap();
+		this.getItems().addAll(myMap.keySet());
+	}
+	
+	private void initMap(){
+		myMap = new HashMap<String, Color>();
+		myMap.put(BLACK_LABEL, Color.BLACK);
+		myMap.put(BLUE_LABEL, Color.ROYALBLUE);
+		myMap.put(GREEN_LABEL, Color.LAWNGREEN);
+		myMap.put(RED_LABEL, Color.RED);
 	}
 	
 	public Color getColor(){
-		String s = (String)this.getValue();
-		try{
-			Field field = Class.forName("javafx.scene.paint.Color").getField(s);
-		    Color c = (Color)field.get(null);
-		    return c;
-		}
-		catch (Exception e){
-			return null;
-		}
+		return (Color) myMap.get(this.getValue());
 	}
 	
 }
