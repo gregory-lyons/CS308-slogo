@@ -56,6 +56,7 @@ public class View implements Observer{
     private Model myModel;
     private String language = "English";
     private Scene myScene;
+    private Controller myController;
     private ResourceBundle myResources;
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
     public static final int BUTTON_WIDTH = 200;
@@ -199,7 +200,7 @@ public class View implements Observer{
         myEnterCommand.addObserver(this);
     }
     
-    private Stage makeErrorDialog(String message){
+    public Stage makeErrorDialog(String message){
     	Stage dialog = new Stage();
     	dialog.initStyle(StageStyle.UTILITY);
     	Scene errorScene = new Scene(new Group(new Text(DIALOG_WIDTH/2, DIALOG_HEIGHT/2, message)), DIALOG_WIDTH, DIALOG_HEIGHT);
@@ -213,6 +214,18 @@ public class View implements Observer{
      */
     public Scene getScene () {
         return myScene;
+    }
+    
+    public TurtleWindow getTurtleWindow() {
+    	return myTurtleWindow;
+    }
+    
+    public TurtleInformation getTurtleInfo() {
+    	return myTurtleInformation;
+    }
+    
+    public void addController (Controller c) {
+    	myController = c;
     }
 
 
