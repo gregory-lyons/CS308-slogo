@@ -36,7 +36,6 @@ public class TurtleWindow extends Pane {
 	private Color myColor;
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
-	private boolean shouldMove;
 	
 	private Pen myPen;
 
@@ -85,16 +84,14 @@ public class TurtleWindow extends Pane {
 	    public void startMovingTurtle (KeyEvent myKey) {
 	        // TODO remove counter
 	        int counter = 0;
-	        shouldMove = true;
-	        while (shouldMove == true) {
+	        while (counter < 5) {
 	            System.out.println("Moving turtle...");
-	            if (counter > 30) { break; }
-	            counter += 10;
+	            counter += 1;
 	            if (myKey.getCode() == KeyCode.UP) {
-	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()+5);
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()-5);
 	            }
 	            else if (myKey.getCode() == KeyCode.DOWN) {
-	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()-5);
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()+5);
 	            }
 	            else if (myKey.getCode() == KeyCode.LEFT) {
 	                myTurtle.move(myTurtle.getTurtleX()-5 , myTurtle.getTurtleY());
@@ -105,14 +102,7 @@ public class TurtleWindow extends Pane {
 	        }
 	        System.out.println("Stopped moving turtle\n");
 
-	    }
-
-	    public void stopMovingTurtle () {
-	        System.out.println("Stopped moving turtle\n");
-	        shouldMove = false;
-	    }
-	    
-	    
+	    }   	    
 	
 	private void makeGrid(){
 		for (int i=0;i<WINDOW_WIDTH;i+=GRID_INTERVAL){
