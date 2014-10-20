@@ -19,6 +19,16 @@ public class TurtleImage extends ImageView {
         this.setFitWidth(25.0);
     }
     
+
+    public double getTurtleX(){
+        return (super.getX()+this.getFitWidth()/2);
+    }
+    
+    public double getTurtleY(){
+        return (super.getY()+this.getFitHeight()/2);
+    }
+    
+    
     public void move(double x, double y) {
     	this.setX(x-this.getFitWidth()/2);
     	this.setY(y-this.getFitHeight()/2);

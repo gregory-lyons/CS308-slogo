@@ -88,20 +88,19 @@ public class TurtleWindow extends Pane {
 	        shouldMove = true;
 	        while (shouldMove == true) {
 	            System.out.println("Moving turtle...");
-	            if (counter > 100) { break; }
+	            if (counter > 30) { break; }
 	            counter += 10;
-	            Point2D myTurtleLocation = new Point2D(myTurtle.getX(), myTurtle.getY());
 	            if (myKey.getCode() == KeyCode.UP) {
-	                myTurtle.move(myTurtleLocation.getX(),myTurtleLocation.getY()+5);
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()+5);
 	            }
 	            else if (myKey.getCode() == KeyCode.DOWN) {
-	                myTurtle.move(myTurtleLocation.getX(),myTurtleLocation.getY()-5);
+	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()-5);
 	            }
 	            else if (myKey.getCode() == KeyCode.LEFT) {
-	                myTurtle.move(myTurtleLocation.getX()-5,myTurtleLocation.getY());
+	                myTurtle.move(myTurtle.getTurtleX()-5 , myTurtle.getTurtleY());
 	            }
 	            else if (myKey.getCode() == KeyCode.RIGHT) {
-	                myTurtle.move(myTurtleLocation.getX()+5,myTurtleLocation.getY());
+	                myTurtle.move(myTurtle.getTurtleX()+5 , myTurtle.getTurtleY());
 	            }
 	        }
 	        System.out.println("Stopped moving turtle\n");
