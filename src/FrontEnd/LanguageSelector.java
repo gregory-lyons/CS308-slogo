@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.LabeledText;
@@ -23,9 +25,8 @@ import javafx.scene.text.Text;
  *
  */
 public class LanguageSelector {
-    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/";
     private static final String DEFAULT_TEXT = "Select a Language";
-    private ResourceBundle myLanguages = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "Languages");
+    private ResourceBundle myLanguages = ResourceBundle.getBundle(DefaultStrings.DEFAULT_RESOURCE_PACKAGE);
     
     private BorderPane myRoot;
     private ObservableList<Node> myRootChildren;
@@ -40,13 +41,12 @@ public class LanguageSelector {
      * @param myRoot
      */
     public LanguageSelector(int buttonWidth, BorderPane myRoot) {
-        //createLanguagesFile();
         this.myRoot = myRoot;
         myRootChildren = myRoot.getChildren();
         myComboBox = new ComboBox();
         myComboBox.setMaxWidth(buttonWidth);
-        myComboBox.setPromptText(DEFAULT_TEXT);
-        myComboBox.getItems().addAll("English", "Chinese", "French", "Italian", "Portuguese", "Russian");
+        myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
+        myComboBox.setValue(DefaultStrings.ENGLISH);
         myButton = new Button("Go");
         myButton.setMinWidth(buttonWidth/2);
         myButton.setOnMouseClicked(event -> handle());
@@ -75,6 +75,26 @@ public class LanguageSelector {
         }
     }
     */
+    /*
+    public void createLanguageKeys() {
+        ResourceBundle myResources = ResourceBundle.getBundle("resources.languages/Languages");
+        Enumeration<String> myLanguageKeys = myResources.getKeys();
+        try {
+            PrintWriter output;
+            
+            output = new PrintWriter("C:\\Users\\Rica\\Desktop\\mylanguagekeys.txt");
+            while (myLanguageKeys.hasMoreElements()) {
+                String current = myLanguageKeys.nextElement();
+                output.println("public static final String " + current.toUpperCase() + " = \"" + current + "\";");
+            }
+            output.close();            
+        }
+        catch (FileNotFoundException f){
+            f.printStackTrace();
+        }
+
+    }
+    */
     
     /**
      * Gets all the leaf nodes of the children and stores it in the list leaves. Translates the leaf
@@ -82,12 +102,7 @@ public class LanguageSelector {
      */
     private void handle () {
         String chosenLanguage = myComboBox.getValue().toString();
-        if (chosenLanguage.equals("English")) { languageNum = 0; }
-        else if (chosenLanguage.equals("Chinese")) { languageNum = 1; }
-        else if (chosenLanguage.equals("French")) { languageNum = 2; }
-        else if (chosenLanguage.equals("Italian")) { languageNum = 3; }
-        else if (chosenLanguage.equals("Portuguese")) { languageNum = 4; }
-        else if (chosenLanguage.equals("Russian")) { languageNum = 5; }
+        languageNum = StringChooser.myLanguageOrder.indexOf(chosenLanguage);
 
         // populates leaves
         for (Node each : myRootChildren) {
@@ -118,7 +133,6 @@ public class LanguageSelector {
      * @return
      */
     private String translate(String currentText) {
-        String myKey;
         for (String key : myLanguages.keySet()) {
             List<String> myLanguageList = Arrays.asList(myLanguages.getString(key).split("__"));
             if (myLanguageList.contains(currentText)) {
