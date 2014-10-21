@@ -21,8 +21,8 @@ public class Controller {
 		myTurtleInformation = myView.getTurtleInfo();
 	}
 	
-	public void executeCommand(String s, boolean penState){
-		SceneUpdater u = myModel.parse(s, penState);
+	public void executeCommand(String s){
+		SceneUpdater u = myModel.parse(s, myPen);
 		interpret(u);
 	}
 	

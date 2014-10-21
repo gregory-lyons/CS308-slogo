@@ -34,28 +34,32 @@ public class TurtleWindow extends Pane {
 	public static final double GRID_STROKE = 1.0;
 
 	private Color myColor;
-	private TurtleImage myTurtle;
+	private List<TurtleImage> allTurtles;
+	private List<TurtleImage> activeTurtles;
 	private List<Line> myGridLines;
 	
 	private Pen myPen;
 
 	public TurtleWindow(Pen p) {
-		myTurtle = new TurtleImage(ORIGIN_X, ORIGIN_Y);
+		activeTurtles.add(new TurtleImage(ORIGIN_X, ORIGIN_Y));
+		allTurtles.addAll(activeTurtles);
 		myGridLines = new ArrayList<Line>();
 		myPen = p;
 		changeTurtleImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		this.getChildren().add(myTurtle);
+		this.getChildren().addAll(allTurtles);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
 	public void update(List<Point2D> myList, double angle, boolean penDown) {
-		moveTurtle(myList.get(myList.size()-1));
-		//myPen.setPenDown(penDown);
-		this.getChildren().add(myPen.drawLines(myList));
-		rotateTurtle(angle);
-		myTurtle.toFront();
+		for (TurtleImage t: activeTurtles){
+			t.move(myList.get(myList.size()-1));
+			//myPen.setPenDown(penDown);
+			this.getChildren().add(myPen.drawLines(myList));
+			t.setRotate(t.getRotate()+angle);
+		for (TurtleImage t: allTurtles) 
+			t.toFront();
 	}
 
 	public void changeBackgroundColor(String color){
@@ -73,14 +77,6 @@ public class TurtleWindow extends Pane {
 
 	}
 
-	private void moveTurtle(Point2D point) {
-		myTurtle.move(point.getX(), point.getY());
-	}
-
-	private void rotateTurtle(double angle) {
-		myTurtle.setRotate(myTurtle.getRotate()+angle);
-	}
-	
 	    public void startMovingTurtle (KeyEvent myKey) {
 	        // TODO remove counter
 	        int counter = 0;
