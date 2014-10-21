@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-import Backend.Model;
 import Backend.SceneUpdater;
 import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
@@ -17,6 +16,7 @@ import Pen.PenColorBox;
 import Pen.PenOptions;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
+import TurtleView.TurtleImage;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -53,11 +53,8 @@ import resources.languages.*;
  * @author Rica Zhang, Greg Lyons
  *
  */
-public class View implements Observer{	
-    private Model myModel;
-    private Scene myScene;
-    private Controller myController;
-    private ResourceBundle myResources;
+public class View {	
+	
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
@@ -65,6 +62,10 @@ public class View implements Observer{
     public static final double DIALOG_WIDTH = 200;
     public static final double DIALOG_HEIGHT = 100;
     public static final boolean DEFAULT_GRIDLINES = true;
+    
+    private Scene myScene;
+    private Controller myController;
+    private ResourceBundle myResources;
 
     private HBox languageSelectorHBox = new HBox();
     private VBox myVBox = new VBox();
@@ -77,34 +78,35 @@ public class View implements Observer{
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
     private TurtleWindow myTurtleWindow;
+    private List<TurtleImage> myActives;
     
     private CommandFactory myCommandFactory;    
     private EnterCommand myEnterCommand;
     
     private UserCommands dropdownCommandMenu;
-    private Pen myPen;
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
-
+    private List<String> myButtonLabels = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
+    private List<SuperCommand> myButtons;
+    
     /**
      * Constructs the view
      * @param language
      */
-    public View(Model m) {           	
-    	myModel = m;    	
+    public View() {           	  	
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE);
-    	myPen = new Pen();
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
         myLanguageSelector = new LanguageSelector(BUTTON_WIDTH, root);
-        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH, this);
+        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
-        myTurtleWindow = new TurtleWindow(myPen);
+        myTurtleWindow = new TurtleWindow();
+        myActives = myTurtleWindow.getActiveTurtles();
+        myButtons = new ArrayList<SuperCommand>();
         makeEnterButton();
 
         myVBox.getChildren().add(myTurtleInformation.getVBox());
@@ -135,7 +137,7 @@ public class View implements Observer{
         gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), new Text("   Display Grid Lines"));
 
         myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
-        myVBox.getChildren().add(new PenOptions(myPen));
+        myVBox.getChildren().add(myActives.get(0).getPenOptions());
         myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
         root.setCenter(centerVBox);
         centerVBox.getChildren().add(myHistoryBox);
@@ -144,9 +146,9 @@ public class View implements Observer{
         bottomHBox.getChildren().add(1, myInnerVBox);       
         root.setBottom(bottomHBox);
         
-        for (String button : myCommandButtons) {
+        for (String button : myButtonLabels) {
         	SuperCommand sc = myCommandFactory.makeCommand(button, myResources.getString(button));
-        	sc.addObserver(this);
+        	myButtons.add(sc);
             myVBox.getChildren().add(sc.getButton());
         }
         root.setRight(myVBox);
@@ -162,18 +164,6 @@ public class View implements Observer{
                 thisKey.consume();
             }   
         });
-    }
-    
-    @Override
-    public void update(Observable o, Object arg) {
-        SceneUpdater updater = myModel.parse((String)arg, myPen.isDown());
-	if(!updater.isNoError()) {
-    	    makeErrorDialog(updater.getErrorMessage()).show();
-    	    return;
-    	}
-        updater.getVariables();
-    	myTurtleWindow.update(updater.getLocation(), updater.getAngle(), updater.penIsDown());
-    	myTurtleInformation.update(updater.getLocation(), updater.getAngle());
     }
 
     /**
@@ -210,7 +200,6 @@ public class View implements Observer{
      */
     private void makeEnterButton() {
         myEnterCommand = (EnterCommand) myCommandFactory.makeCommand("Enter", myResources.getString("Enter"));
-        myEnterCommand.addObserver(this);
     }
     
     public Stage makeErrorDialog(String message){
@@ -239,6 +228,12 @@ public class View implements Observer{
     
     public void addController (Controller c) {
     	myController = c;
+        dropdownCommandMenu.addObserver(myController);
+        for (SuperCommand button: myButtons) {
+        	button.addObserver(myController);
+        }
+        myEnterCommand.addObserver(myController);
+        
     }
 
 

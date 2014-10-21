@@ -17,8 +17,7 @@ public class UserCommands extends Observable{
 
     //private ObservableList<String> options = FXCollections.observableArrayList();
     
-    public UserCommands (String defaultText, int buttonWidth, View v) {       
-    	addObserver(v);
+    public UserCommands (String defaultText, int buttonWidth) {       
         myComboBox = new ComboBox();
         myComboBox.setMaxWidth(buttonWidth);
         myComboBox.setPromptText(defaultText);

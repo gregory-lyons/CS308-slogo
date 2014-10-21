@@ -8,7 +8,7 @@ public class Workspace {
 
 	public Workspace(Stage s) {
         Model myModel = new Model();
-        View myView = new View(myModel);
+        View myView = new View();
         Controller myController = new Controller(myView, myModel);
         myView.addController(myController);
         s.setTitle("My Turtle Program!");

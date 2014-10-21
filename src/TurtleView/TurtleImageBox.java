@@ -18,7 +18,7 @@ public class TurtleImageBox extends ComboBox {
 	private void handle(TurtleWindow tw){
 		String s = (String)this.getValue();
 		System.out.println(s);
-		tw.changeTurtleImage(s);
+		//tw.changeTurtleImage(s);
 	}
 	
 	
