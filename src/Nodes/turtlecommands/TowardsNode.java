@@ -16,6 +16,7 @@ public class TowardsNode extends CommandNode{
 	public Node update() {
 		Point2D turnPoint = new Point2D(((ConstantNode) left).returnData(),
 				((ConstantNode) right).returnData());
+		return null;
 	}
 	
 	public void addChildren(Node newNode) {
