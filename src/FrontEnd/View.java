@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-
 import Backend.Model;
 import Backend.SceneUpdater;
 import FrontEndCommands.EnterCommand;
@@ -53,12 +52,11 @@ import resources.languages.*;
  * @author Rica Zhang, Greg Lyons
  *
  */
-public class View implements Observer{	
+public class View implements Observer {	
     private Model myModel;
     private Scene myScene;
     private Controller myController;
     private ResourceBundle myResources;
-    public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
@@ -86,30 +84,33 @@ public class View implements Observer{
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", "Right", "Home", "ClearScreen", "SetPosition", "SetTowards"));
-
+    private static final String DEFAULT_LANGUAGE = "English";
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
+                                                                                "Right", "Home", 
+                                                                                "ClearScreen", "SetPosition", 
+                                                                                "SetTowards"));
+    
     /**
      * Constructs the view
      * @param language
      */
     public View(Model m) {           	
     	myModel = m;    	
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE);
+        myResources = ResourceBundle.getBundle(DefaultStrings.DEFAULT_RESOURCE_PACKAGE);
     	myPen = new Pen();
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
         myLanguageSelector = new LanguageSelector(BUTTON_WIDTH, root);
-        dropdownCommandMenu = new UserCommands(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH, this);
-        dropdownVariablesMenu = new UserVariables(myResources.getString("DropdownMenuDefault"), BUTTON_WIDTH);
+        dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH, this);
+        dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         myTurtleWindow = new TurtleWindow(myPen);
         makeEnterButton();
 
         myVBox.getChildren().add(myTurtleInformation.getVBox());
-        languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
-        languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
+        
         /*
         Hyperlink myHyperlink = new Hyperlink("FrontEnd/help.html");
         TextFlow flow = new TextFlow(myHyperlink);
@@ -118,6 +119,17 @@ public class View implements Observer{
             webView.getEngine().load("FrontEnd/help.html");
         });
         */
+        Button newWindowButton = new Button(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.NEWWORKSPACE));
+        newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle (MouseEvent m) {
+                Stage myStage = new Stage();
+                new Workspace(myStage);
+            }
+        });
+        languageSelectorHBox.getChildren().add(newWindowButton);
+        languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
+        languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
         root.setTop(languageSelectorHBox);
         bottomHBox.getChildren().add(myCommandLine); 
         usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
@@ -126,13 +138,17 @@ public class View implements Observer{
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
 
         HBox penBox = new HBox();
-        penBox.getChildren().addAll(new PenColorBox(), new Text(myResources.getString("PenColor")));
+        Text penBoxText = new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.PENCOLOR));
+        penBox.getChildren().addAll(new PenColorBox(), penBoxText);
         HBox backgroundBox = new HBox();
-        backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), new Text("   Background Color"));
+        backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), 
+                                           new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.BACKGROUNDCOLOR)));
         HBox imageBox = new HBox();
-        imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), new Text("   Turtle Image"));
+        imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), 
+                                      new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.TURTLEIMAGE)));
         HBox gridBox = new HBox();
-        gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), new Text("   Display Grid Lines"));
+        gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), 
+                                     new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DISPLAYGRIDLINES)));
 
         myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
         myVBox.getChildren().add(new PenOptions(myPen));
@@ -184,7 +200,7 @@ public class View implements Observer{
      */
     private Button makeClearButton () {
         Button myClearButton = new Button();
-        myClearButton.setText(myResources.getString("Clear"));
+        myClearButton.setText(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.CLEAR));
         myClearButton.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         myClearButton.setOnAction(new EventHandler<ActionEvent>() {                  
             public void handle (ActionEvent event) {
@@ -198,9 +214,10 @@ public class View implements Observer{
      * Initializes the command line and the history box.
      */
     private void makeTextAreas () {
-        myCommandLine = new CommandLine(myResources.getString("CommandLineDefault"));
+        myCommandLine = new CommandLine(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.COMMANDLINEDEFAULT));
         
-        myHistoryBox = new HistoryBox(dropdownCommandMenu, myResources.getString("HistoryBoxDefault"));
+        myHistoryBox = new HistoryBox(dropdownCommandMenu, 
+                                      StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.HISTORYBOXDEFAULT));
         myHistoryBox.setEditable(false);
     }
     
@@ -209,6 +226,7 @@ public class View implements Observer{
      * different location than the other regular command buttons.
      */
     private void makeEnterButton() {
+        // TODO fix repetition
         myEnterCommand = (EnterCommand) myCommandFactory.makeCommand("Enter", myResources.getString("Enter"));
         myEnterCommand.addObserver(this);
     }
