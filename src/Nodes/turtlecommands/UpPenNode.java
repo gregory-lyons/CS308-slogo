@@ -14,18 +14,12 @@ public class UpPenNode  extends CommandNode {
 	@Override
 	public Node update() {
 		myTurtle.setPenUp();
-		return left;
-	}
-	
-	@Override
-	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
-		left = newNode;
+		return new ConstantNode(0);
 	}
 
 	@Override
 	public boolean noMoreChildren() {
-		return (left instanceof ConstantNode);
+		return true;
 	}
 
 }

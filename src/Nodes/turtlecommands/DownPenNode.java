@@ -5,7 +5,7 @@ import Nodes.ConstantNode;
 import Nodes.Node;
 
 public class DownPenNode extends CommandNode {
-	
+
 	public DownPenNode(Turtle turtle) {
 		super(turtle);
 		// TODO Auto-generated constructor stub
@@ -14,18 +14,12 @@ public class DownPenNode extends CommandNode {
 	@Override
 	public Node update() {
 		myTurtle.setPenDown();
-		return left;
-	}
-	
-	@Override
-	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
-		left = newNode;
+		return new ConstantNode(1);
 	}
 
 	@Override
 	public boolean noMoreChildren() {
-		return (left instanceof ConstantNode);
+		return true;
 	}
 
 }
