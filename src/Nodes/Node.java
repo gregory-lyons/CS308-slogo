@@ -19,6 +19,7 @@ public abstract class Node {
 
 	public void addChildren(Node node){
 		node.setParent(this);
+		myChildren.add(node);
 	}
 	
 	public Node getParent(){
