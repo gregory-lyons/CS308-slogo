@@ -17,8 +17,6 @@ import javafx.scene.control.Button;
  *
  */
 public class SuperCommand extends Observable {
-        private static final int MIN_HEIGHT = 30;
-        private static final int MIN_WIDTH = 200;
         private Map<String, Double> myCommandValues = new HashMap<String, Double>();
 	protected String myInstruction;
 	protected String myLabel;
