@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 import Backend.Model;
 import Backend.SceneUpdater;
+import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
 import Pen.PenColorBox;
@@ -44,6 +45,7 @@ public class View implements Observer {
     public static final double DIALOG_WIDTH = 200;
     public static final double DIALOG_HEIGHT = 100;
     public static final boolean DEFAULT_GRIDLINES = true;
+    private static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
 
     private HBox languageSelectorHBox = new HBox();
     private VBox myVBox = new VBox();
@@ -52,6 +54,10 @@ public class View implements Observer {
     private HBox bottomHBox = new HBox();
     private VBox myInnerVBox = new VBox();
     private VBox centerVBox = new VBox();
+    private HBox penBox;
+    private HBox backgroundBox;
+    private HBox imageBox;
+    private HBox gridBox;
     
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
@@ -65,7 +71,11 @@ public class View implements Observer {
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
-    private static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
+    
+    private PenColorBox myPenColorBox;
+    private BackgroundColorBox myBackgroundColorBox;
+    private TurtleImageBox myTurtleImageBox;
+    private GridCheckBox myGridCheckBox;
     
     /**
      * Constructs the view
@@ -95,6 +105,7 @@ public class View implements Observer {
             webView.getEngine().load("FrontEnd/help.html");
         });
         */
+        
         Button newWindowButton = new Button(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.NEWWORKSPACE));
         newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -103,6 +114,7 @@ public class View implements Observer {
                 new Workspace(myStage);
             }
         });
+        
         languageSelectorHBox.getChildren().add(newWindowButton);
         languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
         languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
@@ -113,17 +125,21 @@ public class View implements Observer {
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
 
-        HBox penBox = new HBox();
-        Text penBoxText = new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.PENCOLOR));
-        penBox.getChildren().addAll(new PenColorBox(), penBoxText);
-        HBox backgroundBox = new HBox();
-        backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), 
+        penBox = new HBox();
+        myPenColorBox = new PenColorBox();
+        penBox.getChildren().addAll(myPenColorBox, 
+                                    new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.PENCOLOR)));
+        backgroundBox = new HBox();
+        myBackgroundColorBox = new BackgroundColorBox(myTurtleWindow);
+        backgroundBox.getChildren().addAll(myBackgroundColorBox, 
                                            new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR)));
-        HBox imageBox = new HBox();
-        imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), 
+        imageBox = new HBox();
+        myTurtleImageBox = new TurtleImageBox(myTurtleWindow);
+        imageBox.getChildren().addAll(myTurtleImageBox, 
                                       new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE)));
-        HBox gridBox = new HBox();
-        gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), 
+        gridBox = new HBox();
+        myGridCheckBox = new GridCheckBox(myTurtleWindow);
+        gridBox.getChildren().addAll(myGridCheckBox, 
                                      new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
         myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
@@ -141,6 +157,8 @@ public class View implements Observer {
         	sc.addObserver(this);
             myVBox.getChildren().add(sc.getButton());
         }
+        SaveWorkspace mySaveWorkspace = new SaveWorkspace(BUTTON_WIDTH, this);
+        myVBox.getChildren().add(mySaveWorkspace.getButton());
         root.setRight(myVBox);
         root.setLeft(myTurtleWindow);
         
@@ -234,7 +252,25 @@ public class View implements Observer {
     public void addController (Controller c) {
     	myController = c;
     }
+    
+    public LanguageSelector getLanguageSelector() {
+        return myLanguageSelector;
+    }
+    
+    public PenColorBox getMyPenColorBox () {
+        return myPenColorBox;
+    }
 
+    public BackgroundColorBox getMyBackgroundColorBox () {
+        return myBackgroundColorBox;
+    }
 
+    public TurtleImageBox getMyTurtleImageBox () {
+        return myTurtleImageBox;
+    }
+
+    public GridCheckBox getMyGridCheckBox () {
+        return myGridCheckBox;
+    }
 
 }

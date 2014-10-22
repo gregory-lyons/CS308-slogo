@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
-public class BackgroundColorBox extends ComboBox {
+public class BackgroundColorBox extends ComboBox<String> {
 
 	public static final Color DEFAULT_COLOR = Color.WHITE;
 	

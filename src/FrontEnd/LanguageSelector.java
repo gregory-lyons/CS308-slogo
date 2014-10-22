@@ -47,7 +47,7 @@ public class LanguageSelector {
         myComboBox.setMaxWidth(buttonWidth);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
-        myButton = new Button("Go");
+        myButton = new Button(DefaultStrings.GO);
         myButton.setMinWidth(buttonWidth/2);
         myButton.setOnMouseClicked(event -> handle());
     }
@@ -174,5 +174,9 @@ public class LanguageSelector {
      */
     public Button getButton () {
         return myButton;
+    }
+    
+    public String getCurrentLanguage() {
+        return myComboBox.getValue();
     }
 }
