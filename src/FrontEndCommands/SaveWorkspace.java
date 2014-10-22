@@ -1,6 +1,7 @@
 package FrontEndCommands;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import FrontEnd.DefaultStrings;
 import FrontEnd.LanguageSelector;
 import FrontEnd.View;
@@ -62,8 +62,14 @@ public class SaveWorkspace {
             workspaceSettings = fileChooser.getSelectedFile();
             System.out.println("Save as file: " + workspaceSettings.getAbsolutePath());
         }
-        PrintWriter pw = new PrintWriter(workspaceSettings);
-        JSONWriter myJSONWriter = new JSONWriter(pw);
+        try {
+            PrintWriter pw = new PrintWriter(workspaceSettings);
+        }
+        catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //JSONWriter myJSONWriter = new JSONWriter(pw);
         
     }
 

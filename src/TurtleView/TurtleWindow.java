@@ -68,7 +68,8 @@ public class TurtleWindow extends Pane {
 			Image newImage = new Image(getClass().getResourceAsStream(fileName));
 			myTurtle.setImage(newImage);
 		}
-		catch(NullPointerException npe){	
+		catch(NullPointerException npe){
+		    npe.printStackTrace();
 		}
 
 	}

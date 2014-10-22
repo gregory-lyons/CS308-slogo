@@ -1,11 +1,11 @@
 package TurtleView;
 
 import java.lang.reflect.Field;
-
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class TurtleImageBox extends ComboBox {
+public class TurtleImageBox extends ComboBox<String> {
 	
 	public TurtleImageBox(TurtleWindow turtleWindow){
 		super();
@@ -17,8 +17,15 @@ public class TurtleImageBox extends ComboBox {
 	
 	private void handle(TurtleWindow tw){
 		String s = (String)this.getValue();
-		System.out.println(s);
-		tw.changeTurtleImage(s);
+		if (s.equals("turtle1") || s.equals("turtle2") || s.equals("turtle3")) {
+		          System.out.println(s);
+		          tw.changeTurtleImage(s);
+		}
+		else {
+		    System.out.println("Chose new image");
+		    //tw.changeTurtleLoadedImage(s);
+		}
+
 	}
 	
 	

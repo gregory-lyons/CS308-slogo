@@ -8,6 +8,7 @@ package FrontEnd;
 public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final String SAVE_WORKSPACE = "Save Workspace";
+    public static final String LOAD_WORKSPACE = "Load Workspace";
     
     //Languages
     public static final String ENGLISH = "English";

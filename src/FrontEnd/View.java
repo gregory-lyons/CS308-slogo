@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 import Backend.Model;
 import Backend.SceneUpdater;
+import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
@@ -157,6 +158,8 @@ public class View implements Observer {
         	sc.addObserver(this);
             myVBox.getChildren().add(sc.getButton());
         }
+        LoadWorkspace myLoadWorkspace = new LoadWorkspace(BUTTON_WIDTH, this);
+        myVBox.getChildren().add(myLoadWorkspace.getButton());
         SaveWorkspace mySaveWorkspace = new SaveWorkspace(BUTTON_WIDTH, this);
         myVBox.getChildren().add(mySaveWorkspace.getButton());
         root.setRight(myVBox);
