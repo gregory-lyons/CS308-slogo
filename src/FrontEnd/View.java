@@ -49,8 +49,14 @@ public class View implements Observer {
     private Model myModel;
     private Scene myScene;
     private Controller myController;
-    public static final int BUTTON_WIDTH = 200;
-    public static final int BUTTON_HEIGHT = 40;
+    public static final int SHORT_BUTTON_HEIGHT = 30;
+    public static final int PUFFY_BUTTON_HEIGHT = 60;
+    public static final int LANGUAGESELECTOR_CB_WIDTH = 100;
+    public static final int NEWWORKSPACE_BUTTON_WIDTH = 100;
+    public static final int GO_BUTTON_WIDTH = 50;
+    public static final int ENTERCLEAR_BUTTON_WIDTH = 100;
+    public static final int SIDEBAR_BUTTON_WIDTH = 200;
+    public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
     public static final int SIDEBAR_WIDTH = 300;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
     public static final double DIALOG_WIDTH = 200;
@@ -98,9 +104,9 @@ public class View implements Observer {
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
-        myLanguageSelector = new LanguageSelector(BUTTON_WIDTH, root);
-        dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH, this);
-        dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH);
+        myLanguageSelector = new LanguageSelector(root);
+        dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT), this);
+        dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         myTurtleWindow = new TurtleWindow(myPen);
@@ -172,9 +178,9 @@ public class View implements Observer {
         	sc.addObserver(this);
             myVBox.getChildren().add(sc.getButton());
         }
-        LoadWorkspace myLoadWorkspace = new LoadWorkspace(BUTTON_WIDTH, this);
+        LoadWorkspace myLoadWorkspace = new LoadWorkspace(this);
         myVBox.getChildren().add(myLoadWorkspace.getButton());
-        SaveWorkspace mySaveWorkspace = new SaveWorkspace(BUTTON_WIDTH, this);
+        SaveWorkspace mySaveWorkspace = new SaveWorkspace(this);
         myVBox.getChildren().add(mySaveWorkspace.getButton());
         ScrollPane sp = new ScrollPane();
         sp.setHbarPolicy(ScrollBarPolicy.NEVER);
@@ -220,7 +226,7 @@ public class View implements Observer {
     private Button makeClearButton () {
         Button myClearButton = new Button();
         myClearButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CLEAR));
-        myClearButton.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+        myClearButton.setMinSize(ENTERCLEAR_BUTTON_WIDTH, PUFFY_BUTTON_HEIGHT);
         myClearButton.setOnAction(new EventHandler<ActionEvent>() {                  
             public void handle (ActionEvent event) {
                 myCommandLine.clear();

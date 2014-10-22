@@ -12,18 +12,18 @@ import javafx.scene.control.ComboBox;
  */
 public class UserCommands extends Observable{
 
-    private ComboBox myComboBox;
+    private ComboBox<String> myComboBox;
     private Button myButton;
 
     //private ObservableList<String> options = FXCollections.observableArrayList();
     
-    public UserCommands (String defaultText, int buttonWidth, View v) {       
+    public UserCommands (String defaultText, View v) {       
     	addObserver(v);
-        myComboBox = new ComboBox();
-        myComboBox.setMaxWidth(buttonWidth);
+        myComboBox = new ComboBox<String>();
+        myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.setPromptText(defaultText);
-        myButton = new Button("Go");
-        myButton.setMinWidth(buttonWidth/2);
+        myButton = new Button(DefaultStrings.GO);
+        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());
     }
     
@@ -35,7 +35,7 @@ public class UserCommands extends Observable{
         myComboBox.getItems().add((String) instruction);
     }
     
-    public ComboBox getComboBox() {
+    public ComboBox<String> getComboBox() {
         return myComboBox;
     }
     

@@ -2,6 +2,7 @@ package Pen;
 
 import java.util.HashMap;
 import java.util.Map;
+import FrontEnd.View;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
@@ -22,7 +23,7 @@ public class PenColorBox extends ComboBox<String> {
 	
 	public PenColorBox(){
 		super();
-		this.setMaxWidth(100);
+		this.setMaxWidth(View.SIDEBAR_COMBOBOX_WIDTH);
 		this.setPromptText(PROMPT);
 		initMap();
 		this.getItems().addAll(myMap.keySet());

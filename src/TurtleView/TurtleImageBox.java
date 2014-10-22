@@ -2,6 +2,7 @@ package TurtleView;
 
 import java.lang.reflect.Field;
 import FrontEnd.DefaultStrings;
+import FrontEnd.View;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -10,7 +11,7 @@ public class TurtleImageBox extends ComboBox<String> {
 	
 	public TurtleImageBox(TurtleWindow turtleWindow){
 		super();
-		this.setMaxWidth(200);
+		this.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
 		this.setPromptText(DefaultStrings.TURTLE_IMAGE_PROMPT);
 		this.getItems().addAll(DefaultStrings.TURTLE_IMAGE_1, DefaultStrings.TURTLE_IMAGE_2, DefaultStrings.TURTLE_IMAGE_3);
 		this.setOnAction(event -> handle(turtleWindow));	

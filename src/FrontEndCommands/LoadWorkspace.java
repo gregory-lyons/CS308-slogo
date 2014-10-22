@@ -30,10 +30,10 @@ public class LoadWorkspace {
     private String myBackgroundColor;
     private TurtleImageBox myTurtleImageBox;
     
-    public LoadWorkspace(int buttonWidth, View myView) {
+    public LoadWorkspace(View myView) {
         this.myView = myView;
         myButton = new Button(DefaultStrings.LOAD_WORKSPACE);
-        myButton.setMinWidth(buttonWidth/2);
+        myButton.setMinWidth(View.SIDEBAR_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());
     }
 

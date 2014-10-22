@@ -7,6 +7,7 @@ import FrontEnd.CommandLine;
 import FrontEnd.DefaultStrings;
 import FrontEnd.HistoryBox;
 import FrontEnd.StringChooser;
+import FrontEnd.View;
 import javafx.scene.control.Button;
 
 /**
@@ -43,7 +44,7 @@ public class SuperCommand extends Observable {
         String myLabel = StringChooser.getWordInLang(language, label);
         myInstruction = myLabel.toUpperCase() + " " + myCommandValues.get(label);
         myButton.setText(myLabel);
-    	myButton.setPrefSize(MIN_WIDTH, MIN_HEIGHT);
+    	myButton.setPrefSize(View.SIDEBAR_BUTTON_WIDTH, View.SHORT_BUTTON_HEIGHT);
     	myButton.setOnAction(event -> handle());
     }
     

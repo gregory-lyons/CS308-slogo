@@ -2,6 +2,7 @@ package FrontEnd;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
 
 /**
@@ -34,7 +35,12 @@ public class CommandFactory {
      * @return SuperCommand
      */
     public SuperCommand makeCommand(String language, String label){
-        return new SuperCommand(myCommandLine, myHistoryBox, label, language);
+        if (label.equals(DefaultStrings.ENTER)) {
+            return new EnterCommand(myCommandLine, myHistoryBox, label, language);
+        }
+        else {
+            return new SuperCommand(myCommandLine, myHistoryBox, label, language);
+        }
     }
     
     public List<String> getCommandButtons() { 

@@ -40,15 +40,15 @@ public class LanguageSelector {
      * @param buttonWidth
      * @param myRoot
      */
-    public LanguageSelector(int buttonWidth, BorderPane myRoot) {
+    public LanguageSelector(BorderPane myRoot) {
         //this.myRoot = myRoot;
         myRootChildren = myRoot.getChildren();
         myComboBox = new ComboBox<String>();
-        myComboBox.setMaxWidth(buttonWidth);
+        myComboBox.setMaxWidth(View.LANGUAGESELECTOR_CB_WIDTH);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
         myButton = new Button(DefaultStrings.GO);
-        myButton.setMinWidth(buttonWidth/2);
+        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());
     }
     

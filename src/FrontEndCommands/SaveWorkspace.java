@@ -26,10 +26,10 @@ public class SaveWorkspace {
     private View myView;
     private String myBackgroundColor;
     
-    public SaveWorkspace(int buttonWidth, View myView) {
+    public SaveWorkspace(View myView) {
         this.myView = myView;
         myButton = new Button(DefaultStrings.SAVE_WORKSPACE);
-        myButton.setMinWidth(buttonWidth/2);
+        myButton.setMinWidth(View.SIDEBAR_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());
     }
 

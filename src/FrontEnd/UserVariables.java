@@ -10,17 +10,17 @@ import javafx.scene.control.ComboBox;
  *
  */
 public class UserVariables {
-    private ComboBox myComboBox;
+    private ComboBox<String> myComboBox;
     private Button myButton;
     
-    public UserVariables(String defaultText, int buttonWidth) {       
-        myComboBox = new ComboBox();
-        myComboBox.setMaxWidth(buttonWidth);
+    public UserVariables(String defaultText) {       
+        myComboBox = new ComboBox<String>();
+        myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.getItems().addAll("Blue", "Purple", "Red");
         myComboBox.setPromptText(defaultText);
         myComboBox.setEditable(true);
-        myButton = new Button("Go");
-        myButton.setMinWidth(buttonWidth/2);
+        myButton = new Button(DefaultStrings.GO);
+        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());
     }
     
@@ -32,7 +32,7 @@ public class UserVariables {
         myComboBox.getItems().add((String) instruction);
     }
     
-    public ComboBox getComboBox() {
+    public ComboBox<String> getComboBox() {
         return myComboBox;
     }
     
