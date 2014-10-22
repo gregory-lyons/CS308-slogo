@@ -7,10 +7,9 @@ public class ForwardCommand extends SuperCommand{
 
 	public static final int DEFAULT_FORWARD = 5;
 	
-	public ForwardCommand(CommandLine myLine, HistoryBox myHistory, String label) {
-		super(myLine, myHistory);
-		myInstruction = "FD " + DEFAULT_FORWARD;
-		myLabel = label;
-		myButton.setText(label);
+	public ForwardCommand(CommandLine myLine, HistoryBox myHistory, String label, String language) {
+		super(myLine, myHistory, label, language);
+		//System.out.println("Forward label: " + myLabel);
+		myInstruction = myLabel.toUpperCase() + DEFAULT_FORWARD;
 	}
 }

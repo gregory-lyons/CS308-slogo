@@ -11,11 +11,9 @@ import FrontEnd.HistoryBox;
 public class EnterCommand extends SuperCommand {
     private CommandLine myCommandLine;
 	
-    public EnterCommand(CommandLine myLine, HistoryBox myHistory, String label) {
-        super(myLine, myHistory);
+    public EnterCommand(CommandLine myLine, HistoryBox myHistory, String label, String language) {
+        super(myLine, myHistory, label, language);
         myCommandLine = myLine;
-        myLabel = label;
-        myButton.setText(myLabel); 
     }
 	
     public void setMyCommandLine(String s) {

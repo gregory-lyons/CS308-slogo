@@ -16,7 +16,7 @@ public class PenOptions extends VBox {
 	private PenColorBox myColorBox;
 	private CheckBox myDownBox;
 	private PenThicknessBox myThickBox;
-	private PenTypeBox myTypeBox;
+	//private PenTypeBox myTypeBox;
 	
 	public static final String THICKNESS_LABEL = "   Pen Thickness";
 	public static final String COLOR_LABEL = "   Pen Color";
@@ -46,9 +46,9 @@ public class PenOptions extends VBox {
 		penDown.getChildren().addAll(myDownBox, new Text(PENDOWN_LABEL));
 		
 		HBox lineType = new HBox();
-		myTypeBox = new PenTypeBox();
-		myTypeBox.setOnAction(event -> myPen.changeType(myTypeBox.getType()));
-		lineType.getChildren().addAll(myTypeBox, new Text(TYPEBOX_LABEL));
+		//myTypeBox = new PenTypeBox();
+		//myTypeBox.setOnAction(event -> myPen.changeType(myTypeBox.getType()));
+		//lineType.getChildren().addAll(myTypeBox, new Text(TYPEBOX_LABEL));
 		this.getChildren().addAll(thickness, color, lineType, penDown);		
 	}
 

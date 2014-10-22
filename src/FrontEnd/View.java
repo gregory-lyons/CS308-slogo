@@ -77,7 +77,7 @@ public class View implements Observer {
     private TurtleWindow myTurtleWindow;
     
     private CommandFactory myCommandFactory;    
-    private EnterCommand myEnterCommand;
+    private SuperCommand myEnterCommand;
     
     private UserCommands dropdownCommandMenu;
     private Pen myPen;
@@ -161,7 +161,7 @@ public class View implements Observer {
         root.setBottom(bottomHBox);
         
         for (String button : myCommandButtons) {
-        	SuperCommand sc = myCommandFactory.makeCommand(button, myResources.getString(button));
+        	SuperCommand sc = myCommandFactory.makeCommand(DefaultStrings.ENGLISH, button);
         	sc.addObserver(this);
             myVBox.getChildren().add(sc.getButton());
         }
@@ -227,7 +227,7 @@ public class View implements Observer {
      */
     private void makeEnterButton() {
         // TODO fix repetition
-        myEnterCommand = (EnterCommand) myCommandFactory.makeCommand("Enter", myResources.getString("Enter"));
+        myEnterCommand = myCommandFactory.makeCommand(DefaultStrings.ENGLISH, DefaultStrings.ENTER);
         myEnterCommand.addObserver(this);
     }
     

@@ -1,9 +1,9 @@
 package FrontEndCommands;
 
 import java.util.Observable;
-
 import FrontEnd.CommandLine;
 import FrontEnd.HistoryBox;
+import FrontEnd.StringChooser;
 import javafx.scene.control.Button;
 
 /**
@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 public class SuperCommand extends Observable {
         private static final int MIN_HEIGHT = 30;
         private static final int MIN_WIDTH = 200;
+        private static final int DEFAULT_AMOUNT = 50;
 	protected String myInstruction;
 	protected String myLabel;
 	protected Button myButton;
@@ -24,10 +25,13 @@ public class SuperCommand extends Observable {
      * It also configures the Button properties and sets up the handler.
      * @param myHistory TODO
      */
-    public SuperCommand(CommandLine myLine, HistoryBox myHistory) {
+    public SuperCommand(CommandLine myLine, HistoryBox myHistory, String label, String language) {
     	myButton = new Button();
     	//this.addObserver(myLine);
     	this.addObserver(myHistory);
+        String myLabel = StringChooser.getWordInLang(language, label);
+        myInstruction = myLabel.toUpperCase() + " " + DEFAULT_AMOUNT;
+        myButton.setText(myLabel);
     	myButton.setPrefSize(MIN_WIDTH, MIN_HEIGHT);
     	myButton.setOnAction(event -> handle());
     }

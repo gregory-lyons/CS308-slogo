@@ -139,7 +139,6 @@ public class LanguageSelector {
                 return myLanguageList.get(languageNum);
             }
         }
-        System.out.println(currentText + " not in dictionary");
         return currentText;
     }
     
