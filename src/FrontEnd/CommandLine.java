@@ -6,10 +6,7 @@ import java.util.Observer;
 
 import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
-import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 /**
  * CommandLine is the user interface for typing in commands. When the Enter button is pushed, it is updated.

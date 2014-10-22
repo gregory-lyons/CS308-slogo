@@ -1,15 +1,10 @@
 package FrontEnd;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.ResourceBundle;
 import Backend.Model;
 import Backend.SceneUpdater;
-import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
 import Pen.PenColorBox;
@@ -19,32 +14,19 @@ import TurtleView.GridCheckBox;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import javafx.scene.web.WebView;
-import javafx.scene.web.WebViewBuilder;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import resources.languages.*;
 
 /**
  * The View initializes the CommandLine, HistoryBox, CommandFactory, Dropdown Menu, and the display. It accesses
@@ -56,7 +38,6 @@ public class View implements Observer {
     private Model myModel;
     private Scene myScene;
     private Controller myController;
-    private ResourceBundle myResources;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
@@ -84,11 +65,7 @@ public class View implements Observer {
     private UserVariables dropdownVariablesMenu;
     private LanguageSelector myLanguageSelector;
     private TurtleInformation myTurtleInformation;
-    private static final String DEFAULT_LANGUAGE = "English";
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
-                                                                                "Right", "Home", 
-                                                                                "ClearScreen", "SetPosition", 
-                                                                                "SetTowards"));
+    private static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
     
     /**
      * Constructs the view
@@ -96,14 +73,13 @@ public class View implements Observer {
      */
     public View(Model m) {           	
     	myModel = m;    	
-        myResources = ResourceBundle.getBundle(DefaultStrings.DEFAULT_RESOURCE_PACKAGE);
     	myPen = new Pen();
         BorderPane root = new BorderPane();
         
         myTurtleInformation = new TurtleInformation();
         myLanguageSelector = new LanguageSelector(BUTTON_WIDTH, root);
-        dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH, this);
-        dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH);
+        dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH, this);
+        dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT), BUTTON_WIDTH);
         makeTextAreas();
         myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
         myTurtleWindow = new TurtleWindow(myPen);
@@ -119,7 +95,7 @@ public class View implements Observer {
             webView.getEngine().load("FrontEnd/help.html");
         });
         */
-        Button newWindowButton = new Button(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.NEWWORKSPACE));
+        Button newWindowButton = new Button(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.NEWWORKSPACE));
         newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent m) {
@@ -138,17 +114,17 @@ public class View implements Observer {
         uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
 
         HBox penBox = new HBox();
-        Text penBoxText = new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.PENCOLOR));
+        Text penBoxText = new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.PENCOLOR));
         penBox.getChildren().addAll(new PenColorBox(), penBoxText);
         HBox backgroundBox = new HBox();
         backgroundBox.getChildren().addAll(new BackgroundColorBox(myTurtleWindow), 
-                                           new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.BACKGROUNDCOLOR)));
+                                           new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR)));
         HBox imageBox = new HBox();
         imageBox.getChildren().addAll(new TurtleImageBox(myTurtleWindow), 
-                                      new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.TURTLEIMAGE)));
+                                      new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE)));
         HBox gridBox = new HBox();
         gridBox.getChildren().addAll(new GridCheckBox(myTurtleWindow), 
-                                     new Text(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.DISPLAYGRIDLINES)));
+                                     new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
         myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
         myVBox.getChildren().add(new PenOptions(myPen));
@@ -160,8 +136,8 @@ public class View implements Observer {
         bottomHBox.getChildren().add(1, myInnerVBox);       
         root.setBottom(bottomHBox);
         
-        for (String button : myCommandButtons) {
-        	SuperCommand sc = myCommandFactory.makeCommand(DefaultStrings.ENGLISH, button);
+        for (String button : myCommandFactory.getCommandButtons()) {
+        	SuperCommand sc = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, button);
         	sc.addObserver(this);
             myVBox.getChildren().add(sc.getButton());
         }
@@ -200,7 +176,7 @@ public class View implements Observer {
      */
     private Button makeClearButton () {
         Button myClearButton = new Button();
-        myClearButton.setText(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.CLEAR));
+        myClearButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CLEAR));
         myClearButton.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         myClearButton.setOnAction(new EventHandler<ActionEvent>() {                  
             public void handle (ActionEvent event) {
@@ -214,10 +190,10 @@ public class View implements Observer {
      * Initializes the command line and the history box.
      */
     private void makeTextAreas () {
-        myCommandLine = new CommandLine(StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.COMMANDLINEDEFAULT));
+        myCommandLine = new CommandLine(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.COMMANDLINEDEFAULT));
         
         myHistoryBox = new HistoryBox(dropdownCommandMenu, 
-                                      StringChooser.getWordInLang(DefaultStrings.ENGLISH, DefaultStrings.HISTORYBOXDEFAULT));
+                                      StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
         myHistoryBox.setEditable(false);
     }
     
@@ -227,7 +203,7 @@ public class View implements Observer {
      */
     private void makeEnterButton() {
         // TODO fix repetition
-        myEnterCommand = myCommandFactory.makeCommand(DefaultStrings.ENGLISH, DefaultStrings.ENTER);
+        myEnterCommand = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, DefaultStrings.ENTER);
         myEnterCommand.addObserver(this);
     }
     

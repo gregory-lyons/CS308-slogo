@@ -1,16 +1,8 @@
 package FrontEnd;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import FrontEndCommands.BackCommand;
-import FrontEndCommands.ClearCommand;
-import FrontEndCommands.EnterCommand;
-import FrontEndCommands.ForwardCommand;
-import FrontEndCommands.GoToCommand;
-import FrontEndCommands.HomeCommand;
-import FrontEndCommands.LeftCommand;
-import FrontEndCommands.RightCommand;
 import FrontEndCommands.SuperCommand;
-import FrontEndCommands.TowardsCommand;
 
 /**
  * 
@@ -23,6 +15,10 @@ import FrontEndCommands.TowardsCommand;
 public class CommandFactory {
     private CommandLine myCommandLine;
     private HistoryBox myHistoryBox;
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
+                                                                                "Right", "Home", 
+                                                                                "ClearScreen", "SetPosition", 
+                                                                                "SetTowards"));
     
     public CommandFactory(CommandLine c, HistoryBox h) {
         myCommandLine = c;
@@ -39,36 +35,10 @@ public class CommandFactory {
      */
     public SuperCommand makeCommand(String language, String label){
         return new SuperCommand(myCommandLine, myHistoryBox, label, language);
-        /*
-        if (label.equals("Back")) {
-            return new BackCommand(myCommandLine, myHistoryBox, label, language); 
-        } 
-        if (label.equals("ClearScreen")) {
-            return new ClearCommand(myCommandLine, myHistoryBox, label, language); 
-        }
-        if (label.equals("Enter")) {
-            return new EnterCommand(myCommandLine, myHistoryBox, label, language);
-        }
-        if (label.equals("Forward")) {
-            return new ForwardCommand(myCommandLine, myHistoryBox, label, language); 
-        }
-        if (label.equals("SetPosition")) {
-            return new GoToCommand(myCommandLine, myHistoryBox, label, language); 
-        }
-        if (label.equals("Home")) {
-            return new HomeCommand(myCommandLine, myHistoryBox, label, language); 
-        }
-        if (label.equals("Left")) {
-            return new LeftCommand(myCommandLine, myHistoryBox, label, language); 
-        }
-        if (label.equals("Right")) {
-            return new RightCommand(myCommandLine, myHistoryBox, label, language);
-        }
-        if (label.equals("SetTowards")) {
-            return new TowardsCommand(myCommandLine, myHistoryBox, label); 
-        }
-        return null;
-        */
+    }
+    
+    public List<String> getCommandButtons() { 
+        return myCommandButtons;
     }
 
 }

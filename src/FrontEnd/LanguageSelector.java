@@ -1,12 +1,12 @@
 package FrontEnd;
 
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+//import java.io.FileNotFoundException;
+//import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Enumeration;
+//import java.util.Collection;
+//import java.util.Enumeration;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.LabeledText;
@@ -15,7 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+//import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
@@ -25,12 +25,12 @@ import javafx.scene.text.Text;
  *
  */
 public class LanguageSelector {
-    private static final String DEFAULT_TEXT = "Select a Language";
+    //private static final String DEFAULT_TEXT = "Select a Language";
     private ResourceBundle myLanguages = ResourceBundle.getBundle(DefaultStrings.DEFAULT_RESOURCE_PACKAGE);
     
-    private BorderPane myRoot;
+    //private BorderPane myRoot;
     private ObservableList<Node> myRootChildren;
-    private ComboBox myComboBox;
+    private ComboBox<String> myComboBox;
     private Button myButton;
     private List<Node> leaves = new ArrayList<Node>();
     private int languageNum;
@@ -41,9 +41,9 @@ public class LanguageSelector {
      * @param myRoot
      */
     public LanguageSelector(int buttonWidth, BorderPane myRoot) {
-        this.myRoot = myRoot;
+        //this.myRoot = myRoot;
         myRootChildren = myRoot.getChildren();
-        myComboBox = new ComboBox();
+        myComboBox = new ComboBox<String>();
         myComboBox.setMaxWidth(buttonWidth);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
@@ -164,7 +164,7 @@ public class LanguageSelector {
      * 
      * @return Returns language selector combo box
      */
-    public ComboBox getComboBox () {
+    public ComboBox<String> getComboBox () {
         return myComboBox;
     }
 

@@ -1,12 +1,5 @@
 package FrontEnd;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.ResourceBundle;
-
 /**
  * Class to store all the strings so that there are no magic strings
  * @author Rica
