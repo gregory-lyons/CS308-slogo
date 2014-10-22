@@ -4,21 +4,22 @@ import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class DownPenNode extends CommandNode {
+public class YCorNode extends CommandNode{
 
-	public DownPenNode(Turtle turtle) {
+	public YCorNode(Turtle turtle) {
 		super(turtle);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Node update() {
-		myTurtle.setPenDown();
-		return new ConstantNode(1);
+		printValue = myTurtle.getLocation().getY();
+		return new ConstantNode(printValue);
 	}
 
 	@Override
 	public boolean noMoreChildren() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 

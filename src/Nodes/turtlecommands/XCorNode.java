@@ -1,25 +1,26 @@
 package Nodes.turtlecommands;
 
 import Backend.Turtle;
+import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class PenDownNode extends CommandNode{
+public class XCorNode extends CommandNode{
 
-	public PenDownNode(Turtle myTurtle) {
-		super(myTurtle);
+	public XCorNode(Turtle turtle) {
+		super(turtle);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Node update() {
-		// TODO Auto-generated method stub
-		return null;
+		printValue = myTurtle.getLocation().getX();
+		return new ConstantNode(printValue);
 	}
 
 	@Override
 	public boolean noMoreChildren() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
