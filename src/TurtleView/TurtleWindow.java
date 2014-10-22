@@ -64,34 +64,36 @@ public class TurtleWindow extends Pane {
 	public void changeBackgroundColor(String color){
 		this.setStyle("-fx-background-color: " + color + ";");
 	}
-	
+
 	public List<TurtleImage> getActiveTurtles(){
 		return activeTurtles;
 	}
 
-	    public void startMovingTurtle (KeyEvent myKey) {
-	        // TODO remove counter
-	        int counter = 0;
-	        while (counter < 5) {
-	            System.out.println("Moving turtle...");
-	            counter += 1;
-	          /*  if (myKey.getCode() == KeyCode.UP) {
-	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()-5);
-	            }
-	            else if (myKey.getCode() == KeyCode.DOWN) {
-	                myTurtle.move(myTurtle.getTurtleX() , myTurtle.getTurtleY()+5);
-	            }
-	            else if (myKey.getCode() == KeyCode.LEFT) {
-	                myTurtle.move(myTurtle.getTurtleX()-5 , myTurtle.getTurtleY());
-	            }
-	            else if (myKey.getCode() == KeyCode.RIGHT) {
-	                myTurtle.move(myTurtle.getTurtleX()+5 , myTurtle.getTurtleY());
-	            }*/
-	        }
-	        System.out.println("Stopped moving turtle\n");
+	public void startMovingTurtle (KeyEvent myKey) {
+		// TODO remove counter
+		int counter = 0;
+		while (counter < 5) {
+			System.out.println("Moving turtle...");
+			counter += 1;
+			for (TurtleImage t: activeTurtles){
+				if (myKey.getCode() == KeyCode.UP) {
+					t.move(t.getTurtleX() , t.getTurtleY()-5);
+				}
+				else if (myKey.getCode() == KeyCode.DOWN) {
+					t.move(t.getTurtleX() , t.getTurtleY()+5);
+				}
+				else if (myKey.getCode() == KeyCode.LEFT) {
+					t.move(t.getTurtleX()-5 , t.getTurtleY());
+				}
+				else if (myKey.getCode() == KeyCode.RIGHT) {
+					t.move(t.getTurtleX()+5 , t.getTurtleY());
+				}
+			}
+		}
+		System.out.println("Stopped moving turtle\n");
 
-	    }   	    
-	
+	}   	    
+
 	private void makeGrid(){
 		for (int i=0;i<WINDOW_WIDTH;i+=GRID_INTERVAL){
 			Line l = new Line(i, 0, i, WINDOW_HEIGHT);

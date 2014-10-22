@@ -156,11 +156,15 @@ public class View {
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
         myTurtleWindow.requestFocus();
+        ArrowKeyHandler arrowHandler = new ArrowKeyHandler();
+        
         myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent thisKey) {
                 System.out.println(thisKey.getCode());
-                myTurtleWindow.startMovingTurtle(thisKey);
+                String instruction = arrowHandler.makeInstruction(thisKey.getCode());
+                myEnterCommand.notifyObservers(instruction);
+                //myTurtleWindow.startMovingTurtle(thisKey);
                 thisKey.consume();
             }   
         });
