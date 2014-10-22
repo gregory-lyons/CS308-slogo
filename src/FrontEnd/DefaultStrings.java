@@ -1,5 +1,9 @@
 package FrontEnd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Class to store all the strings so that there are no magic strings
  * @author Rica
@@ -7,9 +11,22 @@ package FrontEnd;
  */
 public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
+    // TODO Translate
     public static final String SAVE_WORKSPACE = "Save Workspace";
     public static final String LOAD_WORKSPACE = "Load Workspace";
-    
+    public static final String TURTLE_IMAGE_PROMPT = "Choose Turtle Image";
+    public static final String BACKGROUND_COLOR_PROMPT = "Choose Background Color";
+    public static final List<String> BACKGROUND_COLOR_DEFAULTS = new ArrayList<>(Arrays.asList("WHITE", "GRAY", "BLACK", "RED", "GREEN", "YELLOW"));
+    public static final String SOLID_LABEL = "SOLID";
+    public static final String DASHED_LABEL = "DASHED";
+    public static final String DOTTED_LABEL = "DOTTED";
+    public static final String PEN_TYPE_PROMPT = "Line type";
+    public static final String PEN_THICKNESS_PROMPT = "Pen Thickness";
+    public static final String THICKNESS_LABEL = "Pen Thickness";
+    public static final String COLOR_LABEL = "Pen Color";
+    public static final String PENDOWN_LABEL = "Pen Down";
+    public static final String TYPEBOX_LABEL = "Line Type";
+   
     //Languages
     public static final String ENGLISH = "English";
     public static final String CHINESE = "Chinese";
@@ -17,6 +34,10 @@ public class DefaultStrings {
     public static final String ITALIAN = "Italian";
     public static final String PORTUGUESE = "Portuguese";
     public static final String RUSSIAN = "Russian";
+    
+    public static final String TURTLE_IMAGE_1 = "turtle1";
+    public static final String TURTLE_IMAGE_2 = "turtle2";
+    public static final String TURTLE_IMAGE_3 = "turtle3";
     
     //Keys for accessing language properties
     public static final String ASKWITH = "AskWith";

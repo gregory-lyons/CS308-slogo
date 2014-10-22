@@ -1,7 +1,7 @@
 package TurtleView;
 
 import java.lang.reflect.Field;
-
+import FrontEnd.DefaultStrings;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
@@ -12,8 +12,8 @@ public class BackgroundColorBox extends ComboBox<String> {
 	public BackgroundColorBox(TurtleWindow turtleWindow){
 		super();
 		this.setMaxWidth(100);
-		this.setPromptText("Choose Background Color");
-		this.getItems().addAll("WHITE", "GRAY", "BLACK", "RED", "GREEN", "YELLOW");
+		this.setPromptText(DefaultStrings.BACKGROUND_COLOR_PROMPT);
+		this.getItems().addAll(DefaultStrings.BACKGROUND_COLOR_DEFAULTS);
 		this.setOnAction(event -> handle(turtleWindow));	
 	}
 	

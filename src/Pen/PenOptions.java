@@ -1,5 +1,6 @@
 package Pen;
 
+import FrontEnd.DefaultStrings;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
 import TurtleView.TurtleImageBox;
@@ -18,37 +19,32 @@ public class PenOptions extends VBox {
 	private PenThicknessBox myThickBox;
 	//private PenTypeBox myTypeBox;
 	
-	public static final String THICKNESS_LABEL = "   Pen Thickness";
-	public static final String COLOR_LABEL = "   Pen Color";
-	public static final String PENDOWN_LABEL = "   Pen down?";
-	public static final String TYPEBOX_LABEL = "   Line type?";
-	
 	public PenOptions(Pen p) {
 		myPen = p;
 		setUpBoxes();
 	}
 	
 	private void setUpBoxes(){
-		HBox thickness = new HBox();
+		VBox thickness = new VBox();
 		myThickBox = new PenThicknessBox();
 		myThickBox.setOnAction(event -> myPen.changeThick(myThickBox.getThick()));
-		thickness.getChildren().addAll(myThickBox, new Text(THICKNESS_LABEL));
+		thickness.getChildren().addAll(new Text(DefaultStrings.THICKNESS_LABEL), myThickBox);
 		
-		HBox color = new HBox();
+		VBox color = new VBox();
 		myColorBox = new PenColorBox();
 		myColorBox.setOnAction(event -> myPen.changeColor(myColorBox.getColor()));
-		color.getChildren().addAll(myColorBox, new Text(COLOR_LABEL));
+		color.getChildren().addAll(new Text(DefaultStrings.COLOR_LABEL), myColorBox);
 		
 		HBox penDown = new HBox();
 		myDownBox = new CheckBox();
 		myDownBox.setSelected(true);
 		myDownBox.setOnAction(event -> myPen.setPenDown(myDownBox.isSelected()));
-		penDown.getChildren().addAll(myDownBox, new Text(PENDOWN_LABEL));
+		penDown.getChildren().addAll(myDownBox, new Text(DefaultStrings.PENDOWN_LABEL));
 		
-		HBox lineType = new HBox();
+		VBox lineType = new VBox();
 		//myTypeBox = new PenTypeBox();
 		//myTypeBox.setOnAction(event -> myPen.changeType(myTypeBox.getType()));
-		//lineType.getChildren().addAll(myTypeBox, new Text(TYPEBOX_LABEL));
+		//lineType.getChildren().addAll(new Text(DefaultStrings.TYPEBOX_LABEL), myTypeBox);
 		this.getChildren().addAll(thickness, color, lineType, penDown);		
 	}
 

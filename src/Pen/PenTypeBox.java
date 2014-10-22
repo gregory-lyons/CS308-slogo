@@ -3,13 +3,13 @@ package Pen;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import FrontEnd.DefaultStrings;
 import javafx.scene.control.ComboBox;
 
 public class PenTypeBox extends ComboBox<String> {
 	
 	private Map<String, List<Double>> myMap;
-	public static final String PROMPT = "Line type";
+	public static final String PROMPT = DefaultStrings.PEN_TYPE_PROMPT;
 	
 	
 	public PenTypeBox(){
@@ -26,8 +26,8 @@ public class PenTypeBox extends ComboBox<String> {
 	
 	private void initMap(){
 		myMap = new HashMap<String, List<Double>>();
-		myMap.put(Pen.SOLID_LABEL, Pen.SOLID);
-		myMap.put(Pen.DASHED_LABEL, Pen.DASHED);
-		myMap.put(Pen.DOTTED_LABEL, Pen.DOTTED);
+		myMap.put(DefaultStrings.SOLID_LABEL, Pen.SOLID);
+		myMap.put(DefaultStrings.DASHED_LABEL, Pen.DASHED);
+		myMap.put(DefaultStrings.DOTTED_LABEL, Pen.DOTTED);
 	}
 }

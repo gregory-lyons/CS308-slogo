@@ -18,9 +18,12 @@ import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -42,6 +45,7 @@ public class View implements Observer {
     private Controller myController;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 40;
+    public static final int SIDEBAR_WIDTH = 300;
     public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
     public static final double DIALOG_WIDTH = 200;
     public static final double DIALOG_HEIGHT = 100;
@@ -162,7 +166,15 @@ public class View implements Observer {
         myVBox.getChildren().add(myLoadWorkspace.getButton());
         SaveWorkspace mySaveWorkspace = new SaveWorkspace(BUTTON_WIDTH, this);
         myVBox.getChildren().add(mySaveWorkspace.getButton());
-        root.setRight(myVBox);
+        ScrollPane sp = new ScrollPane();
+        sp.setHbarPolicy(ScrollBarPolicy.NEVER);
+        sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+        sp.setContent(myVBox);
+        //myVBox.minWidth(BUTTON_WIDTH*2);
+        //sp.prefViewportWidthProperty().bind(myVBox.minWidthProperty());
+        sp.setPadding(new Insets(5,5,5,5));
+        sp.setMinWidth(SIDEBAR_WIDTH);
+        root.setRight(sp);
         root.setLeft(myTurtleWindow);
         
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);

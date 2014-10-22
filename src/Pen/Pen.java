@@ -20,11 +20,7 @@ public class Pen {
 	public static final List<Double> SOLID = new ArrayList<Double>();
 	public static final List<Double> DASHED = new ArrayList(Arrays.asList(10.0,10.0));
 	public static final List<Double> DOTTED = new ArrayList(Arrays.asList(2.0, 35.0));
-	
-	public static final String SOLID_LABEL = "SOLID";
-	public static final String DASHED_LABEL = "DASHED";
-	public static final String DOTTED_LABEL = "DOTTED";
-	
+		
 	public Pen() {
 		penDown = true;
 		myLineType = SOLID;
