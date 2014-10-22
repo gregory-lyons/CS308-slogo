@@ -8,7 +8,6 @@ import javafx.geometry.Point2D;
 public class Model {
 
 	protected String myInput;
-	private Interpreter myInterpreter;
 	private Parser myParser;
 	private Turtle turtle;
 	private AST tree;
@@ -19,10 +18,6 @@ public class Model {
 
 	public Model(String input) {
 		myInput = input;
-	}
-
-	public Interpreter getInterpreter() {
-		return myInterpreter;
 	}
 
 	public Parser getParser() {

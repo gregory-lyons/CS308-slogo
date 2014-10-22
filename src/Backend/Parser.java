@@ -25,7 +25,7 @@ public class Parser {
 	private Queue<Node> nodeList;
 
 	public Parser(String input) {
-		splitWords = input.split(" ");
+		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
 
 	}
@@ -54,7 +54,7 @@ public class Parser {
 		return convertedList;
 	}
 
-	public Queue getQueueOfNodes() {
+	public Queue<Node> getQueueOfNodes() {
 		for (String s : splitWords) {
 			Node command = null;
 			try {
