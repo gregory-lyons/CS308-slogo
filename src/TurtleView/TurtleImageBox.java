@@ -21,6 +21,7 @@ public class TurtleImageBox extends ComboBox<String> {
 		          System.out.println(s);
 		          tw.changeTurtleImage(s);
 		}
+		// TODO Insert method here like what I added so that new images can be loaded
 		else {
 		    System.out.println("Chose new image");
 		    //tw.changeTurtleLoadedImage(s);

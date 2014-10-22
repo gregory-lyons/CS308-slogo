@@ -73,6 +73,8 @@ public class TurtleWindow extends Pane {
 		}
 
 	}
+	
+	// TODO New method so that new images can be loaded
 
 	private void moveTurtle(Point2D point) {
 		myTurtle.move(point.getX(), point.getY());
