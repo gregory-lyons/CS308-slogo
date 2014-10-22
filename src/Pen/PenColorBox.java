@@ -5,6 +5,11 @@ import java.util.Map;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
+/**
+ * Changes color of turtle pen
+ * @author Greg, Rica
+ *
+ */
 public class PenColorBox extends ComboBox<String> {
 	
 	private Map<String, Color> myMap;

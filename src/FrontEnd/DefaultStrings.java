@@ -26,6 +26,7 @@ public class DefaultStrings {
     public static final String COLOR_LABEL = "Pen Color";
     public static final String PENDOWN_LABEL = "Pen Down";
     public static final String TYPEBOX_LABEL = "Line Type";
+    public static final String WHITE = "White";
    
     //Languages
     public static final String ENGLISH = "English";

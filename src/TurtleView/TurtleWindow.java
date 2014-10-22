@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import FrontEnd.DefaultStrings;
 import Pen.Pen;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
@@ -26,14 +27,13 @@ public class TurtleWindow extends Pane {
 	public static final double ORIGIN_X = 0.0;
 	public static final double ORIGIN_Y = 0.0;
 	public static final Color DEFAULT_PEN = Color.BLACK;
-	public static final String DEFAULT_BACKGROUND = "white";
+	public static final String DEFAULT_BACKGROUND = DefaultStrings.BACKGROUND_COLOR_DEFAULTS.get(0);
 	public static final String DEFAULT_IMAGE = "turtle1";
 	public static final double WINDOW_WIDTH = 600.0;
 	public static final double WINDOW_HEIGHT = 423.0;
 	public static final double GRID_INTERVAL = 40.0;
 	public static final double GRID_STROKE = 1.0;
 
-	private Color myColor;
 	private TurtleImage myTurtle;
 	private List<Line> myGridLines;
 	

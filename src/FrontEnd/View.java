@@ -22,6 +22,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.KeyEvent;
@@ -30,6 +31,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebEngineBuilder;
+import javafx.scene.web.WebView;
+import javafx.scene.web.WebViewBuilder;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -102,14 +108,16 @@ public class View implements Observer {
 
         myVBox.getChildren().add(myTurtleInformation.getVBox());
         
-        /*
-        Hyperlink myHyperlink = new Hyperlink("FrontEnd/help.html");
+        Hyperlink myHyperlink = new Hyperlink("Help!");
         TextFlow flow = new TextFlow(myHyperlink);
-        final WebView webView = WebViewBuilder.create().prefHeight(450).prefWidth(1000).build();
+        WebView webView = new WebView();
+        WebEngine engine = webView.getEngine();
         myHyperlink.setOnAction(event -> {
-            webView.getEngine().load("FrontEnd/help.html");
+            engine.load("http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands2.php");
+            Stage myHelpStage = new Stage();
+            myHelpStage.setScene(new Scene(webView));
+            myHelpStage.show();
         });
-        */
         
         Button newWindowButton = new Button(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.NEWWORKSPACE));
         newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -123,6 +131,8 @@ public class View implements Observer {
         languageSelectorHBox.getChildren().add(newWindowButton);
         languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
         languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
+        languageSelectorHBox.getChildren().add(flow);
+
         root.setTop(languageSelectorHBox);
         bottomHBox.getChildren().add(myCommandLine); 
         usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
