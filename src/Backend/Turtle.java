@@ -31,6 +31,10 @@ public class Turtle {
 		this.penDown = false;
 	}
 	
+	public boolean penStatus(){
+		return penDown;
+	}
+	
 	public void setAngle(double angle) {
 		this.myAngle = angle;
 	}
