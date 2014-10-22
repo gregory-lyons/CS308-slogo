@@ -1,4 +1,4 @@
-package Nodes.booleancommands;
+package Nodes.booleans;
 
 import Nodes.ConstantNode;
 import Nodes.Node;
