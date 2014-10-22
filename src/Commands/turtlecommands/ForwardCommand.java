@@ -19,7 +19,7 @@ public class ForwardCommand extends TurtleCommand {
 	public ForwardCommand(Turtle turtle, double distance) {
 		super(turtle);
 		angle = myTurtle.getAngle();
-		location = myTurtle.getLocation().get(myTurtle.getLocation().size());
+		//location = myTurtle.getLocation().get(myTurtle.getLocation().size());
 		xPos = location.getX();
 		yPos = location.getY();
 		xPos += xPos*Math.sin(angle);
