@@ -39,7 +39,7 @@ public class Parser {
 	 */
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
-		ResourceBundle myBundle = ResourceBundle
+	/*	ResourceBundle myBundle = ResourceBundle
 				.getBundle("resource.languages.Languages"); // make properties
 															// files for each
 															// different
@@ -50,7 +50,7 @@ public class Parser {
 		for (int i = 0; i < array.length; i++) {
 			String converted = myBundle.getString(array[i]);
 			convertedList[i] = converted;
-		}
+		}*/
 		return convertedList;
 	}
 

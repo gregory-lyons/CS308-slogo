@@ -1,16 +1,17 @@
 package FrontEnd;
 
-import Pen.Pen;
+import java.util.Observable;
+import java.util.Observer;
+
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
 import Backend.Model;
 import Backend.SceneUpdater;
 
-public class Controller {
+public class Controller implements Observer {
 	
 	View myView;
 	Model myModel;
-	Pen myPen;
 	TurtleWindow myTurtleWindow;
 	TurtleInformation myTurtleInformation;
 
@@ -21,8 +22,8 @@ public class Controller {
 		myTurtleInformation = myView.getTurtleInfo();
 	}
 	
-	public void executeCommand(String s, boolean penState){
-		SceneUpdater u = myModel.parse(s, penState);
+	public void executeCommand(String s){
+		SceneUpdater u = myModel.parse(s, true);
 		interpret(u);
 	}
 	
@@ -34,7 +35,12 @@ public class Controller {
         u.getVariables();
     	myTurtleWindow.update(u.getLocation(), u.getAngle(), u.penIsDown());
     	myTurtleInformation.update(u.getLocation(), u.getAngle());
-    	//myPen.update(u.penIsDown());
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		executeCommand((String)arg);
+		
 	}
 
 }
