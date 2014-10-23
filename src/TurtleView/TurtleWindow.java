@@ -47,12 +47,13 @@ public class TurtleWindow extends Pane {
 		allTurtles = new ArrayList<Turtle>();
 		activeTurtles = new ArrayList<Turtle>();
 		activeTurtles.add(new Turtle(new Point2D(ORIGIN_X, ORIGIN_Y), 0));
+		//TODO this is hardcoded
+		activeTurtles.add(new Turtle(new Point2D(400, 200), 0));
 		allTurtles.addAll(activeTurtles);
-		System.out.println(allTurtles.size());
 		myGridLines = new ArrayList<Line>();
 		activeTurtles.get(0).changeImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		this.getChildren().add(activeTurtles.get(0));
+		this.getChildren().addAll(allTurtles);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
