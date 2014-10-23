@@ -1,6 +1,7 @@
 import Backend.Model;
 import FrontEnd.Controller;
 import FrontEnd.View;
+import FrontEnd.Workspace;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

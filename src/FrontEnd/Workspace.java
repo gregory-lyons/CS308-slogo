@@ -1,3 +1,4 @@
+package FrontEnd;
 import javafx.stage.Stage;
 import Backend.Model;
 import FrontEnd.Controller;

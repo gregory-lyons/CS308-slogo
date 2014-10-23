@@ -2,61 +2,86 @@ package Backend;
 
 import java.util.List;
 
+import Pen.Pen;
+import Pen.PenOptions;
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
-public class Turtle {
+public class Turtle extends ImageView{
 	
-	protected List<Point2D> myLocation;
+	public static final double DEFAULT_WIDTH = 25.0;
+	public static final double DEFAULT_HEIGHT = 25.0;
+	
+	protected Point2D myLocation;
+	protected List<Point2D> nextLocations;
 	protected double myAngle;
-	protected List<String> myVariables;
-	protected boolean penDown;
-	protected boolean noError;
-	protected String errorMessage;
+	protected Pen myPen;
+	protected PenOptions myPenOptions;
 	
-	public Turtle(List<Point2D> location, double angle, List<String> variables, boolean penDown, boolean noError, String errorMessage) {
-		myLocation = location;
-		myAngle = angle;
-		myVariables = variables;
-		this.penDown = penDown;
-		this.noError = noError;
-		this.errorMessage = errorMessage;
-		
+	public Turtle(Point2D location, double angle) {
+		super();
+		myPen = new Pen();
+		myPenOptions = new PenOptions(myPen);
+
+        this.move(location);
+		this.setRotate(angle);
+        this.setFitHeight(DEFAULT_WIDTH);
+        this.setFitWidth(DEFAULT_HEIGHT);
 	}
 	
 	public void setPenDown() {
-		this.penDown = true;
+		myPen.setPenDown();
 	}
 	
 	public void setPenUp() {
-		this.penDown = false;
+		myPen.setPenUp();
 	}
 	
 	public boolean penStatus(){
-		return penDown;
-	}
-	
-	public void setAngle(double angle) {
-		this.myAngle = angle;
-	}
-	
-	public double getAngle() {
-		return myAngle;
+		return myPen.isDown();
 	}
 	
 	public Point2D getLocation() {
-		return myLocation.get(myLocation.size());
+		return myLocation;
 	}
-
-	public void setLocation(Point2D location){
-		myLocation.add(location);
+	
+	public void addLocation(Point2D location){
+		nextLocations.add(location);
 	}
 	
 	public Point2D nextLocation(double distance, double angle){
-		double x = getLocation().getX();
-		double y = getLocation().getY();
+		double x = myLocation.getX();
+		double y = myLocation.getY();
 		double rotation = myAngle = angle;
 		x += distance*Math.sin(rotation);
 		y += distance*Math.cos(rotation);
 		return new Point2D(x,y);
+	}
+	
+	public List<Point2D> getNextLocations() {
+		return nextLocations;
+	}
+    
+    public void move(Point2D point){
+    	this.setX(point.getX()-this.getFitWidth()/2);
+    	this.setY(point.getY()-this.getFitHeight()/2);
+    	myLocation = new Point2D(this.getX(), this.getY());
+    }
+    
+    public VBox getPenOptions(){
+    	return myPenOptions;
+    }
+    
+    public void changeImage(String s){
+		String fileName = "images/" + s + ".png";
+		try{
+			Image newImage = new Image(getClass().getResourceAsStream(fileName));
+			this.setImage(newImage);
+		}
+		catch(NullPointerException npe){	
+		}
+
 	}
 }

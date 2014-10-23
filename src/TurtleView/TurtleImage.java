@@ -29,7 +29,7 @@ public class TurtleImage extends ImageView {
 	private PenOptions myPenOptions;
 	private List<Point2D> myPoints;
     
-    public TurtleImage(double x, double y) {
+    public TurtleImage(double x, double y, double angle) {
         super();
         this.move(DEFAULT_X, DEFAULT_Y);
         this.setFitHeight(DEFAULT_WIDTH);
