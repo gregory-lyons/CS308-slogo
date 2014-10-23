@@ -14,7 +14,7 @@ public class BackNode extends CommandNode{
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();
-		myTurtle.setLocation(myTurtle.nextLocation(printValue, 180));
+		myTurtle.addLocation(myTurtle.nextLocation(printValue, 180));
 		return left;
 	}
 

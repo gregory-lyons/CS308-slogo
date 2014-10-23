@@ -14,7 +14,7 @@ public class ForwardNode extends CommandNode {
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode) left).returnData();
-		myTurtle.setLocation(myTurtle.nextLocation(printValue, 0));
+		myTurtle.addLocation(myTurtle.nextLocation(printValue, 0));
 		return left;
 	}
 
