@@ -1,26 +1,12 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
-import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class HeadingNode extends CommandNode{
-
-	public HeadingNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
+public class HeadingNode extends CommandNode {
 
 	@Override
 	public Node update() {
-		printValue = myTurtle.getAngle();
-		return new ConstantNode(printValue);
+		printValue = myTurtle.getRotate();
+		return super.update();
 	}
-
-	@Override
-	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
 }

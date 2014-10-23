@@ -7,6 +7,7 @@ public abstract class BooleanNode extends Node{
 
 	protected Node left;
 	protected Node right;
+	protected int numSides;
 	
 	
 	public boolean noMoreChildren() {

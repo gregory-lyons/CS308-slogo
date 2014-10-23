@@ -95,7 +95,7 @@ public class Turtle extends ImageView{
 		}
 
 	}
-
+	
 	public void hide(){
 		this.setOpacity(0);
 	}
@@ -106,9 +106,18 @@ public class Turtle extends ImageView{
 
 	public Polyline moveAndDrawPath() {
 		List<Point2D> points = new ArrayList<Point2D>();
-		points.add(myPoints)
-		myPoints = pointList;
-		move(myPoints.get(myPoints.size()-1));
-		return myPen.drawLines(myPoints);
+		points.add(myLocation);
+		points.addAll(nextLocations);
+		move(points.get(points.size()-1));
+		return myPen.drawLines(points);
 	}
+    
+    public double getXCord(){
+    	return getLocation().getX();
+    }
+    
+    public double getYCord(){
+    	return getLocation().getY();
+    }
+
 }

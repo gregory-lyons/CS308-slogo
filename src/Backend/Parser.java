@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Collections;
 
 import Nodes.*;
+import Nodes.turtlecommands.CommandNode;
 import Commands.Command;
 
 /**
@@ -24,7 +25,7 @@ public class Parser {
 	private String[] splitWords;
 	private Queue<Node> nodeList;
 	private Turtle myTurtle;
-	
+
 	public Parser(String input, Turtle turtle) {
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
@@ -41,8 +42,8 @@ public class Parser {
 	 */
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
-	/*	ResourceBundle myBundle = ResourceBundle
-				.getBundle("resource.languages.Languages"); // make properties
+		ResourceBundle myBundle = ResourceBundle
+				.getBundle("resource.languages.English"); // make properties
 															// files for each
 															// different
 															// language, figure
@@ -50,9 +51,10 @@ public class Parser {
 															// differentiate
 															// between languages
 		for (int i = 0; i < array.length; i++) {
+			array[i] = array[i].toLowerCase();
 			String converted = myBundle.getString(array[i]);
 			convertedList[i] = converted;
-		}*/
+		}
 		return convertedList;
 	}
 
@@ -61,6 +63,9 @@ public class Parser {
 			Node command = null;
 			try {
 				command = (Node) Class.forName(s).newInstance();
+				if (command instanceof CommandNode) {
+					((CommandNode) command).addTurtle(myTurtle);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
