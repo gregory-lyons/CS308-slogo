@@ -16,13 +16,13 @@ public class SetXYNode extends CommandNode {
 	}
 
 	public void addChildren(Node newNode) {
-		if (left == null)
-			super.addChildren(newNode);
-		else {
+		if (left != null) {
 			newNode.setParent(this);
 			myChildren.add(newNode);
 			right = newNode;
+			return;
 		}
+		super.addChildren(newNode);
 	}
 
 	@Override
