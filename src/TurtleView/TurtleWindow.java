@@ -8,12 +8,15 @@ import javafx.event.EventHandler;
 import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import Pen.Pen;
+import Pen.PenOptions;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
@@ -42,22 +45,45 @@ public class TurtleWindow extends Pane {
 	private List<Turtle> allTurtles;
 	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
+	private int numTurtles;
 
-	public TurtleWindow() {
+	public TurtleWindow(PenOptions penBox) {
+		numTurtles = 2;
 		allTurtles = new ArrayList<Turtle>();
 		activeTurtles = new ArrayList<Turtle>();
-		activeTurtles.add(new Turtle(new Point2D(ORIGIN_X, ORIGIN_Y), 0));
-		//TODO this is hardcoded
-		activeTurtles.add(new Turtle(new Point2D(400, 200), 0));
-		allTurtles.addAll(activeTurtles);
+		for (int i = 0; i<numTurtles; i++){
+			makeTurtle(penBox);
+		}
 		myGridLines = new ArrayList<Line>();
-		activeTurtles.get(0).changeImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		this.getChildren().addAll(allTurtles);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
+	private Turtle makeTurtle(PenOptions penBox){
+		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
+		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE);
+		allTurtles.add(newTurtle);
+		newTurtle.setOnMouseClicked(event -> click(newTurtle, penBox));
+		this.getChildren().addAll(newTurtle, newTurtle.getRing());
+		newTurtle.toFront();
+		return newTurtle;
+	}
+	
+	private void click(Turtle t, PenOptions penBox){
+		if (!activeTurtles.contains(t)) {
+			activeTurtles.add(t);
+			t.showRing();
+			penBox.changePen(t.getPen());
+		}
+		else {
+			activeTurtles.remove(t);
+			t.hideRing();
+			penBox.changePen(new Pen());
+		}
+
+	}
+	
 	public void update(List<Turtle> updates) {
 		for (Turtle t: updates){
 			this.getChildren().add(t.moveAndDrawPath());

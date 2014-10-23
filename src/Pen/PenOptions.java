@@ -52,5 +52,9 @@ public class PenOptions extends VBox {
 		if (myDownBox.isSelected()) myPen.setPenDown();
 		else myPen.setPenUp();
 	}
+	
+	public void changePen(Pen p){
+		myPen = p;
+	}
 
 }

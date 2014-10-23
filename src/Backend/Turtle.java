@@ -5,6 +5,7 @@ import java.util.List;
 
 import Pen.Pen;
 import Pen.PenOptions;
+import TurtleView.ActiveRing;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -18,21 +19,26 @@ public class Turtle extends ImageView{
 	public static final double DEFAULT_HEIGHT = 25.0;
 	public static final String DEFAULT_IMAGE = "turtle1";
 
-	protected Point2D myLocation;
-	protected List<Point2D> nextLocations;
-	protected double myAngle;
-	protected Pen myPen;
-	protected PenOptions myPenOptions;
+	private Point2D myLocation;
+	private List<Point2D> nextLocations;
+	private double myAngle;
+	private Pen myPen;
+	private PenOptions myPenOptions;
+	private ActiveRing myRing;
+	
 
 	public Turtle(Point2D location, double angle) {
 		super();
 		myPen = new Pen();
+
 		myPenOptions = new PenOptions(myPen);
 		changeImage(DEFAULT_IMAGE);
-		this.move(location);
 		this.setRotate(angle);
 		this.setFitHeight(DEFAULT_WIDTH);
 		this.setFitWidth(DEFAULT_HEIGHT);
+		this.move(location);
+		myRing = new ActiveRing(myLocation.getX(), myLocation.getY(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		this.hideRing();
 	}
 
 	public void setPenDown() {
@@ -79,10 +85,14 @@ public class Turtle extends ImageView{
 	public void move(Point2D point){
 		this.setX(point.getX()-this.getFitWidth()/2);
 		this.setY(point.getY()-this.getFitHeight()/2);
-		myLocation = new Point2D(this.getX(), this.getY());
+		myLocation = point;
+	}
+	
+	public Pen getPen(){
+		return myPen;
 	}
 
-	public VBox getPenOptions(){
+	public PenOptions getPenOptions(){
 		return myPenOptions;
 	}
 
@@ -119,6 +129,18 @@ public class Turtle extends ImageView{
     
     public double getYCord(){
     	return getLocation().getY();
+    }
+    
+    public void showRing(){
+    	myRing.setOpacity(1);
+    }
+    
+    public void hideRing(){
+    	myRing.setOpacity(0);
+    }
+    
+    public ActiveRing getRing(){
+    	return myRing;
     }
 
 }
