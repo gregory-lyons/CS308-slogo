@@ -1,6 +1,5 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
@@ -10,13 +9,7 @@ public class BackNode extends CommandNode{
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();
 		myTurtle.addLocation(myTurtle.nextLocation(printValue, 180));
-		return left;
-	}
-
-	@Override
-	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
-		left = newNode;
+		return super.update();
 	}
 
 	@Override

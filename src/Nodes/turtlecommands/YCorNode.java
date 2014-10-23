@@ -1,20 +1,11 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
-import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class YCorNode extends CommandNode{
+public class YCorNode extends CommandNode {
 	@Override
 	public Node update() {
 		printValue = myTurtle.getYCord();
-		return new ConstantNode(printValue);
+		return super.update();
 	}
-
-	@Override
-	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
 }

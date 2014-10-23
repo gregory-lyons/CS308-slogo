@@ -13,7 +13,7 @@ public abstract class Node {
 
 	public abstract boolean noMoreChildren();
 	
-	private void setParent(Node node){
+	public void setParent(Node node){
 		parent = node;
 	}
 

@@ -1,7 +1,6 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
-import Nodes.*;
+import Nodes.Node;
 
 
 public class UpPenNode  extends CommandNode {
@@ -9,12 +8,7 @@ public class UpPenNode  extends CommandNode {
 	@Override
 	public Node update() {
 		myTurtle.setPenUp();
-		return new ConstantNode(0);
+		printValue = 0;
+		return super.update();
 	}
-
-	@Override
-	public boolean noMoreChildren() {
-		return true;
-	}
-
 }

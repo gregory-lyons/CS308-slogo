@@ -1,7 +1,6 @@
 package Nodes.turtlecommands;
 
 import javafx.geometry.Point2D;
-import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
@@ -13,15 +12,17 @@ public class SetXYNode extends CommandNode {
 				((ConstantNode) right).returnData());
 		printValue = nextPoint.distance(myTurtle.getLocation());
 		myTurtle.addLocation(nextPoint);
-		return new ConstantNode(printValue);
+		return super.update();
 	}
 
 	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
 		if (left == null)
-			left = newNode;
-		else
+			super.addChildren(newNode);
+		else {
+			newNode.setParent(this);
+			myChildren.add(newNode);
 			right = newNode;
+		}
 	}
 
 	@Override
