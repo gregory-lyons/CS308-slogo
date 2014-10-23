@@ -48,17 +48,17 @@ public class TurtleWindow extends Pane {
 		activeTurtles = new ArrayList<Turtle>();
 		activeTurtles.add(new Turtle(new Point2D(ORIGIN_X, ORIGIN_Y), 0));
 		allTurtles.addAll(activeTurtles);
+		System.out.println(allTurtles.size());
 		myGridLines = new ArrayList<Line>();
 		activeTurtles.get(0).changeImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		this.getChildren().addAll(allTurtles);
+		this.getChildren().add(activeTurtles.get(0));
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
 	public void update(List<Turtle> updates) {
 		for (Turtle t: updates){
-			//myPen.setPenDown(penDown);
 			this.getChildren().add(t.moveAndDrawPath());
 			t.setRotate(t.getAngle());
 		}

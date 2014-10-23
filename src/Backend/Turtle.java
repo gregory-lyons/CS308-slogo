@@ -16,6 +16,7 @@ public class Turtle extends ImageView{
 
 	public static final double DEFAULT_WIDTH = 25.0;
 	public static final double DEFAULT_HEIGHT = 25.0;
+	public static final String DEFAULT_IMAGE = "turtle1";
 
 	protected Point2D myLocation;
 	protected List<Point2D> nextLocations;
@@ -27,7 +28,7 @@ public class Turtle extends ImageView{
 		super();
 		myPen = new Pen();
 		myPenOptions = new PenOptions(myPen);
-
+		changeImage(DEFAULT_IMAGE);
 		this.move(location);
 		this.setRotate(angle);
 		this.setFitHeight(DEFAULT_WIDTH);
@@ -86,7 +87,7 @@ public class Turtle extends ImageView{
 	}
 
 	public void changeImage(String s){
-		String fileName = "images/" + s + ".png";
+		String fileName = "Images/" + s + ".png";
 		try{
 			Image newImage = new Image(getClass().getResourceAsStream(fileName));
 			this.setImage(newImage);
