@@ -19,5 +19,22 @@ public abstract class ConditionalNode extends Node {
 		else
 			right = newNode;
 	}
+	
+	@Override 
+	public Node update() {
+		
+		if (myChildren != null) {
+			for (Node n: myChildren) {
+				if (n.returnPrintValue() == 0) {
+					this.printValue = 0;
+					return super.update();
+				}
+				else {
+					this.printValue = 1;
+				}
+			}
+		}
+		return super.update();
+	}
 
 }
