@@ -16,26 +16,13 @@ public class TowardsNode extends CommandNode {
 	public Node update() {
 		Point2D turnPoint = new Point2D(((ConstantNode) left).returnData(),
 				((ConstantNode) right).returnData());
-		if (myTurtle.getLocation().getX() != turnPoint.getX()) {
-			double slope = (myTurtle.getLocation().getY() - turnPoint.getY())
-					/ (myTurtle.getLocation().getX() - turnPoint.getX());
-			double newAngle = Math.atan(slope);
-			if (slope != 0) {
-				if (slope > 0) {
-					if (turnPoint.getX() < myTurtle.getLocation().getX()) {
-						newAngle = newAngle + 180;
-					}
-				}
-				if (slope < 0) {
-					if (turnPoint.getX() > myTurtle.getLocation().getX()) {
-						newAngle = 360 - newAngle;
-					} else if (turnPoint.getX() < myTurtle.getLocation().getX()) {
-						newAngle = 180 - newAngle;
-					}
-				}
-			}
-		}
-		
+		double dx = turnPoint.getX() - myTurtle.getXCord();
+		double dy = turnPoint.getY() - myTurtle.getYCord();
+		double theta = Math.atan2(dx, dy);
+		theta = Math.toDegrees(theta);
+		printValue = theta - myTurtle.getRotate();
+		myTurtle.setRotate(theta);
+		return new ConstantNode(printValue);
 	}
 
 	public void addChildren(Node newNode) {

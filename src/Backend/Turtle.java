@@ -84,4 +84,12 @@ public class Turtle extends ImageView{
 		}
 
 	}
+    
+    public double getXCord(){
+    	return getLocation().getX();
+    }
+    
+    public double getYCord(){
+    	return getLocation().getY();
+    }
 }

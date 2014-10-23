@@ -14,8 +14,8 @@ public class SetHeadingNode extends CommandNode{
 	@Override
 	public Node update() {
 		double newAngle = ((ConstantNode)left).returnData();
-		printValue = Math.abs(newAngle-myTurtle.getAngle());
-		myTurtle.setAngle(newAngle);
+		printValue = newAngle-myTurtle.getRotate();
+		myTurtle.setRotate(newAngle);
 		return left;
 	}
 	

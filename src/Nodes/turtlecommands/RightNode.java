@@ -14,7 +14,7 @@ public class RightNode extends CommandNode{
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();
-		myTurtle.setAngle(myTurtle.getAngle() + printValue);
+		myTurtle.setRotate(myTurtle.getRotate() + printValue);
 		return left;
 	}
 	

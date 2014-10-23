@@ -13,7 +13,7 @@ public class HeadingNode extends CommandNode{
 
 	@Override
 	public Node update() {
-		printValue = myTurtle.getAngle();
+		printValue = myTurtle.getRotate();
 		return new ConstantNode(printValue);
 	}
 

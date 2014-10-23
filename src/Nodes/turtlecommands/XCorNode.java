@@ -13,7 +13,7 @@ public class XCorNode extends CommandNode{
 
 	@Override
 	public Node update() {
-		printValue = myTurtle.getLocation().getX();
+		printValue = myTurtle.getXCord();
 		return new ConstantNode(printValue);
 	}
 

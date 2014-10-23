@@ -16,7 +16,7 @@ public class HomeNode extends CommandNode{
 	public Node update() {
 		Point2D nextPoint = new Point2D(0,0);
 		printValue = nextPoint.distance(myTurtle.getLocation());
-		myTurtle.setLocation(nextPoint);
+		myTurtle.addLocation(nextPoint);
 		return new ConstantNode(printValue);
 	}
 
