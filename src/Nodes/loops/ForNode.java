@@ -10,7 +10,11 @@ public class ForNode extends LoopNode {
 	@Override
 	public Node update() {
 		
-
+		while (myIndex > 0) {
+			left.update();
+			myIndex--;
+		}
+		return super.update();
 		
 	}
 
