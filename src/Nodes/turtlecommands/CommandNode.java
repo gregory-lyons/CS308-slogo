@@ -9,14 +9,6 @@ public abstract class CommandNode extends Node {
 	protected Node left;
 	protected Node right;
 
-	@Override
-	public void addChildren(Node newNode) {
-		if (left == null) {
-			super.addChildren(newNode);
-			left = newNode;
-		}
-	}
-
 	public void addTurtle(Turtle newTurtle) {
 		myTurtle = newTurtle;
 	}
