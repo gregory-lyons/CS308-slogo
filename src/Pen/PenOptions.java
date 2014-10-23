@@ -38,7 +38,7 @@ public class PenOptions extends VBox {
 		HBox penDown = new HBox();
 		myDownBox = new CheckBox();
 		myDownBox.setSelected(true);
-		myDownBox.setOnAction(event -> myPen.setPenDown(myDownBox.isSelected()));
+		myDownBox.setOnAction(event -> updatePen());
 		penDown.getChildren().addAll(myDownBox, new Text(DefaultStrings.PENDOWN_LABEL));
 		
 		VBox lineType = new VBox();
@@ -46,6 +46,11 @@ public class PenOptions extends VBox {
 		myTypeBox.setOnAction(event -> myPen.changeType(myTypeBox.getType()));
 		lineType.getChildren().addAll(new Text(DefaultStrings.TYPEBOX_LABEL), myTypeBox);
 		this.getChildren().addAll(thickness, color, lineType, penDown);		
+	}
+	
+	private void updatePen(){
+		if (myDownBox.isSelected()) myPen.setPenDown();
+		else myPen.setPenUp();
 	}
 
 }

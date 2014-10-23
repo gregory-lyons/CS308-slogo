@@ -7,11 +7,6 @@ import Nodes.Node;
 
 public class TowardsNode extends CommandNode {
 
-	public TowardsNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		Point2D turnPoint = new Point2D(((ConstantNode) left).returnData(),

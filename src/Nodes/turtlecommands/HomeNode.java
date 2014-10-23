@@ -7,11 +7,6 @@ import Nodes.Node;
 
 public class HomeNode extends CommandNode{
 
-	public HomeNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		Point2D nextPoint = new Point2D(0,0);

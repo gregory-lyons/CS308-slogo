@@ -6,11 +6,6 @@ import Nodes.Node;
 
 public class HeadingNode extends CommandNode{
 
-	public HeadingNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		printValue = myTurtle.getRotate();

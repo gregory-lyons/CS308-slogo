@@ -10,15 +10,14 @@ public abstract class CommandNode extends Node{
 	protected Node left;
 	protected Node right;
 	
-	public CommandNode(Turtle turtle) {
-		myTurtle = turtle;
-		// TODO Auto-generated constructor stub
-	}
-	
 	@Override
 	public void addChildren(Node newNode) {
 		super.addChildren(newNode);
 		left = newNode;
+	}
+	
+	public void addTurtle(Turtle newTurtle){
+		myTurtle = newTurtle;
 	}
 	
 }

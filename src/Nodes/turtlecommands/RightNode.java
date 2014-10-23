@@ -6,11 +6,6 @@ import Nodes.Node;
 
 public class RightNode extends CommandNode{
 
-	public RightNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();

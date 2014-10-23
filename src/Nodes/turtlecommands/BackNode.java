@@ -5,11 +5,6 @@ import Nodes.ConstantNode;
 import Nodes.Node;
 
 public class BackNode extends CommandNode{
-
-	public BackNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
 	
 	@Override
 	public Node update() {

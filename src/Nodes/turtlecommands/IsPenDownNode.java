@@ -6,11 +6,6 @@ import Nodes.Node;
 
 public class IsPenDownNode extends CommandNode{
 
-	public IsPenDownNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		// TODO Auto-generated method stub

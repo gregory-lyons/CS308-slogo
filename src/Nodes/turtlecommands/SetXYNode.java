@@ -7,11 +7,6 @@ import Nodes.Node;
 
 public class SetXYNode extends CommandNode {
 
-	public SetXYNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		Point2D nextPoint = new Point2D(((ConstantNode) left).returnData(),

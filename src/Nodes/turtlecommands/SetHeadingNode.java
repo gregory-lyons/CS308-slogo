@@ -6,11 +6,6 @@ import Nodes.Node;
 
 public class SetHeadingNode extends CommandNode{
 
-	public SetHeadingNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		double newAngle = ((ConstantNode)left).returnData();

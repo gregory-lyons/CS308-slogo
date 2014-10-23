@@ -5,12 +5,6 @@ import Nodes.ConstantNode;
 import Nodes.Node;
 
 public class YCorNode extends CommandNode{
-
-	public YCorNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		printValue = myTurtle.getYCord();

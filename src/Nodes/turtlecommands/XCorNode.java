@@ -6,11 +6,6 @@ import Nodes.Node;
 
 public class XCorNode extends CommandNode{
 
-	public XCorNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Node update() {
 		printValue = myTurtle.getXCord();
