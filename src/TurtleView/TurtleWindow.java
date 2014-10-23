@@ -2,8 +2,10 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import Pen.Pen;
 import javafx.geometry.Point2D;
@@ -26,6 +28,7 @@ public class TurtleWindow extends Pane {
 
 	public static final double ORIGIN_X = 200.0;
 	public static final double ORIGIN_Y = 100.0;
+	public static final double DEFAULT_ANGLE = 0;
 	public static final Color DEFAULT_PEN = Color.BLACK;
 	public static final String DEFAULT_BACKGROUND = DefaultStrings.BACKGROUND_COLOR_DEFAULTS.get(0);
 	public static final String DEFAULT_IMAGE = "turtle1";
@@ -36,14 +39,14 @@ public class TurtleWindow extends Pane {
 
 
 	private Color myColor;
-	private List<TurtleImage> allTurtles;
-	private List<TurtleImage> activeTurtles;
+	private List<Turtle> allTurtles;
+	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
 
 	public TurtleWindow() {
-		allTurtles = new ArrayList<TurtleImage>();
-		activeTurtles = new ArrayList<TurtleImage>();
-		activeTurtles.add(new TurtleImage(ORIGIN_X, ORIGIN_Y));
+		allTurtles = new ArrayList<Turtle>();
+		activeTurtles = new ArrayList<Turtle>();
+		activeTurtles.add(new Turtle(new Point2D(ORIGIN_X, ORIGIN_Y), 0));
 		allTurtles.addAll(activeTurtles);
 		myGridLines = new ArrayList<Line>();
 		activeTurtles.get(0).changeImage(DEFAULT_IMAGE);
@@ -53,13 +56,13 @@ public class TurtleWindow extends Pane {
 		makeGrid();
 	}
 
-	public void update(List<Point2D> myList, double angle, boolean penDown) {
-		for (TurtleImage t: activeTurtles){
+	public void update(List<Turtle> updates) {
+		for (Turtle t: updates){
 			//myPen.setPenDown(penDown);
-			this.getChildren().add(t.moveAndDrawPath(myList));
-			t.setRotate(t.getRotate()+angle);
+			this.getChildren().add(t.moveAndDrawPath());
+			t.setRotate(t.getAngle());
 		}
-		for (TurtleImage t: allTurtles) 
+		for (Turtle t: allTurtles) 
 			t.toFront();
 	}
 
@@ -67,7 +70,7 @@ public class TurtleWindow extends Pane {
 		this.setStyle("-fx-background-color: " + color + ";");
 	}
 
-	public List<TurtleImage> getActiveTurtles(){
+	public List<Turtle> getActiveTurtles(){
 		return activeTurtles;
 
 	}

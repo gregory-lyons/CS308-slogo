@@ -8,6 +8,7 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import Backend.SceneUpdater;
+import Backend.Turtle;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
@@ -82,7 +83,7 @@ public class View {
 	private HistoryBox myHistoryBox;
 	private TurtleWindow myTurtleWindow;
 	private ArrowKeyHandler myArrowHandler;
-	private List<TurtleImage> myActives;
+	private List<Turtle> myActives;
 
 	private CommandFactory myCommandFactory;    
 	private SuperCommand myEnterCommand;

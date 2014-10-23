@@ -43,6 +43,14 @@ public class SceneUpdater {
         return myUserVariables;
     }
     
+    public List<Turtle> getTurtles(){
+    	return turtles;
+    }
+    
+    public List<Double> getReturnValues(){
+    	return returnValues;
+    }
+    
     public boolean isNoError() {
         return noError;
     }
