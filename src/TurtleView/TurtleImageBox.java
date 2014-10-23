@@ -24,7 +24,7 @@ public class TurtleImageBox extends ComboBox<String> {
 		        || s.equals(DefaultStrings.TURTLE_IMAGE_2) 
 		        || s.equals(DefaultStrings.TURTLE_IMAGE_3)) {
 		          System.out.println(s);
-		          tw.changeTurtleImage(s);
+		          //tw.changeTurtleImage(s);
 		}
 		// TODO Insert method here like what I added so that new images can be loaded
 		else {
