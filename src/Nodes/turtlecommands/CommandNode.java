@@ -17,11 +17,6 @@ public abstract class CommandNode extends Node {
 		}
 	}
 
-	@Override
-	public boolean noMoreChildren() {
-		return true;
-	}
-
 	public void addTurtle(Turtle newTurtle) {
 		myTurtle = newTurtle;
 	}

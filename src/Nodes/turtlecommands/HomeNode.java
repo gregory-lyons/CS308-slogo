@@ -3,7 +3,7 @@ package Nodes.turtlecommands;
 import javafx.geometry.Point2D;
 import Nodes.Node;
 
-public class HomeNode extends CommandNode {
+public class HomeNode extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {

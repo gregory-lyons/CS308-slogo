@@ -2,7 +2,7 @@ package Nodes.turtlecommands;
 
 import Nodes.Node;
 
-public class DownPenNode extends CommandNode {
+public class DownPenNode extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {

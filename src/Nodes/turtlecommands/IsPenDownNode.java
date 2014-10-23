@@ -2,7 +2,7 @@ package Nodes.turtlecommands;
 
 import Nodes.Node;
 
-public class IsPenDownNode extends CommandNode{
+public class IsPenDownNode extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {

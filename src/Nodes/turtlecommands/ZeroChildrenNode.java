@@ -1,5 +1,13 @@
 package Nodes.turtlecommands;
 
-public class ZeroChildrenNode extends CommandNode{
+public abstract class ZeroChildrenNode extends CommandNode{
 
+	@Override
+	public boolean noMoreChildren() {
+		return true;
+	}
+	
+	
+	
+	
 }

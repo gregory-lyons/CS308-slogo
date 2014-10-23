@@ -6,12 +6,9 @@ import Nodes.Node;
 public abstract class BooleanNode extends Node{
 
 	protected Node left;
-	protected Node right;
-	protected int numSides;
-	
+	protected Node right;	
 	
 	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
 		return (right instanceof ConstantNode);
 	}
 	

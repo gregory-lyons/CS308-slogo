@@ -3,7 +3,7 @@ package Nodes.turtlecommands;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class SetHeadingNode extends CommandNode{
+public class SetHeadingNode extends OneChildNode{
 
 	@Override
 	public Node update() {
@@ -12,10 +12,4 @@ public class SetHeadingNode extends CommandNode{
 		myTurtle.setRotate(newAngle);
 		return super.update();
 	}
-
-	@Override
-	public boolean noMoreChildren() {
-		return(left instanceof ConstantNode);
-	}
-
 }

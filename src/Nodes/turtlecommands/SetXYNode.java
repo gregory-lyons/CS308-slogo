@@ -4,7 +4,7 @@ import javafx.geometry.Point2D;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class SetXYNode extends CommandNode {
+public class SetXYNode extends TwoChildNode {
 
 	@Override
 	public Node update() {
@@ -14,21 +14,4 @@ public class SetXYNode extends CommandNode {
 		myTurtle.addLocation(nextPoint);
 		return super.update();
 	}
-
-	public void addChildren(Node newNode) {
-		if (left != null) {
-			newNode.setParent(this);
-			myChildren.add(newNode);
-			right = newNode;
-			return;
-		}
-		super.addChildren(newNode);
-	}
-
-	@Override
-	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
-		return (right instanceof ConstantNode);
-	}
-
 }

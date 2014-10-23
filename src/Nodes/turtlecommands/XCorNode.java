@@ -2,7 +2,7 @@ package Nodes.turtlecommands;
 
 import Nodes.Node;
 
-public class XCorNode extends CommandNode {
+public class XCorNode extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {
