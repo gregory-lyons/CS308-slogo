@@ -17,9 +17,9 @@ public class AST {
 				current = nodes.poll();
 			}
 			if (current.noMoreChildren()) {
-				Node replace = current.update();
-				returnValues.add(current.returnPrintValue());
-				current = current.getParent();
+				Node replace = current.update(); //set current node to ConstantNode so it can be used
+				returnValues.add(current.returnPrintValue()); 
+				current = current.getParent(); 
 				current.addChildren(replace);
 			} else {
 				Node newNode = nodes.poll();
