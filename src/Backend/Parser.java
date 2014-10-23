@@ -23,10 +23,12 @@ public class Parser {
 	private String myInput;
 	private String[] splitWords;
 	private Queue<Node> nodeList;
-
-	public Parser(String input) {
+	private Turtle myTurtle;
+	
+	public Parser(String input, Turtle turtle) {
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
+		myTurtle = turtle;
 
 	}
 

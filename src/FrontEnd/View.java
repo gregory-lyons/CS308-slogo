@@ -37,9 +37,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebEngineBuilder;
 import javafx.scene.web.WebView;
-import javafx.scene.web.WebViewBuilder;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 

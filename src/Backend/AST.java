@@ -1,5 +1,7 @@
 package Backend;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 import Nodes.Node;
@@ -8,13 +10,15 @@ public class AST {
 
 	private Node current;
 	
-	public void populateTree(Queue<Node> nodes) {
+	public List<Double> populateTree(Queue<Node> nodes) {
+		List<Double> returnValues = new ArrayList<Double>();
 		while (!nodes.isEmpty() || current != null) {
 			if (current == null) {
 				current = nodes.poll();
 			}
 			if (current.noMoreChildren()) {
 				Node replace = current.update();
+				returnValues.add(current.returnPrintValue());
 				current = current.getParent();
 				current.addChildren(replace);
 			} else {
@@ -23,6 +27,7 @@ public class AST {
 				current = newNode;
 			}
 		}
+		return returnValues;
 	}
 
 }
