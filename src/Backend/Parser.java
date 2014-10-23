@@ -1,16 +1,11 @@
 package Backend;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.Stack;
-import java.util.List;
-import java.util.Collections;
 
-import Nodes.*;
+import Nodes.Node;
 import Nodes.turtlecommands.CommandNode;
-import Commands.Command;
 
 /**
  * @author: justincarrao. This class is the one that parses the string
@@ -43,13 +38,7 @@ public class Parser {
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
 		ResourceBundle myBundle = ResourceBundle
-				.getBundle("resource.languages.English"); // make properties
-															// files for each
-															// different
-															// language, figure
-															// out how to
-															// differentiate
-															// between languages
+				.getBundle("resources.languages/English");
 		for (int i = 0; i < array.length; i++) {
 			array[i] = array[i].toLowerCase();
 			String converted = myBundle.getString(array[i]);
