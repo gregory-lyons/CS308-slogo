@@ -1,5 +1,8 @@
 package Backend;
 
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.Stack;
@@ -20,12 +23,17 @@ public class Parser {
 	private String[] splitWords;
 	private Queue<Node> nodeList;
 	private Turtle myTurtle;
+	private Map<String, String> myMap;
 
+	
+	//change constructor to allow for the language to change the input to the resource bundle
 	public Parser(String input, Turtle turtle) {
+		myTurtle = turtle;
+		ResourceBundle myBundle = ResourceBundle
+				.getBundle("resources.languages/English");
+		myMap = convertResourceBundleToMap(myBundle);
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
-		myTurtle = turtle;
-
 	}
 
 	/**
@@ -37,14 +45,28 @@ public class Parser {
 	 */
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
-		ResourceBundle myBundle = ResourceBundle
-				.getBundle("resources.languages/English");
 		for (int i = 0; i < array.length; i++) {
 			array[i] = array[i].toLowerCase();
-			String converted = myBundle.getString(array[i]);
+			String converted = myMap.get(array[i]);
+			converted += "Node";
 			convertedList[i] = converted;
+			System.out.println(converted);
 		}
 		return convertedList;
+	}
+
+	private Map<String, String> convertResourceBundleToMap(
+			ResourceBundle resource) {
+		Map<String, String> map = new HashMap<String, String>();
+		Enumeration<String> keys = resource.getKeys();
+		while (keys.hasMoreElements()) {
+			String key = keys.nextElement();
+			String[] value = resource.getString(key).split(",");
+			for (int i = 0; i < value.length; i++) {
+				map.put(value[i], key);
+			}
+		}
+		return map;
 	}
 
 	public Queue<Node> getQueueOfNodes() {
