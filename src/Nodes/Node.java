@@ -26,4 +26,8 @@ public abstract class Node {
 		return parent;
 	}
 	
+	public double returnPrintValue(){
+		return printValue;
+	}
+	
 }
