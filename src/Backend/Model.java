@@ -27,18 +27,10 @@ public class Model {
 	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles) {
 		for (Turtle turtle : activeTurtles) {
 			myParser = new Parser(instruction, turtle);
-			tree.populateTree(myParser.getQueueOfNodes());
+			List<Double> printValues = tree.populateTree(myParser.getQueueOfNodes());
 		}
-		List<Point2D> list = new ArrayList<Point2D>();
-		list.add(new Point2D(200.0, 100.0));
-		list.add(new Point2D(100.0, 50.0));
-		list.add(new Point2D(500.0, 200.0));
-
-		double angle = 90.0;
-		Turtle turtle = new Turtle(list, angle, new ArrayList<String>(), true,
-				true, "Error");
-		SceneUpdater scene = new SceneUpdater(turtle);
-		return scene;
+		//SceneUpdater scene = new SceneUpdater(turtle);
+		//return scene;
 
 	}
 
