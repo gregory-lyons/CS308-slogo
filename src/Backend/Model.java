@@ -25,11 +25,12 @@ public class Model {
 	}
 
 	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles) {
+		List<Double> printValues = new ArrayList<Double>();
 		for (Turtle turtle : activeTurtles) {
 			myParser = new Parser(instruction, turtle);
-			List<Double> printValues = tree.populateTree(myParser.getQueueOfNodes());
+			printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
 		}
-		//SceneUpdater scene = new SceneUpdater(turtle);
+		return new SceneUpdater(activeTurtles,printValues);
 		//return scene;
 
 	}

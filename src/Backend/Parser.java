@@ -25,7 +25,7 @@ public class Parser {
 	private String[] splitWords;
 	private Queue<Node> nodeList;
 	private Turtle myTurtle;
-	
+
 	public Parser(String input, Turtle turtle) {
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
@@ -43,7 +43,7 @@ public class Parser {
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
 		ResourceBundle myBundle = ResourceBundle
-				.getBundle("resource.languages.Languages"); // make properties
+				.getBundle("resource.languages.English"); // make properties
 															// files for each
 															// different
 															// language, figure
@@ -63,7 +63,7 @@ public class Parser {
 			Node command = null;
 			try {
 				command = (Node) Class.forName(s).newInstance();
-				if(command instanceof CommandNode){
+				if (command instanceof CommandNode) {
 					((CommandNode) command).addTurtle(myTurtle);
 				}
 			} catch (Exception e) {
