@@ -50,7 +50,6 @@ public class Parser {
 			String converted = myMap.get(array[i]);
 			converted += "Node";
 			convertedList[i] = converted;
-			System.out.println(converted);
 		}
 		return convertedList;
 	}

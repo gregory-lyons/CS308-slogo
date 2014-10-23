@@ -7,8 +7,7 @@ public class IsPenDownNode extends ZeroChildrenNode {
 	@Override
 	public Node update() {
 		// TODO Auto-generated method stub
-		if(myTurtle.penStatus()) printValue = 1;
-		else printValue = 0;
+		printValue = (myTurtle.penStatus()) ? 1:0;
 		return super.update();
 	}
 
