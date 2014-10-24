@@ -11,7 +11,8 @@ import javafx.geometry.Point2D;
 
 public class Model {
 
-	public HashMap<String, Queue<Node>> userSaves;
+	public HashMap<HashMap<String[], String[]>, String> userFunctionSaves;
+	public HashMap<String, String[]> userFunctionSavesInner;
 	protected String myInput;
 	private Parser myParser;
 	private Turtle myTurtle;
@@ -38,17 +39,13 @@ public class Model {
 		return new SceneUpdater(activeTurtles,printValues);
 	}
 	
-	public void parseUserSave(String input) {
+	public Queue<Node> parseUserSave(String input) {
 		Parser newParser = new Parser(input, myTurtle);
-		Queue<Node> nodeQ = newParser.getQueueOfNodes();
-		Node firstWord = nodeQ.poll();
-		if (firstWord.getClass().equals("ToNode")) {
-			String functionName = nodeQ.poll().toString();
-			userSaves.put(functionName, nodeQ);
-		}
-		else if (firstWord.getClass().equals("MakeNode")) {
-			String varName = nodeQ.poll().toString();
-			userSaves.put(varName, nodeQ);
+		if (newParser.checkSaveType() == "ToNode") {
+			String[] functionBody = newParser.getFunctionBody();
+			String[] functionParams = newParser.getFunctionParams();
+			String functionName = newParser.getFunctionName();
+			userFunctionSaves.put(userFunctionSavesInner.put(functionName, functionParams), functionBody);
 		}
 	}
 	
