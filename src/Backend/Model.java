@@ -11,8 +11,7 @@ import javafx.geometry.Point2D;
 
 public class Model {
 
-	public HashMap<HashMap<String[], String[]>, String> userFunctionSaves;
-	public HashMap<String, String[]> userFunctionSavesInner;
+	public HashMap<String, ArrayList<String[]>> savedFunctions;
 	protected String myInput;
 	private Parser myParser;
 	private Turtle myTurtle;
@@ -39,18 +38,21 @@ public class Model {
 		return new SceneUpdater(activeTurtles,printValues);
 	}
 	
-	public Queue<Node> parseUserSave(String input) {
+	public void addSavedFunction(String input) {
 		Parser newParser = new Parser(input, myTurtle);
+		ArrayList<String[]> functionContent = new ArrayList<String[]>();
 		if (newParser.checkSaveType() == "ToNode") {
 			String[] functionBody = newParser.getFunctionBody();
 			String[] functionParams = newParser.getFunctionParams();
 			String functionName = newParser.getFunctionName();
-			userFunctionSaves.put(userFunctionSavesInner.put(functionName, functionParams), functionBody);
+			functionContent.add(functionParams);
+			functionContent.add(functionBody);
+			savedFunctions.put(functionName, functionContent);
 		}
 	}
 	
-	public HashMap<String, Queue<Node>> getSavedFile() {
-		return userSaves;
+	public HashMap<String, ArrayList<String[]>> getSavedFunctions() {
+		return savedFunctions;
 	}
 	
 
