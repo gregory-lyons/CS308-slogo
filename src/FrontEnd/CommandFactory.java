@@ -15,15 +15,13 @@ import FrontEndCommands.SuperCommand;
 
 public class CommandFactory {
     private CommandLine myCommandLine;
-    private HistoryBox myHistoryBox;
     private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
                                                                                 "Right", "Home", 
                                                                                 "ClearScreen", "SetPosition", 
                                                                                 "SetTowards"));
     
-    public CommandFactory(CommandLine c, HistoryBox h) {
+    public CommandFactory(CommandLine c) {
         myCommandLine = c;
-        myHistoryBox = h;
     }
     
     /**
@@ -36,10 +34,10 @@ public class CommandFactory {
      */
     public SuperCommand makeCommand(String language, String label){
         if (label.equals(DefaultStrings.ENTER)) {
-            return new EnterCommand(myCommandLine, myHistoryBox, label, language);
+            return new EnterCommand(myCommandLine, label, language);
         }
         else {
-            return new SuperCommand(myCommandLine, myHistoryBox, label, language);
+            return new SuperCommand(myCommandLine, label, language);
         }
     }
     

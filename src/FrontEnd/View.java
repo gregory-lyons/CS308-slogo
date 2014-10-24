@@ -74,13 +74,13 @@ public class View {
 	private HBox bottomHBox = new HBox();
 	private VBox myInnerVBox = new VBox();
 	private VBox centerVBox = new VBox();
-	private HBox penBox;
 	private HBox backgroundBox;
 	private HBox imageBox;
 	private HBox gridBox;
 
 	private CommandLine myCommandLine;
 	private HistoryBox myHistoryBox;
+	private Console myConsole;
 	private TurtleWindow myTurtleWindow;
 	private ArrowKeyHandler myArrowHandler;
 	private List<Turtle> myActives;
@@ -111,7 +111,7 @@ public class View {
 		dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		makeTextAreas();
-		myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
+		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
 		myTurtleWindow = new TurtleWindow(myPenBox);
 		myActives = myTurtleWindow.getActiveTurtles();
@@ -146,7 +146,6 @@ public class View {
 		languageSelectorHBox.getChildren().add(flow);
 
 		root.setTop(languageSelectorHBox);
-		bottomHBox.getChildren().add(myCommandLine); 
 		usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
 		usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
 		uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
@@ -172,7 +171,10 @@ public class View {
 		centerVBox.getChildren().add(myHistoryBox);
 		myInnerVBox.getChildren().add(myEnterCommand.getButton());
 		myInnerVBox.getChildren().add(makeClearButton());
-		bottomHBox.getChildren().add(1, myInnerVBox);       
+		
+		bottomHBox.getChildren().add(myCommandLine); 
+		bottomHBox.getChildren().add(myInnerVBox);   
+		bottomHBox.getChildren().add(myConsole);
 		root.setBottom(bottomHBox);
 
 		for (String button : myCommandFactory.getCommandButtons()) {
@@ -234,6 +236,8 @@ public class View {
 		myHistoryBox = new HistoryBox(dropdownCommandMenu, 
 				StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
 		myHistoryBox.setEditable(false);
+		
+		myConsole = new Console(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CONSOLEDEFAULT));
 	}
 
 	/**
@@ -294,6 +298,18 @@ public class View {
 
 	public GridCheckBox getMyGridCheckBox () {
 		return myGridCheckBox;
+	}
+	
+	public void addHistoryEntry(String instruction) {
+		myHistoryBox.addEntry(instruction);
+	}
+	
+	public void addConsoleEntries(List<Double> returnValues) {
+		for (double d: returnValues) {
+			myConsole.addEntry(String.valueOf(d));
+			System.out.println("added");
+		}
+		
 	}
 
 }

@@ -13,7 +13,7 @@ import javafx.scene.control.TextArea;
  * @author Rica
  *
  */
-public class HistoryBox extends TextArea implements Observer {
+public class HistoryBox extends TextArea {
     private static final Dimension SIZE = new Dimension(400, 600);
     private UserCommands myComboBox;
 
@@ -30,8 +30,7 @@ public class HistoryBox extends TextArea implements Observer {
         myComboBox = myCombo;
     }
 
-    @Override
-    public void update(Observable button, Object instruction) {
+    public void addEntry(String instruction) {
         this.appendText(instruction + "\n\n");
         myComboBox.addCommand(instruction);
     }

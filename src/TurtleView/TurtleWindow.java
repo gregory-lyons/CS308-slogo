@@ -40,19 +40,19 @@ public class TurtleWindow extends Pane {
 	public static final double GRID_INTERVAL = 40.0;
 	public static final double GRID_STROKE = 1.0;
 
-
-	private Color myColor;
 	private List<Turtle> allTurtles;
 	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
+	private PenOptions myPenBox;
 	private int numTurtles;
 
 	public TurtleWindow(PenOptions penBox) {
 		numTurtles = 2;
+		myPenBox = penBox;
 		allTurtles = new ArrayList<Turtle>();
 		activeTurtles = new ArrayList<Turtle>();
 		for (int i = 0; i<numTurtles; i++){
-			makeTurtle(penBox);
+			makeTurtle();
 		}
 		myGridLines = new ArrayList<Line>();
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -60,26 +60,26 @@ public class TurtleWindow extends Pane {
 		makeGrid();
 	}
 
-	private Turtle makeTurtle(PenOptions penBox){
+	private Turtle makeTurtle(){
 		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
 		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE);
 		allTurtles.add(newTurtle);
-		newTurtle.setOnMouseClicked(event -> click(newTurtle, penBox));
+		newTurtle.setOnMouseClicked(event -> click(newTurtle));
 		this.getChildren().addAll(newTurtle, newTurtle.getRing());
 		newTurtle.toFront();
 		return newTurtle;
 	}
 	
-	private void click(Turtle t, PenOptions penBox){
+	private void click(Turtle t){
 		if (!activeTurtles.contains(t)) {
 			activeTurtles.add(t);
 			t.showRing();
-			penBox.changePen(t.getPen());
+			myPenBox.changePen(t.getPen());
 		}
 		else {
 			activeTurtles.remove(t);
 			t.hideRing();
-			penBox.changePen(new Pen());
+			myPenBox.changePen(new Pen());
 		}
 
 	}

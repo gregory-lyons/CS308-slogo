@@ -24,6 +24,7 @@ public class SceneUpdater {
     public SceneUpdater(List<Turtle> activeTurtles, List<Double> printValues) {
     	turtles = activeTurtles;
     	returnValues = printValues;
+    	noError = true;
     }
     
     public List<String> getVariables() {

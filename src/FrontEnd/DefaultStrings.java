@@ -117,6 +117,7 @@ public class DefaultStrings {
     public static final String NEWWORKSPACE = "NewWorkspace";
     public static final String QUOTIENT = "Quotient";
     public static final String POWER = "Power";
-    public static final String BACKGROUNDCOLOR = "BackgroundColor";  
+    public static final String BACKGROUNDCOLOR = "BackgroundColor";
+	public static final String CONSOLEDEFAULT = "ConsoleDefault";  
        
 }

@@ -26,10 +26,10 @@ public class Controller implements Observer {
 	
 	public void executeCommand(String s, List<Turtle> actives){
 		SceneUpdater u = myModel.parse(s, actives);
-		interpret(u);
+		interpret(u, s);
 	}
 	
-	private void interpret(SceneUpdater u) {
+	private void interpret(SceneUpdater u, String s) {
 		if(!u.isNoError()) {
     	    myView.makeErrorDialog(u.getErrorMessage()).show();
     	    return;
@@ -37,6 +37,8 @@ public class Controller implements Observer {
         u.getVariables();
     	myTurtleWindow.update(u.getTurtles());
     	myTurtleInformation.update(u.getTurtles());
+    	myView.addConsoleEntries(u.getReturnValues());
+    	myView.addHistoryEntry(s);
 	}
 
 	@Override

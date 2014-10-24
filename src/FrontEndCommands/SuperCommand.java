@@ -3,7 +3,9 @@ package FrontEndCommands;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
+
 import FrontEnd.CommandLine;
+import FrontEnd.Console;
 import FrontEnd.DefaultStrings;
 import FrontEnd.HistoryBox;
 import FrontEnd.StringChooser;
@@ -27,10 +29,8 @@ public class SuperCommand extends Observable {
      * It also configures the Button properties and sets up the handler.
      * @param myHistory TODO
      */
-    public SuperCommand(CommandLine myLine, HistoryBox myHistory, String label, String language) {
+    public SuperCommand(CommandLine myLine, String label, String language) {
     	myButton = new Button();
-    	//this.addObserver(myLine);
-    	this.addObserver(myHistory);
     	
     	myCommandValues.put(DefaultStrings.BACKWARD, 5.0);
     	myCommandValues.put(DefaultStrings.FORWARD, 5.0);

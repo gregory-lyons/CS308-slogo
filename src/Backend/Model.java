@@ -31,7 +31,6 @@ public class Model {
 			printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
 		}
 		return new SceneUpdater(activeTurtles,printValues);
-		//return scene;
 
 	}
 
