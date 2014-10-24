@@ -60,7 +60,7 @@ public class TurtleWindow extends Pane {
 		makeGrid();
 	}
 
-	private Turtle makeTurtle(){
+	public Turtle makeTurtle(){
 		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
 		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE);
 		allTurtles.add(newTurtle);

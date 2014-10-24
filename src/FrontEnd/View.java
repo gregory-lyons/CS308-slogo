@@ -79,6 +79,7 @@ public class View {
 	private HBox gridBox;
 
 	private CommandLine myCommandLine;
+	private Button addTurtleButton;
 	private HistoryBox myHistoryBox;
 	private Console myConsole;
 	private TurtleWindow myTurtleWindow;
@@ -117,7 +118,8 @@ public class View {
 		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
-
+		makeTurtleButton();
+		
 		myVBox.getChildren().add(myTurtleInformation.getVBox());        
 		Hyperlink myHyperlink = new Hyperlink("Help!");
 
@@ -164,6 +166,7 @@ public class View {
 		gridBox.getChildren().addAll(myGridCheckBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
+		myVBox.getChildren().add(addTurtleButton);
 		myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
 		myVBox.getChildren().add(myPenBox);
 		myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
@@ -225,6 +228,13 @@ public class View {
 			}
 		});
 		return myClearButton;   
+	}
+	
+	private void makeTurtleButton(){
+		addTurtleButton = new Button();
+		addTurtleButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEBUTTON));
+    	addTurtleButton.setPrefSize(SIDEBAR_BUTTON_WIDTH, SHORT_BUTTON_HEIGHT);
+    	addTurtleButton.setOnAction(event -> myTurtleWindow.makeTurtle());
 	}
 
 	/**
