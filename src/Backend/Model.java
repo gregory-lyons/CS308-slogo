@@ -46,6 +46,10 @@ public class Model {
 			String functionName = nodeQ.poll().toString();
 			userSaves.put(functionName, nodeQ);
 		}
+		else if (firstWord.getClass().equals("MakeNode")) {
+			String varName = nodeQ.poll().toString();
+			userSaves.put(varName, nodeQ);
+		}
 	}
 	
 	public HashMap<String, Queue<Node>> getSavedFile() {
