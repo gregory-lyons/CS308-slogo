@@ -6,14 +6,15 @@ import java.util.List;
 import java.util.Queue;
 
 import Nodes.Node;
+import Nodes.ToNode;
 import javafx.geometry.Point2D;
 
 public class Model {
 
-	public HashMap<String, String> userSaves;
+	public HashMap<String, Queue<Node>> userSaves;
 	protected String myInput;
 	private Parser myParser;
-	private Turtle turtle;
+	private Turtle myTurtle;
 	private AST tree;
 
 	public Model() {
@@ -37,7 +38,17 @@ public class Model {
 		return new SceneUpdater(activeTurtles,printValues);
 	}
 	
-	public HashMap<String, String> getSavedFile() {
+	public void parseUserSave(String input) {
+		Parser newParser = new Parser(input, myTurtle);
+		Queue<Node> nodeQ = newParser.getQueueOfNodes();
+		Node firstWord = nodeQ.poll();
+		if (firstWord.getClass().equals("ToNode")) {
+			String functionName = nodeQ.poll().toString();
+			userSaves.put(functionName, nodeQ);
+		}
+	}
+	
+	public HashMap<String, Queue<Node>> getSavedFile() {
 		return userSaves;
 	}
 	
