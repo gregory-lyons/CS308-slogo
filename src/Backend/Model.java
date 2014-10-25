@@ -15,9 +15,10 @@ public class Model {
 	private Parser myParser;
 	private Turtle myTurtle;
 	private AST tree;
-	public ArrayList<SavedData> userSaves;
+//	public ArrayList<SavedData> userSaves;
 
 	public Model() {
+		tree = new AST();
 
 	}
 
@@ -38,28 +39,28 @@ public class Model {
 		return new SceneUpdater(activeTurtles,printValues);
 	}
 	
-	public void addSavedData(String input) {
-		Parser newParser = new Parser(input, myTurtle);
-		if (newParser.checkSaveType() == "ToNode") {
-			String[] functionBody = newParser.getFunctionBody();
-			String[] functionParams = newParser.getFunctionParams();
-			String functionName = newParser.getFunctionName();
-			SavedFunction fcn = new SavedFunction(functionName, functionParams, functionBody);
-			userSaves.add(fcn);
-		}
-		else if (newParser.checkSaveType() == "MakeNode") {
-			String varName = newParser.getVariableName();
-			double varValue = newParser.getVariableValue();
-			SavedVariable var = new SavedVariable(varName, varValue);
-			userSaves.add(var);
-		}
-	}
+//	public void addSavedData(String input) {
+//		Parser newParser = new Parser(input, myTurtle);
+//		if (newParser.checkSaveType() == "ToNode") {
+//			String[] functionBody = newParser.getFunctionBody();
+//			String[] functionParams = newParser.getFunctionParams();
+//			String functionName = newParser.getFunctionName();
+//			SavedFunction fcn = new SavedFunction(functionName, functionParams, functionBody);
+//			userSaves.add(fcn);
+//		}
+//		else if (newParser.checkSaveType() == "MakeNode") {
+//			String varName = newParser.getVariableName();
+//			double varValue = newParser.getVariableValue();
+//			SavedVariable var = new SavedVariable(varName, varValue);
+//			userSaves.add(var);
+//		}
+//	}
 	
 
 	
-	public HashMap<String, ArrayList<String[]>> getSavedFunctions() {
-		return savedFunctions;
-	}
-	
+//	public HashMap<String, ArrayList<String[]>> getSavedFunctions() {
+//		return savedFunctions;
+//	}
+//	
 
 }

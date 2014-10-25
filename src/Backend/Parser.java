@@ -1,5 +1,6 @@
 package Backend;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Stack;
 
 import Nodes.Node;
 import Nodes.turtlecommands.CommandNode;
+import Nodes.turtlecommands.ForwardNode;
 
 /**
  * @author: justincarrao. This class is the one that parses the string
@@ -22,12 +24,13 @@ public class Parser {
 
 	private String myInput;
 	private String[] splitWords;
-	private Queue<Node> nodeList;
 	private Turtle myTurtle;
 	private Map<String, String> myMap;
+	private static final String[] Packages = { "", "booleans.", "loops.",
+			"math.", "turtlecommands." };
 
-	
-	//change constructor to allow for the language to change the input to the resource bundle
+	// change constructor to allow for the language to change the input to the
+	// resource bundle
 	public Parser(String input, Turtle turtle) {
 		myTurtle = turtle;
 		ResourceBundle myBundle = ResourceBundle
@@ -54,41 +57,40 @@ public class Parser {
 		}
 		return convertedList;
 	}
-	
+
 	public String checkSaveType() {
 		if (splitWords[0] == "To") {
 			return "ToNode";
 		}
 		if (splitWords[0] == "Make") {
 			return "MakeNode";
-		}
-		else {
+		} else {
 			return "Invalid";
 		}
 	}
-	
+
 	public String getVariableName() {
 		return splitWords[1];
 	}
-	
+
 	public double getVariableValue() {
-		return Double.parseDouble(splitWords[2]); //this is the variable value
+		return Double.parseDouble(splitWords[2]); // this is the variable value
 	}
-	
-	public String[] getFunctionBody() { 
+
+	public String[] getFunctionBody() {
 		for (int i = 0; i < splitWords.length; i++) {
 			int count = 0;
 			if (splitWords[i] == "[" && count != 1) {
 				count++;
-			}
-			else if (splitWords[i] == "[" && count == 1) {
-				String[] newArray = Arrays.copyOfRange(splitWords, i, splitWords.length);
+			} else if (splitWords[i] == "[" && count == 1) {
+				String[] newArray = Arrays.copyOfRange(splitWords, i,
+						splitWords.length);
 				return newArray;
 			}
 		}
 		return splitWords;
 	}
-	
+
 	public String[] getFunctionParams() {
 		int start = 0;
 		int stop = 0;
@@ -107,7 +109,7 @@ public class Parser {
 		String[] params = Arrays.copyOfRange(splitWords, start, stop);
 		return params;
 	}
-	
+
 	public String getFunctionName() {
 		return splitWords[1];
 	}
@@ -127,16 +129,19 @@ public class Parser {
 	}
 
 	public Queue<Node> getQueueOfNodes() {
+		Queue<Node> nodeList = new ArrayDeque<Node>();
 		for (String s : splitWords) {
+			System.out.println(s);
 			Node command = null;
-			try {
-				command = (Node) Class.forName(s).newInstance();
-				if (command instanceof CommandNode) {
-					((CommandNode) command).addTurtle(myTurtle);
+			for (int j = 0; j < Packages.length; j++) {
+				try {
+					String stringToCheck = "Nodes." + Packages[j] + s;
+					command = (Node) Class.forName(stringToCheck).newInstance();
+					if (command instanceof CommandNode) {
+						((CommandNode) command).addTurtle(myTurtle);
+					}
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 			nodeList.add(command);
 		}

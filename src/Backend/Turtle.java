@@ -38,10 +38,13 @@ public class Turtle extends ImageView{
 		myPen = new Pen();
 		myImageBox = new TurtleImageBox(this);
 		myPenOptions = new PenOptions(myPen);
+		nextLocations = new ArrayList<Point2D>();
+		myAngle = angle;
 		changeImage(DEFAULT_IMAGE);
 		this.setRotate(angle);
 		this.setFitHeight(DEFAULT_WIDTH);
 		this.setFitWidth(DEFAULT_HEIGHT);
+		myLocation = location;
 		this.move(location);
 		myRing = new ActiveRing(myLocation.getX(), myLocation.getY(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		myTurtleInformation = new TurtleInformation(this);

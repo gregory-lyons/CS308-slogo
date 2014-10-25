@@ -8,7 +8,7 @@ import Nodes.Node;
 
 public class AST {
 
-	private Node current;
+	private Node current = null;
 	
 	public List<Double> populateTree(Queue<Node> nodes) {
 		List<Double> returnValues = new ArrayList<Double>();
@@ -16,11 +16,15 @@ public class AST {
 			if (current == null) {
 				current = nodes.poll();
 			}
-			if (current.noMoreChildren()) {
+			else if (current.noMoreChildren()) {
 				Node replace = current.update(); //set current node to ConstantNode so it can be used
 				returnValues.add(current.returnPrintValue()); 
-				current = current.getParent(); 
-				current.addChildren(replace);
+				if (current.getParent() != null) {
+					current = current.getParent(); 
+					current.addChildren(replace);
+				}
+				else 
+					current = null;
 			} else {
 				Node newNode = nodes.poll();
 				current.addChildren(newNode);
