@@ -12,9 +12,5 @@ public class SavedVariable extends SavedData{
 	public double getValue() {
 		return myValue;
 	}
-	
-	public String getName() {
-		return myName;
-	}
 
 }
