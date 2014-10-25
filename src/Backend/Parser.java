@@ -145,6 +145,13 @@ public class Parser {
 					if (node instanceof CommandNode) {
 						((CommandNode) node).addTurtle(myTurtle);
 					}
+					try {
+						double info = Double.parseDouble(s.substring(0, s.length() - 4));
+						node = new ConstantNode(info);
+					}
+					catch(Exception e) {
+					}
+					
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				}
 			}
