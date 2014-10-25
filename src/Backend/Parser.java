@@ -1,5 +1,6 @@
 package Backend;
 
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +53,63 @@ public class Parser {
 			convertedList[i] = converted;
 		}
 		return convertedList;
+	}
+	
+	public String checkSaveType() {
+		if (splitWords[0] == "To") {
+			return "ToNode";
+		}
+		if (splitWords[0] == "Make") {
+			return "MakeNode";
+		}
+		else {
+			return "Invalid";
+		}
+	}
+	
+	public String getVariableName() {
+		return splitWords[1];
+	}
+	
+	public double getVariableValue() {
+		return Double.parseDouble(splitWords[2]); //this is the variable value
+	}
+	
+	public String[] getFunctionBody() { 
+		for (int i = 0; i < splitWords.length; i++) {
+			int count = 0;
+			if (splitWords[i] == "[" && count != 1) {
+				count++;
+			}
+			else if (splitWords[i] == "[" && count == 1) {
+				String[] newArray = Arrays.copyOfRange(splitWords, i, splitWords.length);
+				return newArray;
+			}
+		}
+		return splitWords;
+	}
+	
+	public String[] getFunctionParams() {
+		int start = 0;
+		int stop = 0;
+		int startCount = 0;
+		int stopCount = 0;
+		for (int i = 0; i < splitWords.length; i++) {
+			if (splitWords[i] == "[" && startCount == 0) {
+				start = i;
+				startCount++;
+			}
+			if (splitWords[i] == "]" && stopCount == 0) {
+				stop = i;
+				stopCount++;
+			}
+		}
+		String[] params = Arrays.copyOfRange(splitWords, start, stop);
+		return params;
+	}
+	
+	public String getFunctionName() {
+		return splitWords[1];
 	}
 
 	private Map<String, String> convertResourceBundleToMap(
