@@ -45,8 +45,8 @@ public class Turtle extends ImageView{
 		this.setFitHeight(DEFAULT_WIDTH);
 		this.setFitWidth(DEFAULT_HEIGHT);
 		myLocation = location;
-		this.move(location);
 		myRing = new ActiveRing(myLocation.getX(), myLocation.getY(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		this.move(location);
 		myTurtleInformation = new TurtleInformation(this);
 		this.hideRing();
 	}
@@ -100,6 +100,7 @@ public class Turtle extends ImageView{
 		this.setX(point.getX()-this.getFitWidth()/2);
 		this.setY(point.getY()-this.getFitHeight()/2);
 		myLocation = point;
+		myRing.update(point);
 	}
 	
 	public Pen getPen(){

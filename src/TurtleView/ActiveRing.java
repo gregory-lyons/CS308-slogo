@@ -1,5 +1,6 @@
 package TurtleView;
 
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -16,6 +17,11 @@ public class ActiveRing extends Circle {
 		this.setStrokeWidth(DEFAULT_THICK);
 		this.setCenterX(x);
 		this.setCenterY(y);
+	}
+	
+	public void update(Point2D newPoint) {
+		this.setCenterX(newPoint.getX());
+		this.setCenterY(newPoint.getY());
 	}
 
 }
