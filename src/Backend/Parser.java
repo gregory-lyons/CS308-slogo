@@ -9,7 +9,10 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
+import Nodes.ConstantNode;
 import Nodes.Node;
+import Nodes.booleans.BooleanNode;
+import Nodes.math.MathNode;
 import Nodes.turtlecommands.CommandNode;
 import Nodes.turtlecommands.ForwardNode;
 
@@ -127,23 +130,25 @@ public class Parser {
 		}
 		return map;
 	}
+	
+	
 
 	public Queue<Node> getQueueOfNodes() {
 		Queue<Node> nodeList = new ArrayDeque<Node>();
 		for (String s : splitWords) {
 			System.out.println(s);
-			Node command = null;
+			Node node = null;
 			for (int j = 0; j < Packages.length; j++) {
 				try {
 					String stringToCheck = "Nodes." + Packages[j] + s;
-					command = (Node) Class.forName(stringToCheck).newInstance();
-					if (command instanceof CommandNode) {
-						((CommandNode) command).addTurtle(myTurtle);
+					node = (Node) Class.forName(stringToCheck).newInstance();
+					if (node instanceof CommandNode) {
+						((CommandNode) node).addTurtle(myTurtle);
 					}
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				}
 			}
-			nodeList.add(command);
+			nodeList.add(node);
 		}
 		return nodeList;
 	}
