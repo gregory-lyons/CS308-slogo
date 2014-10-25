@@ -13,11 +13,9 @@ import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
-import Pen.PenColorBox;
 import Pen.PenOptions;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
-import TurtleView.TurtleImage;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -108,13 +106,14 @@ public class View {
 		BorderPane root = new BorderPane();
 		myTurtleInformation = new TurtleInformation();
 		myPenBox = new PenOptions(new Pen());
+		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
 		dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
-		myTurtleWindow = new TurtleWindow(myPenBox);
+		myTurtleWindow = new TurtleWindow(myPenBox, myTurtleImageBox);
 		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
@@ -158,7 +157,6 @@ public class View {
 		backgroundBox.getChildren().addAll(myBackgroundColorBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR)));
 		imageBox = new HBox();
-		myTurtleImageBox = new TurtleImageBox(myTurtleWindow);
 		imageBox.getChildren().addAll(myTurtleImageBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE)));
 		gridBox = new HBox();

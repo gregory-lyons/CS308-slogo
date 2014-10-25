@@ -44,11 +44,13 @@ public class TurtleWindow extends Pane {
 	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
 	private PenOptions myPenBox;
+	private TurtleImageBox myTurtleImageBox;
 	private int numTurtles;
 
-	public TurtleWindow(PenOptions penBox) {
+	public TurtleWindow(PenOptions penBox, TurtleImageBox imageBox) {
 		numTurtles = 2;
 		myPenBox = penBox;
+		myTurtleImageBox = imageBox;
 		allTurtles = new ArrayList<Turtle>();
 		activeTurtles = new ArrayList<Turtle>();
 		for (int i = 0; i<numTurtles; i++){
@@ -75,11 +77,13 @@ public class TurtleWindow extends Pane {
 			activeTurtles.add(t);
 			t.showRing();
 			myPenBox.changePen(t.getPen());
+			myTurtleImageBox.changeTurtle(t);
 		}
 		else {
 			activeTurtles.remove(t);
 			t.hideRing();
 			myPenBox.changePen(new Pen());
+			myTurtleImageBox.changeTurtle(new Turtle());
 		}
 
 	}
