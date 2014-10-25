@@ -6,6 +6,8 @@ import java.util.List;
 import Pen.Pen;
 import Pen.PenOptions;
 import TurtleView.ActiveRing;
+import TurtleView.TurtleImageBox;
+import TurtleView.TurtleInformation;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -24,13 +26,17 @@ public class Turtle extends ImageView{
 	private double myAngle;
 	private Pen myPen;
 	private PenOptions myPenOptions;
+	private TurtleImageBox myImageBox;
+	private TurtleInformation myTurtleInformation;
 	private ActiveRing myRing;
+	private int myID;
 	
 
-	public Turtle(Point2D location, double angle) {
+	public Turtle(Point2D location, double angle, int id) {
 		super();
+		myID = id;
 		myPen = new Pen();
-
+		myImageBox = new TurtleImageBox(this);
 		myPenOptions = new PenOptions(myPen);
 		changeImage(DEFAULT_IMAGE);
 		this.setRotate(angle);
@@ -38,7 +44,12 @@ public class Turtle extends ImageView{
 		this.setFitWidth(DEFAULT_HEIGHT);
 		this.move(location);
 		myRing = new ActiveRing(myLocation.getX(), myLocation.getY(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		myTurtleInformation = new TurtleInformation(this);
 		this.hideRing();
+	}
+
+	//Empty Turtle for when no Turtle is selected as active
+	public Turtle() {		
 	}
 
 	public void setPenDown() {
@@ -95,6 +106,10 @@ public class Turtle extends ImageView{
 	public PenOptions getPenOptions(){
 		return myPenOptions;
 	}
+	
+	public TurtleImageBox getImageBox(){
+		return myImageBox;
+	}
 
 	public void changeImage(String s){
 		String fileName = "Images/" + s + ".png";
@@ -120,6 +135,7 @@ public class Turtle extends ImageView{
 		points.add(myLocation);
 		points.addAll(nextLocations);
 		move(points.get(points.size()-1));
+		myTurtleInformation.update();
 		return myPen.drawLines(points);
 	}
     
@@ -141,6 +157,10 @@ public class Turtle extends ImageView{
     
     public ActiveRing getRing(){
     	return myRing;
+    }
+    
+    public int getID(){
+    	return myID;
     }
 
 }

@@ -13,11 +13,9 @@ import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
-import Pen.PenColorBox;
 import Pen.PenOptions;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
-import TurtleView.TurtleImage;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
@@ -74,13 +72,14 @@ public class View {
 	private HBox bottomHBox = new HBox();
 	private VBox myInnerVBox = new VBox();
 	private VBox centerVBox = new VBox();
-	private HBox penBox;
 	private HBox backgroundBox;
 	private HBox imageBox;
 	private HBox gridBox;
 
 	private CommandLine myCommandLine;
+	private Button addTurtleButton;
 	private HistoryBox myHistoryBox;
+	private Console myConsole;
 	private TurtleWindow myTurtleWindow;
 	private ArrowKeyHandler myArrowHandler;
 	private List<Turtle> myActives;
@@ -105,20 +104,22 @@ public class View {
 	 */
 	public View() {           	
 		BorderPane root = new BorderPane();
-		myTurtleInformation = new TurtleInformation();
+		myTurtleInformation = new TurtleInformation(null);
 		myPenBox = new PenOptions(new Pen());
+		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
 		dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		makeTextAreas();
-		myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
+		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
-		myTurtleWindow = new TurtleWindow(myPenBox);
+		myTurtleWindow = new TurtleWindow(myPenBox, myTurtleImageBox, myTurtleInformation);
 		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
-
-		myVBox.getChildren().add(myTurtleInformation.getVBox());        
+		makeTurtleButton();
+		
+		myVBox.getChildren().add(myTurtleInformation);        
 		Hyperlink myHyperlink = new Hyperlink("Help!");
 
 		TextFlow flow = new TextFlow(myHyperlink);
@@ -146,7 +147,6 @@ public class View {
 		languageSelectorHBox.getChildren().add(flow);
 
 		root.setTop(languageSelectorHBox);
-		bottomHBox.getChildren().add(myCommandLine); 
 		usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
 		usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
 		uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
@@ -157,7 +157,6 @@ public class View {
 		backgroundBox.getChildren().addAll(myBackgroundColorBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR)));
 		imageBox = new HBox();
-		myTurtleImageBox = new TurtleImageBox(myTurtleWindow);
 		imageBox.getChildren().addAll(myTurtleImageBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE)));
 		gridBox = new HBox();
@@ -165,6 +164,7 @@ public class View {
 		gridBox.getChildren().addAll(myGridCheckBox, 
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
+		myVBox.getChildren().add(addTurtleButton);
 		myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
 		myVBox.getChildren().add(myPenBox);
 		myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
@@ -172,7 +172,10 @@ public class View {
 		centerVBox.getChildren().add(myHistoryBox);
 		myInnerVBox.getChildren().add(myEnterCommand.getButton());
 		myInnerVBox.getChildren().add(makeClearButton());
-		bottomHBox.getChildren().add(1, myInnerVBox);       
+		
+		bottomHBox.getChildren().add(myCommandLine); 
+		bottomHBox.getChildren().add(myInnerVBox);   
+		bottomHBox.getChildren().add(myConsole);
 		root.setBottom(bottomHBox);
 
 		for (String button : myCommandFactory.getCommandButtons()) {
@@ -224,6 +227,13 @@ public class View {
 		});
 		return myClearButton;   
 	}
+	
+	private void makeTurtleButton(){
+		addTurtleButton = new Button();
+		addTurtleButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEBUTTON));
+    	addTurtleButton.setPrefSize(SIDEBAR_BUTTON_WIDTH, SHORT_BUTTON_HEIGHT);
+    	addTurtleButton.setOnAction(event -> myTurtleWindow.makeTurtle());
+	}
 
 	/**
 	 * Initializes the command line and the history box.
@@ -234,6 +244,8 @@ public class View {
 		myHistoryBox = new HistoryBox(dropdownCommandMenu, 
 				StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
 		myHistoryBox.setEditable(false);
+		
+		myConsole = new Console(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CONSOLEDEFAULT));
 	}
 
 	/**
@@ -294,6 +306,18 @@ public class View {
 
 	public GridCheckBox getMyGridCheckBox () {
 		return myGridCheckBox;
+	}
+	
+	public void addHistoryEntry(String instruction) {
+		myHistoryBox.addEntry(instruction);
+	}
+	
+	public void addConsoleEntries(List<Double> returnValues) {
+		for (double d: returnValues) {
+			myConsole.addEntry(String.valueOf(d));
+			System.out.println("added");
+		}
+		
 	}
 
 }

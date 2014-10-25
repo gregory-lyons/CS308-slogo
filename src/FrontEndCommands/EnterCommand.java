@@ -1,6 +1,7 @@
 package FrontEndCommands;
 
 import FrontEnd.CommandLine;
+import FrontEnd.Console;
 import FrontEnd.HistoryBox;
 import FrontEnd.View;
 
@@ -12,8 +13,8 @@ import FrontEnd.View;
 public class EnterCommand extends SuperCommand {
     private CommandLine myCommandLine;
 	
-    public EnterCommand(CommandLine myLine, HistoryBox myHistory, String label, String language) {
-        super(myLine, myHistory, label, language);
+    public EnterCommand(CommandLine myLine, String label, String language) {
+        super(myLine, label, language);
         myButton.setPrefSize(View.ENTERCLEAR_BUTTON_WIDTH, View.PUFFY_BUTTON_HEIGHT);
         myCommandLine = myLine;
     }

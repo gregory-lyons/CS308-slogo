@@ -1,34 +1,37 @@
 package TurtleView;
 
-import java.lang.reflect.Field;
+import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
+
 
 public class TurtleImageBox extends ComboBox<String> {
 	
-	public TurtleImageBox(TurtleWindow turtleWindow){
+	private Turtle myTurtle;
+	
+	public TurtleImageBox(Turtle turtle){
 		super();
+		changeTurtle(turtle);
 		this.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
 		this.setPromptText(DefaultStrings.TURTLE_IMAGE_PROMPT);
 		this.getItems().addAll(DefaultStrings.TURTLE_IMAGE_1, DefaultStrings.TURTLE_IMAGE_2, DefaultStrings.TURTLE_IMAGE_3);
-		this.setOnAction(event -> handle(turtleWindow));	
+		this.setOnAction(event -> handle());	
 	}
 	
-	private void handle(TurtleWindow tw){
+	private void handle() {
 		String s = (String)this.getValue();
 
-		if (s.equals(DefaultStrings.TURTLE_IMAGE_1) 
+		/*if (s.equals(DefaultStrings.TURTLE_IMAGE_1) 
 		        || s.equals(DefaultStrings.TURTLE_IMAGE_2) 
 		        || s.equals(DefaultStrings.TURTLE_IMAGE_3)) {
-		          System.out.println(s);
-		}
-		// TODO Insert method here like what I added so that new images can be loaded
-		else {
-		    //tw.changeTurtleLoadedImage(s);
-		}
+		}*/
+		myTurtle.changeImage(s);
+	}
+	
+	public void changeTurtle(Turtle newTurtle) {
+		myTurtle = newTurtle;
 	}
 	
 	

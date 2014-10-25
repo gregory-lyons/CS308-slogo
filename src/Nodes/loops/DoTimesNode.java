@@ -3,7 +3,7 @@ package Nodes.loops;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class ForNode extends LoopNode {
+public class DoTimesNode extends LoopNode {
 	
 	protected double myIndex = ((ConstantNode) left).returnData();
 	
