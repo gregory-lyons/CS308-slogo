@@ -11,11 +11,11 @@ import javafx.geometry.Point2D;
 
 public class Model {
 
-	public HashMap<String, ArrayList<String[]>> savedFunctions;
 	protected String myInput;
 	private Parser myParser;
 	private Turtle myTurtle;
 	private AST tree;
+	public ArrayList<SavedData> userSaves;
 
 	public Model() {
 
@@ -47,7 +47,8 @@ public class Model {
 			String functionName = newParser.getFunctionName();
 			functionContent.add(functionParams);
 			functionContent.add(functionBody);
-			savedFunctions.put(functionName, functionContent);
+			SavedFunction fcn = new SavedFunction(functionName, functionParams, functionBody);
+			userSaves.add(fcn);
 		}
 	}
 	
