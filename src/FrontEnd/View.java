@@ -104,7 +104,7 @@ public class View {
 	 */
 	public View() {           	
 		BorderPane root = new BorderPane();
-		myTurtleInformation = new TurtleInformation();
+		myTurtleInformation = new TurtleInformation(null);
 		myPenBox = new PenOptions(new Pen());
 		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
@@ -113,13 +113,13 @@ public class View {
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
-		myTurtleWindow = new TurtleWindow(myPenBox, myTurtleImageBox);
+		myTurtleWindow = new TurtleWindow(myPenBox, myTurtleImageBox, myTurtleInformation);
 		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
 		makeTurtleButton();
 		
-		myVBox.getChildren().add(myTurtleInformation.getVBox());        
+		myVBox.getChildren().add(myTurtleInformation);        
 		Hyperlink myHyperlink = new Hyperlink("Help!");
 
 		TextFlow flow = new TextFlow(myHyperlink);

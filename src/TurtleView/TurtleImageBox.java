@@ -13,7 +13,7 @@ public class TurtleImageBox extends ComboBox<String> {
 	
 	public TurtleImageBox(Turtle turtle){
 		super();
-		myTurtle = turtle;
+		changeTurtle(turtle);
 		this.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
 		this.setPromptText(DefaultStrings.TURTLE_IMAGE_PROMPT);
 		this.getItems().addAll(DefaultStrings.TURTLE_IMAGE_1, DefaultStrings.TURTLE_IMAGE_2, DefaultStrings.TURTLE_IMAGE_3);

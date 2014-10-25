@@ -39,21 +39,24 @@ public class TurtleWindow extends Pane {
 	public static final double WINDOW_HEIGHT = 423.0;
 	public static final double GRID_INTERVAL = 40.0;
 	public static final double GRID_STROKE = 1.0;
+	public static final int START_TURTLES = 2;
 
 	private List<Turtle> allTurtles;
 	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
 	private PenOptions myPenBox;
 	private TurtleImageBox myTurtleImageBox;
+	private TurtleInformation myTurtleInformation;
 	private int numTurtles;
 
-	public TurtleWindow(PenOptions penBox, TurtleImageBox imageBox) {
-		numTurtles = 2;
+	public TurtleWindow(PenOptions penBox, TurtleImageBox imageBox, TurtleInformation turtleInfo) {
+		numTurtles = 0;
 		myPenBox = penBox;
 		myTurtleImageBox = imageBox;
+		myTurtleInformation = turtleInfo;
 		allTurtles = new ArrayList<Turtle>();
 		activeTurtles = new ArrayList<Turtle>();
-		for (int i = 0; i<numTurtles; i++){
+		for (int i = 0; i<START_TURTLES; i++){
 			makeTurtle();
 		}
 		myGridLines = new ArrayList<Line>();
@@ -64,11 +67,12 @@ public class TurtleWindow extends Pane {
 
 	public Turtle makeTurtle(){
 		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
-		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE);
+		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE, numTurtles++);
 		allTurtles.add(newTurtle);
 		newTurtle.setOnMouseClicked(event -> click(newTurtle));
 		this.getChildren().addAll(newTurtle, newTurtle.getRing());
 		newTurtle.toFront();
+		System.out.println(newTurtle.getID());
 		return newTurtle;
 	}
 	
@@ -78,12 +82,14 @@ public class TurtleWindow extends Pane {
 			t.showRing();
 			myPenBox.changePen(t.getPen());
 			myTurtleImageBox.changeTurtle(t);
+			myTurtleInformation.changeTurtle(t);
 		}
 		else {
 			activeTurtles.remove(t);
 			t.hideRing();
 			myPenBox.changePen(new Pen());
 			myTurtleImageBox.changeTurtle(new Turtle());
+			myTurtleInformation.changeTurtle(null);
 		}
 
 	}
