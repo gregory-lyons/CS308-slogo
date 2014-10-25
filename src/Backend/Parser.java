@@ -67,6 +67,14 @@ public class Parser {
 		}
 	}
 	
+	public String getVariableName() {
+		return splitWords[1];
+	}
+	
+	public double getVariableValue() {
+		return Double.parseDouble(splitWords[2]); //this is the variable value
+	}
+	
 	public String[] getFunctionBody() { 
 		for (int i = 0; i < splitWords.length; i++) {
 			int count = 0;
@@ -101,7 +109,7 @@ public class Parser {
 	}
 	
 	public String getFunctionName() {
-		return splitWords[0];
+		return splitWords[1];
 	}
 
 	private Map<String, String> convertResourceBundleToMap(

@@ -38,19 +38,24 @@ public class Model {
 		return new SceneUpdater(activeTurtles,printValues);
 	}
 	
-	public void addSavedFunction(String input) {
+	public void addSavedData(String input) {
 		Parser newParser = new Parser(input, myTurtle);
-		ArrayList<String[]> functionContent = new ArrayList<String[]>();
 		if (newParser.checkSaveType() == "ToNode") {
 			String[] functionBody = newParser.getFunctionBody();
 			String[] functionParams = newParser.getFunctionParams();
 			String functionName = newParser.getFunctionName();
-			functionContent.add(functionParams);
-			functionContent.add(functionBody);
 			SavedFunction fcn = new SavedFunction(functionName, functionParams, functionBody);
 			userSaves.add(fcn);
 		}
+		else if (newParser.checkSaveType() == "MakeNode") {
+			String varName = newParser.getVariableName();
+			double varValue = newParser.getVariableValue();
+			SavedVariable var = new SavedVariable(varName, varValue);
+			userSaves.add(var);
+		}
 	}
+	
+
 	
 	public HashMap<String, ArrayList<String[]>> getSavedFunctions() {
 		return savedFunctions;
