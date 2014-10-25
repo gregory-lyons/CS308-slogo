@@ -1,32 +1,15 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class RightNode extends CommandNode{
-
-	public RightNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
+public class RightNode extends OneChildNode{
 
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();
-		myTurtle.setAngle(myTurtle.getAngle() + printValue);
-		return left;
-	}
-	
-	@Override
-	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
-		left = newNode;
-	}
-
-	@Override
-	public boolean noMoreChildren() {
-		return(left instanceof ConstantNode);
+		myTurtle.setRotate(myTurtle.getRotate() + printValue);
+		return super.update();
 	}
 
 }

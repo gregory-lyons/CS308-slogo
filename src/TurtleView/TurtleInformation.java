@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import Backend.Turtle;
 import javafx.geometry.Point2D;
-
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -36,12 +36,15 @@ public class TurtleInformation {
     }
 
 
-    public void update(List<Point2D> list, double angle) {
+    public void update(List<Turtle> turtles) {
+    	//TODO Fix this stuff
+    	/*
     	double newX = list.get(list.size()-1).getX();
     	double newY = list.get(list.size()-1).getY();
         turtlePositionLabel.setText("Turtle Position: (" + newX + "," + newY + ")");
         turtleDirection += angle;
         turtleDirectionLabel.setText("Turtle is Facing: " + turtleDirection + " degrees");
+        */
     }
 
 }

@@ -1,38 +1,17 @@
 package Nodes.turtlecommands;
 
 import javafx.geometry.Point2D;
-import Backend.Turtle;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class SetXYNode extends CommandNode {
-
-	public SetXYNode(Turtle myTurtle) {
-		super(myTurtle);
-		// TODO Auto-generated constructor stub
-	}
+public class SetXYNode extends TwoChildNode {
 
 	@Override
 	public Node update() {
 		Point2D nextPoint = new Point2D(((ConstantNode) left).returnData(),
 				((ConstantNode) right).returnData());
 		printValue = nextPoint.distance(myTurtle.getLocation());
-		myTurtle.setLocation(nextPoint);
-		return new ConstantNode(printValue);
+		myTurtle.addLocation(nextPoint);
+		return super.update();
 	}
-
-	public void addChildren(Node newNode) {
-		super.addChildren(newNode);
-		if (left == null)
-			left = newNode;
-		else
-			right = newNode;
-	}
-
-	@Override
-	public boolean noMoreChildren() {
-		// TODO Auto-generated method stub
-		return (right instanceof ConstantNode);
-	}
-
 }

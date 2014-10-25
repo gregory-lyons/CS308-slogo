@@ -40,10 +40,6 @@ public class Pen {
 		return path;
 		
 	}
-	
-	public void update(boolean isDown){
-		setPenDown(isDown);
-	}
 
 	private double[] pointListToArray(List<Point2D> myList) {
 		double[] array = new double[myList.size()*2];
@@ -54,8 +50,12 @@ public class Pen {
 		return array;
 	}
 	
-	public void setPenDown(boolean down) {
-		penDown = down;
+	public void setPenDown() {
+		penDown = true;
+	}
+	
+	public void setPenUp() {
+		penDown = false;
 	}
 	
 	public void changeColor(Color c){

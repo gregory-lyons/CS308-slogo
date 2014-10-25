@@ -2,16 +2,21 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import Pen.Pen;
+import Pen.PenOptions;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
@@ -26,6 +31,7 @@ public class TurtleWindow extends Pane {
 
 	public static final double ORIGIN_X = 200.0;
 	public static final double ORIGIN_Y = 100.0;
+	public static final double DEFAULT_ANGLE = 0;
 	public static final Color DEFAULT_PEN = Color.BLACK;
 	public static final String DEFAULT_BACKGROUND = DefaultStrings.BACKGROUND_COLOR_DEFAULTS.get(0);
 	public static final String DEFAULT_IMAGE = "turtle1";
@@ -36,30 +42,54 @@ public class TurtleWindow extends Pane {
 
 
 	private Color myColor;
-	private List<TurtleImage> allTurtles;
-	private List<TurtleImage> activeTurtles;
+	private List<Turtle> allTurtles;
+	private List<Turtle> activeTurtles;
 	private List<Line> myGridLines;
+	private int numTurtles;
 
-	public TurtleWindow() {
-		allTurtles = new ArrayList<TurtleImage>();
-		activeTurtles = new ArrayList<TurtleImage>();
-		activeTurtles.add(new TurtleImage(ORIGIN_X, ORIGIN_Y));
-		allTurtles.addAll(activeTurtles);
+	public TurtleWindow(PenOptions penBox) {
+		numTurtles = 2;
+		allTurtles = new ArrayList<Turtle>();
+		activeTurtles = new ArrayList<Turtle>();
+		for (int i = 0; i<numTurtles; i++){
+			makeTurtle(penBox);
+		}
 		myGridLines = new ArrayList<Line>();
-		activeTurtles.get(0).changeImage(DEFAULT_IMAGE);
 		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		this.getChildren().addAll(allTurtles);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
-	public void update(List<Point2D> myList, double angle, boolean penDown) {
-		for (TurtleImage t: activeTurtles){
-			//myPen.setPenDown(penDown);
-			this.getChildren().add(t.moveAndDrawPath(myList));
-			t.setRotate(t.getRotate()+angle);
+	private Turtle makeTurtle(PenOptions penBox){
+		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
+		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE);
+		allTurtles.add(newTurtle);
+		newTurtle.setOnMouseClicked(event -> click(newTurtle, penBox));
+		this.getChildren().addAll(newTurtle, newTurtle.getRing());
+		newTurtle.toFront();
+		return newTurtle;
+	}
+	
+	private void click(Turtle t, PenOptions penBox){
+		if (!activeTurtles.contains(t)) {
+			activeTurtles.add(t);
+			t.showRing();
+			penBox.changePen(t.getPen());
 		}
-		for (TurtleImage t: allTurtles) 
+		else {
+			activeTurtles.remove(t);
+			t.hideRing();
+			penBox.changePen(new Pen());
+		}
+
+	}
+	
+	public void update(List<Turtle> updates) {
+		for (Turtle t: updates){
+			this.getChildren().add(t.moveAndDrawPath());
+			t.setRotate(t.getAngle());
+		}
+		for (Turtle t: allTurtles) 
 			t.toFront();
 	}
 
@@ -67,7 +97,7 @@ public class TurtleWindow extends Pane {
 		this.setStyle("-fx-background-color: " + color + ";");
 	}
 
-	public List<TurtleImage> getActiveTurtles(){
+	public List<Turtle> getActiveTurtles(){
 		return activeTurtles;
 
 	}

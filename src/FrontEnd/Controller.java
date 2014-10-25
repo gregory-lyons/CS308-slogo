@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -7,6 +8,7 @@ import TurtleView.TurtleInformation;
 import TurtleView.TurtleWindow;
 import Backend.Model;
 import Backend.SceneUpdater;
+import Backend.Turtle;
 
 public class Controller implements Observer {
 	
@@ -22,8 +24,8 @@ public class Controller implements Observer {
 		myTurtleInformation = myView.getTurtleInfo();
 	}
 	
-	public void executeCommand(String s){
-		SceneUpdater u = myModel.parse(s, true);
+	public void executeCommand(String s, List<Turtle> actives){
+		SceneUpdater u = myModel.parse(s, actives);
 		interpret(u);
 	}
 	
@@ -33,13 +35,13 @@ public class Controller implements Observer {
     	    return;
     	}
         u.getVariables();
-    	myTurtleWindow.update(u.getLocation(), u.getAngle(), u.penIsDown());
-    	myTurtleInformation.update(u.getLocation(), u.getAngle());
+    	myTurtleWindow.update(u.getTurtles());
+    	myTurtleInformation.update(u.getTurtles());
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		executeCommand((String)arg);
+		executeCommand((String)arg, myTurtleWindow.getActiveTurtles());
 		
 	}
 

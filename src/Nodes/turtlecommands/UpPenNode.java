@@ -1,25 +1,14 @@
 package Nodes.turtlecommands;
 
-import Backend.Turtle;
-import Nodes.*;
+import Nodes.Node;
 
 
-public class UpPenNode  extends CommandNode {
-
-	public UpPenNode(Turtle turtle) {
-		super(turtle);
-		// TODO Auto-generated constructor stub
-	}
+public class UpPenNode  extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {
 		myTurtle.setPenUp();
-		return new ConstantNode(0);
+		printValue = 0;
+		return super.update();
 	}
-
-	@Override
-	public boolean noMoreChildren() {
-		return true;
-	}
-
 }

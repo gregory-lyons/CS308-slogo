@@ -1,15 +1,14 @@
 package Backend;
 
-import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.Stack;
-import java.util.List;
-import java.util.Collections;
 
-import Nodes.*;
-import Commands.Command;
+import Nodes.Node;
+import Nodes.turtlecommands.CommandNode;
 
 /**
  * @author: justincarrao. This class is the one that parses the string
@@ -23,11 +22,18 @@ public class Parser {
 	private String myInput;
 	private String[] splitWords;
 	private Queue<Node> nodeList;
+	private Turtle myTurtle;
+	private Map<String, String> myMap;
 
-	public Parser(String input) {
+	
+	//change constructor to allow for the language to change the input to the resource bundle
+	public Parser(String input, Turtle turtle) {
+		myTurtle = turtle;
+		ResourceBundle myBundle = ResourceBundle
+				.getBundle("resources.languages/English");
+		myMap = convertResourceBundleToMap(myBundle);
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
-
 	}
 
 	/**
@@ -39,19 +45,27 @@ public class Parser {
 	 */
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
-	/*	ResourceBundle myBundle = ResourceBundle
-				.getBundle("resource.languages.Languages"); // make properties
-															// files for each
-															// different
-															// language, figure
-															// out how to
-															// differentiate
-															// between languages
 		for (int i = 0; i < array.length; i++) {
-			String converted = myBundle.getString(array[i]);
+			array[i] = array[i].toLowerCase();
+			String converted = myMap.get(array[i]);
+			converted += "Node";
 			convertedList[i] = converted;
-		}*/
+		}
 		return convertedList;
+	}
+
+	private Map<String, String> convertResourceBundleToMap(
+			ResourceBundle resource) {
+		Map<String, String> map = new HashMap<String, String>();
+		Enumeration<String> keys = resource.getKeys();
+		while (keys.hasMoreElements()) {
+			String key = keys.nextElement();
+			String[] value = resource.getString(key).split(",");
+			for (int i = 0; i < value.length; i++) {
+				map.put(value[i], key);
+			}
+		}
+		return map;
 	}
 
 	public Queue<Node> getQueueOfNodes() {
@@ -59,6 +73,9 @@ public class Parser {
 			Node command = null;
 			try {
 				command = (Node) Class.forName(s).newInstance();
+				if (command instanceof CommandNode) {
+					((CommandNode) command).addTurtle(myTurtle);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -8,6 +8,7 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import Backend.SceneUpdater;
+import Backend.Turtle;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
@@ -82,7 +83,7 @@ public class View {
 	private HistoryBox myHistoryBox;
 	private TurtleWindow myTurtleWindow;
 	private ArrowKeyHandler myArrowHandler;
-	private List<TurtleImage> myActives;
+	private List<Turtle> myActives;
 
 	private CommandFactory myCommandFactory;    
 	private SuperCommand myEnterCommand;
@@ -93,7 +94,7 @@ public class View {
 	private LanguageSelector myLanguageSelector;
 	private TurtleInformation myTurtleInformation;
 
-	private PenColorBox myPenColorBox;
+	private PenOptions myPenBox;
 	private BackgroundColorBox myBackgroundColorBox;
 	private TurtleImageBox myTurtleImageBox;
 	private GridCheckBox myGridCheckBox;
@@ -105,13 +106,14 @@ public class View {
 	public View() {           	
 		BorderPane root = new BorderPane();
 		myTurtleInformation = new TurtleInformation();
+		myPenBox = new PenOptions(new Pen());
 		myLanguageSelector = new LanguageSelector(root);
 		dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine, myHistoryBox);
 		myArrowHandler = new ArrowKeyHandler();
-		myTurtleWindow = new TurtleWindow();
+		myTurtleWindow = new TurtleWindow(myPenBox);
 		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
@@ -149,7 +151,7 @@ public class View {
 		usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
 		uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
 		uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
-
+		
 		backgroundBox = new HBox();
 		myBackgroundColorBox = new BackgroundColorBox(myTurtleWindow);
 		backgroundBox.getChildren().addAll(myBackgroundColorBox, 
@@ -164,7 +166,7 @@ public class View {
 				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
 		myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
-		myVBox.getChildren().add(myActives.get(0).getPenOptions());
+		myVBox.getChildren().add(myPenBox);
 		myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
 		root.setCenter(centerVBox);
 		centerVBox.getChildren().add(myHistoryBox);
@@ -279,10 +281,6 @@ public class View {
 
 	public LanguageSelector getLanguageSelector() {
 		return myLanguageSelector;
-	}
-
-	public PenColorBox getMyPenColorBox () {
-		return myPenColorBox;
 	}
 
 

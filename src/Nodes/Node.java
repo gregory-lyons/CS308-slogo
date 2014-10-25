@@ -9,12 +9,14 @@ public abstract class Node {
 	protected double printValue;
 	protected ArrayList<Node> myChildren;
 	
-	public abstract Node update();
-
 	public abstract boolean noMoreChildren();
 	
-	private void setParent(Node node){
+	public void setParent(Node node){
 		parent = node;
+	}
+	
+	public Node update(){
+		return new ConstantNode(printValue);
 	}
 
 	public void addChildren(Node node){
@@ -24,6 +26,10 @@ public abstract class Node {
 	
 	public Node getParent(){
 		return parent;
+	}
+	
+	public double returnPrintValue(){
+		return printValue;
 	}
 	
 }

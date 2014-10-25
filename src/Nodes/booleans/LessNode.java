@@ -12,9 +12,7 @@ public class LessNode extends BooleanNode {
 			printValue = 1;
 		else
 			printValue = 0;
-		return new ConstantNode(printValue);
+		return super.update();
 	}
-
-	
 
 }
