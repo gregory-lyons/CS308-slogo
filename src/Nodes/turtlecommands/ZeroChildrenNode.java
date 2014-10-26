@@ -6,8 +6,4 @@ public abstract class ZeroChildrenNode extends CommandNode{
 	public boolean isFinished() {
 		return true;
 	}
-	
-	
-	
-	
 }

@@ -20,8 +20,14 @@ public class TurtleImageBox extends ComboBox<String> {
 	}
 	
 	private void handle() {
-		String s = (String)this.getValue();
-		myTurtle.changeImage(s);
+		String s = this.getValue();
+		if (s.equals(DefaultStrings.TURTLE_IMAGE_1) || s.equals(DefaultStrings.TURTLE_IMAGE_2) || 
+		        s.equals(DefaultStrings.TURTLE_IMAGE_3)) {
+		          myTurtle.changeToDefaultImage(s);
+		}
+		else {
+		    myTurtle.changeToLoadedImage(s);
+		}
 	}
 	
 	public void changeTurtle(Turtle newTurtle) {

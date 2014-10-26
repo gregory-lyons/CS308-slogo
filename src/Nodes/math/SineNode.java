@@ -3,10 +3,10 @@ package Nodes.math;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class AtanNode extends OneChildNode{
+public class SineNode extends OneChildNode{
 	
 	public Node update(){
-		printValue = Math.atan(((ConstantNode)left).returnData());
+		printValue = Math.sin(Math.toRadians(((ConstantNode)left).returnData()));
 		return super.update();
 	}
 

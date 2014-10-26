@@ -1,8 +1,8 @@
 package Backend;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import FrontEnd.Boundary;
 import FrontEnd.View;
 import Pen.Pen;
@@ -11,13 +11,18 @@ import TurtleView.ActiveRing;
 import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Polyline;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class Turtle extends ImageView{
+public class Turtle extends ImageView {
 
 	public static final double DEFAULT_WIDTH = 25.0;
 	public static final double DEFAULT_HEIGHT = 25.0;
@@ -47,7 +52,7 @@ public class Turtle extends ImageView{
 		myAngle = angle;
 		myTrail = new ArrayList<Polyline>();
 		needsClear = false;
-		changeImage(DEFAULT_IMAGE);
+		changeToDefaultImage(DEFAULT_IMAGE);
 		this.setRotate(angle);
 		this.setFitHeight(DEFAULT_WIDTH);
 		this.setFitWidth(DEFAULT_HEIGHT);
@@ -127,16 +132,37 @@ public class Turtle extends ImageView{
 		return myImageBox;
 	}
 
-	public void changeImage(String s){
-		String fileName = "Images/" + s + ".png";
+	public void changeToDefaultImage(String imageName){
+		String fileName = "Images/" + imageName + ".png";
 		try{
 			Image newImage = new Image(getClass().getResourceAsStream(fileName));
 			this.setImage(newImage);
 		}
-		catch(NullPointerException npe){	
+		catch(NullPointerException npe){
+		    System.out.println("This turtle image does not exist: " + imageName);
 		}
 
 	}
+	
+	public void changeToLoadedImage(String imageLocation){
+            try{
+                File file = new File(imageLocation);
+                Image newImage = new Image(file.toURI().toString());
+                this.setImage(newImage);
+                this.toFront();
+                this.setFitHeight(DEFAULT_WIDTH);
+                this.setFitWidth(DEFAULT_HEIGHT);
+                
+                Stage dialog = new Stage();
+                dialog.initStyle(StageStyle.UTILITY);
+                Scene myScene = new Scene(new Group(this));
+                dialog.setScene(myScene);
+                dialog.show();
+            }
+            catch(NullPointerException npe){
+                System.out.println("This turtle image does not exist: " + imageLocation);
+            }
+        }
 	
 	public void hide(){
 		this.setOpacity(0);

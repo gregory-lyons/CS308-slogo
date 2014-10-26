@@ -294,7 +294,6 @@ public class View {
 		}
 		myEnterCommand.addObserver(myController);
 		dropdownCommandMenu.addObserver(myController);
-		
 	}
 
 	public LanguageSelector getLanguageSelector() {
@@ -308,6 +307,10 @@ public class View {
 
 	public TurtleImageBox getMyTurtleImageBox () {
 		return myTurtleImageBox;
+	}
+	
+	public Button getAddTurtleButton() {
+	    return addTurtleButton;
 	}
 
 	public GridCheckBox getMyGridCheckBox () {
@@ -334,8 +337,7 @@ public class View {
 	}
 
 	public void updateTurtleInfo(List<Turtle> activeTurtles) {
-		// TODO Auto-generated method stub
-		
+	    myTurtleInformation.update();
 	}
 
 }

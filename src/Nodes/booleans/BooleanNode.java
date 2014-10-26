@@ -19,5 +19,10 @@ public abstract class BooleanNode extends Node{
 		else
 			right = newNode;
 	}
+	
+	public void clear() {
+		left = null;
+		right = null;
+	}
 
 }
