@@ -13,11 +13,11 @@ public class UserVariables {
     private ComboBox<String> myComboBox;
     private Button myButton;
     
-    public UserVariables(String defaultText) {       
+    public UserVariables(String language) {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.getItems().addAll("Blue", "Purple", "Red");
-        myComboBox.setPromptText(defaultText);
+        myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.USER_VARIABLES));
         myComboBox.setEditable(true);
         myButton = new Button(DefaultStrings.GO);
         myButton.setMinWidth(View.GO_BUTTON_WIDTH);

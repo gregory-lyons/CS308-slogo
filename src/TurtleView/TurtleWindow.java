@@ -2,11 +2,11 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import Backend.Turtle;
 import FrontEnd.DefaultStrings;
+import FrontEnd.View;
 import Pen.Pen;
 import Pen.PenOptions;
 import javafx.geometry.Point2D;
@@ -35,8 +35,7 @@ public class TurtleWindow extends Pane {
 	public static final Color DEFAULT_PEN = Color.BLACK;
 	public static final String DEFAULT_BACKGROUND = DefaultStrings.BACKGROUND_COLOR_DEFAULTS.get(0);
 	public static final String DEFAULT_IMAGE = "turtle1";
-	public static final double WINDOW_WIDTH = 600.0;
-	public static final double WINDOW_HEIGHT = 423.0;
+
 	public static final double GRID_INTERVAL = 40.0;
 	public static final double GRID_STROKE = 1.0;
 	public static final int START_TURTLES = 2;
@@ -60,13 +59,13 @@ public class TurtleWindow extends Pane {
 			makeTurtle();
 		}
 		myGridLines = new ArrayList<Line>();
-		this.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		this.setMaxSize(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
 	public Turtle makeTurtle(){
-		Point2D location = new Point2D(Math.random()*WINDOW_WIDTH, Math.random()*WINDOW_HEIGHT);
+		Point2D location = new Point2D(Math.random()*View.TURTLEWINDOW_WIDTH, Math.random()*View.TURTLEWINDOW_HEIGHT);
 		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE, numTurtles++);
 		allTurtles.add(newTurtle);
 		newTurtle.setOnMouseClicked(event -> click(newTurtle));
@@ -140,13 +139,13 @@ public class TurtleWindow extends Pane {
 	}   	    */
 
 	private void makeGrid(){
-		for (int i=0;i<WINDOW_WIDTH;i+=GRID_INTERVAL){
-			Line l = new Line(i, 0, i, WINDOW_HEIGHT);
+		for (int i=0;i<View.TURTLEWINDOW_WIDTH;i+=GRID_INTERVAL){
+			Line l = new Line(i, 0, i, View.TURTLEWINDOW_HEIGHT);
 			l.setStroke(Color.GREY);
 			myGridLines.add(l);
 		}
-		for (int i=0;i<WINDOW_HEIGHT;i+=GRID_INTERVAL){
-			Line l = new Line(0, i, WINDOW_WIDTH, i);
+		for (int i=0;i<View.TURTLEWINDOW_HEIGHT;i+=GRID_INTERVAL){
+			Line l = new Line(0, i, View.TURTLEWINDOW_WIDTH, i);
 			l.setStroke(Color.GREY);
 			myGridLines.add(l);
 		}
