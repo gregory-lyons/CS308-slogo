@@ -25,7 +25,6 @@ public class Controller implements Observer {
 	}
 	
 	public void executeCommand(String command, List<Turtle> actives){
-		
 		SceneUpdater sceneUpdater = myModel.parse(command, actives, myView.getCurrentLanguage());
 		interpret(sceneUpdater, command);
 	}

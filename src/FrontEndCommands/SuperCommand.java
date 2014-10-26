@@ -42,7 +42,7 @@ public class SuperCommand extends Observable {
     }
     
     protected void handle() {
-        this.setChanged();
+        change();
     	this.notifyObservers(myInstruction);
     }
 
@@ -53,5 +53,9 @@ public class SuperCommand extends Observable {
     public Button getButton () {
         return myButton;
     }
+    
+	public void change() {
+		this.setChanged();
+	}
 
 }
