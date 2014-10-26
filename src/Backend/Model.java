@@ -15,10 +15,12 @@ public class Model {
 	private Parser myParser;
 	private Turtle myTurtle;
 	private AST tree;
+	List<Double> printValues;
 //	public ArrayList<SavedData> userSaves;
 
 	public Model() {
 		tree = new AST();
+		printValues = new ArrayList<Double>();
 
 	}
 
@@ -31,13 +33,23 @@ public class Model {
 	}
 
 	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles, String language) {
-		List<Double> printValues = new ArrayList<Double>();
-		System.out.println(language);
-		for (Turtle turtle : activeTurtles) {
-			myParser = new Parser(instruction, turtle, language);
-			printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
+		boolean noError = true;
+		if (activeTurtles.size() == 0) {
+			noError = makeTreeandAddValues(instruction, null, language);
 		}
-		return new SceneUpdater(activeTurtles,printValues, myParser.getNoError());
+		for (Turtle turtle : activeTurtles) {
+			boolean valid = makeTreeandAddValues(instruction, turtle, language);
+			if (!valid)
+				noError = false;
+		}
+		SceneUpdater result = new SceneUpdater(activeTurtles, printValues, noError);
+		return result;
+	}
+	
+	private boolean makeTreeandAddValues(String instruction, Turtle t, String language){
+		myParser = new Parser(instruction, t, language);
+		printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
+		return myParser.getNoError();	
 	}
 	
 //	public void addSavedData(String input) {
