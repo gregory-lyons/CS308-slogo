@@ -1,13 +1,11 @@
 package TurtleView;
 
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import Backend.Turtle;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  * Tells the user information about the turtle, updates whenever the turtle changes because it is an observer of the turtle
@@ -23,8 +21,8 @@ public class TurtleInformation extends VBox {
 
 	public TurtleInformation(Turtle t) {
 		turtleIndexLabel = new Label();
-		turtlePositionLabel = new Label();
-		turtleDirectionLabel = new Label();
+		turtlePositionLabel = new Label("Turtle Position: ");
+		turtleDirectionLabel = new Label("Direction (degrees): ");
 		changeTurtle(t);
 		this.getChildren().addAll(turtleIndexLabel, turtlePositionLabel, turtleDirectionLabel);
 	}
@@ -38,9 +36,10 @@ public class TurtleInformation extends VBox {
 		if (myTurtle == null) 
 			emptyInfo();
 		else{
-			turtleIndexLabel.setText("Turtle Index: " + myTurtle.getID());
-			turtlePositionLabel.setText("Turtle Position: (" + myTurtle.getXCord() + "," + myTurtle.getYCord() + ")");
-			turtleDirectionLabel.setText("Turtle is Facing: " + myTurtle.getRotate() + " degrees");
+			turtleIndexLabel.textProperty().set(String.valueOf(myTurtle.getID()));
+			turtleIndexLabel.setText("Turtle Index: "+String.valueOf(myTurtle.getID()));
+			turtlePositionLabel.setText("Turtle Position: (" + truncate(myTurtle.getXCord()) + "," + truncate(myTurtle.getYCord()) + ")");
+			turtleDirectionLabel.setText("Turtle is Facing: " + truncate(myTurtle.getRotate()) + " degrees");
 		}
 	}
 
@@ -49,6 +48,13 @@ public class TurtleInformation extends VBox {
 		turtlePositionLabel.setText("");
 		turtleDirectionLabel.setText("");
 	}
+	
+	private double truncate(double val){
+		  if ( val > 0 )
+		    return Math.floor(val * 100)/100;
+		  else
+		    return Math.ceil(val * 100)/100;
+		}
 
 
 

@@ -46,26 +46,30 @@ public class AST {
 				current.addChildren(nodes.poll());
 				List<Double> values = new ArrayList<Double>();
 				
-				for (int i = 0; i < (((RepeatNode) current).counter); i++) {
+				for (int i = 1; i < (((RepeatNode) current).counter); i++) {
 					Queue<Node> copy = new ArrayDeque<Node>();
 					copy.addAll(nodes);
-					System.out.println("made it");
 					Queue<Node> newCopy = ((RepeatNode) current).iterator(copy);
-					System.out.println("dhbfsdkhbf");
 					values = populateTree(newCopy);
-					
-					
 				}
-				System.out.println(values);
+				System.out.println("finished");
+				
 				ConstantNode con = new ConstantNode(values.get(values.size() - 1));
 				current = current.getParent();
-				current.addChildren(con);
+				System.out.println(current);
+				if (current != null) current.addChildren(con);
+				
 				
 			} 
 			else {
 				Node newNode = nodes.poll();
-				current.addChildren(newNode);
-				current = newNode;
+
+				if (newNode != null) {
+					current.addChildren(newNode);
+					current = newNode;
+				}
+				else current = null;
+				
 			}
 		}
 		return returnValues;

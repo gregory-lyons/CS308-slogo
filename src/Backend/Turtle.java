@@ -54,8 +54,8 @@ public class Turtle extends ImageView {
 		this.setFitWidth(DEFAULT_HEIGHT);
 		myLocation = location;
 		myRing = new ActiveRing(myLocation.getX(), myLocation.getY(), DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		this.move(location);
 		myTurtleInformation = new TurtleInformation(this);
+		this.move(location);
 		this.hideRing();
 	}
 
@@ -110,6 +110,7 @@ public class Turtle extends ImageView {
 		this.setX(point.getX()-this.getFitWidth()/2);
 		this.setY(point.getY()-this.getFitHeight()/2);
 		myLocation = point;
+		myTurtleInformation.update();
 		myRing.update(point);
 	}
 	
@@ -166,11 +167,8 @@ public class Turtle extends ImageView {
 	}
 
 	public Polyline moveAndDrawPath() {
-		List<Point2D> points = new ArrayList<Point2D>();
-		points.addAll(nextLocations);
-		myTurtleInformation.update();
+		Polyline newPath = myPen.drawLines(nextLocations);
 		nextLocations.clear();
-		Polyline newPath = myPen.drawLines(points);
 		myTrail.add(newPath);
 		return newPath;
 	}
