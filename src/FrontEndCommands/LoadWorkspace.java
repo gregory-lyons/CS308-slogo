@@ -39,7 +39,6 @@ public class LoadWorkspace {
 
     private void handle () {
         JFrame parentFrame = new JFrame();
-
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(parentFrame);
@@ -53,7 +52,7 @@ public class LoadWorkspace {
     private void getSettingsFromFile () {
         String testerLanguage = "Italian";
         myView.getLanguageSelector().getComboBox().setValue(testerLanguage);
-        //myView.getLanguageSelector().fire();
+        myView.getLanguageSelector().getComboBox().arm();
         
         myTurtleImageBox = myView.getMyTurtleImageBox();
         myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");

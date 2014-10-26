@@ -112,6 +112,10 @@ public class TurtleWindow extends Pane {
 
 	}
 	
+	public List<Turtle> getAllTurtles() {
+	    return allTurtles;
+	}
+	
 	// TODO New method so that new images can be loaded
 
 	/*public void startMovingTurtle (KeyEvent myKey) {

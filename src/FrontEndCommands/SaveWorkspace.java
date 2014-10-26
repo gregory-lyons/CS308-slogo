@@ -22,10 +22,8 @@ import FrontEnd.View;
 public class SaveWorkspace {
     private Button myButton;
     private List<File> myImages = new ArrayList<File>();
-    private String myLanguage;
     private View myView;
-    private String myBackgroundColor;
-    private File workspaceSettings = new File("C:\\Users\\Rica\\Desktop\\blah.json");
+    private File workspaceSettings;
     
     public SaveWorkspace(View myView) {
         this.myView = myView;
@@ -35,8 +33,6 @@ public class SaveWorkspace {
     }
 
     private void handle () {
-        myLanguage = myView.getLanguageSelector().getCurrentLanguage();
-        //System.out.println(myLanguage);
         File dir = new File("src\\TurtleView\\images");
         System.out.println(dir.getAbsolutePath());
         File[] directoryListing = dir.listFiles();
@@ -46,7 +42,6 @@ public class SaveWorkspace {
                 //System.out.println(child.getAbsolutePath());
             }
         }
-        myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
         chooseFile();
         writeSettingsToFile();
     }
@@ -57,18 +52,24 @@ public class SaveWorkspace {
         fileChooser.setDialogTitle("Choose location to save workspace preferences");   
         int userSelection = fileChooser.showSaveDialog(parentFrame);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
-            workspaceSettings = fileChooser.getSelectedFile();
+            workspaceSettings = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".properties");
             System.out.println("Save as file: " + workspaceSettings.getAbsolutePath());
         }
     }
     
     private void writeSettingsToFile () {
         try {
-            PrintWriter myPrintWriter = new PrintWriter(workspaceSettings);
+            PrintWriter pw = new PrintWriter(workspaceSettings);
+            String myLanguage = myView.getLanguageSelector().getCurrentLanguage();
+            pw.println("Language = " + myLanguage);
+            String myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
+            pw.println("BackgroundColor = " + myBackgroundColor);
+            int myNumberOfTurtles = myView.getTurtleWindow().getAllTurtles().size();
+            pw.println("NumberOfTurtles = " + myNumberOfTurtles);
+            pw.close();
         }
         catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("This file was not found.");
         }        
     }
 
