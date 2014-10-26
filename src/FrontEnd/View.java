@@ -3,7 +3,6 @@ package FrontEnd;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-
 import Backend.Turtle;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.NewWorkspace;
@@ -331,5 +330,10 @@ public class View {
 	public void updateTurtleInfo(List<Turtle> activeTurtles) {
 	    myTurtleInformation.update();
 	}
+
+    public void updateUserVariables (List<String> variables) {
+        dropdownVariablesMenu.update(variables);
+        
+    }
 
 }

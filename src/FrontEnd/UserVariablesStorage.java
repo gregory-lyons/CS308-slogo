@@ -40,4 +40,11 @@ public class UserVariablesStorage {
     public ComboBox<String> getComboBox() {
         return myComboBox;
     }
+
+    public void update (List<String> variables) {
+        for (String eachVariable : variables) {
+            addVariable(eachVariable);
+        }
+        
+    }
 }
