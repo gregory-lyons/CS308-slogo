@@ -199,7 +199,6 @@ public class View {
 	}
 
 	private void sendArrowCommand(KeyEvent ke){
-		//myTurtleWindow.startMovingTurtle(ke);
 		String instruction = myArrowHandler.makeInstruction(ke.getCode());
 		myEnterCommand.notifyObservers(instruction);
 		ke.consume();
