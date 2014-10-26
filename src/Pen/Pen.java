@@ -3,7 +3,6 @@ package Pen;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polyline;
@@ -18,8 +17,8 @@ public class Pen {
 	public static final double DEFAULT_THICKNESS = 1.0;
 	public static final Color DEFAULT_COLOR = Color.BLACK;
 	public static final List<Double> SOLID = new ArrayList<Double>();
-	public static final List<Double> DASHED = new ArrayList(Arrays.asList(10.0,10.0));
-	public static final List<Double> DOTTED = new ArrayList(Arrays.asList(2.0, 35.0));
+	public static final List<Double> DASHED = new ArrayList<Double>(Arrays.asList(10.0,10.0));
+	public static final List<Double> DOTTED = new ArrayList<Double>(Arrays.asList(2.0, 35.0));
 		
 	public Pen() {
 		penDown = true;
