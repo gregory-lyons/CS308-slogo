@@ -35,10 +35,11 @@ public class Parser {
 
 	// change constructor to allow for the language to change the input to the
 	// resource bundle
-	public Parser(String input, Turtle turtle) {
+	public Parser(String input, Turtle turtle, String language) {
 		myTurtle = turtle;
+		language = "French";
 		ResourceBundle myBundle = ResourceBundle
-				.getBundle("resources.languages/English");
+				.getBundle("resources.languages/" + language);
 		myMap = convertResourceBundleToMap(myBundle);
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
