@@ -1,15 +1,9 @@
 package FrontEndCommands;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Observable;
 import FrontEnd.CommandLine;
-import FrontEnd.Console;
-import FrontEnd.DefaultStrings;
-import FrontEnd.HistoryBox;
 import FrontEnd.StringChooser;
 import FrontEnd.View;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 

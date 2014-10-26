@@ -2,7 +2,6 @@ package Nodes.conditionals;
 
 import Nodes.ConstantNode;
 import Nodes.Node;
-import Nodes.booleans.BooleanNode;
 
 public abstract class ConditionalNode extends Node {
 	
@@ -36,6 +35,11 @@ public abstract class ConditionalNode extends Node {
 			return super.update();
 		}
 		
+	}
+	
+	public void clear() {
+		left = null;
+		right = null;
 	}
 
 }

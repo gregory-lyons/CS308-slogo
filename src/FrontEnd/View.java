@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Backend.Turtle;
-import FrontEndCommands.EnterCommand;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.NewWorkspace;
 import FrontEndCommands.SaveWorkspace;
@@ -43,7 +42,6 @@ import javafx.stage.StageStyle;
  * @author Rica Zhang, Greg Lyons
  *
  */
-
 public class View {	
 	private Scene myScene;
 	BorderPane root;
@@ -63,7 +61,7 @@ public class View {
 	public static final int SIDEBAR_AMOUNT_BUTTON_WIDTH = 125;
 	public static final int SIDEBAR_AMOUNT_WIDTH = 75;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
-	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 650);
+	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
 	public static final double DIALOG_WIDTH = 400;
 	public static final double DIALOG_HEIGHT = 100;
 	public static final Insets PADDING = new Insets(5);
@@ -93,7 +91,6 @@ public class View {
 	private Console myConsole;
 	private TurtleWindow myTurtleWindow;
 	private ArrowKeyHandler myArrowHandler;
-	private List<Turtle> myActives;
 
 	private CommandFactory myCommandFactory;    
 	private SuperCommand myEnterCommand;
@@ -125,7 +122,6 @@ public class View {
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
 		myTurtleWindow = new TurtleWindow(myPenBox, myTurtleImageBox, myTurtleInformation);
-		myActives = myTurtleWindow.getActiveTurtles();
 		myButtons = new ArrayList<SuperCommand>();
 		makeEnterButton();
 		makeTurtleButton();
@@ -266,10 +262,6 @@ public class View {
 		return dialog;
 	}
 
-	/**
-	 * 
-	 * @return the scene
-	 */
 	public Scene getScene () {
 		return myScene;
 	}
@@ -294,7 +286,6 @@ public class View {
 		}
 		myEnterCommand.addObserver(myController);
 		dropdownCommandMenu.addObserver(myController);
-		
 	}
 
 	public LanguageSelector getLanguageSelector() {
@@ -308,6 +299,10 @@ public class View {
 
 	public TurtleImageBox getMyTurtleImageBox () {
 		return myTurtleImageBox;
+	}
+	
+	public Button getAddTurtleButton() {
+	    return addTurtleButton;
 	}
 
 	public GridCheckBox getMyGridCheckBox () {
@@ -334,8 +329,7 @@ public class View {
 	}
 
 	public void updateTurtleInfo(List<Turtle> activeTurtles) {
-		// TODO Auto-generated method stub
-		
+	    myTurtleInformation.update();
 	}
 
 }

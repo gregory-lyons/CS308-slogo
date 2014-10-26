@@ -8,9 +8,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import FrontEnd.DefaultStrings;
-import FrontEnd.LanguageSelector;
 import FrontEnd.View;
 
 /**
@@ -61,11 +59,11 @@ public class SaveWorkspace {
         try {
             PrintWriter pw = new PrintWriter(workspaceSettings);
             String myLanguage = myView.getLanguageSelector().getCurrentLanguage();
-            pw.println("Language = " + myLanguage);
+            pw.println(myLanguage);
             String myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
-            pw.println("BackgroundColor = " + myBackgroundColor);
+            pw.println(myBackgroundColor);
             int myNumberOfTurtles = myView.getTurtleWindow().getAllTurtles().size();
-            pw.println("NumberOfTurtles = " + myNumberOfTurtles);
+            pw.println(myNumberOfTurtles);
             pw.close();
         }
         catch (FileNotFoundException e) {

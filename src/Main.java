@@ -1,6 +1,3 @@
-import Backend.Model;
-import FrontEnd.Controller;
-import FrontEnd.View;
 import FrontEnd.Workspace;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -17,7 +14,7 @@ public class Main extends Application {
      */
     @Override
     public void start (Stage s) {     	
-    	Workspace myWS = new Workspace(s);
+    	new Workspace(s);
     }
     
     /**

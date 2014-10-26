@@ -3,6 +3,8 @@ package Backend;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import FrontEnd.Boundary;
+import FrontEnd.View;
 import Pen.Pen;
 import Pen.PenOptions;
 import TurtleView.ActiveRing;
@@ -10,13 +12,10 @@ import TurtleView.TurtleImageBox;
 import TurtleView.TurtleInformation;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Polyline;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -25,6 +24,7 @@ public class Turtle extends ImageView {
 	public static final double DEFAULT_WIDTH = 25.0;
 	public static final double DEFAULT_HEIGHT = 25.0;
 	public static final String DEFAULT_IMAGE = "turtle1";
+
 
 	private Point2D myLocation;
 	private List<Point2D> nextLocations;
@@ -36,7 +36,9 @@ public class Turtle extends ImageView {
 	private ActiveRing myRing;
 	private int myID;
 	private boolean needsClear;
-	private List<Polyline> myTrail;	
+	private List<Polyline> myTrail;
+	private List<Polyline> extraList;
+	
 
 	public Turtle(Point2D location, double angle, int id) {
 		super();
@@ -88,9 +90,11 @@ public class Turtle extends ImageView {
 	}
 
 	public void addLocation(Point2D location){
+		Boundary window = new Boundary(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
+		Point2D newPoint = window.checkBoundary(location);
 		nextLocations.add(myLocation);
-		nextLocations.add(location);
-		move(location);
+		nextLocations.add(newPoint);
+		move(newPoint);
 	}
 
 	public Point2D nextLocation(double distance, double angle){

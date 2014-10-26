@@ -4,8 +4,6 @@ import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
-
 
 public class TurtleImageBox extends ComboBox<String> {	
 	private Turtle myTurtle;

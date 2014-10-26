@@ -2,17 +2,11 @@ package FrontEndCommands;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import FrontEnd.DefaultStrings;
-import FrontEnd.LanguageSelector;
 import FrontEnd.View;
 import TurtleView.TurtleImageBox;
 
@@ -24,11 +18,12 @@ import TurtleView.TurtleImageBox;
  */
 public class LoadWorkspace {
     private Button myButton;
-    private List<File> myImages = new ArrayList<File>();
     private String myLanguage;
     private View myView;
     private String myBackgroundColor;
     private TurtleImageBox myTurtleImageBox;
+    private File selectedFile;
+    private int myNumberTurtles;
     
     public LoadWorkspace(View myView) {
         this.myView = myView;
@@ -43,24 +38,46 @@ public class LoadWorkspace {
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(parentFrame);
         if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
+            selectedFile = fileChooser.getSelectedFile();
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
         }
         getSettingsFromFile();
     }
     
     private void getSettingsFromFile () {
-        String testerLanguage = "Italian";
-        myView.getLanguageSelector().getComboBox().setValue(testerLanguage);
-        myView.getLanguageSelector().getComboBox().arm();
-        
-        myTurtleImageBox = myView.getMyTurtleImageBox();
-        myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");
-        myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\berry6.jpg");
-        myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\pudding4.jpg");
-        
-        
-        myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
+
+        try {
+                Scanner in = new Scanner(selectedFile);
+                myLanguage = in.next();
+                myBackgroundColor = in.next();
+                myNumberTurtles = Integer.valueOf(in.next());
+                in.close();
+
+            myView.getLanguageSelector().getComboBox().setValue(myLanguage);
+            myView.getLanguageSelector().getComboBox().arm();
+            
+            for(int i = 0; i < myNumberTurtles; i++) {
+                myView.getAddTurtleButton().fire();
+
+            }
+            
+            myTurtleImageBox = myView.getMyTurtleImageBox();
+            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");
+            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\berry6.jpg");
+            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\pudding4.jpg");            
+            
+            myView.getMyBackgroundColorBox().setValue(myBackgroundColor);
+            myView.getMyBackgroundColorBox().arm();
+
+        }
+        catch (FileNotFoundException f) {
+            myView.makeErrorDialog("Could not find resource bundle for load workspace", selectedFile.getAbsolutePath());
+        }
+        catch (Exception e) {
+            myView.makeErrorDialog("File improperly formatted", selectedFile.getAbsolutePath());
+            handle();
+        }
+
     }
 
     public Button getButton() {

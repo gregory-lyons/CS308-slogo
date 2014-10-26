@@ -1,7 +1,6 @@
 package FrontEnd;
 
 import java.util.Observable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 /**
@@ -26,7 +25,17 @@ public class UserCommands extends Observable{
     	this.setChanged();
         notifyObservers(myComboBox.getValue());
     }
+    
+    /**
+     * Checks if it has the command already, if not it will add the command
+     * @param instruction
+     */
     public void addCommand(Object instruction) {
+        for (String each : myComboBox.getItems()) {
+            if (each.equals(instruction)) {
+                return;
+            }
+        }
         myComboBox.getItems().add((String) instruction);
     }
     
