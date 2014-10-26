@@ -31,6 +31,7 @@ public class Parser {
 	private Map<String, String> myMap;
 	private static final String[] Packages = { "", "booleans.", "loops.",
 			"math.", "turtlecommands." };
+	
 
 	// change constructor to allow for the language to change the input to the
 	// resource bundle
@@ -55,6 +56,7 @@ public class Parser {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = array[i].toLowerCase();
 			String converted = myMap.get(array[i]);
+			
 			converted += "Node";
 			convertedList[i] = converted;
 		}
@@ -140,17 +142,20 @@ public class Parser {
 			Node node = null;
 			for (int j = 0; j < Packages.length; j++) {
 				try {
-					String stringToCheck = "Nodes." + Packages[j] + s;
-					node = (Node) Class.forName(stringToCheck).newInstance();
-					if (node instanceof CommandNode) {
-						((CommandNode) node).addTurtle(myTurtle);
-					}
+					
 					try {
 						double info = Double.parseDouble(s.substring(0, s.length() - 4));
 						node = new ConstantNode(info);
 					}
 					catch(Exception e) {
 					}
+					
+					String stringToCheck = "Nodes." + Packages[j] + s;
+					node = (Node) Class.forName(stringToCheck).newInstance();
+					if (node instanceof CommandNode) {
+						((CommandNode) node).addTurtle(myTurtle);
+					}
+					
 					
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				}

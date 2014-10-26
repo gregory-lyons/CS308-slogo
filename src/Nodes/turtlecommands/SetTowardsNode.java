@@ -4,7 +4,7 @@ import javafx.geometry.Point2D;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class TowardsNode extends TwoChildNode {
+public class SetTowardsNode extends TwoChildNode {
 
 	@Override
 	public Node update() {

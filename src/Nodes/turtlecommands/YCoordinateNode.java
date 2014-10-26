@@ -2,13 +2,10 @@ package Nodes.turtlecommands;
 
 import Nodes.Node;
 
-
-public class UpPenNode  extends ZeroChildrenNode {
-
+public class YCoordinateNode extends ZeroChildrenNode {
 	@Override
 	public Node update() {
-		myTurtle.setPenUp();
-		printValue = 0;
+		printValue = myTurtle.getYCord();
 		return super.update();
 	}
 }

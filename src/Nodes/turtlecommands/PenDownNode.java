@@ -2,11 +2,13 @@ package Nodes.turtlecommands;
 
 import Nodes.Node;
 
-public class XCorNode extends ZeroChildrenNode {
+public class PenDownNode extends ZeroChildrenNode {
 
 	@Override
 	public Node update() {
-		printValue = myTurtle.getXCord();
+		myTurtle.setPenDown();
+		printValue = 1;
 		return super.update();
 	}
+
 }
