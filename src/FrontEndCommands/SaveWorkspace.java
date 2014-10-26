@@ -23,6 +23,12 @@ public class SaveWorkspace {
     private View myView;
     private File workspaceSettings;
     
+    public static final String DIALOG_MESSAGE = "Choose location to save workspace preferences";
+    public static final String ERROR_MESSAGE = "This file was not found";
+    public static final String SAVE_PREFIX = "Save as file: ";
+    public static final String PROPERTIES_SUFFIX = ".properties";
+    public static final String DEFAULT_IMAGEPATH = "src\\TurtleView\\images";
+    
     public SaveWorkspace(View myView) {
         this.myView = myView;
         myButton = new Button(DefaultStrings.SAVE_WORKSPACE);
@@ -31,13 +37,12 @@ public class SaveWorkspace {
     }
 
     private void handle () {
-        File dir = new File("src\\TurtleView\\images");
+        File dir = new File(DEFAULT_IMAGEPATH);
         System.out.println(dir.getAbsolutePath());
         File[] directoryListing = dir.listFiles();
         if (directoryListing != null) {
             for (File child : directoryListing) {
                 myImages.add(child);
-                //System.out.println(child.getAbsolutePath());
             }
         }
         chooseFile();
@@ -47,11 +52,11 @@ public class SaveWorkspace {
     private void chooseFile() {
         JFrame parentFrame = new JFrame();
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Choose location to save workspace preferences");   
+        fileChooser.setDialogTitle(DIALOG_MESSAGE);   
         int userSelection = fileChooser.showSaveDialog(parentFrame);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
-            workspaceSettings = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".properties");
-            System.out.println("Save as file: " + workspaceSettings.getAbsolutePath());
+            workspaceSettings = new File(fileChooser.getSelectedFile().getAbsolutePath() + PROPERTIES_SUFFIX);
+            System.out.println(SAVE_PREFIX + workspaceSettings.getAbsolutePath());
         }
     }
     
@@ -67,7 +72,7 @@ public class SaveWorkspace {
             pw.close();
         }
         catch (FileNotFoundException e) {
-            System.out.println("This file was not found.");
+            System.out.println();
         }        
     }
 
