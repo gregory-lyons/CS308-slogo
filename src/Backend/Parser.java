@@ -31,7 +31,6 @@ public class Parser {
 	private Map<String, String> myMap;
 	private static final String[] Packages = { "", "booleans.", "loops.",
 			"math.", "turtlecommands." };
-	
 
 	// change constructor to allow for the language to change the input to the
 	// resource bundle
@@ -54,13 +53,61 @@ public class Parser {
 	private String[] convert(String[] array) {
 		String[] convertedList = new String[array.length];
 		for (int i = 0; i < array.length; i++) {
+			if (array[i].matches("-?\\d+(\\.\\d+)?")) {
+				convertedList[i] = array[i];
+				continue;
+			}
 			array[i] = array[i].toLowerCase();
 			String converted = myMap.get(array[i]);
-			
 			converted += "Node";
 			convertedList[i] = converted;
 		}
 		return convertedList;
+	}
+
+	private Map<String, String> convertResourceBundleToMap(
+			ResourceBundle resource) {
+		Map<String, String> map = new HashMap<String, String>();
+		Enumeration<String> keys = resource.getKeys();
+		while (keys.hasMoreElements()) {
+			String key = keys.nextElement();
+			String[] value = resource.getString(key).split(",");
+			for (int i = 0; i < value.length; i++) {
+				map.put(value[i], key);
+			}
+		}
+		return map;
+	}
+
+	public Queue<Node> getQueueOfNodes() {
+		Queue<Node> nodeList = new ArrayDeque<Node>();
+		for (String s : splitWords) {
+			Node node = null;
+			try {
+				double info = Double.parseDouble(s);
+				node = new ConstantNode(info);
+				nodeList.add(node);
+				continue;
+			} catch (Exception e) {
+			}
+
+			for (int j = 0; j < Packages.length; j++) {
+				try {
+					String stringToCheck = "Nodes." + Packages[j] + s;
+					 System.out.println(stringToCheck);
+					node = (Node) Class.forName(stringToCheck).newInstance();
+
+					if (node instanceof CommandNode) {
+						((CommandNode) node).addTurtle(myTurtle);
+					}
+				} catch (ClassNotFoundException | InstantiationException
+						| IllegalAccessException e) {
+					 System.out.println("Reflection failed");
+				}
+			}
+			nodeList.add(node);
+		}
+		return nodeList;
 	}
 
 	public String checkSaveType() {
@@ -117,52 +164,6 @@ public class Parser {
 
 	public String getFunctionName() {
 		return splitWords[1];
-	}
-
-	private Map<String, String> convertResourceBundleToMap(
-			ResourceBundle resource) {
-		Map<String, String> map = new HashMap<String, String>();
-		Enumeration<String> keys = resource.getKeys();
-		while (keys.hasMoreElements()) {
-			String key = keys.nextElement();
-			String[] value = resource.getString(key).split(",");
-			for (int i = 0; i < value.length; i++) {
-				map.put(value[i], key);
-			}
-		}
-		return map;
-	}
-	
-	
-
-	public Queue<Node> getQueueOfNodes() {
-		Queue<Node> nodeList = new ArrayDeque<Node>();
-		for (String s : splitWords) {
-			System.out.println(s);
-			Node node = null;
-			for (int j = 0; j < Packages.length; j++) {
-				try {
-					
-					try {
-						double info = Double.parseDouble(s.substring(0, s.length() - 4));
-						node = new ConstantNode(info);
-					}
-					catch(Exception e) {
-					}
-					
-					String stringToCheck = "Nodes." + Packages[j] + s;
-					node = (Node) Class.forName(stringToCheck).newInstance();
-					if (node instanceof CommandNode) {
-						((CommandNode) node).addTurtle(myTurtle);
-					}
-					
-					
-				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-				}
-			}
-			nodeList.add(node);
-		}
-		return nodeList;
 	}
 
 	public String getWord() {

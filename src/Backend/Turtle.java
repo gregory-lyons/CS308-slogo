@@ -86,9 +86,9 @@ public class Turtle extends ImageView{
 	public Point2D nextLocation(double distance, double angle){
 		double x = myLocation.getX();
 		double y = myLocation.getY();
-		double rotation = myAngle = angle;
-		x += distance*Math.sin(rotation);
-		y += distance*Math.cos(rotation);
+		double rotation = myAngle + angle;
+		x += distance*Math.sin(Math.toRadians(rotation));
+		y -= distance*Math.cos(Math.toRadians(rotation));
 		return new Point2D(x,y);
 	}
 

@@ -2,10 +2,8 @@ package Nodes;
 
 public class ConstantNode extends Node {
 
-	private double info;
-
 	public ConstantNode(double data) {
-		info = data;
+		printValue = data;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,6 +14,7 @@ public class ConstantNode extends Node {
 	}
 
 	public double returnData(){
-		return info;
+		System.out.println(printValue);
+		return printValue;
 	}
 }

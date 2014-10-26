@@ -7,7 +7,7 @@ public abstract class Node {
 	
 	private Node parent;
 	protected double printValue;
-	protected ArrayList<Node> myChildren;
+	protected ArrayList<Node> myChildren = new ArrayList<Node>();
 	
 	public abstract boolean noMoreChildren();
 	
