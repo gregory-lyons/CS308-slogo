@@ -121,5 +121,6 @@ public class DefaultStrings {
     public static final String BACKGROUNDCOLOR = "BackgroundColor";
 	public static final String CONSOLEDEFAULT = "ConsoleDefault";
 	public static final String TURTLEBUTTON = "AddTurtle";
+	public static final String ERROR_DEFAULT = "Syntax error - not a valid command";
        
 }

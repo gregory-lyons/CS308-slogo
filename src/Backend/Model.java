@@ -37,7 +37,7 @@ public class Model {
 			myParser = new Parser(instruction, turtle, language);
 			printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
 		}
-		return new SceneUpdater(activeTurtles,printValues);
+		return new SceneUpdater(activeTurtles,printValues, myParser.getNoError());
 	}
 	
 //	public void addSavedData(String input) {

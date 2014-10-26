@@ -59,7 +59,7 @@ public class View {
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
 	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 650);
-	public static final double DIALOG_WIDTH = 200;
+	public static final double DIALOG_WIDTH = 400;
 	public static final double DIALOG_HEIGHT = 100;
 	public static final Insets PADDING = new Insets(5);
 	public static final int BOX_SPACING = 5;
@@ -67,6 +67,8 @@ public class View {
 	public static final double TURTLEWINDOW_HEIGHT = 423.0;
 	public static final boolean DEFAULT_GRIDLINES = true;
 	public static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
+	public static final double ERROR_HEIGHT = 30;
+	public static final double ERROR_WIDTH = 30;
 
 	private HBox topHBox = new HBox(BOX_SPACING);
 	private VBox leftVBox = new VBox(BOX_SPACING);
@@ -252,7 +254,7 @@ public class View {
 	public Stage makeErrorDialog(String message){
 		Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
-		Scene errorScene = new Scene(new Group(new Text(DIALOG_WIDTH/2, DIALOG_HEIGHT/2, message)), DIALOG_WIDTH, DIALOG_HEIGHT);
+		Scene errorScene = new Scene(new Group(new Text(ERROR_WIDTH, ERROR_HEIGHT, message)), DIALOG_WIDTH, DIALOG_HEIGHT);
 		dialog.setScene(errorScene);
 		return dialog;
 	}
