@@ -12,5 +12,9 @@ public abstract class CommandNode extends Node {
 	public void addTurtle(Turtle newTurtle) {
 		myTurtle = newTurtle;
 	}
+	
+	public void clear() {
+		left = null;
+	}
 
 }

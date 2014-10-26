@@ -32,6 +32,7 @@ public class Turtle extends ImageView{
 	private int myID;
 	private boolean needsClear;
 	private List<Polyline> myTrail;
+	private int count = 0;
 	
 
 	public Turtle(Point2D location, double angle, int id) {
