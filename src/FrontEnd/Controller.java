@@ -50,7 +50,6 @@ public class Controller implements Observer {
     	myView.addConsoleEntries(sceneUpdater.getReturnValues());
     	myView.addHistoryEntry(command);
     	myView.updateTurtleInfo(myTurtleWindow.getActiveTurtles());
-    	myView.updateUserVariables(sceneUpdater.getVariables());
 	}
 
 	@Override
