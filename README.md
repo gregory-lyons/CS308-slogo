@@ -1,4 +1,9 @@
 slogo
 =====
 
-Provides a development environment that supports users to write SLogo programs.
+Team 11
+
+Justin Carrao
+Greg Lyons
+Ashwin Kommajesula
+Rica Zhang
