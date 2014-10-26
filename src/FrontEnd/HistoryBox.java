@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
  *
  */
 public class HistoryBox extends TextArea {
-    private static final Dimension SIZE = new Dimension(400, 600);
     private UserCommands myComboBox;
 
     /**
@@ -24,7 +23,7 @@ public class HistoryBox extends TextArea {
      * @param promptText
      */
     public HistoryBox(UserCommands myCombo, String promptText) {
-        this.setPrefSize(SIZE.width, SIZE.height);
+        this.setPrefSize(View.HISTORY_BOX_WIDTH, View.HISTORY_BOX_HEIGHT);
         this.setWrapText(true);
         this.setPromptText(promptText);
         myComboBox = myCombo;

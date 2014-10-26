@@ -12,6 +12,7 @@ import java.util.List;
 public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     // TODO Translate
+    public static final String USER_VARIABLES = "UserVariables";
     public static final String SAVE_WORKSPACE = "Save Workspace";
     public static final String LOAD_WORKSPACE = "Load Workspace";
     public static final String TURTLE_IMAGE_PROMPT = "Choose Turtle Image";

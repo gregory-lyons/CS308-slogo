@@ -1,6 +1,7 @@
 package Pen;
 
 import FrontEnd.DefaultStrings;
+import FrontEnd.View;
 import TurtleView.BackgroundColorBox;
 import TurtleView.GridCheckBox;
 import TurtleView.TurtleImageBox;
@@ -20,6 +21,7 @@ public class PenOptions extends VBox {
 	private PenTypeBox myTypeBox;
 	
 	public PenOptions(Pen p) {
+	        super(View.BOX_SPACING);
 		myPen = p;
 		setUpBoxes();
 	}
@@ -35,7 +37,7 @@ public class PenOptions extends VBox {
 		myColorBox.setOnAction(event -> myPen.changeColor(myColorBox.getColor()));
 		color.getChildren().addAll(new Text(DefaultStrings.COLOR_LABEL), myColorBox);
 		
-		HBox penDown = new HBox();
+		HBox penDown = new HBox(View.BOX_SPACING);
 		myDownBox = new CheckBox();
 		myDownBox.setSelected(true);
 		myDownBox.setOnAction(event -> updatePen());

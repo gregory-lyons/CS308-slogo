@@ -1,7 +1,6 @@
 package FrontEnd;
 
 import java.util.Observable;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
@@ -17,10 +16,10 @@ public class UserCommands extends Observable{
 
     //private ObservableList<String> options = FXCollections.observableArrayList();
 
-    public UserCommands (String defaultText) {       
+    public UserCommands (String language) {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
-        myComboBox.setPromptText(defaultText);
+        myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.DROPDOWNMENUDEFAULT));
         myButton = new Button(DefaultStrings.GO);
         myButton.setMinWidth(View.GO_BUTTON_WIDTH);
         myButton.setOnMouseClicked(event -> handle());

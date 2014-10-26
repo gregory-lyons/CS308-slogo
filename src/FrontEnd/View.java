@@ -3,13 +3,9 @@ package FrontEnd;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.ResourceBundle;
-
-import Backend.SceneUpdater;
 import Backend.Turtle;
 import FrontEndCommands.LoadWorkspace;
+import FrontEndCommands.NewWorkspace;
 import FrontEndCommands.SaveWorkspace;
 import FrontEndCommands.SuperCommand;
 import Pen.Pen;
@@ -29,7 +25,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -56,25 +51,34 @@ public class View {
 	public static final int NEWWORKSPACE_BUTTON_WIDTH = 100;
 	public static final int GO_BUTTON_WIDTH = 50;
 	public static final int ENTERCLEAR_BUTTON_WIDTH = 100;
+	public static final int COMMANDLINE_WIDTH = 500;
+	public static final int COMMANDLINE_HEIGHT = 150;
+	public static final int HISTORY_BOX_WIDTH = 350;
+	public static final int HISTORY_BOX_HEIGHT = 423;
+	public static final int SIDEBAR_WIDTH = 300;
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
-	public static final int SIDEBAR_WIDTH = 300;
-	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 600);
+	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 650);
 	public static final double DIALOG_WIDTH = 200;
 	public static final double DIALOG_HEIGHT = 100;
+	public static final Insets PADDING = new Insets(5);
+	public static final int BOX_SPACING = 5;
+	public static final double TURTLEWINDOW_WIDTH = 600.0;
+	public static final double TURTLEWINDOW_HEIGHT = 423.0;
 	public static final boolean DEFAULT_GRIDLINES = true;
-	private static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
+	public static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
 
-	private HBox languageSelectorHBox = new HBox();
-	private VBox myVBox = new VBox();
-	private HBox usercmdHBox = new HBox();
-	private HBox uservrbHBox = new HBox();
-	private HBox bottomHBox = new HBox();
-	private VBox myInnerVBox = new VBox();
-	private VBox centerVBox = new VBox();
-	private HBox backgroundBox;
-	private HBox imageBox;
-	private HBox gridBox;
+	private HBox topHBox = new HBox(BOX_SPACING);
+	private VBox leftVBox = new VBox(BOX_SPACING);
+        private VBox centerVBox = new VBox(BOX_SPACING);
+	private VBox sidebarVBox = new VBox(BOX_SPACING);
+	private HBox usercmdHBox = new HBox(BOX_SPACING);
+	private HBox uservrbHBox = new HBox(BOX_SPACING);
+	private HBox bottomLeftHBox = new HBox(BOX_SPACING);
+	private VBox enterclearVBox = new VBox(BOX_SPACING);
+	private VBox backgroundBox = new VBox();
+	private VBox imageBox = new VBox();
+	private HBox gridBox = new HBox(BOX_SPACING);
 
 	private CommandLine myCommandLine;
 	private Button addTurtleButton;
@@ -108,8 +112,8 @@ public class View {
 		myPenBox = new PenOptions(new Pen());
 		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
-		dropdownCommandMenu = new UserCommands(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
-		dropdownVariablesMenu = new UserVariables(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DROPDOWNMENUDEFAULT));
+		dropdownCommandMenu = new UserCommands(DEFAULT_LANGUAGE);
+		dropdownVariablesMenu = new UserVariables(DEFAULT_LANGUAGE);
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
@@ -119,10 +123,13 @@ public class View {
 		makeEnterButton();
 		makeTurtleButton();
 		
-		myVBox.getChildren().add(myTurtleInformation);        
+		topHBox.setPadding(PADDING);
+		leftVBox.setPadding(PADDING);
+		centerVBox.setPadding(PADDING);
+		sidebarVBox.setPadding(PADDING);						
+		
 		Hyperlink myHyperlink = new Hyperlink("Help!");
-
-		TextFlow flow = new TextFlow(myHyperlink);
+		TextFlow help = new TextFlow(myHyperlink);
 		WebView webView = new WebView();
 		WebEngine engine = webView.getEngine();
 		myHyperlink.setOnAction(event -> {
@@ -131,73 +138,59 @@ public class View {
 			myHelpStage.setScene(new Scene(webView));
 			myHelpStage.show();
 		});
-
-		Button newWindowButton = new Button(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.NEWWORKSPACE));
-		newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle (MouseEvent m) {
-				Stage myStage = new Stage();
-				new Workspace(myStage);
-			}
-		});
-
-		languageSelectorHBox.getChildren().add(newWindowButton);
-		languageSelectorHBox.getChildren().add(myLanguageSelector.getComboBox());
-		languageSelectorHBox.getChildren().add(myLanguageSelector.getButton());
-		languageSelectorHBox.getChildren().add(flow);
-
-		root.setTop(languageSelectorHBox);
-		usercmdHBox.getChildren().add(dropdownCommandMenu.getComboBox());
-		usercmdHBox.getChildren().add(dropdownCommandMenu.getButton());
-		uservrbHBox.getChildren().add(dropdownVariablesMenu.getComboBox());
-		uservrbHBox.getChildren().add(dropdownVariablesMenu.getButton());
 		
-		backgroundBox = new HBox();
+		NewWorkspace myNewWorkspace = new NewWorkspace();
+	        LoadWorkspace myLoadWorkspace = new LoadWorkspace(this);
+	        SaveWorkspace mySaveWorkspace = new SaveWorkspace(this);
+		topHBox.getChildren().addAll(myLanguageSelector.getComboBox(), myLanguageSelector.getButton());
+		topHBox.getChildren().add(help);
+		topHBox.getChildren().add(myNewWorkspace.getButton());
+		topHBox.getChildren().add(myLoadWorkspace.getButton());
+		topHBox.getChildren().add(mySaveWorkspace.getButton());
+		root.setTop(topHBox);
+		
+	        enterclearVBox.getChildren().add(myEnterCommand.getButton());
+	        enterclearVBox.getChildren().add(makeClearButton());
+	        bottomLeftHBox.getChildren().add(myCommandLine); 
+	        bottomLeftHBox.getChildren().add(enterclearVBox);
+	        leftVBox.getChildren().add(myTurtleWindow);
+	        leftVBox.getChildren().add(bottomLeftHBox);
+	        root.setLeft(leftVBox);
+		
+	        centerVBox.getChildren().add(myHistoryBox);
+	        centerVBox.getChildren().add(myConsole);
+	        root.setCenter(centerVBox);
+		
+		usercmdHBox.getChildren().addAll(dropdownCommandMenu.getComboBox(), dropdownCommandMenu.getButton());
+		uservrbHBox.getChildren().addAll(dropdownVariablesMenu.getComboBox(), dropdownVariablesMenu.getButton());
 		myBackgroundColorBox = new BackgroundColorBox(myTurtleWindow);
-		backgroundBox.getChildren().addAll(myBackgroundColorBox, 
-				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR)));
-		imageBox = new HBox();
-		imageBox.getChildren().addAll(myTurtleImageBox, 
-				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE)));
-		gridBox = new HBox();
+		backgroundBox.getChildren().addAll(new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR))
+		    , myBackgroundColorBox);
+		imageBox.getChildren().addAll(new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE))
+		    , myTurtleImageBox);
 		myGridCheckBox = new GridCheckBox(myTurtleWindow);
 		gridBox.getChildren().addAll(myGridCheckBox, 
-				new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
+		                             new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
 
-		myVBox.getChildren().add(addTurtleButton);
-		myVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
-		myVBox.getChildren().add(myPenBox);
-		myVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
-		root.setCenter(centerVBox);
-		centerVBox.getChildren().add(myHistoryBox);
-		myInnerVBox.getChildren().add(myEnterCommand.getButton());
-		myInnerVBox.getChildren().add(makeClearButton());
-		
-		bottomHBox.getChildren().add(myCommandLine); 
-		bottomHBox.getChildren().add(myInnerVBox);   
-		bottomHBox.getChildren().add(myConsole);
-		root.setBottom(bottomHBox);
+	        sidebarVBox.getChildren().add(myTurtleInformation);
+		sidebarVBox.getChildren().add(addTurtleButton);
+		sidebarVBox.getChildren().addAll(usercmdHBox, uservrbHBox);
+		sidebarVBox.getChildren().add(myPenBox);
+		sidebarVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
 
 		for (String button : myCommandFactory.getCommandButtons()) {
 			SuperCommand sc = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, button);
 			myButtons.add(sc);
-			myVBox.getChildren().add(sc.getButton());
+			sidebarVBox.getChildren().add(sc.getButton());
 		}
-		LoadWorkspace myLoadWorkspace = new LoadWorkspace(this);
-		myVBox.getChildren().add(myLoadWorkspace.getButton());
-		SaveWorkspace mySaveWorkspace = new SaveWorkspace(this);
-		myVBox.getChildren().add(mySaveWorkspace.getButton());
+		
 		ScrollPane sp = new ScrollPane();
 		sp.setHbarPolicy(ScrollBarPolicy.NEVER);
 		sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-		sp.setContent(myVBox);
-		//myVBox.minWidth(BUTTON_WIDTH*2);
-		//sp.prefViewportWidthProperty().bind(myVBox.minWidthProperty());
-		sp.setPadding(new Insets(5,5,5,5));
+		sp.setContent(sidebarVBox);
 		sp.setMinWidth(SIDEBAR_WIDTH);
 		root.setRight(sp);
-		root.setLeft(myTurtleWindow);
-
+		
 		myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
 		myTurtleWindow.requestFocus();
 		myScene.setOnKeyPressed(event -> sendArrowCommand(event));
@@ -229,10 +222,10 @@ public class View {
 	}
 	
 	private void makeTurtleButton(){
-		addTurtleButton = new Button();
-		addTurtleButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEBUTTON));
-    	addTurtleButton.setPrefSize(SIDEBAR_BUTTON_WIDTH, SHORT_BUTTON_HEIGHT);
-    	addTurtleButton.setOnAction(event -> myTurtleWindow.makeTurtle());
+	    addTurtleButton = new Button();
+	    addTurtleButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEBUTTON));
+	    addTurtleButton.setPrefSize(SIDEBAR_BUTTON_WIDTH, SHORT_BUTTON_HEIGHT);
+	    addTurtleButton.setOnAction(event -> myTurtleWindow.makeTurtle());
 	}
 
 	/**

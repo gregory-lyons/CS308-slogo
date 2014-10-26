@@ -13,15 +13,13 @@ import javafx.scene.control.TextArea;
  * @author Rica
  *
  */
-public class CommandLine extends TextArea implements Observer {
-    private static final Dimension SIZE = new Dimension(400, 150);
-    
+public class CommandLine extends TextArea implements Observer {    
     /**
      * Constructs command line of preferred size with wrap text and prompt Text.
      * @param promptText
      */
     public CommandLine(String promptText) {
-        this.setPrefSize(SIZE.width, SIZE.height);
+        this.setPrefSize(View.COMMANDLINE_WIDTH, View.COMMANDLINE_HEIGHT);
         this.setWrapText(true);
         this.setPromptText(promptText);
     }
