@@ -17,10 +17,10 @@ public class ArrowKeyHandler {
 		String instruction = "";
 		switch (kc)
 		{
-		case UP: instruction += DIRECT_UP + FORWARD;
-		case DOWN: instruction += DIRECT_DOWN + FORWARD;
-		case LEFT: instruction += DIRECT_LEFT + FORWARD;
-		case RIGHT: instruction += DIRECT_RIGHT + FORWARD;
+		case UP: instruction += DIRECT_UP + FORWARD; break;
+		case DOWN: instruction += DIRECT_DOWN + FORWARD; break;
+		case LEFT: instruction += DIRECT_LEFT + FORWARD;  break;
+		case RIGHT: instruction += DIRECT_RIGHT + FORWARD; break;
 		default: ;
 		}
 		return instruction;

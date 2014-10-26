@@ -80,6 +80,7 @@ public class Turtle extends ImageView{
 	}
 
 	public void addLocation(Point2D location){
+		nextLocations.add(myLocation);
 		nextLocations.add(location);
 		move(location);
 	}
@@ -137,7 +138,6 @@ public class Turtle extends ImageView{
 
 	public Polyline moveAndDrawPath() {
 		List<Point2D> points = new ArrayList<Point2D>();
-		points.add(myLocation);
 		points.addAll(nextLocations);
 		myTurtleInformation.update();
 		nextLocations.clear();

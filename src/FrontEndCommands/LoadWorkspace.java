@@ -53,7 +53,7 @@ public class LoadWorkspace {
     private void getSettingsFromFile () {
         String testerLanguage = "Italian";
         myView.getLanguageSelector().getComboBox().setValue(testerLanguage);
-        myView.getLanguageSelector().getButton().fire();
+        //myView.getLanguageSelector().fire();
         
         myTurtleImageBox = myView.getMyTurtleImageBox();
         myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");

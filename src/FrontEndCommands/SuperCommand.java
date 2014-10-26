@@ -3,14 +3,15 @@ package FrontEndCommands;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-
 import FrontEnd.CommandLine;
 import FrontEnd.Console;
 import FrontEnd.DefaultStrings;
 import FrontEnd.HistoryBox;
 import FrontEnd.StringChooser;
 import FrontEnd.View;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 /**
  * This is a superclass. The subclasses (each representing a command) will each have their own appropriate String.
@@ -19,10 +20,10 @@ import javafx.scene.control.Button;
  *
  */
 public class SuperCommand extends Observable {
-        private Map<String, Double> myCommandValues = new HashMap<String, Double>();
 	protected String myInstruction;
 	protected String myLabel;
 	protected Button myButton;
+	protected HBox myHBox = new HBox(View.BOX_SPACING);
 	
     /**
      * This initializes the string representing the command that will be added to the command line when clicked.
@@ -31,28 +32,30 @@ public class SuperCommand extends Observable {
      */
     public SuperCommand(CommandLine myLine, String label, String language) {
     	myButton = new Button();
-    	
-    	myCommandValues.put(DefaultStrings.BACKWARD, 5.0);
-    	myCommandValues.put(DefaultStrings.FORWARD, 5.0);
-    	myCommandValues.put(DefaultStrings.LEFT, 270.0);
-    	myCommandValues.put(DefaultStrings.LEFT, 90.0);
-    	myCommandValues.put(DefaultStrings.XCOORDINATE, 0.0);
-    	myCommandValues.put(DefaultStrings.YCOORDINATE, 0.0);
-    	
+    	    	
         String myLabel = StringChooser.getWordInLang(language, label);
-        myInstruction = myLabel.toUpperCase() + " " + myCommandValues.get(label);
+        myInstruction = myLabel;
         myButton.setText(myLabel);
-    	myButton.setPrefSize(View.SIDEBAR_BUTTON_WIDTH, View.SHORT_BUTTON_HEIGHT);
+    	myButton.setPrefSize(View.SIDEBAR_AMOUNT_BUTTON_WIDTH, View.SHORT_BUTTON_HEIGHT);
     	myButton.setOnAction(event -> handle());
-    }
-    
-    public Button getButton(){
-    	return myButton;
+    	myHBox.getChildren().add(myButton);
     }
     
     protected void handle() {
-        this.setChanged();
+        change();
     	this.notifyObservers(myInstruction);
     }
+
+    public HBox getHBox() {
+        return myHBox;
+    }
+
+    public Button getButton () {
+        return myButton;
+    }
+    
+	public void change() {
+		this.setChanged();
+	}
 
 }

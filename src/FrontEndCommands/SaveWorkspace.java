@@ -1,6 +1,5 @@
 package FrontEndCommands;
 
-//import org.json.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -66,27 +65,11 @@ public class SaveWorkspace {
     private void writeSettingsToFile () {
         try {
             PrintWriter myPrintWriter = new PrintWriter(workspaceSettings);
-            JSONWriter myJSONWriter = new JSONWriter(myPrintWriter);
-            myJSONWriter.object()
-                .key("Background Color")
-                .value(myView.getMyBackgroundColorBox().getValue())
-                .key("Turtle Images")
-                .value(myView.getMyTurtleImageBox().getItems())
-                .key("Language")
-                .value(myView.getLanguageSelector().getComboBox().getValue())
-            .endObject();
-            myPrintWriter.print(myJSONWriter);
-            myPrintWriter.close();
         }
         catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-        catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
+        }        
     }
 
     public Button getButton() {

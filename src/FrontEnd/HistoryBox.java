@@ -30,7 +30,7 @@ public class HistoryBox extends TextArea {
     }
 
     public void addEntry(String instruction) {
-        this.appendText(instruction + "\n\n");
+        this.appendText(instruction + "\n");
         myComboBox.addCommand(instruction);
     }
 }
