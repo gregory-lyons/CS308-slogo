@@ -61,11 +61,11 @@ public class SaveWorkspace {
         try {
             PrintWriter pw = new PrintWriter(workspaceSettings);
             String myLanguage = myView.getLanguageSelector().getCurrentLanguage();
-            pw.println("Language = " + myLanguage);
+            pw.println(myLanguage);
             String myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
-            pw.println("BackgroundColor = " + myBackgroundColor);
+            pw.println(myBackgroundColor);
             int myNumberOfTurtles = myView.getTurtleWindow().getAllTurtles().size();
-            pw.println("NumberOfTurtles = " + myNumberOfTurtles);
+            pw.println(myNumberOfTurtles);
             pw.close();
         }
         catch (FileNotFoundException e) {

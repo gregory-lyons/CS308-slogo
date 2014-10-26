@@ -308,6 +308,10 @@ public class View {
 	public TurtleImageBox getMyTurtleImageBox () {
 		return myTurtleImageBox;
 	}
+	
+	public Button getAddTurtleButton() {
+	    return addTurtleButton;
+	}
 
 	public GridCheckBox getMyGridCheckBox () {
 		return myGridCheckBox;
