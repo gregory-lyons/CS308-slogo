@@ -1,10 +1,8 @@
 package TurtleView;
 
-import java.lang.reflect.Field;
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
 import javafx.scene.control.ComboBox;
-import javafx.scene.paint.Color;
 
 public class BackgroundColorBox extends ComboBox<String> {	
 	public BackgroundColorBox(TurtleWindow turtleWindow){
