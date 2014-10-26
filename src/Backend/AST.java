@@ -10,21 +10,20 @@ import Nodes.Node;
 public class AST {
 
 	private Node current = null;
-	
+
 	public List<Double> populateTree(Queue<Node> nodes) {
 		List<Double> returnValues = new ArrayList<Double>();
 		while (!nodes.isEmpty() || current != null) {
 			if (current == null) {
 				current = nodes.poll();
-			}
-			else if (current.noMoreChildren()) {
-				Node replace = current.update(); //set current node to ConstantNode so it can be used
-				returnValues.add(current.returnPrintValue()); 
+			} else if (current.noMoreChildren()) {
+				Node replace = current.update();
+				if (!(current instanceof ConstantNode))
+					returnValues.add(current.returnPrintValue());
 				if (current.getParent() != null) {
-					current = current.getParent(); 
+					current = current.getParent();
 					current.addChildren(replace);
-				}
-				else 
+				} else
 					current = null;
 			} else {
 				Node newNode = nodes.poll();
