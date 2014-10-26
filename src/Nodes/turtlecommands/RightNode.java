@@ -8,7 +8,7 @@ public class RightNode extends OneChildNode{
 	@Override
 	public Node update() {
 		printValue = ((ConstantNode)left).returnData();
-		myTurtle.setRotate(myTurtle.getRotate() + printValue);
+		myTurtle.setAngle(myTurtle.getAngle()+printValue);
 		return super.update();
 	}
 
