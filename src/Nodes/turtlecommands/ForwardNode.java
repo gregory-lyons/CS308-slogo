@@ -11,5 +11,4 @@ public class ForwardNode extends OneChildNode {
 		myTurtle.addLocation(myTurtle.nextLocation(printValue, 0));
 		return super.update();
 	}
-
 }

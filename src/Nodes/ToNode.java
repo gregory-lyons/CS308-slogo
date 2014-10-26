@@ -6,7 +6,7 @@ public class ToNode extends Node {
 	protected Node left;
 
 	@Override
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		return (right instanceof ConstantNode);
 	}
 	

@@ -14,7 +14,7 @@ public abstract class TwoChildNode extends CommandNode {
 	}
 
 	@Override
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		// TODO Auto-generated method stub
 		return (right instanceof ConstantNode);
 	}

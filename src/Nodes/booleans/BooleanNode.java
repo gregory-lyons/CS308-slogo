@@ -8,7 +8,7 @@ public abstract class BooleanNode extends Node{
 	protected Node left;
 	protected Node right;	
 	
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		return (right instanceof ConstantNode);
 	}
 	

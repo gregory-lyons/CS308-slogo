@@ -6,7 +6,7 @@ import Nodes.Node;
 public class TwoChildNode extends MathNode {
 
 	@Override
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		// TODO Auto-generated method stub
 		return (right instanceof ConstantNode);
 	}

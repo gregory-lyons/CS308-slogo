@@ -11,7 +11,7 @@ public abstract class OneChildNode extends CommandNode {
 	}
 
 	@Override
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		return(left instanceof ConstantNode);
 	}
 

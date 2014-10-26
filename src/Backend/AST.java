@@ -16,10 +16,11 @@ public class AST {
 		while (!nodes.isEmpty() || current != null) {
 			if (current == null) {
 				current = nodes.poll();
-			} else if (current.noMoreChildren()) {
+			} else if (current instanceof ConstantNode) {
+				current = current.getParent();
+			} else if (current.noMoreChildrenNeeded()) {
 				Node replace = current.update();
-				if (!(current instanceof ConstantNode))
-					returnValues.add(current.returnPrintValue());
+				returnValues.add(current.returnPrintValue());
 				if (current.getParent() != null) {
 					current = current.getParent();
 					current.addChildren(replace);

@@ -8,7 +8,7 @@ public class LoopNode extends Node {
 	protected Node left;
 	protected Node right;
 	
-	public boolean noMoreChildren() {
+	public boolean noMoreChildrenNeeded() {
 		return (right instanceof ConstantNode);
 	}
 	
