@@ -20,7 +20,6 @@ import javafx.scene.layout.HBox;
  *
  */
 public class SuperCommand extends Observable {
-	protected String myInstruction;
 	protected String myLabel;
 	protected Button myButton;
 	protected HBox myHBox = new HBox(View.BOX_SPACING);
@@ -31,10 +30,8 @@ public class SuperCommand extends Observable {
      * @param myHistory TODO
      */
     public SuperCommand(CommandLine myLine, String label, String language) {
-    	myButton = new Button();
-    	    	
+    	myButton = new Button();    	    	
         String myLabel = StringChooser.getWordInLang(language, label);
-        myInstruction = myLabel;
         myButton.setText(myLabel);
     	myButton.setPrefSize(View.SIDEBAR_AMOUNT_BUTTON_WIDTH, View.SHORT_BUTTON_HEIGHT);
     	myButton.setOnAction(event -> handle());
@@ -43,7 +40,7 @@ public class SuperCommand extends Observable {
     
     protected void handle() {
         change();
-    	this.notifyObservers(myInstruction);
+    	this.notifyObservers(myButton.getText());
     }
 
     public HBox getHBox() {

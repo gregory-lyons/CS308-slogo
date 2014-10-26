@@ -67,7 +67,7 @@ public class View {
 	public static final double DIALOG_HEIGHT = 100;
 	public static final Insets PADDING = new Insets(5);
 	public static final int BOX_SPACING = 5;
-	public static final double TURTLEWINDOW_WIDTH = 400.0;
+	public static final double TURTLEWINDOW_WIDTH = 600.0;
 	public static final double TURTLEWINDOW_HEIGHT = 400.0;
 	public static final boolean DEFAULT_GRIDLINES = true;
 	public static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
@@ -256,7 +256,8 @@ public class View {
 		myEnterCommand = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, DefaultStrings.ENTER);
 	}
 
-	public Stage makeErrorDialog(String message){
+	public Stage makeErrorDialog(String message, String command){
+	    message = message + "\nInvalid command: " + command;
 		Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
 		Scene errorScene = new Scene(new Group(new Text(ERROR_WIDTH, ERROR_HEIGHT, message)), DIALOG_WIDTH, DIALOG_HEIGHT);

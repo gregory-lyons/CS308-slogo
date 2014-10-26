@@ -29,15 +29,15 @@ public class Controller implements Observer {
 		interpret(sceneUpdater, command);
 	}
 	
-	private void interpret(SceneUpdater u, String s) {
+	private void interpret(SceneUpdater u, String command) {
 		if(!u.isNoError()) {
-    	    myView.makeErrorDialog(u.getErrorMessage()).show();
+    	    myView.makeErrorDialog(u.getErrorMessage(), command).show();
     	    return;
     	}
         u.getVariables();
     	myTurtleWindow.update(u.getTurtles());
     	myView.addConsoleEntries(u.getReturnValues());
-    	myView.addHistoryEntry(s);
+    	myView.addHistoryEntry(command);
 	}
 
 	@Override
