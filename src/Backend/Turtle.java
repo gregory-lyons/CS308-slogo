@@ -3,6 +3,8 @@ package Backend;
 import java.util.ArrayList;
 import java.util.List;
 
+import FrontEnd.Boundary;
+import FrontEnd.View;
 import Pen.Pen;
 import Pen.PenOptions;
 import TurtleView.ActiveRing;
@@ -20,6 +22,7 @@ public class Turtle extends ImageView{
 	public static final double DEFAULT_WIDTH = 25.0;
 	public static final double DEFAULT_HEIGHT = 25.0;
 	public static final String DEFAULT_IMAGE = "turtle1";
+
 
 	private Point2D myLocation;
 	private List<Point2D> nextLocations;
@@ -84,9 +87,11 @@ public class Turtle extends ImageView{
 	}
 
 	public void addLocation(Point2D location){
+		Boundary window = new Boundary(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
+		List<Point2D> newPoints = window.checkWrap(myLocation, location);
 		nextLocations.add(myLocation);
-		nextLocations.add(location);
-		move(location);
+		nextLocations.addAll(newPoints);
+		move(newPoints.get(newPoints.size()-1));
 	}
 
 	public Point2D nextLocation(double distance, double angle){
