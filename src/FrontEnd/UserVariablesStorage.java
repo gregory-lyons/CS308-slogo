@@ -10,11 +10,11 @@ import javafx.scene.control.ComboBox;
  * @author Rica
  *
  */
-public class UserVariables {
+public class UserVariablesStorage {
     private ComboBox<String> myComboBox;
     private static final List<String> MY_DEFAULT_VARIABLES = Arrays.asList("myforward = 5", "myturning = 40", "mycolor = GREEN");
     
-    public UserVariables(String language) {       
+    public UserVariablesStorage(String language) {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.getItems().addAll(MY_DEFAULT_VARIABLES);
