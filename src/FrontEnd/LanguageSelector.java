@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.LabeledText;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -49,7 +50,7 @@ public class LanguageSelector {
         myComboBox.setValue(DefaultStrings.ENGLISH);
         myButton = new Button(DefaultStrings.GO);
         myButton.setMinWidth(View.GO_BUTTON_WIDTH);
-        myButton.setOnMouseClicked(event -> handle());
+        myComboBox.setOnAction(event -> handle(event));
     }
     
     /*
@@ -100,7 +101,9 @@ public class LanguageSelector {
      * Gets all the leaf nodes of the children and stores it in the list leaves. Translates the leaf
      * into the selected language by calling the translate method.
      */
-    private void handle () {
+    private void handle (ActionEvent e) {
+        System.out.println(e.getEventType());
+        /*
         String chosenLanguage = myComboBox.getValue().toString();
         languageNum = StringChooser.myLanguageOrder.indexOf(chosenLanguage);
 
@@ -125,6 +128,7 @@ public class LanguageSelector {
                 //textLeaf.textProperty().bind();
             }
         }
+        */
     }
     
     /**
