@@ -8,7 +8,7 @@ public class TwoChildNode extends MathNode {
 	@Override
 	public boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (right instanceof ConstantNode);
+		return (left instanceof ConstantNode && right instanceof ConstantNode);
 	}
 
 	public void addChildren(Node newNode) {

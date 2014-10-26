@@ -2,6 +2,9 @@ package Backend;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import Nodes.ConstantNode;
 
 public class Model {
 
@@ -9,12 +12,12 @@ public class Model {
 	private Parser myParser;
 	private AST tree;
 	List<Double> printValues;
-//	public ArrayList<SavedData> userSaves;
+	private Map<String, ConstantNode> userSaves;
 
 	public Model() {
 		tree = new AST();
 		printValues = new ArrayList<Double>();
-
+		myParser = new Parser();
 	}
 
 	public Model(String input) {
@@ -40,8 +43,9 @@ public class Model {
 	}
 	
 	private boolean makeTreeandAddValues(String instruction, Turtle t, String language){
-		myParser = new Parser(instruction, t, language);
+		myParser.newInfo(instruction, t, language);
 		printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
+		userSaves = myParser.getMap();
 		return myParser.getNoError();	
 	}
 	
