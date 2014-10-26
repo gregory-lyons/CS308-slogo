@@ -34,10 +34,11 @@ public class Parser {
 
 	// change constructor to allow for the language to change the input to the
 	// resource bundle
-	public Parser(String input, Turtle turtle) {
+	public Parser(String input, Turtle turtle, String language) {
 		myTurtle = turtle;
+		language = "French";
 		ResourceBundle myBundle = ResourceBundle
-				.getBundle("resources.languages/English");
+				.getBundle("resources.languages/" + language);
 		myMap = convertResourceBundleToMap(myBundle);
 		splitWords = input.split("\\s+");
 		splitWords = convert(splitWords);
@@ -94,7 +95,7 @@ public class Parser {
 			for (int j = 0; j < Packages.length; j++) {
 				try {
 					String stringToCheck = "Nodes." + Packages[j] + s;
-					 System.out.println(stringToCheck);
+					System.out.println(stringToCheck);
 					node = (Node) Class.forName(stringToCheck).newInstance();
 
 					if (node instanceof CommandNode) {
@@ -102,7 +103,7 @@ public class Parser {
 					}
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException e) {
-					 System.out.println("Reflection failed");
+					System.out.println("Reflection failed");
 				}
 			}
 			nodeList.add(node);
