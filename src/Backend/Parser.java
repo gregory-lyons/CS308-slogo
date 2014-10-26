@@ -96,7 +96,6 @@ public class Parser {
 			for (int j = 0; j < Packages.length; j++) {
 				try {
 					String stringToCheck = "Nodes." + Packages[j] + s;
-					 System.out.println(stringToCheck);
 					node = (Node) Class.forName(stringToCheck).newInstance();
 
 					if (node instanceof CommandNode) {
