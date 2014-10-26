@@ -140,6 +140,7 @@ public class Turtle extends ImageView{
 		points.addAll(nextLocations);
 		move(points.get(points.size()-1));
 		myTurtleInformation.update();
+		nextLocations.clear();
 		return myPen.drawLines(points);
 	}
     
