@@ -19,6 +19,17 @@ import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * 
+ *  * @author Ashwin, Justin, Greg, Rica
+ * 
+ * This Turtle class is used by both the front end and the back end.  It extends ImageView so that it can
+ * be added directly to the Scene as a visual representation, but it also holds much data and has many methods for updating its state.
+
+ *
+ */
+
 public class Turtle extends ImageView {
 
 	public static final double DEFAULT_WIDTH = 25.0;

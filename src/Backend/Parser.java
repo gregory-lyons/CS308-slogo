@@ -17,7 +17,8 @@ import Nodes.turtlecommands.CommandNode;
 import Nodes.turtlecommands.ForwardNode;
 
 /**
- * @author: justincarrao. This class is the one that parses the string
+ * @author: Justin Carrao, Ashwin Kommajesula
+ * 			This class is the one that parses the string
  *          instructions passed to the back end It is designed to help the
  *          interpreter class, basically.
  * 

@@ -10,6 +10,16 @@ import Backend.Model;
 import Backend.SceneUpdater;
 import Backend.Turtle;
 
+/**
+ * 
+ * 
+ * @author Greg Lyons
+ * 
+ * The Controller serves as the interface between the front end and the back end.  Its executeCommand method calls the Model's parse method,
+ * and then it interprets the resulting output and updates the front end accordingly.
+ *
+ */
+
 public class Controller implements Observer {
 	
 	View myView;
