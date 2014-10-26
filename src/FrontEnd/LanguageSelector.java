@@ -32,7 +32,6 @@ public class LanguageSelector {
     //private BorderPane myRoot;
     private ObservableList<Node> myRootChildren;
     private ComboBox<String> myComboBox;
-    private Button myButton;
     private List<Node> leaves = new ArrayList<Node>();
     private int languageNum;
 
@@ -48,9 +47,7 @@ public class LanguageSelector {
         myComboBox.setMaxWidth(View.LANGUAGESELECTOR_CB_WIDTH);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
-        myButton = new Button(DefaultStrings.GO);
-        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
-        myComboBox.setOnAction(event -> handle(event));
+        myComboBox.setOnAction(event -> handle());
     }
     
     /*
@@ -101,9 +98,7 @@ public class LanguageSelector {
      * Gets all the leaf nodes of the children and stores it in the list leaves. Translates the leaf
      * into the selected language by calling the translate method.
      */
-    private void handle (ActionEvent e) {
-        System.out.println(e.getEventType());
-        /*
+    private void handle () {
         String chosenLanguage = myComboBox.getValue().toString();
         languageNum = StringChooser.myLanguageOrder.indexOf(chosenLanguage);
 
@@ -128,7 +123,6 @@ public class LanguageSelector {
                 //textLeaf.textProperty().bind();
             }
         }
-        */
     }
     
     /**
@@ -170,14 +164,6 @@ public class LanguageSelector {
      */
     public ComboBox<String> getComboBox () {
         return myComboBox;
-    }
-
-    /**
-     * 
-     * @return Returns GO button of combo box
-     */
-    public Button getButton () {
-        return myButton;
     }
     
     public String getCurrentLanguage() {

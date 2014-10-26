@@ -15,19 +15,19 @@ public class DefaultStrings {
     public static final String USER_VARIABLES = "UserVariables";
     public static final String SAVE_WORKSPACE = "Save Workspace";
     public static final String LOAD_WORKSPACE = "Load Workspace";
-    public static final String TURTLE_IMAGE_PROMPT = "Choose Turtle Image";
-    public static final String BACKGROUND_COLOR_PROMPT = "Choose Background Color";
     public static final List<String> BACKGROUND_COLOR_DEFAULTS = new ArrayList<>(Arrays.asList("WHITE", "GRAY", "BLACK", "RED", "GREEN", "YELLOW"));
     public static final String SOLID_LABEL = "SOLID";
     public static final String DASHED_LABEL = "DASHED";
     public static final String DOTTED_LABEL = "DOTTED";
-    public static final String PEN_TYPE_PROMPT = "Line type";
-    public static final String PEN_THICKNESS_PROMPT = "Pen Thickness";
     public static final String THICKNESS_LABEL = "Pen Thickness";
     public static final String COLOR_LABEL = "Pen Color";
     public static final String PENDOWN_LABEL = "Pen Down";
     public static final String TYPEBOX_LABEL = "Line Type";
-    public static final String WHITE = "White";
+    public static final String WHITE = "WHITE";
+    public static final String BLACK = "BLACK";
+    public static final String BLUE = "BLUE";
+    public static final String GREEN = "GREEN";
+    public static final String RED = "RED";
    
     //Languages
     public static final String ENGLISH = "English";

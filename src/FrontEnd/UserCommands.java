@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 public class UserCommands extends Observable{
 
     private ComboBox<String> myComboBox;
-    private Button myButton;
 
     //private ObservableList<String> options = FXCollections.observableArrayList();
 
@@ -20,9 +19,7 @@ public class UserCommands extends Observable{
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.DROPDOWNMENUDEFAULT));
-        myButton = new Button(DefaultStrings.GO);
-        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
-        myButton.setOnMouseClicked(event -> handle());
+        myComboBox.setOnAction(event -> handle());
     }
     
     private void handle () {
@@ -36,9 +33,4 @@ public class UserCommands extends Observable{
     public ComboBox<String> getComboBox() {
         return myComboBox;
     }
-    
-    public Button getButton() {
-        return myButton;
-    }
-
 }

@@ -6,15 +6,12 @@ import FrontEnd.View;
 import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 
-public class BackgroundColorBox extends ComboBox<String> {
-
-	public static final Color DEFAULT_COLOR = Color.WHITE;
-	
+public class BackgroundColorBox extends ComboBox<String> {	
 	public BackgroundColorBox(TurtleWindow turtleWindow){
 		super();
 		this.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
-		this.setPromptText(DefaultStrings.BACKGROUND_COLOR_PROMPT);
 		this.getItems().addAll(DefaultStrings.BACKGROUND_COLOR_DEFAULTS);
+		this.setValue(DefaultStrings.WHITE);
 		this.setOnAction(event -> handle(turtleWindow));	
 	}
 	

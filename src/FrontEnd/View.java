@@ -55,7 +55,7 @@ public class View {
 	public static final int COMMANDLINE_HEIGHT = 150;
 	public static final int HISTORY_BOX_WIDTH = 350;
 	public static final int HISTORY_BOX_HEIGHT = 423;
-	public static final int SIDEBAR_WIDTH = 300;
+	public static final int SIDEBAR_WIDTH = 250;
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
 	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 650);
@@ -144,7 +144,7 @@ public class View {
 		NewWorkspace myNewWorkspace = new NewWorkspace();
 	        LoadWorkspace myLoadWorkspace = new LoadWorkspace(this);
 	        SaveWorkspace mySaveWorkspace = new SaveWorkspace(this);
-		topHBox.getChildren().addAll(myLanguageSelector.getComboBox(), myLanguageSelector.getButton());
+		topHBox.getChildren().addAll(myLanguageSelector.getComboBox());
 		topHBox.getChildren().add(help);
 		topHBox.getChildren().add(myNewWorkspace.getButton());
 		topHBox.getChildren().add(myLoadWorkspace.getButton());
@@ -163,8 +163,8 @@ public class View {
 	        centerVBox.getChildren().add(myConsole);
 	        root.setCenter(centerVBox);
 		
-		usercmdHBox.getChildren().addAll(dropdownCommandMenu.getComboBox(), dropdownCommandMenu.getButton());
-		uservrbHBox.getChildren().addAll(dropdownVariablesMenu.getComboBox(), dropdownVariablesMenu.getButton());
+		usercmdHBox.getChildren().addAll(dropdownCommandMenu.getComboBox());
+		uservrbHBox.getChildren().addAll(dropdownVariablesMenu.getComboBox());
 		myBackgroundColorBox = new BackgroundColorBox(myTurtleWindow);
 		backgroundBox.getChildren().addAll(new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR))
 		    , myBackgroundColorBox);
