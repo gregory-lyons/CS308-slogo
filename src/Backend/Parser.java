@@ -32,10 +32,13 @@ public class Parser {
 	private static final String[] Packages = { "", "booleans.", "loops.",
 			"math.", "turtlecommands." };
 	private boolean noError;
+	private Map<String, ConstantNode> daMap;
 
-	// change constructor to allow for the language to change the input to the
-	// resource bundle
-	public Parser(String input, Turtle turtle, String language) {
+	public Parser() {
+		daMap = new HashMap<String, ConstantNode>();
+	}
+
+	public void newInfo(String input, Turtle turtle, String language) {
 		myTurtle = turtle;
 		ResourceBundle myBundle = ResourceBundle
 				.getBundle("resources.languages/" + language);
@@ -56,6 +59,11 @@ public class Parser {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i].matches("-?\\d+(\\.\\d+)?")) {
 				convertedList[i] = array[i];
+				continue;
+			}
+			if (array[i].matches(":[a-zA-Z]+")) {
+				convertedList[i] = array[i].substring(1);
+				System.out.println(convertedList[i]);
 				continue;
 			}
 			array[i] = array[i].toLowerCase();
@@ -80,6 +88,10 @@ public class Parser {
 		return map;
 	}
 
+	private String getNextString(String str, String[] array) {
+		return array[Arrays.asList(array).indexOf(str) + 1];
+	}
+
 	public Queue<Node> getQueueOfNodes() {
 		noError = true;
 		Queue<Node> nodeList = new ArrayDeque<Node>();
@@ -92,7 +104,23 @@ public class Parser {
 				continue;
 			} catch (Exception e) {
 			}
-
+				if (!(s.substring(s.length() - 4).equals("Node"))) {
+					node = daMap.get(s);
+					if (node instanceof ConstantNode)
+						nodeList.add(node);
+					else {
+						System.out.println(s);
+						System.out.println(Double.parseDouble(getNextString(s,
+								splitWords)));
+						daMap.put(
+								s,
+								new ConstantNode(Double
+										.parseDouble(getNextString(s,
+												splitWords))));
+					}
+					if (node != null)
+						continue;
+				}
 			for (int j = 0; j < Packages.length; j++) {
 				try {
 					String stringToCheck = "Nodes." + Packages[j] + s;
@@ -105,12 +133,12 @@ public class Parser {
 						| IllegalAccessException e) {
 				}
 			}
-			try{
+			try {
 				nodeList.add(node);
 			} catch (NullPointerException ne) {
 				noError = false;
 			}
-			
+
 		}
 		return nodeList;
 	}
@@ -239,6 +267,10 @@ public class Parser {
 
 	public boolean getNoError() {
 		return noError;
+	}
+
+	public Map<String, ConstantNode> getMap() {
+		return daMap;
 	}
 
 }
