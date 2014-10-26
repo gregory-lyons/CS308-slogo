@@ -25,8 +25,12 @@ public class Boundary {
 		ySmall = false;
 	}
 
-	public List<Point2D> checkWrap(Point2D newPoint, Point2D currentPoint){
-		double dx = newPoint.getX() - currentPoint.getX();
+	public List<Point2D> checkWrap(Point2D currentPoint, Point2D newPoint){
+		
+		List<Point2D> newPoints = new ArrayList<Point2D>();
+		
+		return newPoints;
+		/*double dx = newPoint.getX() - currentPoint.getX();
 		double dy = currentPoint.getY() - newPoint.getY();
 		double theta = Math.toDegrees(Math.atan2(dy, dx));
 		newX = newPoint.getX();
@@ -57,11 +61,14 @@ public class Boundary {
 			points.add(q);
 			points.add(location);
 		}
+		else{
+			points.add(newPoint);
+		}
 		if (xSmall){
 			
 		}
 		
-			return points;
+			return points;*/
 
 	}
 
