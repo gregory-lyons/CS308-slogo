@@ -9,7 +9,7 @@ public abstract class ConditionalNode extends Node {
 	protected Node left;
 	protected Node right;
 	
-	public boolean noMoreChildrenNeeded() {
+	public boolean isFinished() {
 		return (right instanceof ConstantNode);
 	}
 	

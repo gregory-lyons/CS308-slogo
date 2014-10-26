@@ -30,6 +30,8 @@ public class Turtle extends ImageView{
 	private TurtleInformation myTurtleInformation;
 	private ActiveRing myRing;
 	private int myID;
+	private boolean needsClear;
+	private List<Polyline> myTrail;
 	
 
 	public Turtle(Point2D location, double angle, int id) {
@@ -40,6 +42,8 @@ public class Turtle extends ImageView{
 		myPenOptions = new PenOptions(myPen);
 		nextLocations = new ArrayList<Point2D>();
 		myAngle = angle;
+		myTrail = new ArrayList<Polyline>();
+		needsClear = false;
 		changeImage(DEFAULT_IMAGE);
 		this.setRotate(angle);
 		this.setFitHeight(DEFAULT_WIDTH);
@@ -141,7 +145,9 @@ public class Turtle extends ImageView{
 		points.addAll(nextLocations);
 		myTurtleInformation.update();
 		nextLocations.clear();
-		return myPen.drawLines(points);
+		Polyline newPath = myPen.drawLines(points);
+		myTrail.add(newPath);
+		return newPath;
 	}
     
     public double getXCord(){
@@ -167,5 +173,22 @@ public class Turtle extends ImageView{
     public int getID(){
     	return myID;
     }
+    
+    public void setClear(){
+    	needsClear = true;
+    }
+    
+    public void clearTrail(){
+    	myTrail.clear();
+    	needsClear = false;
+    }
+
+	public List<Polyline> getTrail() {
+		return myTrail;
+	}
+
+	public boolean needsClear() {
+		return needsClear;
+	}
 
 }

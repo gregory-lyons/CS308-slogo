@@ -5,7 +5,7 @@ import Nodes.Node;
 public class PiNode extends MathNode{
 
 	@Override
-	public boolean noMoreChildrenNeeded() {
+	public boolean isFinished() {
 		return true;
 	}
 	
