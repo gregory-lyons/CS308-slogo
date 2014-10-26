@@ -81,6 +81,7 @@ public class Turtle extends ImageView{
 
 	public void addLocation(Point2D location){
 		nextLocations.add(location);
+		move(location);
 	}
 
 	public Point2D nextLocation(double distance, double angle){
@@ -138,7 +139,6 @@ public class Turtle extends ImageView{
 		List<Point2D> points = new ArrayList<Point2D>();
 		points.add(myLocation);
 		points.addAll(nextLocations);
-		move(points.get(points.size()-1));
 		myTurtleInformation.update();
 		nextLocations.clear();
 		return myPen.drawLines(points);
