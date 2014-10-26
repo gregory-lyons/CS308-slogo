@@ -29,7 +29,6 @@ public class Pen {
 	}
 	
 	public Polyline drawLines(List<Point2D> pointList){
-		List<Polyline> lineList = new ArrayList<Polyline>();
 		if (!penDown) {
 			return new Polyline();   //empty
 		}

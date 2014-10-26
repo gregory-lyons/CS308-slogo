@@ -90,13 +90,11 @@ public class Turtle extends ImageView {
 	}
 
 	public void addLocation(Point2D location){
-	//	Boundary window = new Boundary(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
-	//	List<Point2D> newPoints = window.checkWrap(myLocation, location);
+		Boundary window = new Boundary(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
+		Point2D newPoint = window.checkBoundary(location);
 		nextLocations.add(myLocation);
-	//	nextLocations.addAll(newPoints);
-		nextLocations.add(location);
-	//	move(newPoints.get(newPoints.size()-1));
-		move(location);
+		nextLocations.add(newPoint);
+		move(newPoint);
 	}
 
 	public Point2D nextLocation(double distance, double angle){
