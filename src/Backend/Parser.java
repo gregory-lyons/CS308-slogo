@@ -37,7 +37,6 @@ public class Parser {
 	// resource bundle
 	public Parser(String input, Turtle turtle, String language) {
 		myTurtle = turtle;
-		language = "French";
 		ResourceBundle myBundle = ResourceBundle
 				.getBundle("resources.languages/" + language);
 		myMap = convertResourceBundleToMap(myBundle);
