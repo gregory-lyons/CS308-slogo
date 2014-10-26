@@ -8,7 +8,7 @@ public class ConstantNode extends Node {
 	}
 
 	@Override
-	public boolean noMoreChildrenNeeded() {
+	public boolean isFinished() {
 		// TODO Auto-generated method stub
 		return true;
 	}

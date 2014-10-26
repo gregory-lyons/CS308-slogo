@@ -12,7 +12,7 @@ public class OneChildNode extends MathNode{
 	}
 
 	@Override
-	public boolean noMoreChildrenNeeded() {
+	public boolean isFinished() {
 		return(left instanceof ConstantNode);
 	}
 	
