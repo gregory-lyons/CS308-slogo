@@ -71,7 +71,6 @@ public class TurtleWindow extends Pane {
 		newTurtle.setOnMouseClicked(event -> click(newTurtle));
 		this.getChildren().addAll(newTurtle, newTurtle.getRing());
 		newTurtle.toFront();
-		System.out.println(newTurtle.getID());
 		return newTurtle;
 	}
 	
