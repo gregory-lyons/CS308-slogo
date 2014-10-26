@@ -74,7 +74,8 @@ public class TurtleImage extends ImageView {
 			Image newImage = new Image(getClass().getResourceAsStream(fileName));
 			this.setImage(newImage);
 		}
-		catch(NullPointerException npe){	
+		catch(NullPointerException npe){
+		    System.out.println("ERROR in TurtleImage.java: This image does not exist.");
 		}
 
 	}

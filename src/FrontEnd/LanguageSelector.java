@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.LabeledText;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -31,7 +32,6 @@ public class LanguageSelector {
     //private BorderPane myRoot;
     private ObservableList<Node> myRootChildren;
     private ComboBox<String> myComboBox;
-    private Button myButton;
     private List<Node> leaves = new ArrayList<Node>();
     private int languageNum;
 
@@ -47,9 +47,7 @@ public class LanguageSelector {
         myComboBox.setMaxWidth(View.LANGUAGESELECTOR_CB_WIDTH);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
-        myButton = new Button(DefaultStrings.GO);
-        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
-        myButton.setOnMouseClicked(event -> handle());
+        myComboBox.setOnAction(event -> handle());
     }
     
     /*
@@ -166,14 +164,6 @@ public class LanguageSelector {
      */
     public ComboBox<String> getComboBox () {
         return myComboBox;
-    }
-
-    /**
-     * 
-     * @return Returns GO button of combo box
-     */
-    public Button getButton () {
-        return myButton;
     }
     
     public String getCurrentLanguage() {

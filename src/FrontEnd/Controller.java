@@ -24,10 +24,10 @@ public class Controller implements Observer {
 		myTurtleInformation = myView.getTurtleInfo();
 	}
 	
-	public void executeCommand(String s, List<Turtle> actives){
+	public void executeCommand(String command, List<Turtle> actives){
 		
-		SceneUpdater u = myModel.parse(s, actives, myView.getCurrentLanguage());
-		interpret(u, s);
+		SceneUpdater sceneUpdater = myModel.parse(command, actives, myView.getCurrentLanguage());
+		interpret(sceneUpdater, command);
 	}
 	
 	private void interpret(SceneUpdater u, String s) {

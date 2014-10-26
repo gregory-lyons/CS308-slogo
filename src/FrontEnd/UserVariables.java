@@ -11,7 +11,6 @@ import javafx.scene.control.ComboBox;
  */
 public class UserVariables {
     private ComboBox<String> myComboBox;
-    private Button myButton;
     
     public UserVariables(String language) {       
         myComboBox = new ComboBox<String>();
@@ -19,9 +18,7 @@ public class UserVariables {
         myComboBox.getItems().addAll("Blue", "Purple", "Red");
         myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.USER_VARIABLES));
         myComboBox.setEditable(true);
-        myButton = new Button(DefaultStrings.GO);
-        myButton.setMinWidth(View.GO_BUTTON_WIDTH);
-        myButton.setOnMouseClicked(event -> handle());
+        myComboBox.setOnAction(event -> handle());
     }
     
     private void handle () {
@@ -35,9 +32,4 @@ public class UserVariables {
     public ComboBox<String> getComboBox() {
         return myComboBox;
     }
-    
-    public Button getButton() {
-        return myButton;
-    }
-
 }

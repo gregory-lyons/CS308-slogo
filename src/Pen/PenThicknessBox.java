@@ -10,13 +10,13 @@ import javafx.scene.control.ComboBox;
 public class PenThicknessBox extends ComboBox<Double>{
 	
 	public static final List<Double> myList = new ArrayList(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-	public static final String PROMPT = DefaultStrings.PEN_THICKNESS_PROMPT;
+	public static final int DEFAULT_VALUE_INDEX = 0;
 	
 	public PenThicknessBox(){
 		super();
 		this.setMaxWidth(View.SIDEBAR_COMBOBOX_WIDTH);
-		this.setPromptText(PROMPT);
-		this.getItems().addAll(1.0, 2.0, 3.0, 4.0);	
+		this.getItems().addAll(myList);	
+		this.setValue(myList.get(DEFAULT_VALUE_INDEX));
 	}
 	
 	public double getThick(){

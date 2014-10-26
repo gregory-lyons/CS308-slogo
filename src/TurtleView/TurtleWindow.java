@@ -35,6 +35,7 @@ public class TurtleWindow extends Pane {
 	public static final Color DEFAULT_PEN = Color.BLACK;
 	public static final String DEFAULT_BACKGROUND = DefaultStrings.BACKGROUND_COLOR_DEFAULTS.get(0);
 	public static final String DEFAULT_IMAGE = "turtle1";
+	public static final int DEFAULT_TURTLE_INDEX = 0;
 
 	public static final double GRID_INTERVAL = 40.0;
 	public static final double GRID_STROKE = 1.0;
@@ -58,6 +59,7 @@ public class TurtleWindow extends Pane {
 		for (int i = 0; i<START_TURTLES; i++){
 			makeTurtle();
 		}
+		click(allTurtles.get(0));
 		myGridLines = new ArrayList<Line>();
 		this.setMaxSize(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
