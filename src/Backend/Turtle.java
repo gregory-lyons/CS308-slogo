@@ -19,6 +19,13 @@ import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/***
+ * 
+ * @author Ashwin, Justin, Greg, Rica
+ *
+ */
+
 public class Turtle extends ImageView {
 
 	public static final double DEFAULT_WIDTH = 25.0;

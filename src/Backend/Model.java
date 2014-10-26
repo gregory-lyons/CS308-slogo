@@ -6,6 +6,12 @@ import java.util.Map;
 
 import Nodes.ConstantNode;
 
+/***
+ * 
+ * @author Ashwin, Justin, Greg
+ *
+ */
+
 public class Model {
 
 	protected String myInput;

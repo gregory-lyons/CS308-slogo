@@ -13,6 +13,13 @@ import Nodes.conditionals.ConditionalNode;
 import Nodes.loops.LoopNode;
 import Nodes.turtlecommands.CommandNode;
 
+/**
+ * 
+ * @author Ashwin, Justin
+ *
+ */
+
+
 public class AST {
 	
 	public List<Double> populateTree(Queue<Node> nodes) {
