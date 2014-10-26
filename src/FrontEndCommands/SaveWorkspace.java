@@ -1,5 +1,6 @@
 package FrontEndCommands;
 
+import org.json.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -25,6 +26,7 @@ public class SaveWorkspace {
     private String myLanguage;
     private View myView;
     private String myBackgroundColor;
+    private File workspaceSettings = new File("C:\\Users\\Rica\\Desktop\\blah.json");
     
     public SaveWorkspace(View myView) {
         this.myView = myView;
@@ -46,30 +48,44 @@ public class SaveWorkspace {
             }
         }
         myBackgroundColor = myView.getMyBackgroundColorBox().getValue();
+        chooseFile();
         writeSettingsToFile();
     }
     
-    private void writeSettingsToFile () {
+    private void chooseFile() {
         JFrame parentFrame = new JFrame();
-        
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Specify location to save workspace preferences");   
-         
+        fileChooser.setDialogTitle("Choose location to save workspace preferences");   
         int userSelection = fileChooser.showSaveDialog(parentFrame);
-        
-        File workspaceSettings = new File("workspace_settings.json");
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             workspaceSettings = fileChooser.getSelectedFile();
             System.out.println("Save as file: " + workspaceSettings.getAbsolutePath());
         }
+    }
+    
+    private void writeSettingsToFile () {
         try {
-            PrintWriter pw = new PrintWriter(workspaceSettings);
+            PrintWriter myPrintWriter = new PrintWriter(workspaceSettings);
+            JSONWriter myJSONWriter = new JSONWriter(myPrintWriter);
+            myJSONWriter.object()
+                .key("Background Color")
+                .value(myView.getMyBackgroundColorBox().getValue())
+                .key("Turtle Images")
+                .value(myView.getMyTurtleImageBox().getItems())
+                .key("Language")
+                .value(myView.getLanguageSelector().getComboBox().getValue())
+            .endObject();
+            myPrintWriter.print(myJSONWriter);
+            myPrintWriter.close();
         }
         catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        //JSONWriter myJSONWriter = new JSONWriter(pw);
+        catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
     }
 
