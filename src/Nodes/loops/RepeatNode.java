@@ -6,9 +6,10 @@ import java.util.Queue;
 
 import Nodes.*;
 
-public class RepeatNode extends Node {
+public class RepeatNode extends LoopNode {
+
 	
-	public double counter;
+	/*public double counter;
 	
 	public void addChildren(Node newNode) {
 		if (myChildren.isEmpty()) {
@@ -29,6 +30,6 @@ public class RepeatNode extends Node {
 			ret.add(copy.poll());
 		}
 		return ret;
-	}
+	}*/
 
 }

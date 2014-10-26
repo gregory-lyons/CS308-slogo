@@ -10,6 +10,7 @@ import Nodes.ListEndNode;
 import Nodes.Node;
 import Nodes.booleans.BooleanNode;
 import Nodes.conditionals.ConditionalNode;
+import Nodes.loops.LoopNode;
 import Nodes.loops.RepeatNode;
 import Nodes.turtlecommands.CommandNode;
 import Nodes.turtlecommands.OneChildNode;
@@ -37,12 +38,12 @@ public class AST {
 					current.addChildren(replace);
 				} else current = null;
 			}
-			else if (current instanceof RepeatNode){
+			else if (current instanceof LoopNode){
 				
 				current.addChildren(nodes.poll());
 				List<Double> values = new ArrayList<Double>();
 				
-				for (int i = 0; i < (((RepeatNode) current).counter); i++) {
+				for (int i = 0; i < (((LoopNode) current).counter); i++) {
 					
 					Queue<Node> copy = new ArrayDeque<Node>();
 					Queue<Node> copy1 = new ArrayDeque<Node>();
@@ -61,7 +62,7 @@ public class AST {
 						}
 						copy1.add(n);
 					}
-					Queue<Node> newCopy = ((RepeatNode) current).iterator(copy1);
+					Queue<Node> newCopy = ((LoopNode) current).iterator(copy1);
 					values = populateTree(newCopy);
 				}
 				while (!(nodes.peek() instanceof ListEndNode)) {

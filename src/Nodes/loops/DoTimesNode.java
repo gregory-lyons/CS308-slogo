@@ -1,21 +1,35 @@
 package Nodes.loops;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 import Nodes.ConstantNode;
+import Nodes.ListEndNode;
 import Nodes.Node;
 
 public class DoTimesNode extends LoopNode {
 	
-	protected double myIndex = ((ConstantNode) left).returnData();
+	/*public double counter;
+	
+	public void addChildren(Node newNode) {
+		if (myChildren.isEmpty()) {
+			counter = ((ConstantNode) newNode).returnData();
+		}
+		super.addChildren(newNode);
+	}
 	
 	@Override
-	public Node update() {
-		
-		while (myIndex > 0) {
-			left.update();
-			myIndex--;
-		}
-		return super.update();
-		
+	public boolean isFinished() {
+		return false;
 	}
+	
+	public Queue<Node> iterator(Queue<Node> copy) {
+		Queue<Node> ret = new ArrayDeque<Node>();
+		copy.poll();
+		while (!(copy.peek() instanceof ListEndNode)) {
+			ret.add(copy.poll());
+		}
+		return ret;
+	}*/
 
 }
