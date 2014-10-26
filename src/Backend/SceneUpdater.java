@@ -11,7 +11,7 @@ import TurtleView.UserVariable;
  * For each command that is parsed, the back-end creates a new SceneUpdater.
  * Each SceneUpdater instance tells the View how to update the display (is the pen up/down, was there an error message, where does the turtle move, etc.)
  * 
- * @author Greg, Rica
+ * @author Greg, Rica, Ashwin, Justin
  *
  */
 public class SceneUpdater {
