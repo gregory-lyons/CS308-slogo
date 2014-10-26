@@ -14,7 +14,6 @@ public class ConstantNode extends Node {
 	}
 
 	public double returnData(){
-		System.out.println(printValue);
 		return printValue;
 	}
 }

@@ -46,6 +46,7 @@ import javafx.stage.StageStyle;
 
 public class View {	
 	private Scene myScene;
+	BorderPane root;
 	private Controller myController;
 	public static final int SHORT_BUTTON_HEIGHT = 30;
 	public static final int PUFFY_BUTTON_HEIGHT = 60;
@@ -111,7 +112,7 @@ public class View {
 	 * @param language
 	 */
 	public View() {           	
-		BorderPane root = new BorderPane();
+		root = new BorderPane();
 		myTurtleInformation = new TurtleInformation(null);
 		myPenBox = new PenOptions(new Pen());
 		myTurtleImageBox = new TurtleImageBox(new Turtle());
@@ -196,7 +197,7 @@ public class View {
 		root.setRight(sp);
 		
 		myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
-		myTurtleWindow.requestFocus();
+		updateFocus();
 		myScene.setOnKeyPressed(event -> sendArrowCommand(event));
 	}
 
@@ -322,6 +323,10 @@ public class View {
 		
 	          myConsole.setText(consoleText);
 
+	}
+
+	public void updateFocus() {
+		root.requestFocus();
 	}
 
 }

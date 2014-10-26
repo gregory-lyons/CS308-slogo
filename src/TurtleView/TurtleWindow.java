@@ -97,6 +97,12 @@ public class TurtleWindow extends Pane {
 	public void update(List<Turtle> updates) {
 		for (Turtle t: updates){
 			this.getChildren().add(t.moveAndDrawPath());
+			if (t.needsClear()){
+				for (Polyline pl :t.getTrail()){
+					this.getChildren().remove(pl);
+				}
+				t.clearTrail();
+			}
 			t.setRotate(t.getAngle());
 		}
 		for (Turtle t: allTurtles) 
