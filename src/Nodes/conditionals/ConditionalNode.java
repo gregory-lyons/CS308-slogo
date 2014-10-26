@@ -37,5 +37,10 @@ public abstract class ConditionalNode extends Node {
 		}
 		
 	}
+	
+	public void clear() {
+		left = null;
+		right = null;
+	}
 
 }

@@ -36,7 +36,8 @@ public class Turtle extends ImageView {
 	private ActiveRing myRing;
 	private int myID;
 	private boolean needsClear;
-	private List<Polyline> myTrail;	
+	private List<Polyline> myTrail;
+	
 
 	public Turtle(Point2D location, double angle, int id) {
 		super();

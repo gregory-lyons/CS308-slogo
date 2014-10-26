@@ -9,8 +9,6 @@ import Nodes.*;
 public class RepeatNode extends Node {
 	
 	public double counter;
-
-
 	
 	public void addChildren(Node newNode) {
 		if (myChildren.isEmpty()) {
@@ -21,7 +19,7 @@ public class RepeatNode extends Node {
 	
 	@Override
 	public boolean isFinished() {
-		return false; //(counter == 0);
+		return false;
 	}
 	
 	public Queue<Node> iterator(Queue<Node> copy) {

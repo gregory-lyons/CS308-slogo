@@ -24,6 +24,10 @@ public abstract class Node {
 		myChildren.add(node);
 	}
 	
+	public void clearChildren(){
+		myChildren.clear();
+	}
+	
 	public Node getParent(){
 		return parent;
 	}
