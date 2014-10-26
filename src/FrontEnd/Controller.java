@@ -39,6 +39,7 @@ public class Controller implements Observer {
     	myTurtleWindow.update(u.getTurtles());
     	myView.addConsoleEntries(u.getReturnValues());
     	myView.addHistoryEntry(command);
+    	myView.updateTurtleInfo(myTurtleWindow.getActiveTurtles());
 	}
 
 	@Override

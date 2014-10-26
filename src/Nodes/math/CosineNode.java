@@ -3,10 +3,10 @@ package Nodes.math;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class TanNode extends OneChildNode{
+public class CosineNode extends OneChildNode{
 	
 	public Node update(){
-		printValue = Math.tan(((ConstantNode)left).returnData());
+		printValue = Math.cos(Math.toRadians(((ConstantNode)left).returnData()));
 		return super.update();
 	}
 

@@ -294,7 +294,6 @@ public class View {
 		}
 		myEnterCommand.addObserver(myController);
 		dropdownCommandMenu.addObserver(myController);
-		
 	}
 
 	public LanguageSelector getLanguageSelector() {
@@ -331,6 +330,10 @@ public class View {
 
 	public void updateFocus() {
 		root.requestFocus();
+	}
+
+	public void updateTurtleInfo(List<Turtle> activeTurtles) {
+	    myTurtleInformation.update();
 	}
 
 }
