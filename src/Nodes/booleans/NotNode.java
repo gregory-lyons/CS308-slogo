@@ -6,7 +6,7 @@ import Nodes.Node;
 public class NotNode extends BooleanNode {
 
 	@Override
-	public boolean noMoreChildrenNeeded() {
+	public boolean isFinished() {
 		// TODO Auto-generated method stub
 		return (left instanceof ConstantNode);
 	}

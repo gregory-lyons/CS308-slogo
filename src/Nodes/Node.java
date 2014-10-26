@@ -9,7 +9,7 @@ public abstract class Node {
 	protected double printValue;
 	protected ArrayList<Node> myChildren = new ArrayList<Node>();
 	
-	public abstract boolean noMoreChildrenNeeded();
+	public abstract boolean isFinished();
 	
 	public void setParent(Node node){
 		parent = node;

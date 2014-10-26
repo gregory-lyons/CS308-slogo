@@ -30,21 +30,20 @@ public class Controller implements Observer {
 		myView.updateFocus();
 	}
 	
-	private void interpret(SceneUpdater u, String s) {
+	private void interpret(SceneUpdater u, String command) {
 		if(!u.isNoError()) {
-    	    myView.makeErrorDialog(u.getErrorMessage()).show();
+    	    myView.makeErrorDialog(u.getErrorMessage(), command).show();
     	    return;
     	}
         u.getVariables();
     	myTurtleWindow.update(u.getTurtles());
     	myView.addConsoleEntries(u.getReturnValues());
-    	myView.addHistoryEntry(s);
+    	myView.addHistoryEntry(command);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		executeCommand((String)arg, myTurtleWindow.getActiveTurtles());
-		
+		executeCommand((String)arg, myTurtleWindow.getActiveTurtles());		
 	}
 
 }

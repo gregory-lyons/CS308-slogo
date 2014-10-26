@@ -14,9 +14,4 @@ public class Console extends TextArea {
         this.setPromptText(promptText);
         this.setEditable(false);
 	}
-
-	public void addEntry(String value) {
-		this.appendText(value + "\n\n");
-	}
-
 }
