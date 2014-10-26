@@ -7,14 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 import Nodes.ConstantNode;
 import Nodes.Node;
-import Nodes.booleans.BooleanNode;
-import Nodes.math.MathNode;
 import Nodes.turtlecommands.CommandNode;
-import Nodes.turtlecommands.ForwardNode;
 
 /**
  * @author: Justin Carrao, Ashwin Kommajesula
@@ -26,7 +22,6 @@ import Nodes.turtlecommands.ForwardNode;
 
 public class Parser {
 
-	private String myInput;
 	private String[] splitWords;
 	private Turtle myTurtle;
 	private Map<String, String> myMap;
