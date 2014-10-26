@@ -1,11 +1,8 @@
 package TurtleView;
 
-
 import Backend.Turtle;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 /**
  * Tells the user information about the turtle, updates whenever the turtle changes because it is an observer of the turtle
@@ -36,8 +33,7 @@ public class TurtleInformation extends VBox {
 		if (myTurtle == null) 
 			emptyInfo();
 		else{
-			turtleIndexLabel.textProperty().set(String.valueOf(myTurtle.getID()));
-			turtleIndexLabel.setText("Turtle Index: "+String.valueOf(myTurtle.getID()));
+			turtleIndexLabel.setText("Turtle Index: "+ myTurtle.getID());
 			turtlePositionLabel.setText("Turtle Position: (" + truncate(myTurtle.getXCord()) + "," + truncate(myTurtle.getYCord()) + ")");
 			turtleDirectionLabel.setText("Turtle is Facing: " + truncate(myTurtle.getRotate()) + " degrees");
 		}
@@ -55,7 +51,4 @@ public class TurtleInformation extends VBox {
 		  else
 		    return Math.ceil(val * 100)/100;
 		}
-
-
-
 }
