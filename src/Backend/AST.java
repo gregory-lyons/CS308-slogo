@@ -62,10 +62,7 @@ public class AST {
 						copy1.add(n);
 					}
 					Queue<Node> newCopy = ((RepeatNode) current).iterator(copy1);
-					System.out.println(newCopy.size());
 					values = populateTree(newCopy);
-					System.out.println(i);
-					System.out.println(values);
 				}
 				while (!(nodes.peek() instanceof ListEndNode)) {
 					nodes.poll();
