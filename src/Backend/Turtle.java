@@ -31,6 +31,7 @@ public class Turtle extends ImageView {
 	public static final double DEFAULT_WIDTH = 25.0;
 	public static final double DEFAULT_HEIGHT = 25.0;
 	public static final String DEFAULT_IMAGE = "turtle1";
+	public static final String IMAGE_ERROR = "This turtle image does not exist: ";
 
 
 	private Point2D myLocation;
@@ -44,7 +45,6 @@ public class Turtle extends ImageView {
 	private int myID;
 	private boolean needsClear;
 	private List<Polyline> myTrail;
-	private List<Polyline> extraList;
 	
 
 	public Turtle(Point2D location, double angle, int id) {
@@ -144,7 +144,7 @@ public class Turtle extends ImageView {
 			this.setImage(newImage);
 		}
 		catch(NullPointerException npe){
-		    System.out.println("This turtle image does not exist: " + imageName);
+		    System.out.println(IMAGE_ERROR + imageName);
 		}
 
 	}
@@ -165,7 +165,7 @@ public class Turtle extends ImageView {
                 dialog.show();
             }
             catch(NullPointerException npe){
-                System.out.println("This turtle image does not exist: " + imageLocation);
+                System.out.println(IMAGE_ERROR + imageLocation);
             }
         }
 	

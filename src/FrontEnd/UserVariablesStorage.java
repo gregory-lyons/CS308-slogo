@@ -1,5 +1,7 @@
 package FrontEnd;
 
+import java.util.Arrays;
+import java.util.List;
 import javafx.scene.control.ComboBox;
 
 /**
@@ -8,24 +10,31 @@ import javafx.scene.control.ComboBox;
  * @author Rica
  *
  */
-public class UserVariables {
+public class UserVariablesStorage {
     private ComboBox<String> myComboBox;
+    private static final List<String> MY_DEFAULT_VARIABLES = Arrays.asList("myforward = 5", "myturning = 40", "mycolor = GREEN");
     
-    public UserVariables(String language) {       
+    public UserVariablesStorage(String language) {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
-        myComboBox.getItems().addAll("Blue", "Purple", "Red");
+        myComboBox.getItems().addAll(MY_DEFAULT_VARIABLES);
         myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.USER_VARIABLES));
         myComboBox.setEditable(true);
         myComboBox.setOnAction(event -> handle());
     }
     
     private void handle () {
-        // TODO On clicked, tell back-end variable name has changed
+        addVariable(myComboBox.getValue());
         System.out.println(myComboBox.getValue());
     }
-    public void addVariable(Object instruction) {
-        myComboBox.getItems().add((String) instruction);
+    
+    public void addVariable(String updatedVariable) {
+        for (String each : myComboBox.getItems()) {
+            if (each.equals(updatedVariable)) {
+                return;
+            }
+        }
+        myComboBox.getItems().add((String) updatedVariable);
     }
     
     public ComboBox<String> getComboBox() {

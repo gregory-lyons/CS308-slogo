@@ -97,7 +97,7 @@ public class View {
 	private List<SuperCommand> myButtons;
 
 	private UserCommands dropdownCommandMenu;
-	private UserVariables dropdownVariablesMenu;
+	private UserVariablesStorage dropdownVariablesMenu;
 	private LanguageSelector myLanguageSelector;
 	private TurtleInformation myTurtleInformation;
 
@@ -117,7 +117,7 @@ public class View {
 		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
 		dropdownCommandMenu = new UserCommands(DEFAULT_LANGUAGE);
-		dropdownVariablesMenu = new UserVariables(DEFAULT_LANGUAGE);
+		dropdownVariablesMenu = new UserVariablesStorage(DEFAULT_LANGUAGE);
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
