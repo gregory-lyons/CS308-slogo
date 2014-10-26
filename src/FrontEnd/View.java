@@ -322,7 +322,8 @@ public class View {
 			consoleText+= String.valueOf(d) + "\n";
 		}
 		
-	          myConsole.setText(consoleText);
+	    myConsole.setText(consoleText);
+	    myConsole.appendText("");
 
 	}
 
