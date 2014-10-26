@@ -57,6 +57,8 @@ public class View {
 	public static final int HISTORY_BOX_HEIGHT = 400;
 	public static final int SIDEBAR_WIDTH = 250;
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
+	public static final int SIDEBAR_AMOUNT_BUTTON_WIDTH = 125;
+	public static final int SIDEBAR_AMOUNT_WIDTH = 75;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
 	public static final Dimension DEFAULT_SIZE = new Dimension(1200, 650);
 	public static final double DIALOG_WIDTH = 400;
@@ -181,9 +183,9 @@ public class View {
 		sidebarVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
 
 		for (String button : myCommandFactory.getCommandButtons()) {
-			SuperCommand sc = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, button);
-			myButtons.add(sc);
-			sidebarVBox.getChildren().add(sc.getButton());
+                    SuperCommand sc = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, button);
+                    myButtons.add(sc);
+                    sidebarVBox.getChildren().add(sc.getHBox());
 		}
 		
 		ScrollPane sp = new ScrollPane();

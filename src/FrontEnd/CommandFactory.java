@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import FrontEndCommands.EnterCommand;
+import FrontEndCommands.AmountCommand;
+import FrontEndCommands.SetXYCommand;
 import FrontEndCommands.SuperCommand;
+import FrontEndCommands.TowardCommand;
 
 /**
  * 
@@ -16,9 +19,9 @@ import FrontEndCommands.SuperCommand;
 public class CommandFactory {
     private CommandLine myCommandLine;
     private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
-                                                                                "Right", "Home", 
-                                                                                "ClearScreen", "SetPosition", 
-                                                                                "SetTowards"));
+                                                                                "Right", "SetPosition", 
+                                                                                "SetTowards", "Home", 
+                                                                                "ClearScreen"));
     
     public CommandFactory(CommandLine c) {
         myCommandLine = c;
@@ -35,6 +38,15 @@ public class CommandFactory {
     public SuperCommand makeCommand(String language, String label){
         if (label.equals(DefaultStrings.ENTER)) {
             return new EnterCommand(myCommandLine, label, language);
+        }
+        else if (label.equals(DefaultStrings.FORWARD) || label.equals(DefaultStrings.LEFT) || label.equals(DefaultStrings.RIGHT)) {
+            return new AmountCommand(myCommandLine, label, language);
+        }
+        else if (label.equals(DefaultStrings.SETPOSITION)) {
+            return new SetXYCommand(myCommandLine, label, language);
+        }
+        else if (label.equals(DefaultStrings.SETTOWARDS)) {
+            return new TowardCommand(myCommandLine, label, language);
         }
         else {
             return new SuperCommand(myCommandLine, label, language);
