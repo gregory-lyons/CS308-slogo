@@ -51,8 +51,12 @@ public class SuperCommand extends Observable {
     }
     
     protected void handle() {
-        this.setChanged();
+        change();
     	this.notifyObservers(myInstruction);
     }
+
+	public void change() {
+		this.setChanged();
+	}
 
 }

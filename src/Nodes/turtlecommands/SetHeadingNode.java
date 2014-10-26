@@ -9,7 +9,7 @@ public class SetHeadingNode extends OneChildNode{
 	public Node update() {
 		double newAngle = ((ConstantNode)left).returnData();
 		printValue = newAngle-myTurtle.getRotate();
-		myTurtle.setRotate(newAngle);
+		myTurtle.setAngle(newAngle);
 		return super.update();
 	}
 }

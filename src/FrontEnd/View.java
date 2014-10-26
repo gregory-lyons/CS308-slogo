@@ -3,7 +3,9 @@ package FrontEnd;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+
 import Backend.Turtle;
+import FrontEndCommands.EnterCommand;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.NewWorkspace;
 import FrontEndCommands.SaveWorkspace;
@@ -200,6 +202,8 @@ public class View {
 
 	private void sendArrowCommand(KeyEvent ke){
 		String instruction = myArrowHandler.makeInstruction(ke.getCode());
+		if (instruction.equals(DefaultStrings.EMPTY)) return;
+		myEnterCommand.change();
 		myEnterCommand.notifyObservers(instruction);
 		ke.consume();
 	}

@@ -17,6 +17,7 @@ public class EnterCommand extends SuperCommand {
         super(myLine, label, language);
         myButton.setPrefSize(View.ENTERCLEAR_BUTTON_WIDTH, View.PUFFY_BUTTON_HEIGHT);
         myCommandLine = myLine;
+        addObserver(myCommandLine);
     }
 	
     public void setMyCommandLine(String s) {
