@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Backend.Turtle;
-import FrontEndCommands.EnterCommand;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.NewWorkspace;
 import FrontEndCommands.SaveWorkspace;

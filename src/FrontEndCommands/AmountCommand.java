@@ -1,7 +1,6 @@
 package FrontEndCommands;
 
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import FrontEnd.CommandLine;
 import FrontEnd.View;
 

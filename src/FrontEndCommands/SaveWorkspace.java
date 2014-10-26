@@ -8,9 +8,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import FrontEnd.DefaultStrings;
-import FrontEnd.LanguageSelector;
 import FrontEnd.View;
 
 /**
