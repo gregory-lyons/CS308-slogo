@@ -2,6 +2,8 @@ package Backend;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import FrontEnd.DefaultStrings;
 import TurtleView.UserVariable;
 import javafx.geometry.Point2D;
 
@@ -21,10 +23,11 @@ public class SceneUpdater {
     private List<Double> returnValues;
     
     
-    public SceneUpdater(List<Turtle> activeTurtles, List<Double> printValues) {
+    public SceneUpdater(List<Turtle> activeTurtles, List<Double> printValues, boolean nE) {
     	turtles = activeTurtles;
     	returnValues = printValues;
-    	noError = true;
+    	noError = nE;
+    	errorMessage = DefaultStrings.ERROR_DEFAULT;
     }
     
     public List<String> getVariables() {

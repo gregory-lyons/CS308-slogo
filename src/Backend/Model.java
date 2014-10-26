@@ -32,11 +32,12 @@ public class Model {
 
 	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles, String language) {
 		List<Double> printValues = new ArrayList<Double>();
+		System.out.println(language);
 		for (Turtle turtle : activeTurtles) {
-			myParser = new Parser(instruction, turtle);
+			myParser = new Parser(instruction, turtle, language);
 			printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
 		}
-		return new SceneUpdater(activeTurtles,printValues);
+		return new SceneUpdater(activeTurtles,printValues, myParser.getNoError());
 	}
 	
 //	public void addSavedData(String input) {
