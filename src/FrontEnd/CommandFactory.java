@@ -18,10 +18,13 @@ import FrontEndCommands.TowardCommand;
 
 public class CommandFactory {
     private CommandLine myCommandLine;
-    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList("Forward", "Left", 
-                                                                                "Right", "SetPosition", 
-                                                                                "SetTowards", "Home", 
-                                                                                "ClearScreen"));
+    private List<String> myCommandButtons = new ArrayList<String>(Arrays.asList(DefaultStrings.FORWARD, 
+                                                                                DefaultStrings.LEFT,
+                                                                                DefaultStrings.RIGHT, 
+                                                                                DefaultStrings.SETPOSITION, 
+                                                                                DefaultStrings.SETTOWARDS, 
+                                                                                DefaultStrings.HOME, 
+                                                                                DefaultStrings.CLEARSCREEN));
     
     public CommandFactory(CommandLine c) {
         myCommandLine = c;

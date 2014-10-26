@@ -2,7 +2,6 @@ package Nodes.conditionals;
 
 import Nodes.ConstantNode;
 import Nodes.Node;
-import Nodes.booleans.BooleanNode;
 
 public abstract class ConditionalNode extends Node {
 	

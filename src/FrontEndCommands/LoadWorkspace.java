@@ -2,26 +2,11 @@ package FrontEndCommands;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import FrontEnd.DefaultStrings;
-import FrontEnd.LanguageSelector;
 import FrontEnd.View;
 import TurtleView.TurtleImageBox;
 
@@ -33,7 +18,6 @@ import TurtleView.TurtleImageBox;
  */
 public class LoadWorkspace {
     private Button myButton;
-    private List<File> myImages = new ArrayList<File>();
     private String myLanguage;
     private View myView;
     private String myBackgroundColor;
@@ -67,6 +51,7 @@ public class LoadWorkspace {
                 myLanguage = in.next();
                 myBackgroundColor = in.next();
                 myNumberTurtles = Integer.valueOf(in.next());
+                in.close();
 
             myView.getLanguageSelector().getComboBox().setValue(myLanguage);
             myView.getLanguageSelector().getComboBox().arm();

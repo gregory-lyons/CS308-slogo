@@ -1,8 +1,6 @@
 package FrontEndCommands;
 
 import FrontEnd.CommandLine;
-import FrontEnd.Console;
-import FrontEnd.HistoryBox;
 import FrontEnd.View;
 
 /**

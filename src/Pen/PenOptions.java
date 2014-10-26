@@ -2,11 +2,7 @@ package Pen;
 
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
-import TurtleView.BackgroundColorBox;
-import TurtleView.GridCheckBox;
-import TurtleView.TurtleImageBox;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;

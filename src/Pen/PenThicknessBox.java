@@ -3,7 +3,6 @@ package Pen;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import FrontEnd.DefaultStrings;
 import FrontEnd.View;
 import javafx.scene.control.ComboBox;
 
