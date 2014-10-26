@@ -333,4 +333,9 @@ public class View {
 		root.requestFocus();
 	}
 
+	public void updateTurtleInfo(List<Turtle> activeTurtles) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
