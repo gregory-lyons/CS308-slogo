@@ -31,6 +31,7 @@ public class Parser {
 	private Map<String, String> myMap;
 	private static final String[] Packages = { "", "booleans.", "loops.",
 			"math.", "turtlecommands." };
+	private boolean noError;
 
 	// change constructor to allow for the language to change the input to the
 	// resource bundle
@@ -80,6 +81,7 @@ public class Parser {
 	}
 
 	public Queue<Node> getQueueOfNodes() {
+		noError = true;
 		Queue<Node> nodeList = new ArrayDeque<Node>();
 		for (String s : splitWords) {
 			Node node = null;
@@ -102,10 +104,14 @@ public class Parser {
 					}
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException e) {
-					 System.out.println("Reflection failed");
 				}
 			}
-			nodeList.add(node);
+			try{
+				nodeList.add(node);
+			} catch (NullPointerException ne) {
+				noError = false;
+			}
+			
 		}
 		return nodeList;
 	}
@@ -230,6 +236,10 @@ public class Parser {
 
 	public boolean isNotEmpty() {
 		return !myInput.isEmpty();
+	}
+
+	public boolean getNoError() {
+		return noError;
 	}
 
 }
