@@ -30,7 +30,7 @@ public class Model {
 		return myParser;
 	}
 
-	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles) {
+	public SceneUpdater parse(String instruction, List<Turtle> activeTurtles, String language) {
 		List<Double> printValues = new ArrayList<Double>();
 		for (Turtle turtle : activeTurtles) {
 			myParser = new Parser(instruction, turtle);

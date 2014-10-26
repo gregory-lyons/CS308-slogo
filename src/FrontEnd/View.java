@@ -264,6 +264,10 @@ public class View {
 	public Scene getScene () {
 		return myScene;
 	}
+	
+	public String getCurrentLanguage(){
+		return myLanguageSelector.getComboBox().getValue();
+	}
 
 	public TurtleWindow getTurtleWindow() {
 		return myTurtleWindow;
