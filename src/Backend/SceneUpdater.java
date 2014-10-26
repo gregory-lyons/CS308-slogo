@@ -5,7 +5,6 @@ import java.util.List;
 
 import FrontEnd.DefaultStrings;
 import TurtleView.UserVariable;
-import javafx.geometry.Point2D;
 
 /**
  * This class is an interface between the front-end and the back-end.
