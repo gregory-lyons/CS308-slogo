@@ -27,7 +27,7 @@ public class EnterCommand extends SuperCommand {
     @Override
     protected void handle() {
         this.setChanged();
-        myInstruction = myCommandLine.getText();
+        String myInstruction = myCommandLine.getText();
         notifyObservers(myInstruction);
     }
 }

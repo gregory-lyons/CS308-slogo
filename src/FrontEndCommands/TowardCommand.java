@@ -18,7 +18,6 @@ public class TowardCommand extends SuperCommand {
     @Override
     protected void handle() {
         this.setChanged();
-        this.notifyObservers(myInstruction + " " + myAmount.getText());
+        this.notifyObservers(myButton.getText() + " " + myAmount.getText());
     }
-
 }
