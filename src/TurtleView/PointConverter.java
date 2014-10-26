@@ -1,6 +1,6 @@
 package TurtleView;
 
-import com.sun.javafx.geom.Point2D;
+import javafx.geometry.Point2D;
 import FrontEnd.View;
 
 /**
@@ -9,17 +9,29 @@ import FrontEnd.View;
  *
  */
 public class PointConverter {
-    public double getX(double x) {
+    public static double convertUserToActualX(double x) {
         return x + View.TURTLEWINDOW_WIDTH/2;
     }
     
-    public double getY(double y) {
-        return y - View.TURTLEWINDOW_HEIGHT/2;
+    public static double convertUserToActualY(double y) {
+        return View.TURTLEWINDOW_HEIGHT/2 - y;   
+   }
+    
+    public static Point2D convertUserToActualPoint(Point2D p) {
+        Point2D newPoint = new Point2D(convertUserToActualX(p.getX()), convertUserToActualY(p.getY()));
+        return newPoint;
     }
     
-    public Point2D getPoint(Point2D p) {
-        p.x = (float) getX(p.x);
-        p.y = (float) getY(p.y);
-        return p;
+    public static double convertActualToUserX(double x) {
+        return x - View.TURTLEWINDOW_WIDTH/2;
+    }
+    
+    public static double convertActualToUserY(double y) {
+        return View.TURTLEWINDOW_HEIGHT/2 - y;   
+   }
+    
+    public static Point2D convertActualToUserPoint(Point2D p) {
+        Point2D newPoint = new Point2D(convertUserToActualX(p.getX()), convertUserToActualY(p.getY()));
+        return newPoint;
     }
 }

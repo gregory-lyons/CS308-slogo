@@ -53,8 +53,8 @@ public class View {
 	public static final int ENTERCLEAR_BUTTON_WIDTH = 100;
 	public static final int COMMANDLINE_WIDTH = 500;
 	public static final int COMMANDLINE_HEIGHT = 150;
-	public static final int HISTORY_BOX_WIDTH = 350;
-	public static final int HISTORY_BOX_HEIGHT = 425;
+	public static final int HISTORY_BOX_WIDTH = 400;
+	public static final int HISTORY_BOX_HEIGHT = 400;
 	public static final int SIDEBAR_WIDTH = 250;
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
@@ -63,8 +63,8 @@ public class View {
 	public static final double DIALOG_HEIGHT = 100;
 	public static final Insets PADDING = new Insets(5);
 	public static final int BOX_SPACING = 5;
-	public static final double TURTLEWINDOW_WIDTH = 600.0;
-	public static final double TURTLEWINDOW_HEIGHT = 425.0;
+	public static final double TURTLEWINDOW_WIDTH = 400.0;
+	public static final double TURTLEWINDOW_HEIGHT = 400.0;
 	public static final boolean DEFAULT_GRIDLINES = true;
 	public static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
 	public static final double ERROR_HEIGHT = 30;
@@ -312,11 +312,13 @@ public class View {
 	}
 	
 	public void addConsoleEntries(List<Double> returnValues) {
+	    String consoleText = "";
 		for (double d: returnValues) {
-			myConsole.addEntry(String.valueOf(d));
-			System.out.println("added");
+			consoleText+= String.valueOf(d) + "\n";
 		}
 		
+	          myConsole.setText(consoleText);
+
 	}
 
 }
