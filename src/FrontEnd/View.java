@@ -37,8 +37,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * The View initializes the CommandLine, HistoryBox, CommandFactory, Dropdown Menu, and the display. It accesses
- * the constructor methods in those classes to initialize.
+ * The View is the overall container class for the front end.  It holds all of the GUI components and has various methods to update its state.
  * @author Rica Zhang, Greg Lyons
  *
  */

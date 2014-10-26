@@ -6,6 +6,15 @@ import java.util.Map;
 
 import Nodes.ConstantNode;
 
+/**
+ * 
+ * @Author Justin, Ashwin
+ *
+ *The Model serves as the overarching class for the back end.  It builds the Abstract Syntax Tree (AST) by using a Parser to 
+ *parse the instruction passed from the controller.  The back end can detect syntax errors and uses reflection to create the tree.
+ *
+ */
+
 public class Model {
 
 	protected String myInput;
