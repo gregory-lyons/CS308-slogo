@@ -1,19 +1,12 @@
 package Backend;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
-
-import Nodes.Node;
-import Nodes.ToNode;
-import javafx.geometry.Point2D;
 
 public class Model {
 
 	protected String myInput;
 	private Parser myParser;
-	private Turtle myTurtle;
 	private AST tree;
 	List<Double> printValues;
 //	public ArrayList<SavedData> userSaves;
