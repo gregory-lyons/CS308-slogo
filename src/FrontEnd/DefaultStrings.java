@@ -13,8 +13,9 @@ public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     // TODO Translate
     public static final String USER_VARIABLES = "UserVariables";
-    public static final String SAVE_WORKSPACE = "Save Workspace";
-    public static final String LOAD_WORKSPACE = "Load Workspace";
+    public static final String LANGUAGE = "Language";
+    public static final String SAVE_WORKSPACE = "Save Workspace Settings";
+    public static final String LOAD_WORKSPACE = "Load Workspace Settings";
     public static final List<String> BACKGROUND_COLOR_DEFAULTS = new ArrayList<>(Arrays.asList("WHITE", "GRAY", "BLACK", "RED", "GREEN", "YELLOW"));
     public static final String SOLID_LABEL = "SOLID";
     public static final String DASHED_LABEL = "DASHED";
