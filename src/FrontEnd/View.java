@@ -54,7 +54,7 @@ public class View {
 	public static final int COMMANDLINE_WIDTH = 500;
 	public static final int COMMANDLINE_HEIGHT = 150;
 	public static final int HISTORY_BOX_WIDTH = 350;
-	public static final int HISTORY_BOX_HEIGHT = 423;
+	public static final int HISTORY_BOX_HEIGHT = 425;
 	public static final int SIDEBAR_WIDTH = 250;
 	public static final int SIDEBAR_BUTTON_WIDTH = 200;
 	public static final int SIDEBAR_COMBOBOX_WIDTH = 200;
@@ -64,7 +64,7 @@ public class View {
 	public static final Insets PADDING = new Insets(5);
 	public static final int BOX_SPACING = 5;
 	public static final double TURTLEWINDOW_WIDTH = 600.0;
-	public static final double TURTLEWINDOW_HEIGHT = 423.0;
+	public static final double TURTLEWINDOW_HEIGHT = 425.0;
 	public static final boolean DEFAULT_GRIDLINES = true;
 	public static final String DEFAULT_LANGUAGE = DefaultStrings.ENGLISH;
 	public static final double ERROR_HEIGHT = 30;
