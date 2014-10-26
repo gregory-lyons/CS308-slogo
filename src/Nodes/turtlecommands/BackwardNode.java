@@ -3,7 +3,7 @@ package Nodes.turtlecommands;
 import Nodes.ConstantNode;
 import Nodes.Node;
 
-public class BackNode extends OneChildNode {
+public class BackwardNode extends OneChildNode {
 
 	@Override
 	public Node update() {

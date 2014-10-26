@@ -54,7 +54,6 @@ public class Parser {
 		String[] convertedList = new String[array.length];
 		for (int i = 0; i < array.length; i++) {
 			if (array[i].matches("-?\\d+(\\.\\d+)?")) {
-				System.out.println(array[i] + "here");
 				convertedList[i] = array[i];
 				continue;
 			}
@@ -83,12 +82,10 @@ public class Parser {
 	public Queue<Node> getQueueOfNodes() {
 		Queue<Node> nodeList = new ArrayDeque<Node>();
 		for (String s : splitWords) {
-			System.out.println(s);
 			Node node = null;
 			try {
 				double info = Double.parseDouble(s);
 				node = new ConstantNode(info);
-				System.out.println(node instanceof ConstantNode);
 				nodeList.add(node);
 				continue;
 			} catch (Exception e) {
@@ -97,7 +94,7 @@ public class Parser {
 			for (int j = 0; j < Packages.length; j++) {
 				try {
 					String stringToCheck = "Nodes." + Packages[j] + s;
-					// System.out.println(stringToCheck);
+					 System.out.println(stringToCheck);
 					node = (Node) Class.forName(stringToCheck).newInstance();
 
 					if (node instanceof CommandNode) {
@@ -105,7 +102,7 @@ public class Parser {
 					}
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException e) {
-					// System.out.println("Reflection failed");
+					 System.out.println("Reflection failed");
 				}
 			}
 			nodeList.add(node);
