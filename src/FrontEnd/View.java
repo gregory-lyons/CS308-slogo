@@ -131,9 +131,9 @@ public class View {
 		
 		Hyperlink myHyperlink = new Hyperlink("Help!");
 		TextFlow help = new TextFlow(myHyperlink);
-		WebView webView = new WebView();
-		WebEngine engine = webView.getEngine();
 		myHyperlink.setOnAction(event -> {
+		        WebView webView = new WebView();
+	                WebEngine engine = webView.getEngine();	                
 			engine.load("http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands2.php");
 			Stage myHelpStage = new Stage();
 			myHelpStage.setScene(new Scene(webView));

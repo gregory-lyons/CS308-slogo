@@ -72,7 +72,7 @@ public class Turtle extends ImageView {
 		this.hideRing();
 	}
 
-	//Empty Turtle for when no Turtle is selected as active
+    //Empty Turtle for when no Turtle is selected as active
 	public Turtle() {		
 	}
 

@@ -58,7 +58,7 @@ public class TurtleWindow extends Pane {
 		makeGrid();
 	}
 
-	public Turtle makeTurtle(){
+    public Turtle makeTurtle(){
 		Point2D location = new Point2D(Math.random()*View.TURTLEWINDOW_WIDTH, Math.random()*View.TURTLEWINDOW_HEIGHT);
 		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE, numTurtles++);
 		allTurtles.add(newTurtle);
@@ -75,6 +75,7 @@ public class TurtleWindow extends Pane {
 			myPenBox.changePen(t.getPen());
 			myTurtleImageBox.changeTurtle(t);
 			myTurtleInformation.changeTurtle(t);
+			t.requestFocus();
 		}
 		else {
 			activeTurtles.remove(t);
