@@ -27,6 +27,7 @@ public class SceneUpdater {
     	returnValues = printValues;
     	noError = nE;
     	errorMessage = DefaultStrings.ERROR_DEFAULT;
+    	myVariables = new ArrayList<String>();
     }
     
     public List<String> getVariables() {
