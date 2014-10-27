@@ -134,7 +134,7 @@ public class View {
 		myHyperlink.setOnAction(event -> {
 		        WebView webView = new WebView();
 	                WebEngine engine = webView.getEngine();	                
-			engine.load("http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands2.php");
+			engine.load("http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands.php");
 			Stage myHelpStage = new Stage();
 			myHelpStage.setScene(new Scene(webView));
 			myHelpStage.show();
