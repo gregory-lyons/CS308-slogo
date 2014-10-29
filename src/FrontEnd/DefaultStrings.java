@@ -19,6 +19,7 @@ public class DefaultStrings {
                                                                                 DefaultStrings.HOME, 
                                                                                 DefaultStrings.CLEARSCREEN));
     public static final String DEFAULT_BUTTON_AMOUNT = "50";
+    public static final String HELP_PAGE_URL = "http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands.php";
     public static final String DEFAULT_BUTTON_COORDINATE = "0 0";
     public static final String USER_VARIABLES = "UserVariables";
     public static final String LANGUAGE = "Language";

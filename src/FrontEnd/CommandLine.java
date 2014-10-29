@@ -17,10 +17,10 @@ public class CommandLine extends TextArea implements Observer {
      * Constructs command line of preferred size with wrap text and prompt Text.
      * @param promptText
      */
-    public CommandLine(String promptText, HistoryBox h) {
+    public CommandLine(HistoryBox h) {
         this.setPrefSize(View.COMMANDLINE_WIDTH, View.COMMANDLINE_HEIGHT);
         this.setWrapText(true);
-        this.setPromptText(promptText);
+        this.setPromptText(Translator.translateWithKey(DefaultStrings.COMMANDLINEDEFAULT, View.DEFAULT_LANGUAGE));
         this.setOnKeyPressed(event -> handle(event, h));
     }
 

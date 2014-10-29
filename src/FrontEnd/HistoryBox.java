@@ -19,10 +19,10 @@ public class HistoryBox extends TextArea {
      * @param myCombo
      * @param promptText
      */
-    public HistoryBox(UserCommands myCombo, String promptText) {
+    public HistoryBox(UserCommands myCombo) {
         this.setPrefSize(View.HISTORY_BOX_WIDTH, View.HISTORY_BOX_HEIGHT);
         this.setWrapText(true);
-        this.setPromptText(promptText);
+        this.setPromptText(Translator.translateWithKey(DefaultStrings.HISTORYBOXDEFAULT, View.DEFAULT_LANGUAGE));
         myComboBox = myCombo;
         commandHistory = new ArrayList<String>();
     }

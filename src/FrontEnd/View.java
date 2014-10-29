@@ -135,7 +135,7 @@ public class View {
 		myHyperlink.setOnAction(event -> {
 		        WebView webView = new WebView();
 	                WebEngine engine = webView.getEngine();	                
-			engine.load("http://www.cs.duke.edu/courses/fall14/compsci308/assign/03_slogo/commands.php");
+			engine.load(DefaultStrings.HELP_PAGE_URL);
 			Stage myHelpStage = new Stage();
 			myHelpStage.setScene(new Scene(webView));
 			myHelpStage.show();
@@ -235,13 +235,10 @@ public class View {
 	 * Initializes the command line and the history box.
 	 */
 	private void makeTextAreas () {
-	           myHistoryBox = new HistoryBox(dropdownCommandMenu, 
-	                                         Translator.translateWithKey(DefaultStrings.HISTORYBOXDEFAULT, DEFAULT_LANGUAGE));
-	                         myHistoryBox.setEditable(false);
-
-		myCommandLine = new CommandLine(Translator.translateWithKey(DefaultStrings.COMMANDLINEDEFAULT, DEFAULT_LANGUAGE), myHistoryBox);
-		
-		myConsole = new Console(Translator.translateWithKey(DefaultStrings.CONSOLEDEFAULT, DEFAULT_LANGUAGE));
+	        myHistoryBox = new HistoryBox(dropdownCommandMenu); 
+	        myHistoryBox.setEditable(false);
+		myCommandLine = new CommandLine(myHistoryBox);		
+		myConsole = new Console();
 	}
 
 	/**
@@ -249,7 +246,7 @@ public class View {
 	 * different location than the other regular command buttons.
 	 */
 	private void makeEnterButton() {
-		myEnterCommand = new EnterButton(myCommandLine, DefaultStrings.ENTER);
+		myEnterCommand = new EnterButton(myCommandLine);
 	}
 
 	public Stage makeErrorDialog(String message, String command){
@@ -260,6 +257,41 @@ public class View {
 		dialog.setScene(errorScene);
 		return dialog;
 	}
+	
+	public void addController (Controller c) {
+            myController = c;
+            dropdownCommandMenu.addObserver(myController);
+            for (SuperCommand button: myButtons) {
+                    button.addObserver(myController);
+            }
+            myEnterCommand.addObserver(myController);
+            dropdownCommandMenu.addObserver(myController);
+        }
+	
+        public void addHistoryEntry(String instruction) {
+            myHistoryBox.addEntry(instruction);
+        }
+    
+        public void addConsoleEntries(List<Double> returnValues) {
+            String consoleText = "";
+            for (double d: returnValues) {
+                    consoleText+= String.valueOf(d) + "\n";
+            }            
+            myConsole.setText(consoleText);
+            myConsole.appendText("");
+        }
+
+        public void updateFocus() {
+                root.requestFocus();
+        }
+    
+        public void updateTurtleInfo(List<Turtle> activeTurtles) {
+            myTurtleInformation.update();
+        }
+    
+        public void updateUserVariables (List<String> variables) {
+            dropdownVariablesMenu.update(variables);        
+        }	
 
 	public Scene getScene () {
 		return myScene;
@@ -275,16 +307,6 @@ public class View {
 
 	public TurtleInformation getTurtleInfo() {
 		return myTurtleInformation;
-	}
-
-	public void addController (Controller c) {
-		myController = c;
-		dropdownCommandMenu.addObserver(myController);
-		for (SuperCommand button: myButtons) {
-			button.addObserver(myController);
-		}
-		myEnterCommand.addObserver(myController);
-		dropdownCommandMenu.addObserver(myController);
 	}
 
 	public LanguageSelector getLanguageSelector() {
@@ -307,33 +329,4 @@ public class View {
 	public GridCheckBox getMyGridCheckBox () {
 		return myGridCheckBox;
 	}
-	
-	public void addHistoryEntry(String instruction) {
-		myHistoryBox.addEntry(instruction);
-	}
-	
-	public void addConsoleEntries(List<Double> returnValues) {
-	    String consoleText = "";
-		for (double d: returnValues) {
-			consoleText+= String.valueOf(d) + "\n";
-		}
-		
-	    myConsole.setText(consoleText);
-	    myConsole.appendText("");
-
-	}
-
-	public void updateFocus() {
-		root.requestFocus();
-	}
-
-	public void updateTurtleInfo(List<Turtle> activeTurtles) {
-	    myTurtleInformation.update();
-	}
-
-    public void updateUserVariables (List<String> variables) {
-        dropdownVariablesMenu.update(variables);
-        
-    }
-
 }
