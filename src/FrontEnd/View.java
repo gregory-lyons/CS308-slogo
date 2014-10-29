@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import Backend.Turtle;
+import FrontEndCommands.EnterButton;
 import FrontEndCommands.LoadWorkspace;
 import FrontEndCommands.NewWorkspace;
 import FrontEndCommands.SaveWorkspace;
@@ -91,7 +92,7 @@ public class View {
 	private ArrowKeyHandler myArrowHandler;
 
 	private CommandFactory myCommandFactory;    
-	private SuperCommand myEnterCommand;
+	private EnterButton myEnterCommand;
 	private List<SuperCommand> myButtons;
 
 	private UserCommands dropdownCommandMenu;
@@ -179,7 +180,7 @@ public class View {
 		sidebarVBox.getChildren().add(myPenBox);
 		sidebarVBox.getChildren().addAll(backgroundBox, imageBox, gridBox);
 
-		for (String button : myCommandFactory.getCommandButtons()) {
+		for (String button : DefaultStrings.COMMAND_BUTTONS) {
                     SuperCommand sc = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, button);
                     myButtons.add(sc);
                     sidebarVBox.getChildren().add(sc.getHBox());
@@ -248,7 +249,7 @@ public class View {
 	 * different location than the other regular command buttons.
 	 */
 	private void makeEnterButton() {
-		myEnterCommand = myCommandFactory.makeCommand(DEFAULT_LANGUAGE, DefaultStrings.ENTER);
+		myEnterCommand = new EnterButton(myCommandLine, DefaultStrings.ENTER);
 	}
 
 	public Stage makeErrorDialog(String message, String command){

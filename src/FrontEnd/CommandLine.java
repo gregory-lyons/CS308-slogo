@@ -2,9 +2,7 @@ package FrontEnd;
 
 import java.util.Observable;
 import java.util.Observer;
-import FrontEndCommands.EnterCommand;
 import FrontEndCommands.SuperCommand;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -38,9 +36,7 @@ public class CommandLine extends TextArea implements Observer {
      * When a button is pushed, new text representing the command is added to the command line
      */
     public void update(Observable button, Object commandText) {
-        SuperCommand command = (SuperCommand) button;
-        if (command instanceof EnterCommand) {
+        if (!(button instanceof SuperCommand))
             this.clear();
-        }
     }
 }

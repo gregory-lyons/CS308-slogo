@@ -1,18 +1,17 @@
 package FrontEndCommands;
 
 import javafx.scene.control.TextField;
-import FrontEnd.CommandLine;
+import FrontEnd.DefaultStrings;
 import FrontEnd.View;
 
-public class SetXYCommand extends SuperCommand {
+public class CoordinateCommand extends SuperCommand {
     TextField myAmount = new TextField();
 
-    public SetXYCommand (CommandLine myLine, String label, String language) {
-        super(myLine, label, language);
-        myAmount.setText("0 0");
+    public CoordinateCommand (String label) {
+        super(label);
+        myAmount.setText(DefaultStrings.DEFAULT_BUTTON_COORDINATE);
         myAmount.setPrefSize(View.SIDEBAR_AMOUNT_WIDTH, View.SHORT_BUTTON_HEIGHT);
         myHBox.getChildren().add(myAmount);
-        //myHBox.getChildren().add(myButton);
     }
     
     @Override
@@ -20,6 +19,4 @@ public class SetXYCommand extends SuperCommand {
         this.setChanged();
         this.notifyObservers(myButton.getText() + " " + myAmount.getText());
     }
-
-
 }

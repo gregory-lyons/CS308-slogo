@@ -11,7 +11,15 @@ import java.util.List;
  */
 public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
-    // TODO Translate
+    public static final List<String> COMMAND_BUTTONS = new ArrayList<String>(Arrays.asList(DefaultStrings.FORWARD, 
+                                                                                DefaultStrings.LEFT,
+                                                                                DefaultStrings.RIGHT, 
+                                                                                DefaultStrings.SETPOSITION, 
+                                                                                DefaultStrings.SETTOWARDS, 
+                                                                                DefaultStrings.HOME, 
+                                                                                DefaultStrings.CLEARSCREEN));
+    public static final String DEFAULT_BUTTON_AMOUNT = "50";
+    public static final String DEFAULT_BUTTON_COORDINATE = "0 0";
     public static final String USER_VARIABLES = "UserVariables";
     public static final String LANGUAGE = "Language";
     public static final String SAVE_WORKSPACE = "Save Workspace Settings";
