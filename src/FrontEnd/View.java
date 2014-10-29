@@ -234,11 +234,11 @@ public class View {
 	 * Initializes the command line and the history box.
 	 */
 	private void makeTextAreas () {
-		myCommandLine = new CommandLine(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.COMMANDLINEDEFAULT), dropdownCommandMenu.getComboBox());
+	           myHistoryBox = new HistoryBox(dropdownCommandMenu, 
+	                                         StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
+	                         myHistoryBox.setEditable(false);
 
-		myHistoryBox = new HistoryBox(dropdownCommandMenu, 
-				StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
-		myHistoryBox.setEditable(false);
+		myCommandLine = new CommandLine(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.COMMANDLINEDEFAULT), myHistoryBox);
 		
 		myConsole = new Console(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CONSOLEDEFAULT));
 	}

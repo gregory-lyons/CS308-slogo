@@ -19,17 +19,18 @@ public class CommandLine extends TextArea implements Observer {
      * Constructs command line of preferred size with wrap text and prompt Text.
      * @param promptText
      */
-    public CommandLine(String promptText, ComboBox<String> pastCommands) {
+    public CommandLine(String promptText, HistoryBox h) {
         this.setPrefSize(View.COMMANDLINE_WIDTH, View.COMMANDLINE_HEIGHT);
         this.setWrapText(true);
         this.setPromptText(promptText);
-        this.setOnKeyPressed(event -> handle(event, pastCommands));
+        this.setOnKeyPressed(event -> handle(event, h));
     }
 
-    private void handle (KeyEvent event, ComboBox<String> pastCommands) {
+    private void handle (KeyEvent event, HistoryBox h) {
         if (event.getCode() == KeyCode.UP) {
-            String lastCommand = pastCommands.getItems().get(pastCommands.getItems().size()-1);
-            this.setText(lastCommand);
+            this.setText("");
+            this.appendText(h.getMostRecentCommand());
+            this.requestFocus();
         }
     }
 
