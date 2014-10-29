@@ -56,7 +56,8 @@ public class DefaultStrings {
     public static final String CLEARSCREEN = "ClearScreen";
     public static final String OR = "Or";
     public static final String LEFT = "Left";
-    public static final String SETPOSITION = "SetPosition";
+    public static final String SETPOSITION_KEY = "SetPosition";
+    public static final String SETPOSITION = "SetXY";
     public static final String GO = "Go";
     public static final String PRODUCT = "Product";
     public static final String REPEAT = "Repeat";
@@ -89,7 +90,8 @@ public class DefaultStrings {
     public static final String ENTER = "Enter";
     public static final String DOTIMES = "DoTimes";
     public static final String XCOORDINATE = "XCoordinate";
-    public static final String SETTOWARDS = "SetTowards";
+    public static final String SETTOWARDS_KEY = "SetTowards";
+    public static final String SETTOWARDS = "Towards";
     public static final String IF = "If";
     public static final String MINUS = "Minus";
     public static final String HIDETURTLE = "HideTurtle";
@@ -128,9 +130,8 @@ public class DefaultStrings {
     public static final String QUOTIENT = "Quotient";
     public static final String POWER = "Power";
     public static final String BACKGROUNDCOLOR = "BackgroundColor";
-	public static final String CONSOLEDEFAULT = "ConsoleDefault";
-	public static final String TURTLEBUTTON = "AddTurtle";
-	public static final String ERROR_DEFAULT = "Syntax error - not a valid command";
-	public static final Object EMPTY = "";
-       
+    public static final String CONSOLEDEFAULT = "ConsoleDefault";
+    public static final String TURTLEBUTTON = "AddTurtle";
+    public static final String ERROR_DEFAULT = "Syntax error - not a valid command";
+    public static final Object EMPTY = "";       
 }

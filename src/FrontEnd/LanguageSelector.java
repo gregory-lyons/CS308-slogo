@@ -1,6 +1,5 @@
 package FrontEnd;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,15 +17,12 @@ import javafx.scene.text.Text;
  * @author Rica
  *
  */
-public class LanguageSelector {
-    //private static final String DEFAULT_TEXT = "Select a Language";
-    private ResourceBundle myLanguages = ResourceBundle.getBundle(DefaultStrings.DEFAULT_RESOURCE_PACKAGE);
-    
-    //private BorderPane myRoot;
+public class LanguageSelector {   
     private ObservableList<Node> myRootChildren;
     private ComboBox<String> myComboBox;
     private List<Node> leaves = new ArrayList<Node>();
-    private int languageNum;
+
+    private String chosenLanguage;
 
     /**
      * Constructs language selector which includes combo box and has access to the borderpane root
@@ -38,7 +34,7 @@ public class LanguageSelector {
         myRootChildren = myRoot.getChildren();
         myComboBox = new ComboBox<String>();
         myComboBox.setMaxWidth(View.LANGUAGESELECTOR_CB_WIDTH);
-        myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
+        myComboBox.getItems().addAll(Translator.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
         myComboBox.setOnAction(event -> handle());
     }
@@ -92,8 +88,7 @@ public class LanguageSelector {
      * into the selected language by calling the translate method.
      */
     private void handle () {
-        String chosenLanguage = myComboBox.getValue().toString();
-        languageNum = StringChooser.myLanguageOrder.indexOf(chosenLanguage);
+        chosenLanguage = myComboBox.getValue().toString();
 
         // populates leaves
         for (Node each : myRootChildren) {
@@ -104,33 +99,16 @@ public class LanguageSelector {
             if (leaf.getClass().equals(Text.class)) {
                 Text myLeaf = (Text) leaf;
                 myLeaf.textProperty().unbind();
-                String translation = translate(myLeaf.getText());
+                String translation = Translator.translateDirect(myLeaf.getText(), chosenLanguage);
                 myLeaf.setText(translation);
-                //textLeaf.textProperty().bind();
             }
             else if (leaf.getClass().equals(LabeledText.class)) {
                 LabeledText myLeaf = (LabeledText) leaf;
                 myLeaf.textProperty().unbind();
-                String translation = translate(myLeaf.getText());
+                String translation = Translator.translateDirect(myLeaf.getText(), chosenLanguage);
                 myLeaf.setText(translation);
-                //textLeaf.textProperty().bind();
             }
         }
-    }
-    
-    /**
-     * Translates the text in the leaf node to the appropriate language and passes it back to the handle method.
-     * @param currentText
-     * @return
-     */
-    private String translate(String currentText) {
-        for (String key : myLanguages.keySet()) {
-            List<String> myLanguageList = Arrays.asList(myLanguages.getString(key).split("__"));
-            if (myLanguageList.contains(currentText)) {
-                return myLanguageList.get(languageNum);
-            }
-        }
-        return currentText;
     }
     
     /**

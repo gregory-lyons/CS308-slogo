@@ -1,7 +1,7 @@
 package FrontEndCommands;
 
 import FrontEnd.DefaultStrings;
-import FrontEnd.StringChooser;
+import FrontEnd.Translator;
 import FrontEnd.View;
 import FrontEnd.Workspace;
 import javafx.event.EventHandler;
@@ -18,7 +18,7 @@ public class NewWorkspace {
     Button newWindowButton;
     
     public NewWorkspace() {
-        newWindowButton = new Button(StringChooser.getWordInLang(View.DEFAULT_LANGUAGE, DefaultStrings.NEWWORKSPACE));
+        newWindowButton = new Button(Translator.translateWithKey(DefaultStrings.NEWWORKSPACE, View.DEFAULT_LANGUAGE));
         newWindowButton.setMinWidth(View.SIDEBAR_BUTTON_WIDTH);
         newWindowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override

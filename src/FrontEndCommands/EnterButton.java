@@ -1,11 +1,8 @@
 package FrontEndCommands;
 
 import java.util.Observable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import FrontEnd.CommandLine;
-import FrontEnd.DefaultStrings;
-import FrontEnd.StringChooser;
 import FrontEnd.View;
 
 /**
@@ -14,13 +11,13 @@ import FrontEnd.View;
  *
  */
 public class EnterButton extends Observable {
-    private String myLabel;
+    String myLabel;
     private Button myButton;
     private CommandLine myCommandLine;
 	
     public EnterButton(CommandLine myLine, String label) {
-        myButton = new Button();                
-        String myLabel = DefaultStrings.ENTER;
+        myButton = new Button();
+        myLabel = label;
         myButton.setText(myLabel);
         myButton.setOnAction(event -> handle());
         myButton.setPrefSize(View.ENTERCLEAR_BUTTON_WIDTH, View.PUFFY_BUTTON_HEIGHT);

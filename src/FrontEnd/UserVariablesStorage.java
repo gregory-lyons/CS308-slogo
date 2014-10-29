@@ -14,11 +14,11 @@ public class UserVariablesStorage {
     private ComboBox<String> myComboBox;
     private static final List<String> MY_DEFAULT_VARIABLES = Arrays.asList("myforward = 5", "myturning = 40", "mycolor = GREEN");
     
-    public UserVariablesStorage(String language) {       
+    public UserVariablesStorage() {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.getItems().addAll(MY_DEFAULT_VARIABLES);
-        myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.USER_VARIABLES));
+        myComboBox.setPromptText(Translator.translateWithKey(DefaultStrings.USER_VARIABLES, View.DEFAULT_LANGUAGE));
         myComboBox.setEditable(true);
         myComboBox.setOnAction(event -> handle());
     }

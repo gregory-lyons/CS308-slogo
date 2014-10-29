@@ -12,12 +12,10 @@ public class UserCommands extends Observable{
 
     private ComboBox<String> myComboBox;
 
-    //private ObservableList<String> options = FXCollections.observableArrayList();
-
-    public UserCommands (String language) {       
+    public UserCommands () {       
         myComboBox = new ComboBox<String>();
         myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
-        myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.DROPDOWNMENUDEFAULT));
+        myComboBox.setPromptText(Translator.translateWithKey(DefaultStrings.DROPDOWNMENUDEFAULT, View.DEFAULT_LANGUAGE));
         myComboBox.setOnAction(event -> handle());
     }
     

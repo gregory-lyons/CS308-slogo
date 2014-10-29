@@ -115,8 +115,8 @@ public class View {
 		myPenBox = new PenOptions(new Pen());
 		myTurtleImageBox = new TurtleImageBox(new Turtle());
 		myLanguageSelector = new LanguageSelector(root);
-		dropdownCommandMenu = new UserCommands(DEFAULT_LANGUAGE);
-		dropdownVariablesMenu = new UserVariablesStorage(DEFAULT_LANGUAGE);
+		dropdownCommandMenu = new UserCommands();
+		dropdownVariablesMenu = new UserVariablesStorage();
 		makeTextAreas();
 		myCommandFactory = new CommandFactory(myCommandLine);
 		myArrowHandler = new ArrowKeyHandler();
@@ -166,13 +166,13 @@ public class View {
 		usercmdHBox.getChildren().addAll(dropdownCommandMenu.getComboBox());
 		uservrbHBox.getChildren().addAll(dropdownVariablesMenu.getComboBox());
 		myBackgroundColorBox = new BackgroundColorBox(myTurtleWindow);
-		backgroundBox.getChildren().addAll(new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.BACKGROUNDCOLOR))
-		    , myBackgroundColorBox);
-		imageBox.getChildren().addAll(new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEIMAGE))
-		    , myTurtleImageBox);
+		Text backgroundColorBoxText = new Text(Translator.translateWithKey(DefaultStrings.BACKGROUNDCOLOR, DEFAULT_LANGUAGE));
+		backgroundBox.getChildren().addAll(backgroundColorBoxText, myBackgroundColorBox);
+		Text turtleImageBoxText = new Text(Translator.translateWithKey(DefaultStrings.TURTLEIMAGE, DEFAULT_LANGUAGE));
+		imageBox.getChildren().addAll(turtleImageBoxText , myTurtleImageBox);
 		myGridCheckBox = new GridCheckBox(myTurtleWindow);
-		gridBox.getChildren().addAll(myGridCheckBox, 
-		                             new Text(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.DISPLAYGRIDLINES)));
+		Text gridCheckBoxText = new Text(Translator.translateWithKey(DefaultStrings.DISPLAYGRIDLINES, DEFAULT_LANGUAGE));
+		gridBox.getChildren().addAll(myGridCheckBox, gridCheckBoxText);		                             
 
 	        sidebarVBox.getChildren().add(myTurtleInformation);
 		sidebarVBox.getChildren().add(addTurtleButton);
@@ -214,7 +214,7 @@ public class View {
 	 */
 	private Button makeClearButton () {
 		Button myClearButton = new Button();
-		myClearButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CLEAR));
+		myClearButton.setText(Translator.translateWithKey(DefaultStrings.CLEAR, DEFAULT_LANGUAGE));
 		myClearButton.setMinSize(ENTERCLEAR_BUTTON_WIDTH, PUFFY_BUTTON_HEIGHT);
 		myClearButton.setOnAction(new EventHandler<ActionEvent>() {                  
 			public void handle (ActionEvent event) {
@@ -226,7 +226,7 @@ public class View {
 	
 	private void makeTurtleButton(){
 	    addTurtleButton = new Button();
-	    addTurtleButton.setText(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.TURTLEBUTTON));
+	    addTurtleButton.setText(Translator.translateWithKey(DefaultStrings.TURTLEBUTTON, DEFAULT_LANGUAGE));
 	    addTurtleButton.setPrefSize(SIDEBAR_BUTTON_WIDTH, SHORT_BUTTON_HEIGHT);
 	    addTurtleButton.setOnAction(event -> myTurtleWindow.makeTurtle());
 	}
@@ -236,12 +236,12 @@ public class View {
 	 */
 	private void makeTextAreas () {
 	           myHistoryBox = new HistoryBox(dropdownCommandMenu, 
-	                                         StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.HISTORYBOXDEFAULT));
+	                                         Translator.translateWithKey(DefaultStrings.HISTORYBOXDEFAULT, DEFAULT_LANGUAGE));
 	                         myHistoryBox.setEditable(false);
 
-		myCommandLine = new CommandLine(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.COMMANDLINEDEFAULT), myHistoryBox);
+		myCommandLine = new CommandLine(Translator.translateWithKey(DefaultStrings.COMMANDLINEDEFAULT, DEFAULT_LANGUAGE), myHistoryBox);
 		
-		myConsole = new Console(StringChooser.getWordInLang(DEFAULT_LANGUAGE, DefaultStrings.CONSOLEDEFAULT));
+		myConsole = new Console(Translator.translateWithKey(DefaultStrings.CONSOLEDEFAULT, DEFAULT_LANGUAGE));
 	}
 
 	/**
