@@ -1,5 +1,5 @@
 // This entire file is part of my masterpiece.
-// YOUR NAME
+// RICA ZHANG
 package FrontEndCommands;
 
 import java.util.Observable;

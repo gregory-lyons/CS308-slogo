@@ -30,7 +30,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -130,22 +129,11 @@ public class View {
 		centerVBox.setPadding(PADDING);
 		sidebarVBox.setPadding(PADDING);						
 		
-		Hyperlink myHyperlink = new Hyperlink("Help!");
-		TextFlow help = new TextFlow(myHyperlink);
-		myHyperlink.setOnAction(event -> {
-		        WebView webView = new WebView();
-	                WebEngine engine = webView.getEngine();	                
-			engine.load(DefaultStrings.HELP_PAGE_URL);
-			Stage myHelpStage = new Stage();
-			myHelpStage.setScene(new Scene(webView));
-			myHelpStage.show();
-		});
-		
 		NewWorkspace myNewWorkspace = new NewWorkspace();
 	        LoadWorkspace myLoadWorkspace = new LoadWorkspace(this);
 	        SaveWorkspace mySaveWorkspace = new SaveWorkspace(this);
 		topHBox.getChildren().addAll(myLanguageSelector.getComboBox());
-		topHBox.getChildren().add(help);
+		topHBox.getChildren().add(createHelpLink());
 		topHBox.getChildren().add(myNewWorkspace.getButton());
 		topHBox.getChildren().add(myLoadWorkspace.getButton());
 		topHBox.getChildren().add(mySaveWorkspace.getButton());
@@ -198,7 +186,21 @@ public class View {
 		myScene.setOnKeyPressed(event -> sendArrowCommand(event));
 	}
 
-	private void sendArrowCommand(KeyEvent ke){
+	private Hyperlink createHelpLink () {
+	    Hyperlink myHyperlink = new Hyperlink("Help!");
+            myHyperlink.setOnAction(event -> 
+                {
+                        WebView webView = new WebView();
+                        WebEngine engine = webView.getEngine();                 
+                        engine.load(DefaultStrings.HELP_PAGE_URL);
+                        Stage myHelpStage = new Stage();
+                        myHelpStage.setScene(new Scene(webView));
+                        myHelpStage.show();
+                });
+            return myHyperlink;
+        }
+
+        private void sendArrowCommand(KeyEvent ke) {
 		String instruction = myArrowHandler.makeInstruction(ke.getCode());
 		if (instruction.equals(DefaultStrings.EMPTY)) return;
 		myEnterCommand.change();
@@ -245,7 +247,7 @@ public class View {
 	 * Creates the Enter Button. This is not created in the button for loop above because it is in a
 	 * different location than the other regular command buttons.
 	 */
-	private void makeEnterButton() {
+	private void makeEnterButton () {
 		myEnterCommand = new EnterButton(myCommandLine);
 	}
 

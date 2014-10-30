@@ -10,6 +10,7 @@ import java.util.List;
  *
  */
 public class DefaultStrings {
+    public static final String WINDOW_TITLE = "My Turtle Program";
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
     public static final List<String> COMMAND_BUTTONS = new ArrayList<String>(Arrays.asList(DefaultStrings.FORWARD, 
                                                                                 DefaultStrings.LEFT,
