@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javafx.scene.control.Button;
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
-import TurtleView.TurtleImageBox;
 
 /**
  * Allows users to set, save, and load workspace preferences (like default background, starting 
@@ -21,9 +20,9 @@ public class LoadWorkspace {
     private String myLanguage;
     private View myView;
     private String myBackgroundColor;
-    private TurtleImageBox myTurtleImageBox;
     private File selectedFile;
     private int myNumberTurtles;
+    private static final String CURRENT_DIRECTORY = "user.home";
     
     public LoadWorkspace(View myView) {
         this.myView = myView;
@@ -35,7 +34,7 @@ public class LoadWorkspace {
     private void handle () {
         JFrame parentFrame = new JFrame();
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setCurrentDirectory(new File(System.getProperty(CURRENT_DIRECTORY)));
         int result = fileChooser.showOpenDialog(parentFrame);
         if (result == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();
@@ -61,10 +60,10 @@ public class LoadWorkspace {
 
             }
             
-            myTurtleImageBox = myView.getMyTurtleImageBox();
-            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");
-            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\berry6.jpg");
-            myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\pudding4.jpg");            
+            //myTurtleImageBox = myView.getMyTurtleImageBox();
+            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");
+            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\berry6.jpg");
+            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\pudding4.jpg");            
             
             myView.getMyBackgroundColorBox().setValue(myBackgroundColor);
             myView.getMyBackgroundColorBox().arm();
