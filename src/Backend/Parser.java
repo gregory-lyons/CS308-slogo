@@ -54,22 +54,15 @@ public class Parser {
 		String[] convertedList = new String[array.length];
 		for (int i = 0; i < array.length; i++) {
 			if (array[i].matches("-?\\d+(\\.\\d+)?")) {
-			        System.out.println("First match: " + array[i]);
 				convertedList[i] = array[i];
 				continue;
 			}
 			if (array[i].matches(":[a-zA-Z]+")) {
-			        System.out.println("Second match: " + array[i]);
-			        System.out.println(array[i].substring(1));
 				convertedList[i] = array[i].substring(1);
-				System.out.println(convertedList[i]);
 				continue;
 			}
-			System.out.println("No match: " + array[i]);
 			array[i] = array[i].toLowerCase();
 			String converted = myMap.get(array[i]);
-			System.out.println("Map: " + myMap.get(array[i]));
-			System.out.println("\n");
 			converted += "Node";
 			convertedList[i] = converted;
 		}
@@ -111,9 +104,7 @@ public class Parser {
 					if (node instanceof ConstantNode)
 						nodeList.add(node);
 					else {
-						System.out.println(s);
-						System.out.println(Double.parseDouble(getNextString(s,
-								splitWords)));
+
 						daMap.put(
 								s,
 								new ConstantNode(Double

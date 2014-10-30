@@ -59,12 +59,7 @@ public class LoadWorkspace {
                 myView.getAddTurtleButton().fire();
 
             }
-            
-            //myTurtleImageBox = myView.getMyTurtleImageBox();
-            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\springcakes8.jpg");
-            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\berry6.jpg");
-            //myTurtleImageBox.getItems().add("‪C:\\Users\\Rica\\Desktop\\pudding4.jpg");            
-            
+                        
             myView.getMyBackgroundColorBox().setValue(myBackgroundColor);
             myView.getMyBackgroundColorBox().arm();
 
