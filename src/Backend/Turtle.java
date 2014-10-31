@@ -129,6 +129,10 @@ public class Turtle extends ImageView {
 		myRing.update(point);
 	}
 	
+	public void moveTurtle(Point2D point) {
+		
+	}
+	
 	public Pen getPen(){
 		return myPen;
 	}

@@ -26,7 +26,7 @@ public class Parser {
 	private Turtle myTurtle;
 	private Map<String, String> myMap;
 	private static final String[] Packages = { "", "booleans.", "loops.",
-			"math.", "turtlecommands." };
+			"math.", "turtlecommands.", "conditionals." };
 	private boolean noError;
 	private Map<String, ConstantNode> daMap;
 

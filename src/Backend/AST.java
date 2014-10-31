@@ -10,6 +10,7 @@ import Nodes.ListEndNode;
 import Nodes.Node;
 import Nodes.booleans.BooleanNode;
 import Nodes.conditionals.ConditionalNode;
+import Nodes.conditionals.IfNode;
 import Nodes.loops.LoopNode;
 import Nodes.turtlecommands.CommandNode;
 
@@ -21,6 +22,12 @@ import Nodes.turtlecommands.CommandNode;
 
 
 public class AST {
+	
+	private Queue<Node> getCopyQ(Queue<Node> q) {
+		Queue<Node> leftCopy = new ArrayDeque<Node>();
+		leftCopy.addAll(q);
+		return leftCopy;
+	}
 	
 	public List<Double> populateTree(Queue<Node> nodes) {
 		
@@ -43,6 +50,27 @@ public class AST {
 					current.addChildren(replace);
 				} else current = null;
 			}
+			
+			else if (current instanceof IfNode) {
+								
+				Queue<Node> leftCopy = getCopyQ(nodes); //new ArrayDeque<Node>();
+				Queue<Node> leftCopy1 = current.expressionExtractor(leftCopy); //new ArrayDeque<Node>();
+				List<Double> leftValues = populateTree(leftCopy1);
+				
+				if (leftValues.get(0) == 1) {
+					current = leftCopy.peek();
+					Queue<Node> rightCopy = getCopyQ(nodes);
+					Queue<Node> rightCopy1 = current.commandsExtractor(rightCopy);
+					List<Double> rightValues = populateTree(rightCopy1);
+				}
+				
+				while (!(nodes.peek() instanceof ListEndNode)) {
+					nodes.poll();
+				}
+				current = nodes.poll();
+
+			}
+			
 			else if (current instanceof LoopNode){
 				
 				current.addChildren(nodes.poll());
@@ -67,7 +95,7 @@ public class AST {
 						}
 						copy1.add(n);
 					}
-					Queue<Node> newCopy = ((LoopNode) current).iterator(copy1);
+					Queue<Node> newCopy = ((LoopNode) current).commandsExtractor(copy1);
 					values = populateTree(newCopy);
 				}
 				while (!(nodes.peek() instanceof ListEndNode)) {

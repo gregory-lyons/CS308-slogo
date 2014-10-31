@@ -1,6 +1,8 @@
 package Nodes;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 
 
 public abstract class Node {
@@ -34,6 +36,25 @@ public abstract class Node {
 	
 	public double returnPrintValue(){
 		return printValue;
+	}
+	
+	public Queue<Node> commandsExtractor (Queue<Node> n) {
+		Queue<Node> ret = new ArrayDeque<Node>();
+		n.poll();
+		while (!(n.peek() instanceof ListEndNode)) {
+			ret.add(n.poll());
+		}
+		return ret;
+	}
+	
+	public Queue<Node> expressionExtractor(Queue<Node> n) {
+		Queue<Node> ret = new ArrayDeque<Node>();
+		
+		while (!(n.peek() instanceof ListStartNode)) {
+			ret.add(n.poll());
+		}
+		
+		return ret;
 	}
 	
 }
