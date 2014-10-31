@@ -9,7 +9,6 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 
 import Nodes.ConstantNode;
-import Nodes.MakeVariableNode;
 import Nodes.Node;
 import Nodes.turtlecommands.CommandNode;
 
@@ -23,6 +22,7 @@ import Nodes.turtlecommands.CommandNode;
 
 public class Parser {
 
+	private static final String NODES = "Nodes.";
 	private static final String NODE = "Node";
 	private static final String NUMBER_REGEX = "-?\\d+(\\.\\d+)?";
 	private static final String EMPTY_STRING = "";
@@ -84,14 +84,11 @@ public class Parser {
 			}
 			for (int j = 0; j < Packages.length; j++) {
 				try {
-					String stringToCheck = "Nodes." + Packages[j] + s;
+					String stringToCheck = NODES + Packages[j] + s;
 					node = (Node) Class.forName(stringToCheck).newInstance();
 
 					if (node instanceof CommandNode) {
 						((CommandNode) node).addTurtle(myTurtle);
-					}
-					if(node instanceof MakeVariableNode){
-						continue;
 					}
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException e) {
