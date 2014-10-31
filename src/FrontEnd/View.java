@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// GREG LYONS
+
 package FrontEnd;
 
 import java.util.ArrayList;

@@ -1,9 +1,10 @@
+// This entire file is part of my masterpiece.
+// GREG LYONS
+
 package FrontEnd;
 
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.layout.VBox;
 
 public class SideBar extends ScrollPane {
 	

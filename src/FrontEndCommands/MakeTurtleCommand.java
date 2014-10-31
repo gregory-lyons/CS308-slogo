@@ -1,9 +1,11 @@
+// This entire file is part of my masterpiece.
+// GREG LYONS
+
 package FrontEndCommands;
 
 import javafx.scene.control.Button;
 import FrontEnd.DefaultStrings;
 import FrontEnd.StringChooser;
-import FrontEnd.View;
 import FrontEnd.ViewConstants;
 import TurtleView.TurtleWindow;
 
