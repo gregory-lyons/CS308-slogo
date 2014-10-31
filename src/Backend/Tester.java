@@ -3,6 +3,7 @@ package Backend;
 import static org.junit.Assert.*;
 
 import java.util.ArrayDeque;
+import java.util.List;
 import java.util.Queue;
 
 import javafx.geometry.Point2D;
@@ -11,6 +12,9 @@ import org.junit.Test;
 
 import Nodes.ConstantNode;
 import Nodes.Node;
+import Nodes.booleans.AndNode;
+import Nodes.math.ProductNode;
+import Nodes.math.SumNode;
 import Nodes.turtlecommands.ForwardNode;
 import Nodes.turtlecommands.RightNode;
 
@@ -37,6 +41,28 @@ public class Tester {
 	
 	@Test
 	public void testIfAdditionWorks(){
+		SumNode sum = new SumNode();
+		ConstantNode five = new ConstantNode(5);
+		ConstantNode nine = new ConstantNode(9);
+		Queue<Node> queue = new ArrayDeque<Node>();
+		queue.add(sum);
+		queue.add(five);
+		queue.add(nine);
+		List<Double> results = tree.populateTree(queue);
+		double result = results.get(0);
+		assertEquals(14.0, result, .01);
+	}
+	
+	@Test
+	public void testIfNestedPrintStatementsWork(){
+		Queue<Node> queue = new ArrayDeque<Node>();
+		queue.add(new SumNode());
+		queue.add(new ConstantNode(300));
+		queue.add(new AndNode());
+		queue.add(new ConstantNode(1));
+		queue.add(new ConstantNode(5));
+		List<Double> results = tree.populateTree(queue);
+		assertEquals(results.get(1), 301, .1);
 		
 	}
 
