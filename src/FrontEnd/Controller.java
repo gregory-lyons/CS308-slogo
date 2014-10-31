@@ -24,7 +24,7 @@ public class Controller implements Observer {
 		myTurtleInformation = myView.getTurtleInfo();
 	}
 	
-	public void executeCommand(String command, List<Turtle> actives){
+	private void executeCommand(String command, List<Turtle> actives){
 		SceneUpdater sceneUpdater = myModel.parse(command, actives, myView.getCurrentLanguage());
 		interpret(sceneUpdater, command);
 		myView.updateFocus();

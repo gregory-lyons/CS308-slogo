@@ -18,8 +18,6 @@ public class Model {
 	private Parser myParser;
 	private AST tree;
 	List<Double> printValues;
-	private Map<String, ConstantNode> userSaves;
-
 	public Model() {
 		tree = new AST();
 		printValues = new ArrayList<Double>();
@@ -51,7 +49,6 @@ public class Model {
 	private boolean makeTreeandAddValues(String instruction, Turtle t, String language){
 		myParser.newInfo(instruction, t, language);
 		printValues.addAll(tree.populateTree(myParser.getQueueOfNodes()));
-		userSaves = myParser.getMap();
 		return myParser.getNoError();	
 	}
 	
