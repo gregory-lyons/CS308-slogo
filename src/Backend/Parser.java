@@ -17,6 +17,8 @@ import Nodes.turtlecommands.CommandNode;
  * 			This class is the one that parses the string
  *          instructions passed to the back end It is designed to help the
  *          interpreter class, basically.
+ *          
+ *          This file is part of my masterpiece.
  * 
  */
 

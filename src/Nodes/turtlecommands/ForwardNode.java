@@ -4,8 +4,6 @@ import Nodes.ConstantNode;
 import Nodes.Node;
 
 public class ForwardNode extends OneChildNode {
-	
-	
 
 	@Override
 	public Node update() {
