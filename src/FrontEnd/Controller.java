@@ -35,7 +35,6 @@ public class Controller implements Observer {
     	    myView.makeErrorDialog(u.getErrorMessage(), command).show();
     	    return;
     	}
-        u.getVariables();
     	myTurtleWindow.update(u.getTurtles());
     	myView.addConsoleEntries(u.getReturnValues());
     	myView.addHistoryEntry(command);

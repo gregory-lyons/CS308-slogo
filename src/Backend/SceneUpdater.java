@@ -27,24 +27,7 @@ public class SceneUpdater {
     	returnValues = printValues;
     	noError = nE;
     	errorMessage = DefaultStrings.ERROR_DEFAULT;
-    }
-    
-    public List<String> getVariables() {
-        return myVariables;
-    }
-    
-    /**
-     * Creates a UserVariable object for each variable that the user created in their command.
-     * @return List of UserVariables created
-     */
-    public List<UserVariable> constructAllVariables() {
-        List<UserVariable> myUserVariables = new ArrayList<>();
-        for (String var : myVariables) {
-            UserVariable userVariable = new UserVariable(var);
-            myUserVariables.add(userVariable);
-        }
-        return myUserVariables;
-    }
+    }    
     
     public List<Turtle> getTurtles(){
     	return turtles;
