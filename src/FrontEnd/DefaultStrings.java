@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class DefaultStrings {
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources.languages/Languages";
-    // TODO Translate
     public static final String USER_VARIABLES = "UserVariables";
     public static final String LANGUAGE = "Language";
     public static final String SAVE_WORKSPACE = "Save Workspace Settings";

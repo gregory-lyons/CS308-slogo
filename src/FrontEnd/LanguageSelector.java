@@ -37,7 +37,7 @@ public class LanguageSelector {
         //this.myRoot = myRoot;
         myRootChildren = myRoot.getChildren();
         myComboBox = new ComboBox<String>();
-        myComboBox.setMaxWidth(View.LANGUAGESELECTOR_CB_WIDTH);
+        myComboBox.setMaxWidth(ViewConstants.LANGUAGESELECTOR_CB_WIDTH);
         myComboBox.getItems().addAll(StringChooser.myLanguageOrder);
         myComboBox.setValue(DefaultStrings.ENGLISH);
         myComboBox.setOnAction(event -> handle());

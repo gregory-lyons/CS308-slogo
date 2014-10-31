@@ -20,9 +20,10 @@ public class HistoryBox extends TextArea {
      * @param promptText
      */
     public HistoryBox(UserCommands myCombo, String promptText) {
-        this.setPrefSize(View.HISTORY_BOX_WIDTH, View.HISTORY_BOX_HEIGHT);
+        this.setPrefSize(ViewConstants.HISTORY_BOX_WIDTH, ViewConstants.HISTORY_BOX_HEIGHT);
         this.setWrapText(true);
         this.setPromptText(promptText);
+        this.setEditable(false);
         myComboBox = myCombo;
         commandHistory = new ArrayList<String>();
     }

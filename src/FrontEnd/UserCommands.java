@@ -16,7 +16,7 @@ public class UserCommands extends Observable{
 
     public UserCommands (String language) {       
         myComboBox = new ComboBox<String>();
-        myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
+        myComboBox.setMinWidth(ViewConstants.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.DROPDOWNMENUDEFAULT));
         myComboBox.setOnAction(event -> handle());
     }

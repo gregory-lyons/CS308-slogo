@@ -2,6 +2,7 @@ package Pen;
 
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
+import FrontEnd.ViewConstants;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,7 +18,7 @@ public class PenOptions extends VBox {
 	private PenTypeBox myTypeBox;
 	
 	public PenOptions(Pen p) {
-	        super(View.BOX_SPACING);
+	        super(ViewConstants.BOX_SPACING);
 		myPen = p;
 		setUpBoxes();
 	}
@@ -33,7 +34,7 @@ public class PenOptions extends VBox {
 		myColorBox.setOnAction(event -> myPen.changeColor(myColorBox.getColor()));
 		color.getChildren().addAll(new Text(DefaultStrings.COLOR_LABEL), myColorBox);
 		
-		HBox penDown = new HBox(View.BOX_SPACING);
+		HBox penDown = new HBox(ViewConstants.BOX_SPACING);
 		myDownBox = new CheckBox();
 		myDownBox.setSelected(true);
 		myDownBox.setOnAction(event -> updatePen());

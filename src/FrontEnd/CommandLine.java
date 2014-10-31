@@ -20,7 +20,7 @@ public class CommandLine extends TextArea implements Observer {
      * @param promptText
      */
     public CommandLine(String promptText, HistoryBox h) {
-        this.setPrefSize(View.COMMANDLINE_WIDTH, View.COMMANDLINE_HEIGHT);
+        this.setPrefSize(ViewConstants.COMMANDLINE_WIDTH, ViewConstants.COMMANDLINE_HEIGHT);
         this.setWrapText(true);
         this.setPromptText(promptText);
         this.setOnKeyPressed(event -> handle(event, h));

@@ -2,9 +2,11 @@ package TurtleView;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import Backend.Turtle;
 import FrontEnd.DefaultStrings;
 import FrontEnd.View;
+import FrontEnd.ViewConstants;
 import Pen.Pen;
 import Pen.PenOptions;
 import javafx.geometry.Point2D;
@@ -53,13 +55,13 @@ public class TurtleWindow extends Pane {
 		}
 		click(allTurtles.get(0));
 		myGridLines = new ArrayList<Line>();
-		this.setMaxSize(View.TURTLEWINDOW_WIDTH, View.TURTLEWINDOW_HEIGHT);
+		this.setMaxSize(ViewConstants.TURTLEWINDOW_WIDTH, ViewConstants.TURTLEWINDOW_HEIGHT);
 		changeBackgroundColor(DEFAULT_BACKGROUND);
 		makeGrid();
 	}
 
     public Turtle makeTurtle(){
-		Point2D location = new Point2D(Math.random()*View.TURTLEWINDOW_WIDTH, Math.random()*View.TURTLEWINDOW_HEIGHT);
+		Point2D location = new Point2D(Math.random()*ViewConstants.TURTLEWINDOW_WIDTH, Math.random()*ViewConstants.TURTLEWINDOW_HEIGHT);
 		Turtle newTurtle = new Turtle(location, DEFAULT_ANGLE, numTurtles++);
 		allTurtles.add(newTurtle);
 		newTurtle.setOnMouseClicked(event -> click(newTurtle));
@@ -115,41 +117,14 @@ public class TurtleWindow extends Pane {
 	    return allTurtles;
 	}
 	
-	// TODO New method so that new images can be loaded
-
-	/*public void startMovingTurtle (KeyEvent myKey) {
-		// TODO remove counter
-		int counter = 0;
-		while (counter < 5) {
-			System.out.println("Moving turtle...");
-			counter += 1;
-			for (TurtleImage t: activeTurtles){
-				if (myKey.getCode() == KeyCode.UP) {
-					t.move(t.getTurtleX() , t.getTurtleY()-5);
-				}
-				else if (myKey.getCode() == KeyCode.DOWN) {
-					t.move(t.getTurtleX() , t.getTurtleY()+5);
-				}
-				else if (myKey.getCode() == KeyCode.LEFT) {
-					t.move(t.getTurtleX()-5 , t.getTurtleY());
-				}
-				else if (myKey.getCode() == KeyCode.RIGHT) {
-					t.move(t.getTurtleX()+5 , t.getTurtleY());
-				}
-			}
-		}
-		System.out.println("Stopped moving turtle\n"); 
-
-	}   	    */
-
 	private void makeGrid(){
-		for (int i=0;i<View.TURTLEWINDOW_WIDTH;i+=GRID_INTERVAL){
-			Line l = new Line(i, 0, i, View.TURTLEWINDOW_HEIGHT);
+		for (int i=0;i<ViewConstants.TURTLEWINDOW_WIDTH;i+=GRID_INTERVAL){
+			Line l = new Line(i, 0, i, ViewConstants.TURTLEWINDOW_HEIGHT);
 			l.setStroke(Color.GREY);
 			myGridLines.add(l);
 		}
-		for (int i=0;i<View.TURTLEWINDOW_HEIGHT;i+=GRID_INTERVAL){
-			Line l = new Line(0, i, View.TURTLEWINDOW_WIDTH, i);
+		for (int i=0;i<ViewConstants.TURTLEWINDOW_HEIGHT;i+=GRID_INTERVAL){
+			Line l = new Line(0, i, ViewConstants.TURTLEWINDOW_WIDTH, i);
 			l.setStroke(Color.GREY);
 			myGridLines.add(l);
 		}

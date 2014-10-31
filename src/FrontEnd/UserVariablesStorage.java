@@ -16,7 +16,7 @@ public class UserVariablesStorage {
     
     public UserVariablesStorage(String language) {       
         myComboBox = new ComboBox<String>();
-        myComboBox.setMinWidth(View.SIDEBAR_COMBOBOX_WIDTH);
+        myComboBox.setMinWidth(ViewConstants.SIDEBAR_COMBOBOX_WIDTH);
         myComboBox.getItems().addAll(MY_DEFAULT_VARIABLES);
         myComboBox.setPromptText(StringChooser.getWordInLang(language, DefaultStrings.USER_VARIABLES));
         myComboBox.setEditable(true);

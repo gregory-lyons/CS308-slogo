@@ -3,7 +3,9 @@ package Pen;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+
 import FrontEnd.View;
+import FrontEnd.ViewConstants;
 import javafx.scene.control.ComboBox;
 
 public class PenThicknessBox extends ComboBox<Double>{
@@ -13,7 +15,7 @@ public class PenThicknessBox extends ComboBox<Double>{
 	
 	public PenThicknessBox(){
 		super();
-		this.setMaxWidth(View.SIDEBAR_COMBOBOX_WIDTH);
+		this.setMaxWidth(ViewConstants.SIDEBAR_COMBOBOX_WIDTH);
 		this.getItems().addAll(myList);	
 		this.setValue(myList.get(DEFAULT_VALUE_INDEX));
 	}

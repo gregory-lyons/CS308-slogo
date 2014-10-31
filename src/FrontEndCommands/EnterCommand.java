@@ -2,6 +2,7 @@ package FrontEndCommands;
 
 import FrontEnd.CommandLine;
 import FrontEnd.View;
+import FrontEnd.ViewConstants;
 
 /**
  * Sends the text to the parser, clears command line
@@ -13,7 +14,7 @@ public class EnterCommand extends SuperCommand {
 	
     public EnterCommand(CommandLine myLine, String label, String language) {
         super(myLine, label, language);
-        myButton.setPrefSize(View.ENTERCLEAR_BUTTON_WIDTH, View.PUFFY_BUTTON_HEIGHT);
+        myButton.setPrefSize(ViewConstants.ENTERCLEAR_BUTTON_WIDTH, ViewConstants.PUFFY_BUTTON_HEIGHT);
         myCommandLine = myLine;
         addObserver(myCommandLine);
     }

@@ -1,9 +1,11 @@
 package FrontEndCommands;
 
 import java.util.Observable;
+
 import FrontEnd.CommandLine;
 import FrontEnd.StringChooser;
 import FrontEnd.View;
+import FrontEnd.ViewConstants;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
@@ -16,7 +18,7 @@ import javafx.scene.layout.HBox;
 public class SuperCommand extends Observable {
 	protected String myLabel;
 	protected Button myButton;
-	protected HBox myHBox = new HBox(View.BOX_SPACING);
+	protected HBox myHBox = new HBox(ViewConstants.BOX_SPACING);
 	
     /**
      * This initializes the string representing the command that will be added to the command line when clicked.
@@ -27,7 +29,7 @@ public class SuperCommand extends Observable {
     	myButton = new Button();    	    	
         String myLabel = StringChooser.getWordInLang(language, label);
         myButton.setText(myLabel);
-    	myButton.setPrefSize(View.SIDEBAR_AMOUNT_BUTTON_WIDTH, View.SHORT_BUTTON_HEIGHT);
+    	myButton.setPrefSize(ViewConstants.SIDEBAR_AMOUNT_BUTTON_WIDTH, ViewConstants.SHORT_BUTTON_HEIGHT);
     	myButton.setOnAction(event -> handle());
     	myHBox.getChildren().add(myButton);
     }
