@@ -61,6 +61,7 @@ public class IfNodeTester extends TestCase {
 	
 	public static void main (String[] args) {
 		
+		
 	}
 	
 	
