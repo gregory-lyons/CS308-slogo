@@ -1,0 +1,6 @@
+<map id="FrontEnd.View.getTurtleWindow" name="FrontEnd.View.getTurtleWindow">
+<area shape="rect" id="node2" href="$dd/d2e/class_front_end_1_1_controller.html#a9d49151f1888c4a25b89c3d2f9504fda" title="FrontEnd.Controller.Controller" alt="" coords="310,5,519,32"/>
+<area shape="rect" id="node3" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#addc4984b8014f4063d1f4a0fdda84667" title="FrontEndCommands.SaveWorkspace.write\lSettingsToFile" alt="" coords="269,57,560,98"/>
+<area shape="rect" id="node4" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#a16a3847164059949f1b20569273f9caf" title="FrontEndCommands.SaveWorkspace.handle" alt="" coords="609,64,911,91"/>
+<area shape="rect" id="node5" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#aecb7b65f2e50a9a48f96459bdb56fe2a" title="FrontEndCommands.SaveWorkspace.\lSaveWorkspace" alt="" coords="961,57,1221,98"/>
+</map>

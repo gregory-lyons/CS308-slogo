@@ -1,0 +1,9 @@
+<map id="FrontEndCommands.LoadWorkspace.getSettingsFromFile" name="FrontEndCommands.LoadWorkspace.getSettingsFromFile">
+<area shape="rect" id="node2" href="$df/dec/class_front_end_1_1_view.html#a3feb965c163adfc31bd55bfd9b7b49b3" title="FrontEnd.View.getAddTurtle\lButton" alt="" coords="388,5,583,46"/>
+<area shape="rect" id="node3" href="$d2/d5e/class_front_end_1_1_language_selector.html#a0983f98727268c16f03d4448d618a13e" title="FrontEnd.LanguageSelector.get\lComboBox" alt="" coords="374,70,597,111"/>
+<area shape="rect" id="node4" href="$df/dec/class_front_end_1_1_view.html#a2812398b952d53cbb09f8e7823fca245" title="FrontEnd.View.getLanguage\lSelector" alt="" coords="386,135,585,177"/>
+<area shape="rect" id="node5" href="$df/dec/class_front_end_1_1_view.html#a292087509c6e8a64a73dd9fbf1908864" title="FrontEnd.View.getMyBackground\lColorBox" alt="" coords="371,201,600,242"/>
+<area shape="rect" id="node6" href="$df/dec/class_front_end_1_1_view.html#afb67db7e0871d4f5bba18624ce37df52" title="FrontEnd.View.getMyTurtle\lImageBox" alt="" coords="392,266,579,307"/>
+<area shape="rect" id="node7" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a8d25efaea29f2543991a3efce2a1c0f6" title="FrontEndCommands.LoadWorkspace.handle" alt="" coords="334,332,637,359"/>
+<area shape="rect" id="node8" href="$df/dec/class_front_end_1_1_view.html#aba848cd44a4726c74dc85535f0c5722d" title="FrontEnd.View.makeErrorDialog" alt="" coords="375,383,596,409"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="FrontEndCommands.SaveWorkspace.writeSettingsToFile" name="FrontEndCommands.SaveWorkspace.writeSettingsToFile">
+<area shape="rect" id="node2" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#afc4dad2127e6b5789ee20d19cd8edc75" title="TurtleView.TurtleWindow.get\lAllTurtles" alt="" coords="362,5,555,46"/>
+<area shape="rect" id="node3" href="$d2/d5e/class_front_end_1_1_language_selector.html#a9638aa132b453f5dd8a2d42b87dfe377" title="FrontEnd.LanguageSelector.get\lCurrentLanguage" alt="" coords="347,70,570,111"/>
+<area shape="rect" id="node4" href="$df/dec/class_front_end_1_1_view.html#a2812398b952d53cbb09f8e7823fca245" title="FrontEnd.View.getLanguage\lSelector" alt="" coords="359,135,558,177"/>
+<area shape="rect" id="node5" href="$df/dec/class_front_end_1_1_view.html#a292087509c6e8a64a73dd9fbf1908864" title="FrontEnd.View.getMyBackground\lColorBox" alt="" coords="344,201,573,242"/>
+<area shape="rect" id="node6" href="$df/dec/class_front_end_1_1_view.html#a19e6144ef2ebaaa6035c3837b2c0cbb5" title="FrontEnd.View.getTurtleWindow" alt="" coords="351,267,567,293"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$de/d8a/class_front_end_1_1_user_commands.html" title="FrontEnd.UserCommands" alt="" coords="187,56,373,83"/>
+<area shape="rect" id="node3" href="$de/d36/class_front_end_commands_1_1_super_command.html" title="FrontEndCommands.SuperCommand" alt="" coords="149,107,411,133"/>
+<area shape="rect" id="node4" href="$d5/da6/class_front_end_commands_1_1_amount_command.html" title="FrontEndCommands.AmountCommand" alt="" coords="459,5,733,32"/>
+<area shape="rect" id="node5" href="$d8/dcf/class_front_end_commands_1_1_clear_command.html" title="FrontEndCommands.ClearCommand" alt="" coords="468,56,724,83"/>
+<area shape="rect" id="node6" href="$d7/d65/class_front_end_commands_1_1_enter_command.html" title="FrontEndCommands.EnterCommand" alt="" coords="467,107,725,133"/>
+<area shape="rect" id="node7" href="$d8/dd2/class_front_end_commands_1_1_set_x_y_command.html" title="FrontEndCommands.SetXYCommand" alt="" coords="467,157,725,184"/>
+<area shape="rect" id="node8" href="$d8/d82/class_front_end_commands_1_1_toward_command.html" title="FrontEndCommands.TowardCommand" alt="" coords="463,208,729,235"/>
+</map>

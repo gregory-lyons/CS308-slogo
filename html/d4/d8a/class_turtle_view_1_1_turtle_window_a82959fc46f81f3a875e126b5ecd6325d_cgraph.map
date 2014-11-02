@@ -1,0 +1,19 @@
+<map id="TurtleView.TurtleWindow.TurtleWindow" name="TurtleView.TurtleWindow.TurtleWindow">
+<area shape="rect" id="node2" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#a8b35462dc0695324294dd138277c615c" title="TurtleView.TurtleWindow.change\lBackgroundColor" alt="" coords="235,15,453,57"/>
+<area shape="rect" id="node3" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#a55f7ffa346d2ced8f9e831efc900d0c0" title="TurtleView.TurtleWindow.click" alt="" coords="510,136,709,163"/>
+<area shape="rect" id="node17" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#a82ab5227316aadf9d7caa8e1abe0fbd4" title="TurtleView.TurtleWindow.makeGrid" alt="" coords="227,132,461,159"/>
+<area shape="rect" id="node18" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#ab6961d80a7e356af4e9206478608ed40" title="TurtleView.TurtleWindow.make\lTurtle" alt="" coords="240,183,448,225"/>
+<area shape="rect" id="node4" href="$d1/de0/class_backend_1_1_turtle.html#a56cc7f136ffa25bbe506ac4d48eb1298" title="Backend.Turtle.showRing" alt="" coords="792,5,971,32"/>
+<area shape="rect" id="node5" href="$d0/d46/class_pen_1_1_pen_options.html#a685386bb97365462feaa476bd353df67" title="Pen.PenOptions.changePen" alt="" coords="782,56,981,83"/>
+<area shape="rect" id="node6" href="$d1/de0/class_backend_1_1_turtle.html#a5ecb58c234e1b7c851c17eaa4de8235d" title="Backend.Turtle.getPen" alt="" coords="799,107,963,133"/>
+<area shape="rect" id="node7" href="$dc/d04/class_turtle_view_1_1_turtle_image_box.html#afc8ed7ffd8fe31dade346f0dee9d550c" title="TurtleView.TurtleImageBox.change\lTurtle" alt="" coords="763,158,1000,199"/>
+<area shape="rect" id="node8" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#a3a64e1f1313c0c4f30a93c1fcc5f36c1" title="TurtleView.TurtleInformation.change\lTurtle" alt="" coords="758,223,1005,265"/>
+<area shape="rect" id="node16" href="$d1/de0/class_backend_1_1_turtle.html#aa99cd255ffa089963fad4be5955c8bb6" title="Backend.Turtle.hideRing" alt="" coords="795,289,968,316"/>
+<area shape="rect" id="node9" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#ad65201793ce738f9c6d6e592271c14e1" title="TurtleView.TurtleInformation.update" alt="" coords="1054,231,1298,257"/>
+<area shape="rect" id="node10" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#aca65258778dade3baa31e0d5ec643b3b" title="TurtleView.TurtleInformation.emptyInfo" alt="" coords="1347,129,1610,156"/>
+<area shape="rect" id="node11" href="$d1/de0/class_backend_1_1_turtle.html#adc7cb6cc95ee918547d2b18d8bb20183" title="Backend.Turtle.getID" alt="" coords="1402,180,1555,207"/>
+<area shape="rect" id="node12" href="$d1/de0/class_backend_1_1_turtle.html#a715f94909b1ba74dc9e4f9eb4fd91e10" title="Backend.Turtle.getXCord" alt="" coords="1390,231,1567,257"/>
+<area shape="rect" id="node14" href="$d1/de0/class_backend_1_1_turtle.html#a692174eccea232fc58e725cff6f50359" title="Backend.Turtle.getYCord" alt="" coords="1391,281,1567,308"/>
+<area shape="rect" id="node15" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#a15bd13ad05cabb76c0861d0ab42722ef" title="TurtleView.TurtleInformation.truncate" alt="" coords="1352,332,1605,359"/>
+<area shape="rect" id="node13" href="$d1/de0/class_backend_1_1_turtle.html#a33957258db9a7205d470c5a2d22b89af" title="Backend.Turtle.getLocation" alt="" coords="1659,256,1853,283"/>
+</map>

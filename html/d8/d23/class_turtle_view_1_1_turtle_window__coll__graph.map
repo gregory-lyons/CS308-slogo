@@ -1,0 +1,11 @@
+<map id="TurtleView.TurtleWindow" name="TurtleView.TurtleWindow">
+<area shape="rect" id="node3" href="$d9/d38/class_turtle_view_1_1_turtle_information.html" title="TurtleView.TurtleInformation" alt="" coords="675,500,869,527"/>
+<area shape="rect" id="node5" href="$d1/de0/class_backend_1_1_turtle.html" title="Backend.Turtle" alt="" coords="1051,393,1165,420"/>
+<area shape="rect" id="node12" href="$d0/d46/class_pen_1_1_pen_options.html" title="Pen.PenOptions" alt="" coords="711,235,833,261"/>
+<area shape="rect" id="node8" href="$dc/d04/class_turtle_view_1_1_turtle_image_box.html" title="TurtleView.TurtleImageBox" alt="" coords="1347,439,1533,465"/>
+<area shape="rect" id="node13" href="$d6/da0/class_pen_1_1_pen_type_box.html" title="Pen.PenTypeBox" alt="" coords="358,428,485,455"/>
+<area shape="rect" id="node16" href="$df/d6f/class_pen_1_1_pen_color_box.html" title="Pen.PenColorBox" alt="" coords="356,327,487,353"/>
+<area shape="rect" id="node10" href="$dc/ded/class_turtle_view_1_1_active_ring.html" title="TurtleView.ActiveRing" alt="" coords="695,145,849,172"/>
+<area shape="rect" id="node18" href="$d4/dc3/class_pen_1_1_pen_thickness_box.html" title="Pen.PenThicknessBox" alt="" coords="341,208,501,235"/>
+<area shape="rect" id="node21" href="$df/daf/class_pen_1_1_pen.html" title="Pen.Pen" alt="" coords="384,269,459,296"/>
+</map>

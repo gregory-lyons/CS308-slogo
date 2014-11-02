@@ -1,0 +1,12 @@
+<map id="Nodes.math.OneChildNode" name="Nodes.math.OneChildNode">
+<area shape="rect" id="node4" href="$d7/d6c/class_nodes_1_1math_1_1_arc_tangent_node.html" title="Nodes.math.ArcTangentNode" alt="" coords="619,5,829,32"/>
+<area shape="rect" id="node5" href="$db/dd0/class_nodes_1_1math_1_1_cosine_node.html" title="Nodes.math.CosineNode" alt="" coords="633,56,815,83"/>
+<area shape="rect" id="node6" href="$d7/d4b/class_nodes_1_1math_1_1_log_node.html" title="Nodes.math.LogNode" alt="" coords="643,107,805,133"/>
+<area shape="rect" id="node7" href="$d0/d4a/class_nodes_1_1math_1_1_minus_node.html" title="Nodes.math.MinusNode" alt="" coords="636,157,812,184"/>
+<area shape="rect" id="node8" href="$d3/d6f/class_nodes_1_1math_1_1_natural_log_node.html" title="Nodes.math.NaturalLogNode" alt="" coords="619,208,829,235"/>
+<area shape="rect" id="node9" href="$d7/dc2/class_nodes_1_1math_1_1_random_node.html" title="Nodes.math.RandomNode" alt="" coords="628,259,820,285"/>
+<area shape="rect" id="node10" href="$dd/dd8/class_nodes_1_1math_1_1_sine_node.html" title="Nodes.math.SineNode" alt="" coords="641,309,807,336"/>
+<area shape="rect" id="node11" href="$d3/d68/class_nodes_1_1math_1_1_tangent_node.html" title="Nodes.math.TangentNode" alt="" coords="629,360,819,387"/>
+<area shape="rect" id="node2" href="$de/d80/class_nodes_1_1math_1_1_math_node.html" title="Nodes.math.MathNode" alt="" coords="155,183,325,209"/>
+<area shape="rect" id="node3" href="$df/dac/class_nodes_1_1_node.html" title="Nodes.Node" alt="" coords="5,183,107,209"/>
+</map>

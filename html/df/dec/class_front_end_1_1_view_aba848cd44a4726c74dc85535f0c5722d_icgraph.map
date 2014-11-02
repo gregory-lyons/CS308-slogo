@@ -1,0 +1,8 @@
+<map id="FrontEnd.View.makeErrorDialog" name="FrontEnd.View.makeErrorDialog">
+<area shape="rect" id="node2" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a085f7d78419f925a9cb7832f575cf221" title="FrontEndCommands.LoadWorkspace.get\lSettingsFromFile" alt="" coords="275,5,555,46"/>
+<area shape="rect" id="node5" href="$dd/d2e/class_front_end_1_1_controller.html#a0ad45a00bc5c4475d3b1c6a4dbf74a91" title="FrontEnd.Controller.interpret" alt="" coords="313,71,516,97"/>
+<area shape="rect" id="node3" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a8d25efaea29f2543991a3efce2a1c0f6" title="FrontEndCommands.LoadWorkspace.handle" alt="" coords="603,12,906,39"/>
+<area shape="rect" id="node4" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#ac3c90bf92d48930f076d277acd611bfc" title="FrontEndCommands.LoadWorkspace.\lLoadWorkspace" alt="" coords="955,5,1213,46"/>
+<area shape="rect" id="node6" href="$dd/d2e/class_front_end_1_1_controller.html#a41885f349a8f334750e26d685a8981d2" title="FrontEnd.Controller.execute\lCommand" alt="" coords="655,63,854,105"/>
+<area shape="rect" id="node7" href="$dd/d2e/class_front_end_1_1_controller.html#a29be9ff259428dbe97eebe3ec9a13ac5" title="FrontEnd.Controller.update" alt="" coords="988,71,1180,97"/>
+</map>

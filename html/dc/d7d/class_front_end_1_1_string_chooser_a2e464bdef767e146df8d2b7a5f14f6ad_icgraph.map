@@ -1,0 +1,10 @@
+<map id="FrontEnd.StringChooser.getWordInLang" name="FrontEnd.StringChooser.getWordInLang">
+<area shape="rect" id="node2" href="$df/dec/class_front_end_1_1_view.html#a56dd9fe4ba6efa4b300ce982d450adef" title="FrontEnd.View.makeClearButton" alt="" coords="271,5,497,32"/>
+<area shape="rect" id="node3" href="$df/dec/class_front_end_1_1_view.html#a079d7e899ded516b169dc6e66da79e1e" title="FrontEnd.View.View" alt="" coords="566,81,709,108"/>
+<area shape="rect" id="node4" href="$df/dec/class_front_end_1_1_view.html#ae27925be2e927768205db39426bf228e" title="FrontEnd.View.makeTextAreas" alt="" coords="278,107,490,133"/>
+<area shape="rect" id="node5" href="$df/dec/class_front_end_1_1_view.html#affad60393f506692d02f9dc2525780d2" title="FrontEnd.View.makeTurtle\lButton" alt="" coords="292,158,476,199"/>
+<area shape="rect" id="node6" href="$d0/d61/class_front_end_commands_1_1_new_workspace.html#a5793dc07a1e48d58beb9618673d342d7" title="FrontEndCommands.NewWorkspace.\lNewWorkspace" alt="" coords="257,223,511,265"/>
+<area shape="rect" id="node7" href="$de/d36/class_front_end_commands_1_1_super_command.html#aa30bcc4c457df0b399c61fa30c97bc8a" title="FrontEndCommands.SuperCommand.\lSuperCommand" alt="" coords="251,289,517,330"/>
+<area shape="rect" id="node8" href="$de/d8a/class_front_end_1_1_user_commands.html#a01fe78177fa8c04daa4be57ae42c27e2" title="FrontEnd.UserCommands.User\lCommands" alt="" coords="274,354,494,395"/>
+<area shape="rect" id="node9" href="$df/d59/class_front_end_1_1_user_variables_storage.html#a607aa4d36f074c51246f69be4db7106a" title="FrontEnd.UserVariablesStorage.\lUserVariablesStorage" alt="" coords="271,419,497,461"/>
+</map>

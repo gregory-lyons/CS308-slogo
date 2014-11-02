@@ -1,0 +1,8 @@
+<map id="FrontEnd.View.getLanguageSelector" name="FrontEnd.View.getLanguageSelector">
+<area shape="rect" id="node2" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a085f7d78419f925a9cb7832f575cf221" title="FrontEndCommands.LoadWorkspace.get\lSettingsFromFile" alt="" coords="259,5,539,46"/>
+<area shape="rect" id="node5" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#addc4984b8014f4063d1f4a0fdda84667" title="FrontEndCommands.SaveWorkspace.write\lSettingsToFile" alt="" coords="253,70,544,111"/>
+<area shape="rect" id="node3" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a8d25efaea29f2543991a3efce2a1c0f6" title="FrontEndCommands.LoadWorkspace.handle" alt="" coords="593,12,895,39"/>
+<area shape="rect" id="node4" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#ac3c90bf92d48930f076d277acd611bfc" title="FrontEndCommands.LoadWorkspace.\lLoadWorkspace" alt="" coords="945,5,1204,46"/>
+<area shape="rect" id="node6" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#a16a3847164059949f1b20569273f9caf" title="FrontEndCommands.SaveWorkspace.handle" alt="" coords="593,77,895,104"/>
+<area shape="rect" id="node7" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#aecb7b65f2e50a9a48f96459bdb56fe2a" title="FrontEndCommands.SaveWorkspace.\lSaveWorkspace" alt="" coords="945,70,1205,111"/>
+</map>

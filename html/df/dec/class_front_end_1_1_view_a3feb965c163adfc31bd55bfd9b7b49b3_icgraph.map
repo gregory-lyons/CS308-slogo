@@ -1,0 +1,5 @@
+<map id="FrontEnd.View.getAddTurtleButton" name="FrontEnd.View.getAddTurtleButton">
+<area shape="rect" id="node2" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a085f7d78419f925a9cb7832f575cf221" title="FrontEndCommands.LoadWorkspace.get\lSettingsFromFile" alt="" coords="248,5,528,46"/>
+<area shape="rect" id="node3" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a8d25efaea29f2543991a3efce2a1c0f6" title="FrontEndCommands.LoadWorkspace.handle" alt="" coords="577,12,879,39"/>
+<area shape="rect" id="node4" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#ac3c90bf92d48930f076d277acd611bfc" title="FrontEndCommands.LoadWorkspace.\lLoadWorkspace" alt="" coords="928,5,1187,46"/>
+</map>

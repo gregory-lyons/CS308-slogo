@@ -1,0 +1,9 @@
+<map id="TurtleView.ActiveRing.update" name="TurtleView.ActiveRing.update">
+<area shape="rect" id="node2" href="$d1/de0/class_backend_1_1_turtle.html#a94cbed3c9c0c33e1ea8e8b3c51c26c73" title="Backend.Turtle.move" alt="" coords="256,136,411,163"/>
+<area shape="rect" id="node3" href="$d1/de0/class_backend_1_1_turtle.html#ad5f5520cb6970723e121a8d17f2c0a5c" title="Backend.Turtle.addLocation" alt="" coords="459,111,656,137"/>
+<area shape="rect" id="node8" href="$d1/de0/class_backend_1_1_turtle.html#a98cc72272199855ddfd7588b23bb5a4f" title="Backend.Turtle.Turtle" alt="" coords="481,161,634,188"/>
+<area shape="rect" id="node4" href="$dc/db0/class_nodes_1_1turtlecommands_1_1_backward_node.html#a8ebd60d8ab28acb66aef1fd9ba59d5c7" title="Nodes.turtlecommands.Backward\lNode.update" alt="" coords="705,5,943,46"/>
+<area shape="rect" id="node5" href="$d4/dd2/class_nodes_1_1turtlecommands_1_1_home_node.html#ab3bbeb66894a4c93c40e651457efe097" title="Nodes.turtlecommands.Home\lNode.update" alt="" coords="716,70,932,111"/>
+<area shape="rect" id="node6" href="$d1/dd7/class_nodes_1_1turtlecommands_1_1_set_position_node.html#a5c752365147093605e4591ecbd0ededd" title="Nodes.turtlecommands.Set\lPositionNode.update" alt="" coords="725,135,923,177"/>
+<area shape="rect" id="node7" href="$d8/ddb/class_nodes_1_1turtlecommands_1_1_forward_node.html#a4c29ece57a41db2da90359e0193fcb04" title="Nodes.turtlecommands.Forward\lNode.update" alt="" coords="711,201,937,242"/>
+</map>

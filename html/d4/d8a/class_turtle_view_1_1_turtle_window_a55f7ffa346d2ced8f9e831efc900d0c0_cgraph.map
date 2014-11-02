@@ -1,0 +1,15 @@
+<map id="TurtleView.TurtleWindow.click" name="TurtleView.TurtleWindow.click">
+<area shape="rect" id="node2" href="$d0/d46/class_pen_1_1_pen_options.html#a685386bb97365462feaa476bd353df67" title="Pen.PenOptions.changePen" alt="" coords="278,48,477,75"/>
+<area shape="rect" id="node3" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#a3a64e1f1313c0c4f30a93c1fcc5f36c1" title="TurtleView.TurtleInformation.change\lTurtle" alt="" coords="254,99,501,141"/>
+<area shape="rect" id="node11" href="$dc/d04/class_turtle_view_1_1_turtle_image_box.html#afc8ed7ffd8fe31dade346f0dee9d550c" title="TurtleView.TurtleImageBox.change\lTurtle" alt="" coords="259,165,496,206"/>
+<area shape="rect" id="node12" href="$d1/de0/class_backend_1_1_turtle.html#a5ecb58c234e1b7c851c17eaa4de8235d" title="Backend.Turtle.getPen" alt="" coords="295,231,459,257"/>
+<area shape="rect" id="node13" href="$d1/de0/class_backend_1_1_turtle.html#aa99cd255ffa089963fad4be5955c8bb6" title="Backend.Turtle.hideRing" alt="" coords="291,281,464,308"/>
+<area shape="rect" id="node14" href="$d1/de0/class_backend_1_1_turtle.html#a56cc7f136ffa25bbe506ac4d48eb1298" title="Backend.Turtle.showRing" alt="" coords="288,332,467,359"/>
+<area shape="rect" id="node4" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#ad65201793ce738f9c6d6e592271c14e1" title="TurtleView.TurtleInformation.update" alt="" coords="550,107,794,133"/>
+<area shape="rect" id="node5" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#aca65258778dade3baa31e0d5ec643b3b" title="TurtleView.TurtleInformation.emptyInfo" alt="" coords="843,5,1106,32"/>
+<area shape="rect" id="node6" href="$d1/de0/class_backend_1_1_turtle.html#adc7cb6cc95ee918547d2b18d8bb20183" title="Backend.Turtle.getID" alt="" coords="898,56,1051,83"/>
+<area shape="rect" id="node7" href="$d1/de0/class_backend_1_1_turtle.html#a715f94909b1ba74dc9e4f9eb4fd91e10" title="Backend.Turtle.getXCord" alt="" coords="886,107,1063,133"/>
+<area shape="rect" id="node9" href="$d1/de0/class_backend_1_1_turtle.html#a692174eccea232fc58e725cff6f50359" title="Backend.Turtle.getYCord" alt="" coords="887,157,1063,184"/>
+<area shape="rect" id="node10" href="$d9/d38/class_turtle_view_1_1_turtle_information.html#a15bd13ad05cabb76c0861d0ab42722ef" title="TurtleView.TurtleInformation.truncate" alt="" coords="848,208,1101,235"/>
+<area shape="rect" id="node8" href="$d1/de0/class_backend_1_1_turtle.html#a33957258db9a7205d470c5a2d22b89af" title="Backend.Turtle.getLocation" alt="" coords="1155,132,1349,159"/>
+</map>

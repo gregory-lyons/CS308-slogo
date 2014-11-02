@@ -1,0 +1,10 @@
+<map id="FrontEndCommands.SaveWorkspace.SaveWorkspace" name="FrontEndCommands.SaveWorkspace.SaveWorkspace">
+<area shape="rect" id="node2" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#a16a3847164059949f1b20569273f9caf" title="FrontEndCommands.SaveWorkspace.handle" alt="" coords="315,113,618,140"/>
+<area shape="rect" id="node3" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#a0e2a9f767a56d0e599188721b7ef9a56" title="FrontEndCommands.SaveWorkspace.chooseFile" alt="" coords="667,84,994,111"/>
+<area shape="rect" id="node4" href="$df/d9f/class_front_end_commands_1_1_save_workspace.html#addc4984b8014f4063d1f4a0fdda84667" title="FrontEndCommands.SaveWorkspace.write\lSettingsToFile" alt="" coords="685,135,976,177"/>
+<area shape="rect" id="node5" href="$df/dec/class_front_end_1_1_view.html#a2812398b952d53cbb09f8e7823fca245" title="FrontEnd.View.getLanguage\lSelector" alt="" coords="1058,5,1257,46"/>
+<area shape="rect" id="node6" href="$d2/d5e/class_front_end_1_1_language_selector.html#a9638aa132b453f5dd8a2d42b87dfe377" title="FrontEnd.LanguageSelector.get\lCurrentLanguage" alt="" coords="1046,70,1269,111"/>
+<area shape="rect" id="node7" href="$df/dec/class_front_end_1_1_view.html#a292087509c6e8a64a73dd9fbf1908864" title="FrontEnd.View.getMyBackground\lColorBox" alt="" coords="1043,135,1272,177"/>
+<area shape="rect" id="node8" href="$df/dec/class_front_end_1_1_view.html#a19e6144ef2ebaaa6035c3837b2c0cbb5" title="FrontEnd.View.getTurtleWindow" alt="" coords="1049,201,1265,228"/>
+<area shape="rect" id="node9" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html#afc4dad2127e6b5789ee20d19cd8edc75" title="TurtleView.TurtleWindow.get\lAllTurtles" alt="" coords="1061,253,1254,294"/>
+</map>

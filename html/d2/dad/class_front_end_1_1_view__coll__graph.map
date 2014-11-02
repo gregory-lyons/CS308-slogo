@@ -1,0 +1,27 @@
+<map id="FrontEnd.View" name="FrontEnd.View">
+<area shape="rect" id="node10" href="$dd/d2e/class_front_end_1_1_controller.html" title="FrontEnd.Controller" alt="" coords="2699,1172,2843,1199"/>
+<area shape="rect" id="node2" href="$df/d59/class_front_end_1_1_user_variables_storage.html" title="FrontEnd.UserVariablesStorage" alt="" coords="2001,359,2223,385"/>
+<area shape="rect" id="node8" href="$d4/d1b/class_front_end_1_1_history_box.html" title="FrontEnd.HistoryBox" alt="" coords="2037,409,2187,436"/>
+<area shape="rect" id="node59" href="$de/dda/class_front_end_1_1_command_factory.html" title="FrontEnd.CommandFactory" alt="" coords="2015,308,2209,335"/>
+<area shape="rect" id="node5" href="$de/d8a/class_front_end_1_1_user_commands.html" title="FrontEnd.UserCommands" alt="" coords="1577,513,1764,540"/>
+<area shape="rect" id="node45" href="$d2/d5e/class_front_end_1_1_language_selector.html" title="FrontEnd.LanguageSelector" alt="" coords="1571,644,1770,671"/>
+<area shape="rect" id="node57" href="$de/d36/class_front_end_commands_1_1_super_command.html" title="FrontEndCommands.SuperCommand" alt="" coords="1981,761,2243,788"/>
+<area shape="rect" id="node18" href="$d9/d38/class_turtle_view_1_1_turtle_information.html" title="TurtleView.TurtleInformation" alt="" coords="1573,1287,1768,1313"/>
+<area shape="rect" id="node25" href="$d0/d46/class_pen_1_1_pen_options.html" title="Pen.PenOptions" alt="" coords="787,1439,909,1465"/>
+<area shape="rect" id="node44" href="$df/d9c/class_front_end_1_1_command_line.html" title="FrontEnd.CommandLine" alt="" coords="1583,179,1758,205"/>
+<area shape="rect" id="node52" href="$d2/d82/class_front_end_1_1_console.html" title="FrontEnd.Console" alt="" coords="2045,460,2179,487"/>
+<area shape="rect" id="node12" href="$da/d3c/class_backend_1_1_model.html" title="Backend.Model" alt="" coords="2053,1765,2171,1792"/>
+<area shape="rect" id="node31" href="$d4/dc3/class_pen_1_1_pen_thickness_box.html" title="Pen.PenThicknessBox" alt="" coords="341,1288,501,1315"/>
+<area shape="rect" id="node33" href="$df/daf/class_pen_1_1_pen.html" title="Pen.Pen" alt="" coords="384,1496,459,1523"/>
+<area shape="rect" id="node15" href="$da/de9/class_backend_1_1_parser.html" title="Backend.Parser" alt="" coords="1610,1765,1731,1792"/>
+<area shape="rect" id="node16" href="$d1/de0/class_backend_1_1_turtle.html" title="Backend.Turtle" alt="" coords="1201,1285,1316,1312"/>
+<area shape="rect" id="node21" href="$dc/d04/class_turtle_view_1_1_turtle_image_box.html" title="TurtleView.TurtleImageBox" alt="" coords="1577,1119,1764,1145"/>
+<area shape="rect" id="node39" href="$d4/d8a/class_turtle_view_1_1_turtle_window.html" title="TurtleView.TurtleWindow" alt="" coords="2027,1460,2197,1487"/>
+<area shape="rect" id="node26" href="$d6/da0/class_pen_1_1_pen_type_box.html" title="Pen.PenTypeBox" alt="" coords="358,1401,485,1428"/>
+<area shape="rect" id="node29" href="$df/d6f/class_pen_1_1_pen_color_box.html" title="Pen.PenColorBox" alt="" coords="356,1339,487,1365"/>
+<area shape="rect" id="node56" href="$d0/d6a/class_turtle_view_1_1_background_color_box.html" title="TurtleView.BackgroundColorBox" alt="" coords="525,907,747,933"/>
+<area shape="rect" id="node23" href="$dc/ded/class_turtle_view_1_1_active_ring.html" title="TurtleView.ActiveRing" alt="" coords="771,1185,925,1212"/>
+<area shape="rect" id="node43" href="$d1/df4/class_turtle_view_1_1_grid_check_box.html" title="TurtleView.GridCheckBox" alt="" coords="950,1033,1127,1060"/>
+<area shape="rect" id="node38" href="$db/d5d/class_backend_1_1_a_s_t.html" title="Backend.AST" alt="" coords="1617,1816,1724,1843"/>
+<area shape="rect" id="node51" href="$d5/d23/class_front_end_1_1_arrow_key_handler.html" title="FrontEnd.ArrowKeyHandler" alt="" coords="2017,43,2207,69"/>
+</map>

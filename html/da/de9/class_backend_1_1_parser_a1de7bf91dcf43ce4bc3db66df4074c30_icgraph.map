@@ -1,0 +1,6 @@
+<map id="Backend.Parser.getQueueOfNodes" name="Backend.Parser.getQueueOfNodes">
+<area shape="rect" id="node2" href="$da/d3c/class_backend_1_1_model.html#a3b4294a767985d6585d71cfe0293fba2" title="Backend.Model.makeTreeand\lAddValues" alt="" coords="257,5,466,46"/>
+<area shape="rect" id="node3" href="$da/d3c/class_backend_1_1_model.html#a972866b8540ea6b615e3c80b0ad1f9c6" title="Backend.Model.parse" alt="" coords="515,12,674,39"/>
+<area shape="rect" id="node4" href="$dd/d2e/class_front_end_1_1_controller.html#a41885f349a8f334750e26d685a8981d2" title="FrontEnd.Controller.execute\lCommand" alt="" coords="723,5,922,46"/>
+<area shape="rect" id="node5" href="$dd/d2e/class_front_end_1_1_controller.html#a29be9ff259428dbe97eebe3ec9a13ac5" title="FrontEnd.Controller.update" alt="" coords="971,12,1163,39"/>
+</map>

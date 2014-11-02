@@ -1,0 +1,9 @@
+<map id="FrontEnd.LanguageSelector.getComboBox" name="FrontEnd.LanguageSelector.getComboBox">
+<area shape="rect" id="node2" href="$df/dec/class_front_end_1_1_view.html#a6b0235dbcef17df58c19a639464103b6" title="FrontEnd.View.getCurrent\lLanguage" alt="" coords="326,5,509,46"/>
+<area shape="rect" id="node5" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a085f7d78419f925a9cb7832f575cf221" title="FrontEndCommands.LoadWorkspace.get\lSettingsFromFile" alt="" coords="277,70,557,111"/>
+<area shape="rect" id="node8" href="$df/dec/class_front_end_1_1_view.html#a079d7e899ded516b169dc6e66da79e1e" title="FrontEnd.View.View" alt="" coords="346,136,489,163"/>
+<area shape="rect" id="node3" href="$dd/d2e/class_front_end_1_1_controller.html#a41885f349a8f334750e26d685a8981d2" title="FrontEnd.Controller.execute\lCommand" alt="" coords="658,5,857,46"/>
+<area shape="rect" id="node4" href="$dd/d2e/class_front_end_1_1_controller.html#a29be9ff259428dbe97eebe3ec9a13ac5" title="FrontEnd.Controller.update" alt="" coords="991,12,1183,39"/>
+<area shape="rect" id="node6" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#a8d25efaea29f2543991a3efce2a1c0f6" title="FrontEndCommands.LoadWorkspace.handle" alt="" coords="606,77,909,104"/>
+<area shape="rect" id="node7" href="$d8/da4/class_front_end_commands_1_1_load_workspace.html#ac3c90bf92d48930f076d277acd611bfc" title="FrontEndCommands.LoadWorkspace.\lLoadWorkspace" alt="" coords="957,70,1216,111"/>
+</map>
